@@ -1,0 +1,162 @@
+body{
+	
+	margin:0px;	
+	padding:0px;
+	background-color: rgb(247,247,247);
+	
+	overflow: scroll;
+}
+
+h1 {
+font-family: "Trebuchet MS";
+
+margin-left: 50px;
+font-size: 26px;
+}
+
+h2 {
+font-family: cambria;
+
+margin-left: 30px;
+font-size: 20px;
+}
+
+
+
+/* ============= HAUT ============= */
+#banniere {
+background-color:white;
+width: 100%;
+background-image: url("./images/new_york.jpg");
+
+
+height: 238px;
+border-bottom: 1px solid black;
+font-size: 32px;
+color: black;
+font-family: "Trebuchet MS";
+
+}
+
+#bigtitre {
+padding-left: 50px;
+text-align: center;
+}
+
+#logoban{
+margin-left: 100px;
+height: 180px;
+}
+
+
+
+/* ============= MENU ============= */
+
+/* Block Menu */
+#menu {
+
+margin-left: auto;
+margin-right: auto;
+text-align: center;
+opacity: 0.9;
+height: 40px;
+width: 1002px;
+
+}
+/* Cellules */
+
+#menu td {
+-webkit-border-top-left-radius: 10px;
+-webkit-border-top-right-radius: 10px;
+-moz-border-radius-topleft: 10px;
+-moz-border-radius-topright: 10px;
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+
+background-color: rgb(248,99,99);
+border: 1px solid black;
+
+text-align: center;
+height : 40px;
+width : 250px;
+}
+
+/* Texte */
+#menu a {
+color: white;
+padding: 8px;
+display: block;
+font-family: cambria;
+text-decoration: none;
+font-weight: bold;
+font-size: 18px;
+
+}
+
+
+
+#menu td:hover {
+
+background-color: rgb(174,203,219);
+
+
+}
+/* ============= CORPS ============= */
+	
+#corps {
+margin-top : 50px;
+border: 1px solid black;
+margin-left: auto;
+margin-right: auto;
+width: 1000px;
+background-color: white;
+
+}
+
+#corps img {
+padding: 10px;
+}
+
+#corps p, #corps form {
+margin: 20px;
+text-align: justify;
+font-family: calibri;
+}
+
+/* ============= PIED ============= */
+
+#pied {
+margin-top: 20px;
+width: 100%;
+background-color: white;
+border: 1px solid black;
+border-left: none;
+border-right: none;
+padding-bottom: 10px;
+margin-bottom: 5px;
+}
+
+#pied table {
+margin-left: auto;
+margin-right: auto;
+width: 1000px;
+text-align: center;
+
+}
+#pied img {
+height: 35px;
+padding-left: 10px;
+padding-right: 10px;
+}
+#pied th {
+
+text-align: center;
+font-size: 14px;
+padding: 3px;
+font-family: "Trebuchet MS";
+}
+#pied td {
+font-family: cambria;
+text-align: center;
+font-size: 12px;
+}
