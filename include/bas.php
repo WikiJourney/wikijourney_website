@@ -8,7 +8,7 @@
 					<th>Statut Légal</th>
 				</tr>
 				<tr>
-					<td>Lol on en a pas</td>
+					<td>Pas de partenaires pour l'instant</td>
 					<td>Blabla</td>
 				</tr>
 			</table>
