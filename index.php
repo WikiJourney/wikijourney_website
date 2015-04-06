@@ -6,7 +6,7 @@
 
  <p>
         <form name="inscription" method="post" action="map.php">
-        Destination (nom du monument) : <input type="text" name="destination"/> <br/>
+        Destination (nom du monument) : <input type="text" name="name"/> <br/>
         <input type="submit" name="valider" value="Faites moi rêver.."/>
         </form>
 </p>

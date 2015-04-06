@@ -1,19 +1,37 @@
-<?php
-include("./include/haut.php");
-
-		#function strpos_offset($needle, $haystack, $occurrence) {
-		  // explode the haystack
-		#  $arr = explode($needle, $haystack);
-		  // check the needle is not out of bounds
-		#  switch( $occurrence ) {
-		#    case $occurrence == 0:
-		  #    return false;
-		 #   case $occurrence > max(array_keys($arr)):
-		   #   return false;
-		   # default:
-		   #   return strlen(implode($needle, array_slice($arr, 0, $occurrence)));
-		  #}
-		#}     
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+		<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js'></script>
+		<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css' rel='stylesheet' />
+		<title>Wiki Journey - Revisitez le tourisme.</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<link rel="stylesheet" media="screen" type="text/css" title="Design" href="design.css" />
+<style>
+  body { margin:0; padding:0; }
+  #map { position:absolute; top:0; bottom:0; width:100%; }
+</style>
+ 
+ </head>
+ <body>
+        <p>
+        Error: page not found
+        <?php
+ 
+#function strpos_offset($needle, $haystack, $occurrence) {
+  // explode the haystack
+#  $arr = explode($needle, $haystack);
+  // check the needle is not out of bounds
+#  switch( $occurrence ) {
+#    case $occurrence == 0:
+  #    return false;
+ #   case $occurrence > max(array_keys($arr)):
+   #   return false;
+   # default:
+   #   return strlen(implode($needle, array_slice($arr, 0, $occurrence)));
+  #}
+#}     
         // Même chose que error_reporting(E_ALL);
         ini_set('error_reporting', E_ALL);
         $name = $_POST['name'];
@@ -60,13 +78,12 @@ include("./include/haut.php");
  
  <script>
        
-L.mapbox.accessToken = 'pk.eyJ1IjoicG9sb2Nob24tc3RyZWV0IiwiYSI6Ikh5LVJqS0UifQ.J0NayavxaAYK1SxMnVcxKg';
-var map = L.mapbox.map('map', 'polochon-street.kpogic18')
+	L.mapbox.accessToken = 'pk.eyJ1IjoicG9sb2Nob24tc3RyZWV0IiwiYSI6Ikh5LVJqS0UifQ.J0NayavxaAYK1SxMnVcxKg';
+	var map = L.mapbox.map('map', 'polochon-street.kpogic18')
     .setView([<?php echo "$latitude";?>, <?php echo "$longitude";?>], 18);
-var marker = L.marker([<?php echo "$latitude";?>, <?php echo "$longitude";?>]).addTo(map);
-marker.bindPopup("<?php echo "$description";?> <br /> <p><a target=\"_blank\" href=\"http:<?php echo "$url";?>\">Lien wikipédia</a> <br /> <a href=\"http://perdu.com\">[+]</a></p>").openPopup();
+	var marker = L.marker([<?php echo "$latitude";?>, <?php echo "$longitude";?>]).addTo(map);
+	marker.bindPopup("<?php echo "$description";?> <br /> <p><a target=\"_blank\" href=\"http:<?php echo "$url";?>\">Lien wikipédia</a> <br /> <a href=\"http://perdu.com\">[+]</a></p>").openPopup();
 </script>
-
-<?php
-include("./include/bas.php");
-?>
+ 
+ </body>
+</html>
