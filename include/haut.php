@@ -1,9 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
+ï»¿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
 	<head>
 
 	<title>Wiki Journey - Revisitez le tourisme.</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta charset="UTF-8">
 	<link rel="stylesheet" media="screen" type="text/css" title="Design" href="design.css" />
 	<!-- <link rel="Shortcut icon" href="./images/design/favicon.ico" /> -->
 	
@@ -15,7 +15,7 @@
 	<div id="banniere">
 				<table>
 					<tr>
-					<td><img  id="logoban" src="./images/logo_et_slogan.png" alt="Logo Bannière" /></td>
+					<td><img  id="logoban" src="./images/logo_et_slogan.png" alt="Logo BanniÃ¨re" /></td>
 					</tr>
 				</table>
 			
@@ -24,9 +24,9 @@
 				<table id="liste_menu.php" style="border-collapse: separate;" >
 					<tr>
 						<td id="lien_index.php"><a href="index.php">Accueil</a></td>
-						<td id="lien_equipe.php"><a href="equipe.php">L'Équipe</a></td>
+						<td id="lien_equipe.php"><a href="equipe.php">L'Ã‰quipe</a></td>
 						<td id="lien_services.php"><a href="services.php">A propos</a></td>
-						<td id="lien_contact.php"><a href="contact.php">Contact</a></td>
+						<td id="lien_contact.php"><a href="technical.php">Informations Techniques</a></td>
 					</tr>
 				</table>
 			</div>	

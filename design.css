@@ -9,25 +9,36 @@ body{
 
 h1 {
 font-family: "Trebuchet MS";
-
+margin-top: 30px;
 margin-left: 50px;
 font-size: 26px;
 }
 
 h2 {
 font-family: cambria;
-
+margin-top: 15px;
 margin-left: 30px;
 font-size: 20px;
 }
 
+p{
+font-family: calibri;
+}
+
+a{
+text-decoration: none;
+color: grey;
+}
 
 
 /* ============= HAUT ============= */
 #banniere {
+
 background-color:white;
 width: 100%;
 background-image: url("./images/new_york.jpg");
+
+margin: 0;
 
 
 height: 238px;
@@ -61,6 +72,7 @@ text-align: center;
 opacity: 0.9;
 height: 40px;
 width: 1002px;
+
 
 }
 /* Cellules */
@@ -113,9 +125,7 @@ background-color: white;
 
 }
 
-#corps img {
-padding: 10px;
-}
+
 
 #corps p, #corps form {
 margin: 20px;

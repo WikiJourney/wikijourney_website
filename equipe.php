@@ -2,10 +2,12 @@
 	include("./include/haut.php");
 ?>
 
-<h1>Texte d'accueil</h1>
+<h1>Notre Équipe</h1>
 
-<p>Equipe blabla Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-
+<p>Ce site web est encore en construction, merci de revenir plus tard ! ;)</p>
+<!-- faudra reprendre des photos -->
+<!-- Juliette Maës
+Depuis toujours intéressée par l’informatique, j’ai rejoint WikiJourney pour développer mes connaissances et surtout participer à un projet au concept primordial. Visitant de nouvelles villes plusieurs fois par an, j’ai pu remarquer que les guides touristiques ne sont pas toujours pratiques. Les informations sont librement disponibles sur internet, mais pas facilement accessibles aux touristes. -->
 
 <?php
 	include("./include/bas.php");
