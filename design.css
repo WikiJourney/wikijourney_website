@@ -8,28 +8,78 @@ body{
 }
 
 h1 {
-font-family: "Trebuchet MS";
+font-family: "Helvetica","Trebuchet MS";
 margin-top: 30px;
 margin-left: 50px;
 font-size: 26px;
+color: rgb(248,99,99);
 }
 
 h2 {
-font-family: cambria;
+font-family: "Helvetica", cambria;
 margin-top: 15px;
-margin-left: 30px;
+margin-left: 70px;
 font-size: 20px;
+color: rgb(137,160,173);
 }
 
-p{
-font-family: calibri;
-}
 
 a{
 text-decoration: none;
 color: grey;
 }
 
+/* ============= Trombinoscope ============= */
+#trombi {
+width: 80%;
+border-collapse: collapse;
+border: 1px solid black;
+margin: auto;
+background-color: rgba(155,222,255,0.3);
+}
+
+.tcol3{
+text-indent: 20px;
+text-align: justify;
+font-family: calibri;
+border: 1px solid black;
+padding: 10px;
+font-size: 14px;
+}
+
+.tcol2{
+width: 22%;
+text-align: center;
+border: 1px solid black;
+padding: 5px;
+}
+
+.trombiNom
+{
+font-family: "Courier New",Times;
+color: rgb(255,99,99);
+font-weight: bold;
+}
+
+.trombiFonc
+{
+font-family: calibri;
+color: grey;
+font-size: 13px;
+
+}
+
+.tcol1 img{
+width: 120px;
+
+vertical-align: bottom;
+}
+
+.tcol1{
+border: 1px solid black;
+margin: 0;
+padding : 0;
+}
 
 /* ============= HAUT ============= */
 #banniere {
@@ -128,7 +178,8 @@ background-color: white;
 
 
 #corps p, #corps form {
-margin: 20px;
+margin: auto;
+width: 80%;
 text-align: justify;
 font-family: calibri;
 }

@@ -25,7 +25,7 @@
 					<tr>
 						<td id="lien_index.php"><a href="index.php">Accueil</a></td>
 						<td id="lien_equipe.php"><a href="equipe.php">L'Équipe</a></td>
-						<td id="lien_services.php"><a href="services.php">A propos</a></td>
+						<td id="lien_services.php"><a href="services.php">À propos</a></td>
 						<td id="lien_contact.php"><a href="technical.php">Informations Techniques</a></td>
 					</tr>
 				</table>
