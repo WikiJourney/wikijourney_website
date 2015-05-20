@@ -66,13 +66,13 @@ error_reporting(E_ALL);
     //.setView([<?php echo "$latitude" ?>, <?php echo "$longitude" ?> ], 18);
 		
 	var marker = L.marker([poi_array[0].latitude, poi_array[0].longitude], {opacity:0.5}).addTo(map);
-	marker.bindPopup(poi_array[0].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[0].sitelink + "\">Lien wikipédia</a> <br /> <a href=\"http://perdu.com\">[+]</a></p>").openPopup();
+	marker.bindPopup(poi_array[0].name).openPopup();
 	for(i = 1; i < poi_array.nb_poi; ++i) {
 		var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude]).addTo(map); 
 	//	marker.bindPopup(poi_array[i].name).openPopup();
 		marker.bindPopup(poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">Lien wikipédia</a> <br /> <a href=\"http://perdu.com\">[+]</a></p>").openPopup();
 	}
-	//marker.bindPopup("<?php echo "$description";?> <br /> <p><a target=\"_blank\" href=\"http:<?php echo "$sitelink";?>\">Lien wikipédia</a> <br /> <a href=\"http://perdu.com\">[+]</a></p>").openPopup();
+	
 	map.setView([<?php echo "$latitude" ?>, <?php echo "$longitude" ?> ], 16);
 </script>
 
