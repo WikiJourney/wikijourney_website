@@ -6,7 +6,7 @@
 
 <p>
  	<button onclick="getLocation()">Try It</button>
-	<script>
+	<script type="text/javascript">
 	function openWithPostData(page,data) {
 		var form = document.createElement('form');
     	form.setAttribute('action', page);
