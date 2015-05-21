@@ -55,7 +55,7 @@ define("_ABOUT_TEXT","
 
 							<h2>Des questions, des propositions ? </h2>
 							<p>
-							Nous sommes ouverts à toute piste d’amélioration ! Contribue au projet <a href=\"mailto:wikijourneydev@gmail.com\">en nous contactant par mail</a> ou en codant directement tes propositions sur notre Git !
+							Nous sommes ouverts à toute piste d’amélioration ! Contribuez au projet <a href=\"mailto:wikijourneydev@gmail.com\">en nous contactant par mail</a> ou en codant directement tes propositions sur notre Git !
 							</p>");
 							
 							
