@@ -18,8 +18,8 @@ if(isset($_COOKIE['lg']))
 
 else 
 {
-	include("./lg/en.php");
-	setcookie("lg","en"); //Define cookie
+	include("./lg/fr.php");
+	setcookie("lg","fr"); //Define cookie
 }
 	
 
