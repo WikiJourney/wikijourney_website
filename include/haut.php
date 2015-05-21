@@ -5,7 +5,7 @@
 	<title>Wiki Journey - Revisitez le tourisme.</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" media="screen" type="text/css" title="Design" href="design.css" />
-	<!-- <link rel="Shortcut icon" href="./images/design/favicon.ico" /> -->
+	<link rel="Shortcut icon" href="./images/design/favicon.ico" />
 	
 
 	
@@ -15,7 +15,7 @@
 	<div id="banniere">
 				<table>
 					<tr>
-					<td><img  id="logoban" src="./images/logo_et_slogan.png" alt="Logo Bannière" /></td>
+					<td><img  id="logoban" src="./images/design/logo_et_slogan.png" alt="Logo Bannière" /></td>
 					</tr>
 				</table>
 			
