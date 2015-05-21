@@ -1,33 +1,19 @@
 <?php
 	include("./include/haut_map.php"); 
 
-error_reporting(E_ALL);
-//	$name = $_POST['name'];
-
-	/* Encode array and get informations about the page we want (id, description, etc) */
-/*	$search_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbsearchentities&search=" . urlencode($name) . "&language=fr&format=json");
-	$search_array = json_decode($search_array_json, true);
-	$id = $search_array["search"][0]["id"];
-	$description = $search_array["search"][0]["description"]; */
-
-	/* Encode array and get informations about the localisation of that page (lat/long/height, etc) */
-	/* $geoloc_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetclaims&format=json&entity=$id&property=P625");
-	$geoloc_array = json_decode($geoloc_array_json, true);
-
-	$latitude = $geoloc_array["claims"]["P625"][0]["mainsnak"]["datavalue"]["value"]["latitude"];
-	$longitude = $geoloc_array["claims"]["P625"][0]["mainsnak"]["datavalue"]["value"]["longitude"]; */
-	
-	/* Encode array and get fr wikipedia link about that page */
-	/*$sitelink_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetentities&ids=$id&sitefilter=frwiki&props=sitelinks/urls&format=json");
-	$sitelink_array = json_decode($sitelink_array_json, true);
-	$sitelink = $sitelink_array["entities"]["$id"]["sitelinks"]["frwiki"]["url"]; */
-
-
-
-
+	error_reporting(E_ALL);
 	/* Obtain current user latitude/longitude */
-	$user_latitude= $_POST[0];
-	$user_longitude= $_POST[1];
+	if($_POST['name']) {
+		$name = $_POST['name'];
+		$osm_array_json = file_get_contents("http://nominatim.openstreetmap.org/search?q=" . urlencode($name) . "&format=json");
+		$osm_array = json_decode($osm_array_json, true);
+		$user_latitude = $osm_array[0]["lat"];
+		$user_longitude = $osm_array[0]["lon"];
+	}
+	else {
+		$user_latitude= $_POST[0];
+		$user_longitude= $_POST[1];
+	}
 
 	/* Returns a $poi_id_array_clean array with a list of wikidata pages ID within a $range km range from user location */
 	$range = 1;
@@ -73,7 +59,6 @@ error_reporting(E_ALL);
 	
 	/* place the first marker with 50% opacity to distinguish it */	
 	var marker = L.marker([user_latitude, user_longitude], {opacity:0.5}).addTo(map);
-	marker.bindPopup(poi_array[0].name).openPopup();
 
 	/* place wiki POI */
 	for(i = 0; i < poi_array.nb_poi; ++i) {
@@ -86,7 +71,7 @@ error_reporting(E_ALL);
 		marker.bindPopup(popup_content).openPopup();
 	}
 	
-	map.setView([user_latitude, user_longitude], 16);
+	map.setView([user_latitude, user_longitude], 15);
 </script>
 
 

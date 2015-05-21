@@ -36,6 +36,11 @@
 		openWithPostData("map.php", latlong);
 	}
 	</script>   
+    <form name="inscription" method="post" action="map.php">
+    Adress you want to look up: <input type="text" name="name"/> <br/>
+    <input type="submit" name="valider" value="OK"/>
+    </form>
+
 </p>
 
 <?php
