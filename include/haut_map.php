@@ -1,8 +1,9 @@
-﻿<!DOCTYPE html>
+﻿<?php include("./lg/fr.php");?>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 
-	<title>Wiki Journey - Revisitez le tourisme.</title>
+	<title><?php echo _TITLE; ?></title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" media="screen" type="text/css" title="Design" href="design.css" />
 	<link rel="Shortcut icon" href="./images/design/favicon.ico" />
@@ -30,7 +31,7 @@
 	<div id="banniere">
 				<table>
 					<tr>
-					<td><img  id="logoban" src="./images/design/logo_et_slogan.png" alt="Logo Bannière" /></td>
+					<td><img  id="logoban" src="<?php echo _SRC_IMAGE_LOGO; ?>" alt="Logo" /></td>
 					</tr>
 				</table>
 			
@@ -38,15 +39,15 @@
 			<div id="menu">
 				<table id="liste_menu.php" style="border-collapse: separate;" >
 					<tr>
-						<td id="lien_index.php"><a href="index.php">Accueil</a></td>
-						<td id="lien_equipe.php"><a href="equipe.php">L'Équipe</a></td>
-						<td id="lien_services.php"><a href="services.php">A propos</a></td>
-						<td id="lien_contact.php"><a href="contact.php">Contact</a></td>
+						<td id="lien_index.php"><a href="index.php"><?php echo _INDEX ;?></a></td>
+						<td id="lien_team.php"><a href="team.php"><?php echo _TEAM ;?></a></td>
+						<td id="lien_about.php"><a href="about.php"><?php echo _ABOUT ;?></a></td>
+						<td id="lien_contact.php"><a href="technical.php"><?php echo _TECHNICAL ;?></a></td>
 					</tr>
 				</table>
 			</div>	
 			<?php
-			//Coloration en rouge clair de la page active
+			//Colorating the active page
 				$nomPage = $_SERVER['PHP_SELF'];
 				$reg = '#^(.+[\\\/])*([^\\\/]+)$#';
 				$nomPage = preg_replace($reg, '$2', $nomPage); 

@@ -2,10 +2,10 @@
 	include("./include/haut.php");
 ?>
 
-<h1>Bienvenue !</h1>
+<h1><?php echo _WELCOME_TITLE; ?></h1>
 
 <p>
- 	<button onclick="getLocation()">Find Point Of Interest around me now !</button>
+ 	<button onclick="getLocation()"><?php echo _BUTTON_POI_AROUND; ?></button>
 	<script type="text/javascript">
 	function openWithPostData(page,data) {
 		var form = document.createElement('form');
@@ -38,7 +38,7 @@
 	</script>   
 	<br/><br/>
     <form name="inscription" method="post" action="map.php">
-    Or type an adress you want to look up ! <input type="text" name="name"/>
+    <?php echo _ADRESS_LOOK_UP; ?> <input type="text" name="name"/>
     <input type="submit" name="valider" value="OK"/>
     </form>
 

@@ -4,11 +4,11 @@
 		<div id="pied">
 			<table>
 				<tr>
-					<th>Nos Partenaires</th>
+					<th><?php echo _OUR_PARTNERS; ?></th>
 					<!--<th>Statut Légal</th>-->
 				</tr>
 				<tr>
-					<td>Pas de partenaires pour l'instant. Un partenariat vous intéresse ? Contactez nous !</td>
+					<td><?php echo _NO_PARTNERS_LOL; ?></td>
 					<!--<td>Blabla</td>-->
 				</tr>
 			</table>

@@ -1,10 +1,11 @@
 <?php
 	include("./include/haut.php");
+	
 ?>
 
-<h1><?php echo _TECHNICAL_TITLE; ?></h1>
+<h1><?php echo _ABOUT_TITLE; ?></h1>
 
-<p><?php echo _TECHNICAL_TEXT; ?></p>
+<?php echo _ABOUT_TEXT; ?>
 
 <?php
 	include("./include/bas.php");

@@ -2,15 +2,13 @@
 	include("./include/haut.php");
 ?>
 
-<h1>Notre Équipe</h1>
+<h1><?php echo _TEAM_TITLE; ?></h1>
 
-<h2>Qui sommes nous ?</h2>
+<h2><?php echo _TEAM_WHO_R_WE; ?></h2>
 <p>
-<img src="./images/centrale_logo.jpg" alt="Centrale Lille" style="float: right; width: 60px; padding-left: 30px;"/>
-Nous sommes une équipe de sept étudiants de l'École Centrale de Lille, école d'ingénieur généraliste située à Lille,
-dans le Nord de la France. Il nous est imposé durant nos deux premières années d'études de développer un projet
-multidisciplinaire, dans lequel nous mettrons nos connaissances en commun. Nous nous sommes donc retrouvés à sept 
-sur ce projet.</p>
+<img src="./images/design/centrale_logo.jpg" alt="Centrale Lille" style="float: right; width: 60px; padding-left: 30px;"/>
+<?php echo _TEAM_QUICKDESC; ?>
+</p>
 
 <h2>Trombinoscope</h2>
 <table id="trombi">
