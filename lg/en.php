@@ -18,7 +18,7 @@ define("_TECHNICAL",		"Technical Informations");
 
 //===> Bottom
 define("_OUR_PARTNERS",		"Our partners");
-define("_NO_PARTNERS_LOL",	"No partners for the moment. If interessed, contact us !");
+define("_NO_PARTNERS_LOL",	"No partners for the moment. If interested in a partnership, contact us !");
 
 //========================> Pages <========================//
 
