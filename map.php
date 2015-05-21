@@ -3,7 +3,7 @@
 
 	error_reporting(E_ALL);
 	/* Obtain current user latitude/longitude */
-	if($_POST['name']) {
+	if(isset($_POST['name'])) {
 		$name = $_POST['name'];
 		$osm_array_json = file_get_contents("http://nominatim.openstreetmap.org/search?q=" . urlencode($name) . "&format=json");
 		$osm_array = json_decode($osm_array_json, true);
@@ -58,7 +58,15 @@
 	var map = L.mapbox.map('map', 'polochon-street.kpogic18')
 	
 	/* place the first marker with 50% opacity to distinguish it */	
-	var marker = L.marker([user_latitude, user_longitude], {opacity:0.5}).addTo(map);
+	//var marker = L.marker([user_latitude, user_longitude], {opacity:0.5, color: '#fa0'}).addTo(map);
+	var marker = L.marker([user_latitude, user_longitude], {    icon: L.mapbox.marker.icon({
+        'marker-size': 'large',
+        'marker-symbol': 'pitch',
+        'marker-color': '#fa0'
+    })}).addTo(map);
+	//Cf liste complète des symboles : https://www.mapbox.com/maki/
+	
+	marker.bindPopup("Vous êtes ici !").openPopup();
 
 	/* place wiki POI */
 	for(i = 0; i < poi_array.nb_poi; ++i) {

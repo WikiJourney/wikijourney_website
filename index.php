@@ -5,7 +5,7 @@
 <h1>Bienvenue !</h1>
 
 <p>
- 	<button onclick="getLocation()">Try It</button>
+ 	<button onclick="getLocation()">Find Point Of Interest around me now !</button>
 	<script type="text/javascript">
 	function openWithPostData(page,data) {
 		var form = document.createElement('form');
@@ -36,8 +36,9 @@
 		openWithPostData("map.php", latlong);
 	}
 	</script>   
+	<br/><br/>
     <form name="inscription" method="post" action="map.php">
-    Adress you want to look up: <input type="text" name="name"/> <br/>
+    Or type an adress you want to look up ! <input type="text" name="name"/>
     <input type="submit" name="valider" value="OK"/>
     </form>
 
