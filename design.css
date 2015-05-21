@@ -87,16 +87,35 @@ padding : 0;
 background-color:white;
 width: 100%;
 background-image: url("./images/design/new_york.jpg");
-
 margin: 0;
-
-
 height: 238px;
 border-bottom: 1px solid black;
 font-size: 32px;
 color: black;
 font-family: "Trebuchet MS";
+}
 
+#languagesBox {
+font-size: 14px;
+margin-left: 200px;
+width: 100px;
+padding: 5px;
+text-align: center;
+background-color: rgba(248,99,99,0.5);
+-webkit-border-radius: 10px;
+   -moz-border-radius: 10px;
+        border-radius: 10px;
+		
+border: 1px solid black;
+color: white;
+font-family: cambria;
+}
+
+#languagesBox a{
+color: white;
+}
+#languagesBox a:hover{
+font-weight: bold;
 }
 
 #bigtitre {
@@ -146,9 +165,10 @@ width : 250px;
 /* Texte */
 #menu a {
 color: white;
+font-family: cambria;
 padding: 8px;
 display: block;
-font-family: cambria;
+
 text-decoration: none;
 font-weight: bold;
 font-size: 18px;

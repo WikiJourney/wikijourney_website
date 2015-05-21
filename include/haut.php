@@ -1,4 +1,30 @@
-﻿<?php include("./lg/fr.php");?>
+﻿<?php 
+
+if(isset($_COOKIE['lg']))
+{
+
+	if($_COOKIE['lg'] == 'en')
+		include("./lg/en.php");
+	
+	else if($_COOKIE['lg'] == 'fr')
+		include("./lg/fr.php");
+
+	else //Not normal
+	{
+		include("./lg/en.php");
+		setcookie("lg","en"); //Redefine cookie
+	}
+}
+
+else 
+{
+	include("./lg/en.php");
+	setcookie("lg","en"); //Define cookie
+}
+	
+
+
+?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -16,7 +42,14 @@
 	<div id="banniere">
 				<table>
 					<tr>
-					<td><img  id="logoban" src="<?php echo _SRC_IMAGE_LOGO; ?>" alt="Logo" /></td>
+						<td><img  id="logoban" src="<?php echo _SRC_IMAGE_LOGO; ?>" alt="Logo" /></td>
+						
+						<td><p id="languagesBox">
+							<a href="action.php?lg=en">English</a><br/>
+							<a href="action.php?lg=fr">Français</a>
+							</p>
+						</td>
+						
 					</tr>
 				</table>
 			

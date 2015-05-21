@@ -11,10 +11,10 @@
 define("_TITLE",			"Wiki Journey - Revisitez le tourisme.");
 define("_SRC_IMAGE_LOGO",	"./images/design/logo_and_catchphrase/fr.png");
 //===> Top
-define("_INDEX",			"Accueil");
-define("_TEAM",				"L'Équipe");
-define("_ABOUT",			"À propos");
-define("_TECHNICAL",		"Informations Techniques");
+define("_INDEX",			"Index");
+define("_TEAM",				"Team");
+define("_ABOUT",			"About");
+define("_TECHNICAL",		"Technical Informations");
 
 //===> Bottom
 define("_OUR_PARTNERS",		"Nos partenaires");
@@ -23,22 +23,20 @@ define("_NO_PARTNERS_LOL",	"Pas de partenaires pour l'instant. Un partenariat vo
 //========================> Pages <========================//
 
 //===> index.php
-define("_WELCOME_TITLE",	"Bienvenue !");
-define("_BUTTON_POI_AROUND","Trouver des points d'intérêts autour de moi !");
-define("_ADRESS_LOOK_UP",	"Ou à proximité d'une adresse !");
+define("_WELCOME_TITLE",	"Welcome !");
+define("_BUTTON_POI_AROUND","Find Point Of Interest around me !");
+define("_ADRESS_LOOK_UP",	"Or enter an adress to look up !");
 
 //===> team.php
-define("_TEAM_TITLE",		"Notre Équipe");
-define("_TEAM_WHO_R_WE",	"Qui sommes nous ?");
-define("_TEAM_QUICKDESC",	"Nous sommes une équipe de sept étudiants de l'École Centrale de Lille, école d'ingénieur généraliste située à Lille,
-							dans le Nord de la France. Il nous est imposé durant nos deux premières années d'études de développer un projet
-							multidisciplinaire, dans lequel nous mettrons nos connaissances en commun. Nous nous sommes donc retrouvés à sept 
-							sur ce projet." );
+define("_TEAM_TITLE",		"Our Team !");
+define("_TEAM_WHO_R_WE",	"Who are we ?");
+define("_TEAM_QUICKDESC",	"We're a team of seven students from the Ecole Centrale de Lille, a graduate school in Lille in the north of France. We
+							have to create a multidisciplinary project in two years, that's how we started to work together on WikiJourney. This project
+							is really important for us, that's why we will make everything we could to achieve it.");
 
 //===> about.php
-define("_ABOUT_TITLE", 		"Qu’est-ce que Wikijourney ?");
-define("_ABOUT_TEXT","		<h1>Tell me more about WikiJourney ?</h1>
-							<p>It's a student project, which was made to connect an user and Wikimedia contents, linked by its position in a city.<br/>
+define("_ABOUT_TITLE", 		"Tell me more about WikiJourney ?");
+define("_ABOUT_TEXT","		<p>It's a student project, which was made to connect an user and Wikimedia contents, linked by its position in a city.<br/>
 							We are trying to release a mobile app which will recommend to tourists some interesting points of interest to visit. Adjust your settings, chose a path, and let's go !
 							</p>
 							<h2>Why an application ?</h2>
@@ -56,7 +54,7 @@ define("_ABOUT_TEXT","		<h1>Tell me more about WikiJourney ?</h1>
 														
 														
 //===> technical.php
-define("_TECHNICAL_TITLE",	"Informations Techniques");
-define("_TECHNICAL_TEXT",	"Ce site web est encore en construction, merci de revenir plus tard ! ;)");
+define("_TECHNICAL_TITLE",	"Technical Informations");
+define("_TECHNICAL_TEXT",	"This website is still under construction, please come back later ;)");
 
 
