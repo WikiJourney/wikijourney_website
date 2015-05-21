@@ -9,7 +9,7 @@
 //===> General
 
 define("_TITLE",			"Wiki Journey - Revisitez le tourisme.");
-define("_SRC_IMAGE_LOGO",	"./images/design/logo_and_catchphrase/fr.png");
+define("_SRC_IMAGE_LOGO",	"./images/design/logo_and_catchphrase/en.png");
 //===> Top
 define("_INDEX",			"Index");
 define("_TEAM",				"Team");
@@ -17,8 +17,8 @@ define("_ABOUT",			"About");
 define("_TECHNICAL",		"Technical Informations");
 
 //===> Bottom
-define("_OUR_PARTNERS",		"Nos partenaires");
-define("_NO_PARTNERS_LOL",	"Pas de partenaires pour l'instant. Un partenariat vous intéresse ? Contactez nous !");
+define("_OUR_PARTNERS",		"Our partners");
+define("_NO_PARTNERS_LOL",	"No partners for the moment. If interessed, contact us !");
 
 //========================> Pages <========================//
 
