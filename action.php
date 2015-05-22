@@ -17,6 +17,7 @@ if(isset($_GET['lg'])) //Language modification
 ?>
 <script type="text/javascript">
 <!--
-	document.location.href = "index.php";
+	// document.location.href = "index.php";
+	document.location.href = document.referrer;
 -->
 </script>
