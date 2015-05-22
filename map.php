@@ -22,8 +22,9 @@
 	$poi_id_array_clean = $poi_id_array["items"];
 	$nb_poi = count($poi_id_array_clean);
 	
+	$poi_array["nb_poi"] = $nb_poi;
 	/* stocks latitude, longitude, name and description of every POI located by ↑ in $poi_array */
-	for($i = 0; $i < $nb_poi; $i++) {
+	for($i = 0; $i < max($nb_poi, 10); $i++) {
 		$temp_geoloc_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetclaims&format=json&entity=Q" . $poi_id_array_clean["$i"] . "&property=P625");
 		$temp_geoloc_array = json_decode($temp_geoloc_array_json, true);
 
@@ -38,7 +39,6 @@
 		$temp_sitelink_array = json_decode($temp_sitelink_array_json, true);
 		$temp_sitelink = $temp_sitelink_array["entities"]["Q" . $poi_id_array_clean["$i"]]["sitelinks"]["frwiki"]["url"];
 	
-		$poi_array["nb_poi"] = $nb_poi;
 		$poi_array[$i]["latitude"] = $temp_latitude;
 		$poi_array[$i]["longitude"] = $temp_longitude;
 		$poi_array[$i]["name"] = $name;
@@ -69,7 +69,7 @@
 	marker.bindPopup("Vous êtes ici !").openPopup();
 
 	/* place wiki POI */
-	for(i = 0; i < poi_array.nb_poi; ++i) {
+	for(i = 0; i < max(poi_array.nb_poi, 10); ++i) {
 		var popup_content = new Array();
 		if(poi_array[i].sitelink != null)
 			popup_content = poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">Lien wikipédia</a> <br /> <a href=\"http://perdu.com\">[+]</a></p>";
