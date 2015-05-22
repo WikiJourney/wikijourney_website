@@ -34,7 +34,7 @@ define("_TEAM_QUICKDESC",	"Nous sommes une équipe de sept étudiants de l'Écol
 							dans le Nord de la France. Il nous est imposé durant nos deux premières années d'études de développer un projet
 							multidisciplinaire, dans lequel nous mettrons nos connaissances en commun. Nous nous sommes donc retrouvés à sept 
 							sur ce projet." );
-define("_S_ARNOUTS_DESC",	"J'ai rejoins le projet WikiJourney car je suis vraiment intéressé par la programmation et le développement informatique. Ce projet est pour moi l'occasion de mettre mes compétences de programmation au profit d'un réel projet, qui de plus se place dans le cadre du logiciel libre." );
+define("_S_ARNOUTS_DESC",	"J'ai rejoint le projet WikiJourney car je suis vraiment intéressé par la programmation et le développement informatique. Ce projet est pour moi l'occasion de mettre mes compétences de programmation au profit d'un réel projet, qui de plus se place dans le cadre du logiciel libre." );
 define("_S_ARNOUTS_POSTE", 	"Chef de Projet<br/>Développement Web") ;
 define("_P_ARZELIER_DESC",	"Je suis dans ce groupe projet de par ma passion pour l'informatique; mon domaine de prédilection est l'administration de serveurs sous Linux et le développement en C, mais néanmoins capable de coder en utilisant des technologies web. En outre, le développement du tourisme dans les pays émergents ainsi que l'explosion des nouvelles technologies est un terreau fertile pour l'innovation dans ce domaine, assez peu exploré jusqu'à maintenant." );
 define("_P_ARZELIER_POSTE", "Serveur<br/>Développement Web");
