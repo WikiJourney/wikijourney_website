@@ -34,19 +34,19 @@ define("_TEAM_QUICKDESC",	"We're a team of seven students from the Ecole Central
 							have to create a multidisciplinary project in two years, that's how we started to work together on WikiJourney. This project
 							is really important for us, that's why we will make everything we could to achieve it.");
 define("_S_ARNOUTS_DESC",	"J'ai rejoins le projet WikiJourney car je suis vraiment intéressé par la programmation et le développement informatique. Ce projet est pour moi l'occasion de mettre mes compétences de programmation au profit d'un réel projet, qui de plus se place dans le cadre du logiciel libre." );
-define("_S_ARNOUTS_POSTE", 	"Chef de Projet<br/>Développement Web") ;
+define("_S_ARNOUTS_POSTE", 	"Project Manager<br/>Web Development") ;
 define("_P_ARZELIER_DESC",	"Je suis dans ce groupe projet de par ma passion pour l'informatique; mon domaine de prédilection est l'administration de serveurs sous Linux et le développement en C, mais néanmoins capable de coder en utilisant des technologies web. En outre, le développement du tourisme dans les pays émergents ainsi que l'explosion des nouvelles technologies est un terreau fertile pour l'innovation dans ce domaine, assez peu exploré jusqu'à maintenant." );
-define("_P_ARZELIER_POSTE", "Serveur<br/>Développement Web");
+define("_P_ARZELIER_POSTE", "Server<br/>Web Development");
 define("_T_GAUDIN_DESC",	"Le projet Wikijourney m'a attiré à la fois par à sa dominante informatique (développement Web et Android), et par son côté communautaire. En effet, je suis depuis longtemps un adepte des logiciels libres, et j'aimerais contribuer à mon tour au monde du Libre en participant à un projet novateur, liant tourisme et informatique, deux domaines rarement combinés." );
-define("_T_GAUDIN_POSTE", 	"Développement Java<br/>Développement Serveur");
+define("_T_GAUDIN_POSTE", 	"Mobile Development<br/>Server Development");
 define("_N_HATIM_DESC",		"Interessé par l'informatique et l'aide à la décision, j'ai rejoint le projet WikiJourney pour m'initier à ces sujets et participer à un projet libre qui m'offrira sans doute une expérience unique et fort profitable." );
-define("_N_HATIM_POSTE", 	"Trésorier - Partenariats<br/>Développement Java");
+define("_N_HATIM_POSTE", 	"Treasurer - Partnerships<br/>Mobile Development");
 define("_B_HUBER_DESC",		"Après des années d’une formation très généraliste, je souhaitais m’intégrer à un projet concret, avec une forte emphase sur les NTIC. WikiJourney apparaissait alors comme Le projet à rejoindre pour développer mes compétences, d’autant plus qu’il répond à une problématique me touchant vraiment en tant qu’étudiant : donner un accès rapide à une information de qualité à des personnes cherchant à explorer le monde, et les guider dans leurs découvertes." );
-define("_B_HUBER_POSTE", 	"Partenariats<br/>Développement Web");
+define("_B_HUBER_POSTE", 	"Partnerships<br/>Web Development");
 define("_J_MAES_DESC",		"Depuis toujours intéressée par l’informatique, j’ai rejoint WikiJourney pour développer mes connaissances et surtout participer à un projet au concept primordial. Visitant de nouvelles villes plusieurs fois par an, j’ai pu remarquer que les guides touristiques ne sont pas toujours pratiques. Les informations sont librement disponibles sur internet, mais pas facilement accessibles aux touristes." );
-define("_J_MAES_POSTE", 	"Secrétaire<br/>Développement Web");
+define("_J_MAES_POSTE", 	"Secretary<br/>Web Development");
 define("_Y_WANG_DESC",		"Je connais bien les langages C et C++, et j'ai appris les langages CSS et HTML en autodidacte. Je m'intéresse à ce projet parce que c'est une bonne idée de combiner les cartes numériques avec les informations fournies par Wikipédia. De plus, le projet correspond bien à mes compétences." );
-define("_Y_WANG_POSTE", 	"Développement Java");
+define("_Y_WANG_POSTE", 	"Mobile Development");
 
 
 
