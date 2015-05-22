@@ -241,3 +241,29 @@ font-family: cambria;
 text-align: center;
 font-size: 12px;
 }
+/* ============= MAP ============= */
+#map { 
+	
+	
+	padding: 0;
+	height: 500px; 
+	width: 70%;
+	border-collapse: collapse;
+	border: 1px solid black;
+	
+}
+
+#POI_CART {
+	margin-right: 46px;
+	float: left;
+	width: 25%;
+	border: 1px solid black;
+	height: 500px;
+
+}
+
+#map_cart_container {
+width: 1000px;
+margin: auto;
+margin-top: 15px;
+}

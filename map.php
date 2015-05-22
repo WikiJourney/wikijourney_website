@@ -1,5 +1,6 @@
 <?php
-	include("./include/haut_map.php"); 
+	$INCLUDE_MAP_PROPERTIES = 1;
+	include("./include/haut.php"); 
 
 	error_reporting(E_ALL);
 	/* Obtain current user latitude/longitude */
@@ -46,43 +47,47 @@
 	}
 	$poi_array_json_encoded = json_encode((array)$poi_array);
 ?>
+</div>
 
-<div id="map" class="map"></div>
-<script>
-	var poi_array = new Array();
-	poi_array = <?php echo($poi_array_json_encoded); ?>;
-	user_latitude = <?php echo($user_latitude); ?>;
-	user_longitude = <?php echo($user_longitude); ?>;
+<div id="map_cart_container">
+	<div id="POI_CART"></div>
+	<div id="map" class="map"></div>
 
-	L.mapbox.accessToken = 'pk.eyJ1IjoicG9sb2Nob24tc3RyZWV0IiwiYSI6Ikh5LVJqS0UifQ.J0NayavxaAYK1SxMnVcxKg';
-	var map = L.mapbox.map('map', 'polochon-street.kpogic18')
-	
-	/* place the first marker with 50% opacity to distinguish it */	
-	//var marker = L.marker([user_latitude, user_longitude], {opacity:0.5, color: '#fa0'}).addTo(map);
-	var marker = L.marker([user_latitude, user_longitude], {    icon: L.mapbox.marker.icon({
-        'marker-size': 'large',
-        'marker-symbol': 'pitch',
-        'marker-color': '#fa0'
-    })}).addTo(map);
-	//Cf liste complète des symboles : https://www.mapbox.com/maki/
-	
-	marker.bindPopup("Vous êtes ici !").openPopup();
+	<script>
+		var poi_array = new Array();
+		poi_array = <?php echo($poi_array_json_encoded); ?>;
+		user_latitude = <?php echo($user_latitude); ?>;
+		user_longitude = <?php echo($user_longitude); ?>;
 
-	/* place wiki POI */
-	for(i = 0; i < Math.max(poi_array.nb_poi, 10); ++i) {
-		var popup_content = new Array();
-		if(poi_array[i].sitelink != null)
-			popup_content = poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">Lien wikipédia</a> <br /> <a href=\"http://perdu.com\">[+]</a></p>";
-		else
-			popup_content = poi_array[i].name + "<br /> <a href=\"http://perdu.com\">[+]</a></p>";
-		var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude]).addTo(map); 
-		marker.bindPopup(popup_content).openPopup();
-	}
-	
-	map.setView([user_latitude, user_longitude], 15);
-</script>
+		L.mapbox.accessToken = 'pk.eyJ1IjoicG9sb2Nob24tc3RyZWV0IiwiYSI6Ikh5LVJqS0UifQ.J0NayavxaAYK1SxMnVcxKg';
+		var map = L.mapbox.map('map', 'polochon-street.kpogic18')
+		
+		/* place the first marker with 50% opacity to distinguish it */	
+		//var marker = L.marker([user_latitude, user_longitude], {opacity:0.5, color: '#fa0'}).addTo(map);
+		var marker = L.marker([user_latitude, user_longitude], {    icon: L.mapbox.marker.icon({
+			'marker-size': 'large',
+			'marker-symbol': 'pitch',
+			'marker-color': '#fa0'
+		})}).addTo(map);
+		//Cf liste complète des symboles : https://www.mapbox.com/maki/
+		
+		marker.bindPopup("Vous êtes ici !").openPopup();
 
-
+		/* place wiki POI */
+		for(i = 0; i < Math.max(poi_array.nb_poi, 10); ++i) {
+			var popup_content = new Array();
+			if(poi_array[i].sitelink != null)
+				popup_content = poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">Lien wikipédia</a> <br /> <a href=\"http://perdu.com\">[+]</a></p>";
+			else
+				popup_content = poi_array[i].name + "<br /> <a href=\"http://perdu.com\">[+]</a></p>";
+			var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude]).addTo(map); 
+			marker.bindPopup(popup_content).openPopup();
+		}
+		
+		map.setView([user_latitude, user_longitude], 15);
+	</script>
+	</div>
+<div>
 <?php
 	include("./include/bas.php");
 ?>

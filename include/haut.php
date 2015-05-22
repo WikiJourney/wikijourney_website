@@ -34,6 +34,16 @@ else
 	<link rel="stylesheet" media="screen" type="text/css" title="Design" href="design.css" />
 	<link rel="Shortcut icon" href="./images/design/favicon.ico" />
 	
+	<?php
+	if(isset($INCLUDE_MAP_PROPERTIES)) //Properties dedicated to the map
+	{
+	?>
+		<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+		<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js'></script>
+		<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css' rel='stylesheet' />
+	<?php
+	}
+	?>
 
 	
 	</head>

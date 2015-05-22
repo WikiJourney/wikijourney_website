@@ -11,20 +11,6 @@
 	<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js'></script>
 	<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css' rel='stylesheet' />
 	
-	<style>
-		#map { 
-			
-			margin: 0;
-			padding: 0;
-			height: 500px; 
-			width: 100%;
-			border-collapse: collapse;
-			
-		}
-		#corps p {
-			margin: 0;
-		}
-	</style>
 	</head>
 	<body>
 	
