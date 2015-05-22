@@ -2,7 +2,7 @@
 	$INCLUDE_MAP_PROPERTIES = 1;
 	include("./include/haut.php"); 
 
-	error_reporting(E_ALL);
+	//error_reporting(E_ALL);
 	/* Obtain current user latitude/longitude */
 	if(isset($_POST['name'])) {
 		$name = $_POST['name'];
@@ -47,6 +47,8 @@
 	}
 	$poi_array_json_encoded = json_encode((array)$poi_array);
 ?>
+
+<p>Carte :</p>
 </div>
 
 <div id="map_cart_container">

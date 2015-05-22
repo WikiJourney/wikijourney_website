@@ -15,7 +15,7 @@
 	<tr>
 		<td class="tcol1"><img src="./images/trombi/Arn.jpg" alt="Photo" /></td>
 		<td class="tcol2"><span class="trombiNom">Sylvain Arnouts</span><br/><span class="trombiFonc">Chef de Projet<br/>Développement Web</span></td>
-		<td class="tcol3">J'ai rejoins le projet WikiJourney car je suis vraiment intéressé par la programmation et le développement informatique. Ce projet est pour moi l'occasion de mettre mes compétences de programmation au profit d'un réel projet, qui de plus se place dans le cadre du logiciel libre.</td>
+		<td class="tcol3">J'ai rejoint le projet WikiJourney car je suis vraiment intéressé par la programmation et le développement informatique. Ce projet est pour moi l'occasion de mettre mes compétences de programmation au profit d'un réel projet, qui de plus se place dans le cadre du logiciel libre.</td>
 	</tr>
 	<tr>
 		<td class="tcol1"><img src="./images/trombi/Arz.jpg" alt="Photo" /></td>
