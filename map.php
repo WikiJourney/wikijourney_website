@@ -69,7 +69,7 @@
 	marker.bindPopup("Vous êtes ici !").openPopup();
 
 	/* place wiki POI */
-	for(i = 0; i < max(poi_array.nb_poi, 10); ++i) {
+	for(i = 0; i < Math.max(poi_array.nb_poi, 10); ++i) {
 		var popup_content = new Array();
 		if(poi_array[i].sitelink != null)
 			popup_content = poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">Lien wikipédia</a> <br /> <a href=\"http://perdu.com\">[+]</a></p>";
