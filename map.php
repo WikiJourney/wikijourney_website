@@ -62,6 +62,26 @@
 
 	<script>
 		var poi_array = new Array();
+		var cartList = new Array();
+		
+		function addToCart(i) {
+		//Add a marker to the cart. 
+			cartList[cartList.length] = poi_array[i];
+			
+			reloadCart(cartList);
+		}
+		
+		function reloadCart() {
+		
+			var i = 0;
+			document.getElementById("POI_CART").innerHTML = ''; //Reset
+			
+			for(i = 0; i <= cartList.length - 1; i++)//Display
+			{
+				document.getElementById("POI_CART").innerHTML = "<a href="+cartList[i].sitelink+">" + cartList[i].name + "</a><br />" + document.getElementById("POI_CART").innerHTML;
+			}
+		}
+		
 		poi_array = <?php echo($poi_array_json_encoded); ?>;
 		user_latitude = <?php echo($user_latitude); ?>;
 		user_longitude = <?php echo($user_longitude); ?>;
@@ -82,7 +102,7 @@
 		for(i = 0; i < Math.min(poi_array.nb_poi, 5); ++i) {
 			var popup_content = new Array();
 			//if(poi_array[i].sitelink != null)
-				popup_content = poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">Lien wikipédia</a> <br /> <a href=\"#\" onclick=\"addToCart(" + i + "); return false;\">[+]</a></p>";
+			popup_content = poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">Lien wikipédia</a> <br />" + poi_array[i].type_name + "<br /> <a href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\">[+]</a></p>";
 				//
 			//else
 			//	popup_content = poi_array[i].name + "<br /> <a href=\"http://perdu.com\">[+]</a></p>";
@@ -111,9 +131,7 @@
 		}
 		
 		map.setView([user_latitude, user_longitude], 15);
-		function addToCart(i) {
-			document.getElementById("POI_CART").innerHTML = poi_array[i].name + "<br />" + document.getElementById("POI_CART").innerHTML;
-		}
+
 			
 	</script>
 
