@@ -91,32 +91,20 @@
 					'marker-size': 'large',
 					'marker-symbol': 'place-of-worship',
 				})}).addTo(map); 
-<<<<<<< HEAD
 			}
 			else if(poi_array[i].type_name=="nourriture"){
-=======
-			}if(poi_array[i].type_name=="nourriture"){
->>>>>>> 0ce82051fb5d1c2baadcf4a954a44658e4f8c71f
 				var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude], {    icon: L.mapbox.marker.icon({
 					'marker-size': 'large',
 					'marker-symbol': 'restaurant',
 				})}).addTo(map);
-<<<<<<< HEAD
 			}
 			else if(poi_array[i].type_name=="tour"){
-=======
-			}if(poi_array[i].type_name=="tour"){
->>>>>>> 0ce82051fb5d1c2baadcf4a954a44658e4f8c71f
-				var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude], {    icon: L.mapbox.marker.icon({
+			var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude], {    icon: L.mapbox.marker.icon({
 					'marker-size': 'large',
 					'marker-symbol': 'monument',
 				})}).addTo(map);
-<<<<<<< HEAD
 			}
 			else{
-=======
-			}else{
->>>>>>> 0ce82051fb5d1c2baadcf4a954a44658e4f8c71f
 				var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude]).addTo(map); 
 			}
 			marker.bindPopup(popup_content).openPopup();
