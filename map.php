@@ -85,6 +85,11 @@
 			reloadCart(cartList);
 		}
 		
+		function deletePOI(i) {
+				cartList.splice(i,1);
+				reloadCart();
+		}
+		
 		function reloadCart() {
 		
 			var i = 0;
@@ -93,7 +98,8 @@
 			for(i = 0; i <= cartList.length - 1; i++)//Display
 			{
 				document.getElementById("POI_CART").innerHTML = 
-				"<div class=\"eltCart\">" + cartList[i].name + "<br/><i>" + cartList[i].type_name + "</i><br/><a href="+cartList[i].sitelink+">See on Wikipedia</a></div>" 
+				"<div class=\"eltCart\">" + cartList[i].name + "<br/><i>" + cartList[i].type_name + "</i><br/><a href="+cartList[i].sitelink + 
+				">See on Wikipedia</a><br/><a onclick=\" deletePOI( " + i + "); \">Del</a></div>" 
 				+ document.getElementById("POI_CART").innerHTML;
 			}
 		}
