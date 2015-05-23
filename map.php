@@ -10,6 +10,7 @@
 		$osm_array = json_decode($osm_array_json, true);
 		$user_latitude = $osm_array[0]["lat"];
 		$user_longitude = $osm_array[0]["lon"];
+		echo($user_latitude);
 	}
 	else {
 		$user_latitude= $_POST[0];
@@ -93,22 +94,25 @@
 				//
 			//else
 			//	popup_content = poi_array[i].name + "<br /> <a href=\"http://perdu.com\">[+]</a></p>";
-			if (poi_array[i].type_name=="église"){
+			if (poi_array[i].type_name=="église"){ // TODO change this for ID
 				var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude], {    icon: L.mapbox.marker.icon({
 					'marker-size': 'large',
 					'marker-symbol': 'place-of-worship',
-				})})).addTo(map); 
-			}if(poi_array[i].type_name=="nourriture"){
+				})}).addTo(map); 
+			}
+			else if(poi_array[i].type_name=="nourriture"){
 				var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude], {    icon: L.mapbox.marker.icon({
 					'marker-size': 'large',
 					'marker-symbol': 'restaurant',
-				})})).addTo(map);
-			}if(poi_array[i].type_name=="tour"){
+				})}).addTo(map);
+			}
+			else if(poi_array[i].type_name=="tour"){
 				var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude], {    icon: L.mapbox.marker.icon({
 					'marker-size': 'large',
 					'marker-symbol': 'monument',
-				})})).addTo(map);
-			}else{
+				})}).addTo(map);
+			}
+			else{
 				var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude]).addTo(map); 
 			}
 			marker.bindPopup(popup_content).openPopup();
