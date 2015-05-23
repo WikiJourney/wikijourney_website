@@ -61,6 +61,9 @@
 <div id="map_cart_container">
 	<div id="POI_CART"></div>
 	<div id="map" class="map"></div>
+	<div id="button-wrapper">
+		<input type="button" value="Centrer" onclick="center()">
+	</div>
 
 	<script>
 		var poi_array = new Array();
@@ -85,6 +88,10 @@
 			reloadCart(cartList);
 		}
 		
+		function center(){
+			map.setView([user_latitude, user_longitude], 15);
+		}
+
 		function deletePOI(i) {
 				cartList.splice(i,1);
 				reloadCart();
@@ -152,26 +159,19 @@
 		for(i = 0; i < Math.min(poi_array.nb_poi, 5); ++i) {
 			var popup_content = new Array();
 			//if(poi_array[i].sitelink != null)
-			popup_content = poi_array[i].name + "<br /><i>" + poi_array[i].type_name + "</i><br/> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">See on Wikipedia</a> <br /> <a href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\">[+]</a></p>";
+			popup_content = poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">Lien wikipédia</a> <br /> <a href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\">[+]</a></p>";
 				//
 			//else
 			//	popup_content = poi_array[i].name + "<br /> <a href=\"http://perdu.com\">[+]</a></p>";
-			if (poi_array[i].type_id == "16970"){ 
+			var j=0;
+			var pagicon=[["16970", 'place-of-worship'], ["2095", 'restaurant'], ["12518", 'monument'], ["34627", 'religious-jewish'], ["10387575 916475", 'town-hall'], ["207694", 'art-gallery']] ;
+			while((j < pagicon.length) && ((pagicon[j][0]).search(String(poi_array[i].type_id)))){
+				j++ ;
+			}
+			if(j < pagicon.length){
 				var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude], {    icon: L.mapbox.marker.icon({
 					'marker-size': 'large',
-					'marker-symbol': 'place-of-worship',
-				})}).addTo(map); 
-			}
-			else if(poi_array[i].type_id == "2095"){
-				var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude], {    icon: L.mapbox.marker.icon({
-					'marker-size': 'large',
-					'marker-symbol': 'restaurant',
-				})}).addTo(map);
-			}
-			else if(poi_array[i].type_id == "12518"){
-			var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude], {    icon: L.mapbox.marker.icon({
-					'marker-size': 'large',
-					'marker-symbol': 'monument',
+					'marker-symbol': pagicon[j][1],
 				})}).addTo(map);
 			}
 			else{
