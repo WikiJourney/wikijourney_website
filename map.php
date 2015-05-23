@@ -131,24 +131,17 @@
 				//
 			//else
 			//	popup_content = poi_array[i].name + "<br /> <a href=\"http://perdu.com\">[+]</a></p>";
-			if (poi_array[i].type_id == "16970"){ 
+			var j=0;
+			var type=[["16970", 'place-of-worship'], ["2095", 'restaurant'], ["12518", 'monument']] ;
+			while((poi_array[i].type_id.lastIndexOf(type[j][0])) && (j < type.length)){
+				j++ ;
+			}
+			if(j < type.length){
 				var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude], {    icon: L.mapbox.marker.icon({
 					'marker-size': 'large',
-					'marker-symbol': 'place-of-worship',
-				})}).addTo(map); 
-			}
-			else if(poi_array[i].type_id == "2095"){
-				var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude], {    icon: L.mapbox.marker.icon({
-					'marker-size': 'large',
-					'marker-symbol': 'restaurant',
+					'marker-symbol': type[j][1],
 				})}).addTo(map);
-			}
-			else if(poi_array[i].type_id == "12518"){
-			var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude], {    icon: L.mapbox.marker.icon({
-					'marker-size': 'large',
-					'marker-symbol': 'monument',
-				})}).addTo(map);
-			}
+			}a
 			else{
 				var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude]).addTo(map); 
 			}
