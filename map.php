@@ -9,7 +9,7 @@
 		$osm_array = json_decode($osm_array_json, true);
 		$user_latitude = $osm_array[0]["lat"];
 		$user_longitude = $osm_array[0]["lon"];
-		echo($user_latitude);
+		
 	}
 	else {
 		$user_latitude= $_POST[0];
@@ -44,7 +44,7 @@
 		$temp_sitelink_array = json_decode($temp_sitelink_array_json, true);
 		$temp_sitelink = $temp_sitelink_array["entities"]["Q" . $poi_id_array_clean["$i"]]["sitelinks"][$language . "wiki"]["url"];
 	
-		echo($language);
+		
 	
 		$poi_array[$i]["latitude"] = 		$temp_latitude;
 		$poi_array[$i]["longitude"] = 		$temp_longitude;
@@ -56,8 +56,8 @@
 	}
 	$poi_array_json_encoded = json_encode((array)$poi_array);
 ?>
-
-<p>Carte :</p>
+<p style="padding: 5px;" >Your position : <br/>Lat : <?php echo $user_latitude;?><br/>Long : <?php echo $user_longitude;?><br/><br/>
+This is what we found around you :</p>
 </div>
 
 <div id="map_cart_container">
@@ -98,7 +98,7 @@
 			for(i = 0; i <= cartList.length - 1; i++)//Display
 			{
 				document.getElementById("POI_CART").innerHTML = 
-				"<div class=\"eltCart\">" + cartList[i].name + "<br/><i>" + poi_array[i].type_name + "</i><br/><a href="+cartList[i].sitelink+">Page Wikipédia</a></div>" 
+				"<div class=\"eltCart\">" + cartList[i].name + "<br/><i>" + poi_array[i].type_name + "</i><br/><a href="+cartList[i].sitelink+"><img style=\"width: 30px;\" src=\"./images/design/wikipedia.png\" title=\"Wikipedia\" /></a></div>" 
 				+ document.getElementById("POI_CART").innerHTML;
 			}
 		}
