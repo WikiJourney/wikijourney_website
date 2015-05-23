@@ -93,7 +93,7 @@
 			for(i = 0; i <= cartList.length - 1; i++)//Display
 			{
 				document.getElementById("POI_CART").innerHTML = 
-				"<div class=\"eltCart\">" + cartList[i].name + "<br/><i>" + poi_array[i].type_name + "</i><br/><a href="+cartList[i].sitelink+">Page Wikipédia</a></div>" 
+				"<div class=\"eltCart\">" + cartList[i].name + "<br/><i>" + cartList[i].type_name + "</i><br/><a href="+cartList[i].sitelink+">See on Wikipedia</a></div>" 
 				+ document.getElementById("POI_CART").innerHTML;
 			}
 		}
@@ -118,7 +118,7 @@
 		for(i = 0; i < Math.min(poi_array.nb_poi, 5); ++i) {
 			var popup_content = new Array();
 			//if(poi_array[i].sitelink != null)
-			popup_content = poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">Lien wikipédia</a> <br /> <a href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\">[+]</a></p>";
+			popup_content = poi_array[i].name + "<br /><i>" + poi_array[i].type_name + "</i><br/> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">See on Wikipedia</a> <br /> <a href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\">[+]</a></p>";
 				//
 			//else
 			//	popup_content = poi_array[i].name + "<br /> <a href=\"http://perdu.com\">[+]</a></p>";
