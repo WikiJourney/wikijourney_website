@@ -63,6 +63,9 @@
 <div id="map_cart_container">
 	<div id="POI_CART"></div>
 	<div id="map" class="map"></div>
+	<div id="button-wrapper">
+		<input type="button" value="Centrer" onclick="center()">
+	</div>
 
 	<script>
 		var poi_array = new Array();
@@ -98,6 +101,10 @@
 				"<div class=\"eltCart\">" + cartList[i].name + "<br/><i>" + poi_array[i].type_name + "</i><br/><a href="+cartList[i].sitelink+">Page Wikipédia</a></div>" 
 				+ document.getElementById("POI_CART").innerHTML;
 			}
+		}
+
+		function center(){
+			map.setView([user_latitude, user_longitude], 15);
 		}
 		
 		poi_array = <?php echo($poi_array_json_encoded); ?>;

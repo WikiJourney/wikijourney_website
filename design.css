@@ -278,3 +278,9 @@ margin: auto;
 margin-top: 5px;
 text-align: center;
 }
+
+#button-wrapper {
+    position: relative;
+    margin-left: 90%;
+    margin-top: -40px;
+}
