@@ -65,7 +65,7 @@
 		user_latitude = <?php echo($user_latitude); ?>;
 		user_longitude = <?php echo($user_longitude); ?>;
 		L.mapbox.accessToken = 'pk.eyJ1IjoicG9sb2Nob24tc3RyZWV0IiwiYSI6Ikh5LVJqS0UifQ.J0NayavxaAYK1SxMnVcxKg';
-		var map = L.mapbox.map('map', 'polochon-street.kpogic18')
+		var map = L.mapbox.map('map', 'polochon-street.kpogic18');
 		
 		/* place the first marker with 50% opacity to distinguish it */	
 		//var marker = L.marker([user_latitude, user_longitude], {opacity:0.5, color: '#fa0'}).addTo(map);
@@ -89,17 +89,17 @@
 				var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude], {    icon: L.mapbox.marker.icon({
 					'marker-size': 'large',
 					'marker-symbol': 'place-of-worship',
-				})})).addTo(map); 
+				})}).addTo(map); 
 			}if(poi_array[i].type_name=="nourriture"){
 				var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude], {    icon: L.mapbox.marker.icon({
 					'marker-size': 'large',
 					'marker-symbol': 'restaurant',
-				})})).addTo(map);
+				})}).addTo(map);
 			}if(poi_array[i].type_name=="tour"){
 				var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude], {    icon: L.mapbox.marker.icon({
 					'marker-size': 'large',
 					'marker-symbol': 'monument',
-				})})).addTo(map);
+				})}).addTo(map);
 			}else{
 				var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude]).addTo(map); 
 			}
