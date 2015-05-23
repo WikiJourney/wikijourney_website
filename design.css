@@ -269,3 +269,12 @@ width: 1000px;
 margin: auto;
 margin-top: 15px;
 }
+
+.eltCart {
+width: 95%;
+border: 1px solid black;
+border-radius: 3px;
+margin: auto;
+margin-top: 5px;
+text-align: center;
+}

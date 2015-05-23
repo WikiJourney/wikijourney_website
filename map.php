@@ -91,7 +91,9 @@
 			
 			for(i = 0; i <= cartList.length - 1; i++)//Display
 			{
-				document.getElementById("POI_CART").innerHTML = "<a href="+cartList[i].sitelink+">" + cartList[i].name + "</a><br />" + document.getElementById("POI_CART").innerHTML;
+				document.getElementById("POI_CART").innerHTML = 
+				"<div class=\"eltCart\">" + cartList[i].name + "<br/><i>" + poi_array[i].type_name + "</i><br/><a href="+cartList[i].sitelink+">Page Wikipédia</a></div>" 
+				+ document.getElementById("POI_CART").innerHTML;
 			}
 		}
 		
