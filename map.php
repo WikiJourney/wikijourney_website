@@ -8,14 +8,15 @@
 		$name = $_POST['name'];
 		$osm_array_json = file_get_contents("http://nominatim.openstreetmap.org/search?q=" . urlencode($name) . "&format=json");
 		$osm_array = json_decode($osm_array_json, true);
-		$user_latitude = $osm_array[0]["lat"];
+		$USER_Latitude = $osm_array[0]["lat"];
 		$user_longitude = $osm_array[0]["lon"];
 	}
 	else {
 		$user_latitude= $_POST[0];
 		$user_longitude= $_POST[1];
 	}
-
+	
+	/* P31 */
 	/* Returns a $poi_id_array_clean array with a list of wikidata pages ID within a $range km range from user location */
 	$range = 1;
 	$poi_id_array_json = file_get_contents("http://wdq.wmflabs.org/api?q=around[625,$user_latitude,$user_longitude,$range]");
@@ -25,7 +26,7 @@
 	
 	$poi_array["nb_poi"] = $nb_poi;
 	/* stocks latitude, longitude, name and description of every POI located by ↑ in $poi_array */
-	for($i = 0; $i < max($nb_poi, 5); $i++) {
+	for($i = 0; $i < min($nb_poi, 5); $i++) {
 		echo($poi_id_array_clean["$i"]);
 		echo("\n");
 		$temp_geoloc_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetclaims&format=json&entity=Q" . $poi_id_array_clean["$i"] . "&property=P625");
@@ -78,7 +79,7 @@
 		marker.bindPopup("Vous êtes ici !").openPopup();
 
 		/* place wiki POI */
-		for(i = 0; i < Math.max(poi_array.nb_poi, 5); ++i) {
+		for(i = 0; i < Math.min(poi_array.nb_poi, 5); ++i) {
 			var popup_content = new Array();
 			if(poi_array[i].sitelink != null)
 				popup_content = poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">Lien wikipédia</a> <br /> <a href=\"#\" onclick=\"addToCart(" + i + "); return false;\">[+]</a></p>";
