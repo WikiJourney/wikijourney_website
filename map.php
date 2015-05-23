@@ -90,7 +90,7 @@
 		for(i = 0; i < Math.min(poi_array.nb_poi, 5); ++i) {
 			var popup_content = new Array();
 			//if(poi_array[i].sitelink != null)
-				popup_content = poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">Lien wikipédia</a> <br />" + poi_array[i].type_name + "<br /> <a href=\"#\" onclick=\"addToCart(" + i + "); return false;\">[+]</a></p>";
+				popup_content = poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">Lien wikipédia</a> <br /> <a href=\"#\" onclick=\"addToCart(" + i + "); return false;\">[+]</a></p>";
 				//
 			//else
 			//	popup_content = poi_array[i].name + "<br /> <a href=\"http://perdu.com\">[+]</a></p>";
