@@ -27,10 +27,16 @@
 	$poi_array["nb_poi"] = $nb_poi;
 	/* stocks latitude, longitude, name and description of every POI located by ↑ in $poi_array */
 	for($i = 0; $i < min($nb_poi, 5); $i++) {
-		echo($poi_id_array_clean["$i"]);
-		echo("\n");
 		$temp_geoloc_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetclaims&format=json&entity=Q" . $poi_id_array_clean["$i"] . "&property=P625");
 		$temp_geoloc_array = json_decode($temp_geoloc_array_json, true);
+
+		$temp_poi_type_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetclaims&format=json&entity=Q" . $poi_id_array_clean["$i"] . "&property=P31");
+		$temp_poi_type_array = json_decode($temp_poi_type_array_json, true);
+		$temp_poi_type_id = $temp_poi_type_array["claims"]["P31"][0]["mainsnak"]["datavalue"]["value"]["numeric-id"];
+
+		$temp_description_type_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetentities&format=json&ids=Q" . $temp_poi_type_id . "&props=labels&languages=fr");
+		$temp_description_type_array = json_decode($temp_description_type_array_json, true);
+		$type_name = $temp_description_type_array["entities"]["Q" . $temp_poi_type_id]["labels"]["fr"]["value"];
 
 		$temp_latitude = $temp_geoloc_array["claims"]["P625"][0]["mainsnak"]["datavalue"]["value"]["latitude"];
 		$temp_longitude = $temp_geoloc_array["claims"]["P625"][0]["mainsnak"]["datavalue"]["value"]["longitude"];
@@ -47,6 +53,7 @@
 		$poi_array[$i]["longitude"] = $temp_longitude;
 		$poi_array[$i]["name"] = $name;
 		$poi_array[$i]["sitelink"] = $temp_sitelink;
+		$poi_array[$i]["type_name"] = $type_name;
 	}
 	$poi_array_json_encoded = json_encode((array)$poi_array);
 ?>
@@ -81,10 +88,10 @@
 		/* place wiki POI */
 		for(i = 0; i < Math.min(poi_array.nb_poi, 5); ++i) {
 			var popup_content = new Array();
-			if(poi_array[i].sitelink != null)
-				popup_content = poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">Lien wikipédia</a> <br /> <a href=\"#\" onclick=\"addToCart(" + i + "); return false;\">[+]</a></p>";
-			else
-				popup_content = poi_array[i].name + "<br /> <a href=\"http://perdu.com\">[+]</a></p>";
+			//if(poi_array[i].sitelink != null)
+				popup_content = poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">Lien wikipédia</a> <br />" + poi_array[i].type_name + "<br /> <a href=\"#\" onclick=\"addToCart(" + i + "); return false;\">[+]</a></p>";
+			//else
+			//	popup_content = poi_array[i].name + "<br /> <a href=\"http://perdu.com\">[+]</a></p>";
 			var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude]).addTo(map); 
 			marker.bindPopup(popup_content).openPopup();
 		}
