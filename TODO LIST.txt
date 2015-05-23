@@ -12,5 +12,5 @@ Global :
 - Verify the english translation, and translating important text on the website to other languages.
 
 
-If you contribute, whenever it's a big contribution or not, please send a mail to wikijourneydev@gmail.com, saying what you modified. T
+If you contribute, whenever it's a big contribution or not, please send a mail to wikijourneydev@gmail.com, saying what you modified. 
 Thank you very much for your contribution to this project :)
