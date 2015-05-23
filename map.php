@@ -132,8 +132,8 @@
 			{
 				document.getElementById("POI_CART").innerHTML = 
 				"<div class=\"eltCart\">" + cartList[i].name + "<br/><i>" + cartList[i].type_name + "</i><br/><a href="+cartList[i].sitelink + 
-				">See on Wikipedia</a><br/><a onclick=\" deletePOI( " + i + "); \">Del</a><br/> " +
-				"<a onclick=\" invertPOI("+ i +",'up'); \">Up</a> - <a onclick=\" invertPOI("+ i +",'down'); \">Down</a></div>" 
+				">See on Wikipedia</a><br/><br/> " +
+				"<span style=\"font-family: Webdings;\"><a onclick=\" invertPOI("+ i +",'up'); \">5</a>   <a onclick=\" invertPOI("+ i +",'down'); \">6</a>  <a onclick=\" deletePOI( " + i + "); \">r</a></span></div>" 
 				
 				+ document.getElementById("POI_CART").innerHTML;
 			}
