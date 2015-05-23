@@ -90,9 +90,27 @@
 			var popup_content = new Array();
 			//if(poi_array[i].sitelink != null)
 				popup_content = poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">Lien wikipédia</a> <br />" + poi_array[i].type_name + "<br /> <a href=\"#\" onclick=\"addToCart(" + i + "); return false;\">[+]</a></p>";
+				//
 			//else
 			//	popup_content = poi_array[i].name + "<br /> <a href=\"http://perdu.com\">[+]</a></p>";
-			var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude]).addTo(map); 
+			if (poi_array[i].type_name=="église"){
+				var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude], {    icon: L.mapbox.marker.icon({
+					'marker-size': 'large',
+					'marker-symbol': 'place-of-worship',
+				})})).addTo(map); 
+			}if(poi_array[i].type_name=="nourriture"){
+				var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude], {    icon: L.mapbox.marker.icon({
+					'marker-size': 'large',
+					'marker-symbol': 'restaurant',
+				})})).addTo(map);
+			}if(poi_array[i].type_name=="tour"){
+				var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude], {    icon: L.mapbox.marker.icon({
+					'marker-size': 'large',
+					'marker-symbol': 'monument',
+				})})).addTo(map);
+			}else{
+				var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude]).addTo(map); 
+			}
 			marker.bindPopup(popup_content).openPopup();
 		}
 		
