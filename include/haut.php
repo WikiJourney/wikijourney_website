@@ -3,11 +3,15 @@
 if(isset($_COOKIE['lg']))
 {
 
-	if($_COOKIE['lg'] == 'en')
-		include("./lg/en.php");
+	if($_COOKIE['lg'] == 'en') {
+		include("./lg/en.php"); // TODO dynamic pages
+		$language = "en";
+	}
 	
-	else if($_COOKIE['lg'] == 'fr')
+	else if($_COOKIE['lg'] == 'fr') {
 		include("./lg/fr.php");
+		$language = "fr";
+	}
 
 	else //Not normal
 	{

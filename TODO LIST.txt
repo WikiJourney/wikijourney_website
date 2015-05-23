@@ -14,3 +14,5 @@ Global :
 
 If you contribute, whenever it's a big contribution or not, please send a mail to wikijourneydev@gmail.com, saying what you modified. 
 Thank you very much for your contribution to this project :)
+
+Add a Special:Gather button (beta)

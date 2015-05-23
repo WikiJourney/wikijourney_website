@@ -32,23 +32,26 @@
 		$temp_poi_type_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetclaims&format=json&entity=Q" . $poi_id_array_clean["$i"] . "&property=P31");
 		$temp_poi_type_array = json_decode($temp_poi_type_array_json, true);
 		$temp_poi_type_id = $temp_poi_type_array["claims"]["P31"][0]["mainsnak"]["datavalue"]["value"]["numeric-id"];
-		$temp_description_type_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetentities&format=json&ids=Q" . $temp_poi_type_id . "&props=labels&languages=fr");
+		$temp_description_type_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetentities&format=json&ids=Q" . $temp_poi_type_id . "&props=labels&languages=$language");
 		$temp_description_type_array = json_decode($temp_description_type_array_json, true);
-		$type_name = $temp_description_type_array["entities"]["Q" . $temp_poi_type_id]["labels"]["fr"]["value"];
+		$type_name = $temp_description_type_array["entities"]["Q" . $temp_poi_type_id]["labels"]["$language"]["value"];
 		$temp_latitude = $temp_geoloc_array["claims"]["P625"][0]["mainsnak"]["datavalue"]["value"]["latitude"];
 		$temp_longitude = $temp_geoloc_array["claims"]["P625"][0]["mainsnak"]["datavalue"]["value"]["longitude"];
-		$temp_description_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetentities&format=json&ids=Q" . $poi_id_array_clean["$i"] . "&props=labels&languages=fr");
+		$temp_description_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetentities&format=json&ids=Q" . $poi_id_array_clean["$i"] . "&props=labels&languages=$language");
 		$temp_description_array = json_decode($temp_description_array_json, true);
-		$name = $temp_description_array["entities"]["Q" . $poi_id_array_clean["$i"]]["labels"]["fr"]["value"];
-		$temp_sitelink_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q" . $poi_id_array_clean["$i"] . "&sitefilter=frwiki&props=sitelinks/urls&format=json");
+		$name = $temp_description_array["entities"]["Q" . $poi_id_array_clean["$i"]]["labels"]["$language"]["value"];
+		$temp_sitelink_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q" . $poi_id_array_clean["$i"] . "&sitefilter=$language&props=sitelinks/urls&format=json");
 		$temp_sitelink_array = json_decode($temp_sitelink_array_json, true);
-		$temp_sitelink = $temp_sitelink_array["entities"]["Q" . $poi_id_array_clean["$i"]]["sitelinks"]["frwiki"]["url"];
+		$temp_sitelink = $temp_sitelink_array["entities"]["Q" . $poi_id_array_clean["$i"]]["sitelinks"][$language . "wiki"]["url"];
+	
+		echo($language);
 	
 		$poi_array[$i]["latitude"] = 		$temp_latitude;
 		$poi_array[$i]["longitude"] = 		$temp_longitude;
 		$poi_array[$i]["name"] = 			$name;
 		$poi_array[$i]["sitelink"] = 		$temp_sitelink;
 		$poi_array[$i]["type_name"] = 		$type_name;
+		$poi_array[$i]["type_id"] = 		$temp_poi_type_id;
 		$poi_array[$i]["id"] = 				$poi_id_array_clean[$i];
 	}
 	$poi_array_json_encoded = json_encode((array)$poi_array);
@@ -117,23 +120,23 @@
 		for(i = 0; i < Math.min(poi_array.nb_poi, 5); ++i) {
 			var popup_content = new Array();
 			//if(poi_array[i].sitelink != null)
-			popup_content = poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">Lien wikipédia</a> <br />" + poi_array[i].type_name + "<br /> <a href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\">[+]</a></p>";
+			popup_content = poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">Lien wikipédia</a> <br /> <a href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\">[+]</a></p>";
 				//
 			//else
 			//	popup_content = poi_array[i].name + "<br /> <a href=\"http://perdu.com\">[+]</a></p>";
-			if (poi_array[i].type_name=="église"){ // TODO change this for ID
+			if (poi_array[i].type_id == "16970"){ 
 				var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude], {    icon: L.mapbox.marker.icon({
 					'marker-size': 'large',
 					'marker-symbol': 'place-of-worship',
 				})}).addTo(map); 
 			}
-			else if(poi_array[i].type_name=="nourriture"){
+			else if(poi_array[i].type_id == "2095"){
 				var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude], {    icon: L.mapbox.marker.icon({
 					'marker-size': 'large',
 					'marker-symbol': 'restaurant',
 				})}).addTo(map);
 			}
-			else if(poi_array[i].type_name=="tour"){
+			else if(poi_array[i].type_id == "12518"){
 			var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude], {    icon: L.mapbox.marker.icon({
 					'marker-size': 'large',
 					'marker-symbol': 'monument',
