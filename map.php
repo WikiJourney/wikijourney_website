@@ -90,6 +90,32 @@
 				reloadCart();
 		}
 		
+		function invertPOI( i, dir) {
+			//Cases where we can't do anything
+			var temp;
+			
+			if( ! ( (i == 0 && dir == 'down') || (i == cartList.length - 1 && dir == 'up') ) ) //Already at the bottom or at the top
+			{
+				if(dir == 'up')//Permutation
+				{
+					temp = cartList[i + 1];
+					cartList[i + 1] = cartList[i];
+					cartList[i] = temp;
+				}
+				else if(dir == 'down')//Permutation
+				{
+					temp = cartList[i - 1];
+					cartList[i - 1] = cartList[i];
+					cartList[i] = temp;
+				}
+				
+			}
+			else 
+				alert('no move');
+				
+			reloadCart();
+		}
+		
 		function reloadCart() {
 		
 			var i = 0;
@@ -99,7 +125,9 @@
 			{
 				document.getElementById("POI_CART").innerHTML = 
 				"<div class=\"eltCart\">" + cartList[i].name + "<br/><i>" + cartList[i].type_name + "</i><br/><a href="+cartList[i].sitelink + 
-				">See on Wikipedia</a><br/><a onclick=\" deletePOI( " + i + "); \">Del</a></div>" 
+				">See on Wikipedia</a><br/><a onclick=\" deletePOI( " + i + "); \">Del</a><br/> " +
+				"<a onclick=\" invertPOI("+ i +",'up'); \">Up</a> - <a onclick=\" invertPOI("+ i +",'down'); \">Down</a></div>" 
+				
 				+ document.getElementById("POI_CART").innerHTML;
 			}
 		}
