@@ -6,7 +6,7 @@ Map integration :
 - Filter Point of Interest by type, and ask user what type he would like to see
 - Finish the "cart" fonction : when a user click on the [+] of a marquer, it should add this marker to a cart, which will be a JS array. 
 	We can remove marquer from the cart by clicking on a button, or reorganize them. It will be better if its color also change.
-- Once the cart fonction is finish : add a "Create my Journey !", which create the way from one marquer to another. It could use the API OpenRouteService.
+- Once the cart fonction is finish : add a "Create my Journey !" button, which create the way from one marquer to another. It could use the API OpenRouteService.
 
 Global :
 - Verify the english translation, and translating important text on the website to other languages.
