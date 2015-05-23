@@ -19,6 +19,7 @@ define("_TECHNICAL",		"Informations Techniques");
 //===> Bottom
 define("_OUR_PARTNERS",		"Nos partenaires");
 define("_NO_PARTNERS_LOL",	"Pas de partenaires pour l'instant. Un partenariat vous intéresse ? Contactez nous !");
+define("_FOLLOW_US",		"Suivez le projet !");
 
 //========================> Pages <========================//
 
