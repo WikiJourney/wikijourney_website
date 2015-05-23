@@ -1,7 +1,6 @@
 <?php
 	$INCLUDE_MAP_PROPERTIES = 1;
 	include("./include/haut.php"); 
-
 	//error_reporting(E_ALL);
 	/* Obtain current user latitude/longitude */
 	if(isset($_POST['name'])) {
@@ -30,22 +29,17 @@
 	for($i = 0; $i < min($nb_poi, 5); $i++) {
 		$temp_geoloc_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetclaims&format=json&entity=Q" . $poi_id_array_clean["$i"] . "&property=P625");
 		$temp_geoloc_array = json_decode($temp_geoloc_array_json, true);
-
 		$temp_poi_type_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetclaims&format=json&entity=Q" . $poi_id_array_clean["$i"] . "&property=P31");
 		$temp_poi_type_array = json_decode($temp_poi_type_array_json, true);
 		$temp_poi_type_id = $temp_poi_type_array["claims"]["P31"][0]["mainsnak"]["datavalue"]["value"]["numeric-id"];
-
 		$temp_description_type_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetentities&format=json&ids=Q" . $temp_poi_type_id . "&props=labels&languages=fr");
 		$temp_description_type_array = json_decode($temp_description_type_array_json, true);
 		$type_name = $temp_description_type_array["entities"]["Q" . $temp_poi_type_id]["labels"]["fr"]["value"];
-
 		$temp_latitude = $temp_geoloc_array["claims"]["P625"][0]["mainsnak"]["datavalue"]["value"]["latitude"];
 		$temp_longitude = $temp_geoloc_array["claims"]["P625"][0]["mainsnak"]["datavalue"]["value"]["longitude"];
-
 		$temp_description_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetentities&format=json&ids=Q" . $poi_id_array_clean["$i"] . "&props=labels&languages=fr");
 		$temp_description_array = json_decode($temp_description_array_json, true);
 		$name = $temp_description_array["entities"]["Q" . $poi_id_array_clean["$i"]]["labels"]["fr"]["value"];
-
 		$temp_sitelink_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q" . $poi_id_array_clean["$i"] . "&sitefilter=frwiki&props=sitelinks/urls&format=json");
 		$temp_sitelink_array = json_decode($temp_sitelink_array_json, true);
 		$temp_sitelink = $temp_sitelink_array["entities"]["Q" . $poi_id_array_clean["$i"]]["sitelinks"]["frwiki"]["url"];
@@ -71,7 +65,6 @@
 		poi_array = <?php echo($poi_array_json_encoded); ?>;
 		user_latitude = <?php echo($user_latitude); ?>;
 		user_longitude = <?php echo($user_longitude); ?>;
-
 		L.mapbox.accessToken = 'pk.eyJ1IjoicG9sb2Nob24tc3RyZWV0IiwiYSI6Ikh5LVJqS0UifQ.J0NayavxaAYK1SxMnVcxKg';
 		var map = L.mapbox.map('map', 'polochon-street.kpogic18')
 		
@@ -85,7 +78,6 @@
 		//Cf liste complète des symboles : https://www.mapbox.com/maki/
 		
 		marker.bindPopup("Vous êtes ici !").openPopup();
-
 		/* place wiki POI */
 		for(i = 0; i < Math.min(poi_array.nb_poi, 5); ++i) {
 			var popup_content = new Array();
@@ -119,7 +111,6 @@
 		}
 		
 		map.setView([user_latitude, user_longitude], 15);
-
 		function addToCart(i) {
 			document.getElementById("POI_CART").innerHTML = poi_array[i].name + "<br />" + document.getElementById("POI_CART").innerHTML;
 		}
