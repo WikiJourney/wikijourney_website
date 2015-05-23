@@ -44,11 +44,12 @@
 		$temp_sitelink_array = json_decode($temp_sitelink_array_json, true);
 		$temp_sitelink = $temp_sitelink_array["entities"]["Q" . $poi_id_array_clean["$i"]]["sitelinks"]["frwiki"]["url"];
 	
-		$poi_array[$i]["latitude"] = $temp_latitude;
-		$poi_array[$i]["longitude"] = $temp_longitude;
-		$poi_array[$i]["name"] = $name;
-		$poi_array[$i]["sitelink"] = $temp_sitelink;
-		$poi_array[$i]["type_name"] = $type_name;
+		$poi_array[$i]["latitude"] = 		$temp_latitude;
+		$poi_array[$i]["longitude"] = 		$temp_longitude;
+		$poi_array[$i]["name"] = 			$name;
+		$poi_array[$i]["sitelink"] = 		$temp_sitelink;
+		$poi_array[$i]["type_name"] = 		$type_name;
+		$poi_array[$i]["id"] = 				$poi_id_array_clean[$i];
 	}
 	$poi_array_json_encoded = json_encode((array)$poi_array);
 ?>
@@ -66,7 +67,19 @@
 		
 		function addToCart(i) {
 		//Add a marker to the cart. 
-			cartList[cartList.length] = poi_array[i];
+			var j = 0;
+			var flag;
+			
+			flag = 0;
+			
+			for(j = 0; j < cartList.length; j++)
+			{
+				if( poi_array[i].id == cartList[j].id )//We test if this POI is already in the list
+					flag = 1;
+			}
+			
+			if(flag == 0)
+				cartList[cartList.length] = poi_array[i];
 			
 			reloadCart(cartList);
 		}
