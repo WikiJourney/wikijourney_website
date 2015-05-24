@@ -23,7 +23,7 @@
 		<input type="hidden" name="longitude" id="longitude" value="" />
 		<input type="hidden" name="latitude" id="latitude" value="" />
 		
-		<input type="button" value="Go !" onclick="submitForm();" />
+		<input type="submit" value="Go !" onclick="submitForm();" />
 		
 		
 	</form>
@@ -33,7 +33,7 @@
 	function showPosition(position) {
 		document.getElementById('latitude').value = position.coords.latitude;
 		document.getElementById('longitude').value  = position.coords.longitude;
-		document.getElementById('formPOI').submit();
+		document.forms['formPOI'].submit();
 	}
 
 	function submitForm() {
