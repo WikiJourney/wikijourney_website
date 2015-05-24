@@ -24,6 +24,8 @@
   font-variant: normal;
   text-transform: none;
 
+  cursor: pointer;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
  
