@@ -134,7 +134,7 @@
 				document.getElementById("POI_CART").innerHTML = 
 				"<div class=\"eltCart\">" + cartList[i].name + "<br/><i>" + cartList[i].type_name + "</i><br/><a href="+cartList[i].sitelink + 
 				">See on Wikipedia</a><br/><br/> " +
-				"<span style=\"font-family: Webdings;\"><a onclick=\" invertPOI("+ i +",'up'); \">5</a>   <a onclick=\" invertPOI("+ i +",'down'); \">6</a>  <a onclick=\" deletePOI( " + i + "); \">r</a></span></div>" 
+				"<a class=\"icon-up-dir\" onclick=\" invertPOI("+ i +",'up'); \"></a>   <a class=\"icon-down-dir\" onclick=\" invertPOI("+ i +",'down'); \"></a>  <a class=\"icon-trash-empty\" onclick=\" deletePOI( " + i + "); \"></a></div>" 
 				
 				+ document.getElementById("POI_CART").innerHTML;
 			}

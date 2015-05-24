@@ -36,6 +36,7 @@ else
 	<title><?php echo _TITLE; ?></title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" media="screen" type="text/css" title="Design" href="design.css" />
+	<link rel="stylesheet" media="screen" type="text/css" title="Fontello" href="fontello.css" />
 	<link rel="Shortcut icon" href="./images/design/favicon.ico" />
 	
 	<?php
