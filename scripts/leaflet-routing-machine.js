@@ -2109,7 +2109,7 @@ if (typeof module !== undefined) module.exports = polyline;
 		},
 
 		_updateMarkers: function() {
-			var i,
+		/*	var i,
 			    m;
 
 			if (!this._map) {
@@ -2131,7 +2131,8 @@ if (typeof module !== undefined) module.exports = polyline;
 					m = null;
 				}
 				this._markers.push(m);
-			}
+			} */
+			return;
 		},
 
 		_fireChanged: function() {
