@@ -7,23 +7,22 @@
 <p>
 	<form method="post" action="map.php" id="formPOI">
 		
-		<input type="radio" name="choice" value="around" onclick="document.getElementById('adressValue').style.display = 'none';">Around me !<br/>
-		<input type="radio" name="choice" value="adress" onclick="document.getElementById('adressValue').style.display = 'block';">Close to an adress !
-		<br/><input type="text" value="Type your adress here." name="adressValue" id="adressValue" />
+		<input type="radio" name="choice" value="adress" checked>Close to an adress !
+		<input type="text" value="Type your adress here." name="adressValue" id="adressValue" />
+		<br/>
+		<input type="radio" name="choice" value="around" onclick="getGeolocation(); ">Around me ! (Not working with Safari for the moment..)
+		<br/>
 		
-		<script type="text/javascript">
-			document.getElementById("adressValue").style.display = "none"; //Default
-		</script>
 		<br/><br/>
 		
 		Options :<br/>
 		<label for="range">Range (km) : </label><input type="text" name="range" id="range" value="1"/><br/>
 		<label for="maxPOI">Max POI : </label><input type="text" name="maxPOI" id="maxPOI" value="10" /><br/><br/>
 		
-		<input type="hidden" name="longitude" id="longitude" value="" />
-		<input type="hidden" name="latitude" id="latitude" value="" />
+		<input type="text" name="longitude" id="longitude" value="" />
+		<input type="text" name="latitude" id="latitude" value="" />
 		
-		<input type="submit" value="Go !" onclick="submitForm();" />
+		<input type="submit" value="Go !" />
 		
 		
 	</form>
@@ -33,10 +32,10 @@
 	function showPosition(position) {
 		document.getElementById('latitude').value = position.coords.latitude;
 		document.getElementById('longitude').value  = position.coords.longitude;
-		document.forms['formPOI'].submit();
+		
 	}
 
-	function submitForm() {
+	function getGeolocation() {
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(showPosition);
 		} else {
@@ -44,7 +43,7 @@
 		}
 	}
 	
-	
+	/*
 	function openWithPostData(page,data) {
 		var form = document.createElement('form');
     	form.setAttribute('action', page);
@@ -59,13 +58,7 @@
     document.body.appendChild(form);
     form.submit();
 	}
-	function getLocation() {
-		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(showPosition);
-		} else {
-		x.innerHTML = "Sorry, but geolocation is not supported by this browser.";
-		}
-	}
+	*/
 
 	</script>   
 

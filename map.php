@@ -60,7 +60,7 @@
 	$poi_array_json_encoded = json_encode((array)$poi_array);
 ?>
 
-<p>Carte :</p>
+<p>Searching around<br/>Lat : <?php echo $user_latitude; ?> Long : <?php echo $user_longitude; ?> <br/>Carte :</p>
 </div>
 
 <div id="map_cart_container">
