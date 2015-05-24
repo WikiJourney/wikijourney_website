@@ -223,13 +223,12 @@
 		}
 
 		if(!ismerged){
-			poi_array[i]["marker"] = L.marker([user_latitude, user_longitude], {    icon: L.mapbox.marker.icon({
-					'marker-size': 'large',
-					'marker-symbol': 'pitch',
-					'marker-color': '#fa0'
-				})}).addTo(map);
-
-			poi_array[i]["marker"].bindPopup("Vous êtes ici !").openPopup();
+			var marker = L.marker([user_latitude, user_longitude], {    icon: L.mapbox.marker.icon({
+				'marker-size': 'large',
+				'marker-symbol': 'pitch', 
+				'marker-color': '#fa0'
+			})}).addTo(map);
+			marker.bindPopup("Vous êtes ici!").openPopup();
 		}
 
 		for(j = 0; j < pagicon.length; ++j) 
