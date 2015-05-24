@@ -9,7 +9,6 @@
 		$osm_array = json_decode($osm_array_json, true);
 		$user_latitude = $osm_array[0]["lat"];
 		$user_longitude = $osm_array[0]["lon"];
-		echo($user_latitude);
 	}
 	else {
 		$user_latitude= $_POST[0];
@@ -157,20 +156,28 @@
 		//Cf liste complète des symboles : https://www.mapbox.com/maki/
 		
 		marker.bindPopup("Vous êtes ici !").openPopup();
+
+		var j;
+		var layer_array = new Array()
+		var pagicon = [["16970", 'place-of-worship', true], ["2095", 'restaurant', true], ["12518", 'monument', true], ["34627", 'religious-jewish', true], ["10387575 916475", 'town-hall', true], ["207694", 'art-gallery', true]];
+		for(j = 0; j < pagicon.length; ++j)
+			layer_array[j] = L.layerGroup([]);
+
 		/* place wiki POI */
 		for(i = 0; i < Math.min(poi_array.nb_poi, 5); ++i) {
 			var popup_content = new Array();
 			//if(poi_array[i].sitelink != null)
-			popup_content = poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">Lien wikipédia</a> <br /> <a href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\">[+]</a></p>";
 				//
 			//else
 			//	popup_content = poi_array[i].name + "<br /> <a href=\"http://perdu.com\">[+]</a></p>";
 			var j=0;
-			var pagicon=[["16970", 'place-of-worship'], ["2095", 'restaurant'], ["12518", 'monument'], ["34627", 'religious-jewish'], ["10387575 916475", 'town-hall'], ["207694", 'art-gallery']] ;
 			while((j < pagicon.length) && ((pagicon[j][0]).search(String(poi_array[i].type_id)))){
 				j++ ;
 			}
+
 			if(j < pagicon.length){
+				layer_array[j].addLayer(
+				popup_content = poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">Lien wikipédia</a> <br /> <a href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\">[+]</a></p>";
 				var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude], {    icon: L.mapbox.marker.icon({
 					'marker-size': 'large',
 					'marker-symbol': pagicon[j][1],
