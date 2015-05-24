@@ -34,7 +34,7 @@ define("_TEAM_WHO_R_WE",	"Who are we?");
 define("_TEAM_QUICKDESC",	"We're a team of seven students from the Ecole Centrale de Lille, a graduate school in Lille in the north of France. We
 							have to create a multidisciplinary project in two years, that's how we started to work together on WikiJourney. This project
 							is really important for us, that's why we will make everything we could to achieve it.");
-define("_S_ARNOUTS_DESC",	"J'ai rejoint le projet WikiJourney car je suis vraiment intéressé par la programmation et le développement informatique. Ce projet est pour moi l'occasion de mettre mes compétences de programmation au profit d'un réel projet, qui de plus se place dans le cadre du logiciel libre." );
+define("_S_ARNOUTS_DESC",	"I'm really interested in programmation and web development, that's why I took the lead of this project. For me, it's the occasion to use my skills in a real, complex project. Moreover, I'm glad to help the Open Source project, and to contribute to Wikimedia.");
 define("_S_ARNOUTS_POSTE", 	"Project Manager<br/>Web Development") ;
 define("_P_ARZELIER_DESC",	"I am part of this project due to my passion for informatic technologies; I'm mostly interested in server administration and app development in C, though I can develop with web languages. Furthermore, development of tourism in emerging countries, as well as new technologies boom, is favorable to innovation in these areas - overlooked until now." );
 define("_P_ARZELIER_POSTE", "Server<br/>Web Development");
@@ -46,7 +46,7 @@ define("_B_HUBER_DESC",		"After years of generic studies, I wanted to contribute
 define("_B_HUBER_POSTE", 	"Partnerships<br/>Web Development");
 define("_J_MAES_DESC",		"I joined WikiJourney to improve my skills but mostly because I thought the topic was a significant one. I've always been interested in technologies and I'd found unfortunate that no project would bind technologies to touristic guides. When you travel frequently, you find that paper guides aren't that convenient ; information is online but not easy to access." );
 define("_J_MAES_POSTE", 	"Secretary<br/>Web Development");
-define("_Y_WANG_DESC",		"Je connais bien les langages C et C++, et j'ai appris les langages CSS et HTML en autodidacte. Je m'intéresse à ce projet parce que c'est une bonne idée de combiner les cartes numériques avec les informations fournies par Wikipédia. De plus, le projet correspond bien à mes compétences." );
+define("_Y_WANG_DESC",		"I know well C and C++ languages, and I learned all by myself CSS and HTML languages. I really like this project because I think it's a good idea to mix maps and Wikipedia informations. Moreover, this project fits with my skills.");
 define("_Y_WANG_POSTE", 	"Mobile Development");
 
 

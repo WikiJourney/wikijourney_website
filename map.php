@@ -118,9 +118,7 @@
 				}
 				
 			}
-			else 
-				alert('no move');
-				
+			
 			reloadCart();
 		}
 		
