@@ -87,7 +87,7 @@ define("_MAP_POI_TYPE_FOOD",		"'Restaurants'");
 define("_MAP_POI_TYPE_MONUM",		"'Monuments'");
 define("_MAP_POI_TYPE_JEWISH",		"'Synagogues'");
 define("_MAP_POI_TYPE_MUSEUM",		"'Musée'");
-define("_MAP_POI_TYPE_ART",			"'Musée d'art'");
+define("_MAP_POI_TYPE_ART",			"'Musée d\'art'");
 define("_MAP_POI_TYPE_SCHOOL",		"'Université'");
 define("_MAP_POI_TYPE_SUBWAY",		"'Stations de métro'");
 
