@@ -162,13 +162,16 @@
 		user_latitude = <?php echo($user_latitude); ?>;
 		user_longitude = <?php echo($user_longitude); ?>;
 
+		/* Correspondances icônes/ID/label */
 		var pagicon = [["16970", 'place-of-worship', "Lieux de culte"], ["2095", 'restaurant', "Restaurant"], ["12518", 'monument', "Monument"], ["34627", 'religious-jewish', "Synagogue"], ["10387575 916475", 'town-hall', "Musée"], ["207694", 'art-gallery', "Musée d'Art"], ["3914 3918 9826 847027", 'college', "Université"], ["5503", "rail-metro", "Station de métro", ]];
 		var j;
 		var ismerged = false;
 
 		L.mapbox.accessToken = 'pk.eyJ1IjoicG9sb2Nob24tc3RyZWV0IiwiYSI6Ikh5LVJqS0UifQ.J0NayavxaAYK1SxMnVcxKg';
 
+		/* Overlay (icons) management */
 		var overlayMaps = new Array();
+		/* Array of the form "poi type": { poi1, poi2 } */
 		var map = L.mapbox.map('map', 'polochon-street.kpogic18');
 
 		for(j = 0; j < pagicon.length; ++j) {
@@ -190,16 +193,12 @@
 		/* place wiki POI */
 		for(i = 0; i < Math.min(poi_array.nb_poi, 5); ++i) {
 			var popup_content = new Array();
-			//if(poi_array[i].sitelink != null)
-				//
-			//else
-			//	popup_content = poi_array[i].name + "<br /> <a href=\"http://perdu.com\">[+]</a></p>";
 			var j=0;
-			while((j < pagicon.length) && ((pagicon[j][0]).search(String(poi_array[i].type_id)))){
-				j++ ;
-			}
+			for(j = 0; ((j < pagicon.length) && ((pagicon[j][0]).search(String(poi_array[i].type_id)))); j++)
+				;
 
 			if (distance(i) && !ismerged){
+				/* merge pop-ups if they are too close */
 				popup_content = "Vous êtes ici ! <br>" ;
 			    ismerged = true ;
 			    var marker = L.marker([user_latitude, user_longitude], {    icon: L.mapbox.marker.icon({
@@ -211,6 +210,7 @@
 
 			}
 			else if(j < pagicon.length){
+				/* if we have an icon for the type of POI, display it */
 				var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude], {    icon: L.mapbox.marker.icon({
 					'marker-size': 'large',
 					'marker-symbol': pagicon[j][1],
@@ -220,7 +220,6 @@
 				overlayMaps[pagicon[j][2]].addLayer(poi_array[i]['marker']);
 			}
 			else{
-
 				var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude]).addTo(map); 
 				poi_array[i]['marker'] = L.marker([poi_array[i].latitude, poi_array[i].longitude]).addTo(map); 
 			}
@@ -239,9 +238,9 @@
 			marker.bindPopup("Vous êtes ici !").openPopup();
 
 		}
-		for(j = 0; j < pagicon.length; ++j) {	
+
+		for(j = 0; j < pagicon.length; ++j) 
 			map.addLayer(overlayMaps[pagicon[j][2]]);
-		}
 
 		map.setView([user_latitude, user_longitude], 15);
 	</script>
