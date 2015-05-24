@@ -133,18 +133,38 @@
 			{
 				document.getElementById("POI_CART").innerHTML = 
 				"<div class=\"eltCart\">" + cartList[i].name + "<br/><i>" + cartList[i].type_name + "</i><br/><a href="+cartList[i].sitelink + 
-				">See on Wikipedia</a><br/><br/> " +
-				"<span style=\"font-family: Webdings;\"><a onclick=\" invertPOI("+ i +",'up'); \">5</a>   <a onclick=\" invertPOI("+ i +",'down'); \">6</a>  <a onclick=\" deletePOI( " + i + "); \">r</a></span></div>" 
+				">See on Wikipedia</a><br/>" +
+				"<span><a class=\"icon-up-dir\" onclick=\" invertPOI("+ i +",'up'); \"></a>   <a class=\"icon-down-dir\" onclick=\" invertPOI("+ i +",'down'); \"></a>  <a class=\"icon-trash-empty\" onclick=\" deletePOI( " + i + "); \"></a></span></div>" 
 				
 				+ document.getElementById("POI_CART").innerHTML;
 			}
 		}
 		
+		function distance(i){
+			Math.radians = function(degrees) {
+			  return degrees * Math.PI / 180;
+			};
+
+			var userlat = Math.radians(user_latitude);
+			var userlong = Math.radians(user_longitude);
+			var poilat = Math.radians(poi_array[i].latitude);
+			var poilong = Math.radians(poi_array[i].longitude);
+			var r = 6633 ; //rayon de la Terre
+			//calcul de la distance précise
+			var dp = 2*Math.asin(Math.sqrt(Math.pow(Math.sin((userlat-poilat)/2),2)+Math.cos(userlat)*Math.cos(poilat)*Math.pow(Math.sin((userlong-poilong)/2),2)));
+			//en km :
+			var d = dp*r ;
+			//affiche ou pas ? TODO : le rendre plus précis...
+			return (d < 0.07) ;
+		}
+
 		poi_array = <?php echo($poi_array_json_encoded); ?>;
 		user_latitude = <?php echo($user_latitude); ?>;
 		user_longitude = <?php echo($user_longitude); ?>;
-		var pagicon = [["16970", 'place-of-worship', true], ["2095", 'restaurant', true], ["12518", 'monument', true], ["34627", 'religious-jewish', true], ["10387575 916475", 'town-hall', true], ["207694", 'art-gallery', true]];
+
+		var pagicon = [["16970", 'place-of-worship', true], ["2095", 'restaurant', true], ["12518", 'monument', true], ["34627", 'religious-jewish', true], ["10387575 916475", 'town-hall', true], ["207694", 'art-gallery', true], ["3914 3918 9826 847027", 'college', true], ["5503", "rail-metro", true]];
 		var j;
+		var ismerged = false;
 
 		L.mapbox.accessToken = 'pk.eyJ1IjoicG9sb2Nob24tc3RyZWV0IiwiYSI6Ikh5LVJqS0UifQ.J0NayavxaAYK1SxMnVcxKg';
 
@@ -167,7 +187,6 @@
 		
 		marker.bindPopup("Vous êtes ici !").openPopup();
 
-
 		/* place wiki POI */
 		for(i = 0; i < Math.min(poi_array.nb_poi, 5); ++i) {
 			var popup_content = new Array();
@@ -180,8 +199,18 @@
 				j++ ;
 			}
 
-			if(j < pagicon.length){
-				popup_content = poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">Lien wikipédia</a> <br /> <a href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\">[+]</a></p>";
+			if (distance(i) && !ismerged){
+				popup_content = "Vous êtes ici ! <br>" ;
+			    ismerged = true ;
+			    var marker = L.marker([user_latitude, user_longitude], {    icon: L.mapbox.marker.icon({
+					'marker-size': 'large',
+					'marker-symbol': 'pitch',
+					'marker-color': '#fa0'
+				})}).addTo(map);
+				poi_array[i]['marker'] = marker;
+				popup_content += poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">Lien wikipédia</a> <br /> <a href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\">[+]</a></p>";
+			}
+			else if(j < pagicon.length){
 				var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude], {    icon: L.mapbox.marker.icon({
 					'marker-size': 'large',
 					'marker-symbol': pagicon[j][1],
@@ -189,6 +218,7 @@
 				
 				poi_array[i]['marker'] = marker;
 				overlayMaps[pagicon[j][1]].addLayer(poi_array[i]['marker']);
+				popup_content = poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">Lien wikipédia</a> <br /> <a href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\">[+]</a></p>";
 			}
 			else{
 				popup_content = poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">Lien wikipédia</a> <br /> <a href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\">[+]</a></p>";
@@ -198,10 +228,21 @@
 			poi_array[i]['marker'].bindPopup(popup_content).openPopup();
 		}
 
+		if(!ismerged){
+			var marker = L.marker([user_latitude, user_longitude], {    icon: L.mapbox.marker.icon({
+					'marker-size': 'large',
+					'marker-symbol': 'pitch',
+					'marker-color': '#fa0'
+				})}).addTo(map);
+
+			marker.bindPopup("Vous êtes ici !").openPopup();
+
+		}
 		for(j = 0; j < pagicon.length; ++j) {	
 			map.addLayer(overlayMaps[pagicon[j][1]]);
 		}
-		map.setView([user_latitude, user_longitude], 15);		
+
+		map.setView([user_latitude, user_longitude], 15);
 	</script>
 
 	</div>
