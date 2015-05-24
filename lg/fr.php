@@ -27,6 +27,7 @@ define("_FOLLOW_US",		"Suivez le projet !");
 define("_WELCOME_TITLE",	"Bienvenue !");
 define("_BUTTON_POI_AROUND","Trouver des points d'intérêts autour de moi !");
 define("_ADRESS_LOOK_UP",	"Ou à proximité d'une adresse !");
+define("_ADRESS_FAILURE",	"Cette adresse n'existe pas !");
 
 //===> team.php
 define("_TEAM_TITLE",		"Notre Équipe");

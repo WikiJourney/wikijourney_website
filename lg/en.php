@@ -27,6 +27,7 @@ define("_FOLLOW_US",		"Follow us !");
 define("_WELCOME_TITLE",	"Welcome!");
 define("_BUTTON_POI_AROUND","Find Point Of Interest around me!");
 define("_ADRESS_LOOK_UP",	"Or enter an adress to look up!");
+define("_ADRESS_FAILURE",	"Such a place doesn't exist!");
 
 //===> team.php
 define("_TEAM_TITLE",		"Our Team!");
@@ -34,7 +35,7 @@ define("_TEAM_WHO_R_WE",	"Who are we?");
 define("_TEAM_QUICKDESC",	"We're a team of seven students from the Ecole Centrale de Lille, a graduate school in Lille in the north of France. We
 							have to create a multidisciplinary project in two years, that's how we started to work together on WikiJourney. This project
 							is really important for us, that's why we will make everything we could to achieve it.");
-define("_S_ARNOUTS_DESC",	"I'm really interested in programmation and web development, that's why I took the lead of this project. For me, it's the occasion to use my skills in a real, complex project. Moreover, I'm glad to help the Open Source project, and to contribute to Wikimedia.");
+define("_S_ARNOUTS_DESC",	"I'm really interested in programing and web development, that's why I took the lead of this project. For me, it's the occasion to use my skills in a real, complex project. Moreover, I'm glad to help the Open Source project, and to contribute to Wikimedia.");
 define("_S_ARNOUTS_POSTE", 	"Project Manager<br/>Web Development") ;
 define("_P_ARZELIER_DESC",	"I am part of this project due to my passion for informatic technologies; I'm mostly interested in server administration and app development in C, though I can develop with web languages. Furthermore, development of tourism in emerging countries, as well as new technologies boom, is favorable to innovation in these areas - overlooked until now." );
 define("_P_ARZELIER_POSTE", "Server<br/>Web Development");
