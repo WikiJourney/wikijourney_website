@@ -34,7 +34,7 @@ define("_TEAM_WHO_R_WE",	"Who are we?");
 define("_TEAM_QUICKDESC",	"We're a team of seven students from the Ecole Centrale de Lille, a graduate school in Lille in the north of France. We
 							have to create a multidisciplinary project in two years, that's how we started to work together on WikiJourney. This project
 							is really important for us, that's why we will make everything we could to achieve it.");
-define("_S_ARNOUTS_DESC",	"J'ai rejoint le projet WikiJourney car je suis vraiment intéressé par la programmation et le développement informatique. Ce projet est pour moi l'occasion de mettre mes compétences de programmation au profit d'un réel projet, qui de plus se place dans le cadre du logiciel libre." );
+define("_S_ARNOUTS_DESC",	"I'm really interested in programmation and web development, that's why I took the lead of this project. For me, it's the occasion to use my skills to a real, complex project. Moreover, I'm glad to help the Open Source project, and to contribute to Wikimedia.");
 define("_S_ARNOUTS_POSTE", 	"Project Manager<br/>Web Development") ;
 define("_P_ARZELIER_DESC",	"I am part of this project due to my passion for informatic technologies; I'm mostly interested in server administration and app development in C, though I can develop with web languages. Furthermore, development of tourism in emerging countries, as well as new technologies boom, is favorable to innovation in these areas - overlooked until now." );
 define("_P_ARZELIER_POSTE", "Server<br/>Web Development");
