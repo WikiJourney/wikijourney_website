@@ -40,6 +40,11 @@
     <form name="inscription" method="post" action="map.php">
     <?php echo _ADRESS_LOOK_UP; ?> <input type="text" name="name"/>
     <input type="submit" name="valider" value="OK"/>
+    <?php
+    	if(isset($_GET["message"])){
+    		echo _ADRESS_FAILURE ;
+    	}
+    ?>
     </form>
 
 </p>

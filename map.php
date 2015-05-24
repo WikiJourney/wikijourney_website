@@ -7,6 +7,7 @@
 		$name = $_POST['name'];
 		$osm_array_json = file_get_contents("http://nominatim.openstreetmap.org/search?q=" . urlencode($name) . "&format=json");
 		$osm_array = json_decode($osm_array_json, true);
+		if ($osm_array == null) { header( 'Location: index.php?message=failure' ) ; }
 		$user_latitude = $osm_array[0]["lat"];
 		$user_longitude = $osm_array[0]["lon"];
 	}
