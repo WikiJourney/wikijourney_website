@@ -29,6 +29,17 @@ text-decoration: none;
 color: grey;
 }
 
+label{
+display: block;
+float: left;
+width: 120px;
+}
+
+.miniInput {
+display: block;
+width: 50px;
+text-align: center;
+}
 /* ============= Trombinoscope ============= */
 #trombi {
 width: 80%;
