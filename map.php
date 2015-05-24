@@ -169,6 +169,7 @@
 		//Cf liste complète des symboles : https://www.mapbox.com/maki/
 		
 		var j;
+		var ismerged = false ;
 		var layer_array = new Array()
 		var pagicon = [["16970", 'place-of-worship', true], ["2095", 'restaurant', true], ["12518", 'monument', true], ["34627", 'religious-jewish', true], ["10387575 916475", 'town-hall', true], ["207694", 'art-gallery', true], ["3914 3918 9826 847027", 'college', true], ["5503", "rail-metro", true]];
 		for(j = 0; j < pagicon.length; ++j)
@@ -181,7 +182,6 @@
 				//
 			//else
 			//	popup_content = poi_array[i].name + "<br /> <a href=\"http://perdu.com\">[+]</a></p>";
-			var ismerged = false ;
 			var j=0;
 			while((j < pagicon.length) && ((pagicon[j][0]).search(String(poi_array[i].type_id)))){
 				j++ ;
@@ -207,7 +207,17 @@
 			popup_content += poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">Lien wikipédia</a> <br /> <a href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\">[+]</a></p>";
 			marker.bindPopup(popup_content).openPopup();
 		}
-		
+		if(!ismerged){
+			var marker = L.marker([user_latitude, user_longitude], {    icon: L.mapbox.marker.icon({
+					'marker-size': 'large',
+					'marker-symbol': 'pitch',
+					'marker-color': '#fa0'
+				})}).addTo(map);
+
+			marker.bindPopup("Vous êtes ici !").openPopup();
+
+		}
+
 		map.setView([user_latitude, user_longitude], 15);
 			
 	</script>
