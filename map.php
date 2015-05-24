@@ -95,9 +95,7 @@
 			routing_poi_list[0] = L.latLng(user_latitude, user_longitude);
 			for(j = 0; j < cartList.length; ++j)
 				routing_poi_list[j+1] = L.latLng(cartList[j].latitude, cartList[j].longitude);
-			var routing = L.Routing.control({
-  				waypoints: routing_poi_list 
-			}).addTo(map);
+			routing.setWaypoints(routing_poi_list);
 		
 			routing.hide();
 		}
@@ -109,6 +107,12 @@
 		function deletePOI(i) {
 				cartList.splice(i,1);
 				reloadCart();
+				routing_poi_list = [] ;
+				routing_poi_list[0] = L.latLng(user_latitude, user_longitude);
+				for(j = 0; j < cartList.length; ++j) {
+					routing_poi_list[j+1] = L.latLng(cartList[j].latitude, cartList[j].longitude);
+				}
+				routing.setWaypoints(routing_poi_list);
 		}
 		
 		function invertPOI( i, dir) {
@@ -130,6 +134,12 @@
 					cartList[i] = temp;
 				}
 			reloadCart();
+			routing_poi_list = [] ;
+			routing_poi_list[0] = L.latLng(user_latitude, user_longitude);
+			for(j = 0; j < cartList.length; ++j) {
+				routing_poi_list[j+1] = L.latLng(cartList[j].latitude, cartList[j].longitude);
+			}
+			routing.setWaypoints(routing_poi_list);
 			}
 		}
 	
@@ -182,6 +192,11 @@
 		var overlayMaps = new Array();
 		/* Array of the form "poi type": { poi1, poi2 } */
 		var map = L.mapbox.map('map', 'polochon-street.kpogic18');
+		var routing_poi_list = new Array();
+		var routing = L.Routing.control({
+  				waypoints: routing_poi_list
+			}).addTo(map);
+		routing.hide();
 
 		for(j = 0; j < pagicon.length; ++j) {
 			overlayMaps[pagicon[j][2]] = L.layerGroup([]);
