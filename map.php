@@ -143,25 +143,30 @@
 		poi_array = <?php echo($poi_array_json_encoded); ?>;
 		user_latitude = <?php echo($user_latitude); ?>;
 		user_longitude = <?php echo($user_longitude); ?>;
+		var pagicon = [["16970", 'place-of-worship', true], ["2095", 'restaurant', true], ["12518", 'monument', true], ["34627", 'religious-jewish', true], ["10387575 916475", 'town-hall', true], ["207694", 'art-gallery', true]];
+		var j;
+
 		L.mapbox.accessToken = 'pk.eyJ1IjoicG9sb2Nob24tc3RyZWV0IiwiYSI6Ikh5LVJqS0UifQ.J0NayavxaAYK1SxMnVcxKg';
+
+		var overlayMaps = new Array();
 		var map = L.mapbox.map('map', 'polochon-street.kpogic18');
-		
-		/* place the first marker with 50% opacity to distinguish it */	
-		//var marker = L.marker([user_latitude, user_longitude], {opacity:0.5, color: '#fa0'}).addTo(map);
+
+		for(j = 0; j < pagicon.length; ++j) {
+			overlayMaps[pagicon[j][1]] = L.layerGroup([]);
+		}
+
+		L.control.layers(null, overlayMaps).addTo(map);
+
 		var marker = L.marker([user_latitude, user_longitude], {    icon: L.mapbox.marker.icon({
 			'marker-size': 'large',
 			'marker-symbol': 'pitch',
 			'marker-color': '#fa0'
 		})}).addTo(map);
-		//Cf liste complète des symboles : https://www.mapbox.com/maki/
+
+		//Complete list of symbols https://www.mapbox.com/maki/
 		
 		marker.bindPopup("Vous êtes ici !").openPopup();
 
-		var j;
-		var layer_array = new Array()
-		var pagicon = [["16970", 'place-of-worship', true], ["2095", 'restaurant', true], ["12518", 'monument', true], ["34627", 'religious-jewish', true], ["10387575 916475", 'town-hall', true], ["207694", 'art-gallery', true]];
-		for(j = 0; j < pagicon.length; ++j)
-			layer_array[j] = L.layerGroup([]);
 
 		/* place wiki POI */
 		for(i = 0; i < Math.min(poi_array.nb_poi, 5); ++i) {
@@ -176,21 +181,27 @@
 			}
 
 			if(j < pagicon.length){
-				layer_array[j].addLayer(
 				popup_content = poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">Lien wikipédia</a> <br /> <a href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\">[+]</a></p>";
 				var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude], {    icon: L.mapbox.marker.icon({
 					'marker-size': 'large',
 					'marker-symbol': pagicon[j][1],
 				})}).addTo(map);
+				
+				poi_array[i]['marker'] = marker;
+				overlayMaps[pagicon[j][1]].addLayer(poi_array[i]['marker']);
 			}
 			else{
+				popup_content = poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">Lien wikipédia</a> <br /> <a href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\">[+]</a></p>";
 				var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude]).addTo(map); 
+				poi_array[i]['marker'] = L.marker([poi_array[i].latitude, poi_array[i].longitude]).addTo(map); 
 			}
-			marker.bindPopup(popup_content).openPopup();
+			poi_array[i]['marker'].bindPopup(popup_content).openPopup();
 		}
-		
-		map.setView([user_latitude, user_longitude], 15);
-			
+
+		for(j = 0; j < pagicon.length; ++j) {	
+			map.addLayer(overlayMaps[pagicon[j][1]]);
+		}
+		map.setView([user_latitude, user_longitude], 15);		
 	</script>
 
 	</div>
