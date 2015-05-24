@@ -162,7 +162,7 @@
 		user_latitude = <?php echo($user_latitude); ?>;
 		user_longitude = <?php echo($user_longitude); ?>;
 
-		var pagicon = [["16970", 'place-of-worship', true], ["2095", 'restaurant', true], ["12518", 'monument', true], ["34627", 'religious-jewish', true], ["10387575 916475", 'town-hall', true], ["207694", 'art-gallery', true], ["3914 3918 9826 847027", 'college', true], ["5503", "rail-metro", true]];
+		var pagicon = [["16970", 'place-of-worship', "Lieux de culte"], ["2095", 'restaurant', "Restaurant"], ["12518", 'monument', "Monument"], ["34627", 'religious-jewish', "Synagogue"], ["10387575 916475", 'town-hall', "Musée"], ["207694", 'art-gallery', "Musée d'Art"], ["3914 3918 9826 847027", 'college', "Université"], ["5503", "rail-metro", "Station de métro", ]];
 		var j;
 		var ismerged = false;
 
@@ -172,7 +172,7 @@
 		var map = L.mapbox.map('map', 'polochon-street.kpogic18');
 
 		for(j = 0; j < pagicon.length; ++j) {
-			overlayMaps[pagicon[j][1]] = L.layerGroup([]);
+			overlayMaps[pagicon[j][2]] = L.layerGroup([]);
 		}
 
 		L.control.layers(null, overlayMaps).addTo(map);
@@ -217,8 +217,7 @@
 				})}).addTo(map);
 				
 				poi_array[i]['marker'] = marker;
-				overlayMaps[pagicon[j][1]].addLayer(poi_array[i]['marker']);
-
+				overlayMaps[pagicon[j][2]].addLayer(poi_array[i]['marker']);
 			}
 			else{
 
@@ -241,7 +240,7 @@
 
 		}
 		for(j = 0; j < pagicon.length; ++j) {	
-			map.addLayer(overlayMaps[pagicon[j][1]]);
+			map.addLayer(overlayMaps[pagicon[j][2]]);
 		}
 
 		map.setView([user_latitude, user_longitude], 15);
