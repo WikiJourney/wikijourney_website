@@ -1,5 +1,5 @@
 <?php
-
+//bcde
 if(isset($_GET['lg'])) //Language modification
 {
 	if($_GET['lg'] == 'en')
