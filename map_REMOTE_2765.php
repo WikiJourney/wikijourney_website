@@ -87,65 +87,8 @@
 				cartList[cartList.length] = poi_array[i];
 			
 			reloadCart(cartList);
-			var routing_poi_list = new Array();
-			routing_poi_list[0] = L.latLng(user_latitude, user_longitude);
-			for(j = 0; j < cartList.length; ++j)
-				routing_poi_list[j+1] = L.latLng(cartList[j].latitude, cartList[j].longitude);
-			var routing = L.Routing.control({
-  				waypoints: routing_poi_list 
-			}).addTo(map);
-			displayPOI();
-			routing.hide();
 		}
 		
-		function displayPOI() {
-for(i = 0; i < Math.min(poi_array.nb_poi, 5); ++i) {
-			var popup_content = new Array();
-			var j=0;
-			for(j = 0; ((j < pagicon.length) && ((pagicon[j][0]).search(String(poi_array[i].type_id)))); j++)
-				;
-
-			if (distance(i) && !ismerged){
-				/* merge pop-ups if they are too close */
-				popup_content = "Vous êtes ici ! <br>" ;
-			    ismerged = true ;
-			   	poi_array[i]['marker'] = L.marker([user_latitude, user_longitude], {    icon: L.mapbox.marker.icon({
-					'marker-size': 'large',
-					'marker-symbol': 'pitch',
-					'marker-color': '#fa0'
-				})}).addTo(map);
-			}
-			else if(j < pagicon.length){
-				/* if we have an icon for the type of POI, display it */
-				poi_array[i]["marker"] = L.marker([poi_array[i].latitude, poi_array[i].longitude], {    icon: L.mapbox.marker.icon({
-					'marker-size': 'large',
-					'marker-symbol': pagicon[j][1],
-				})}).addTo(map);
-				
-				overlayMaps[pagicon[j][2]].addLayer(poi_array[i]['marker']);
-			}
-			else{
-				poi_array[i]["marker"] = L.marker([poi_array[i].latitude, poi_array[i].longitude]).addTo(map); 
-			}
-			
-			popup_content += poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">Lien wikipédia</a> <br /> <a href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\">[+]</a></p>";
-			poi_array[i]['marker'].bindPopup(popup_content).openPopup();
-		}
-
-		if(!ismerged){
-			poi_array[i]["marker"] = L.marker([user_latitude, user_longitude], {    icon: L.mapbox.marker.icon({
-					'marker-size': 'large',
-					'marker-symbol': 'pitch',
-					'marker-color': '#fa0'
-				})}).addTo(map);
-
-			poi_array[i]["marker"].bindPopup("Vous êtes ici !").openPopup();
-		}
-
-		for(j = 0; j < pagicon.length; ++j) 
-			map.addLayer(overlayMaps[pagicon[j][2]]);
-}
-
 		function center(){
 			map.setView([user_latitude, user_longitude], 15);
 		}
@@ -173,10 +116,12 @@ for(i = 0; i < Math.min(poi_array.nb_poi, 5); ++i) {
 					cartList[i - 1] = cartList[i];
 					cartList[i] = temp;
 				}
-			reloadCart();
+				
 			}
+			
+			reloadCart();
 		}
-	
+		
 		function reloadCart() {
 		
 			var i = 0;
@@ -233,8 +178,16 @@ for(i = 0; i < Math.min(poi_array.nb_poi, 5); ++i) {
 
 		L.control.layers(null, overlayMaps).addTo(map);
 
-	//Complete list of symbols https://www.mapbox.com/maki/
+		var marker = L.marker([user_latitude, user_longitude], {    icon: L.mapbox.marker.icon({
+			'marker-size': 'large',
+			'marker-symbol': 'pitch',
+			'marker-color': '#fa0'
+		})}).addTo(map);
+
+		//Complete list of symbols https://www.mapbox.com/maki/
 		
+		marker.bindPopup("Vous êtes ici !").openPopup();
+
 		/* place wiki POI */
 		for(i = 0; i < Math.min(poi_array.nb_poi, 5); ++i) {
 			var popup_content = new Array();
@@ -246,23 +199,27 @@ for(i = 0; i < Math.min(poi_array.nb_poi, 5); ++i) {
 				/* merge pop-ups if they are too close */
 				popup_content = "Vous êtes ici ! <br>" ;
 			    ismerged = true ;
-			   	poi_array[i]['marker'] = L.marker([user_latitude, user_longitude], {    icon: L.mapbox.marker.icon({
+			    var marker = L.marker([user_latitude, user_longitude], {    icon: L.mapbox.marker.icon({
 					'marker-size': 'large',
 					'marker-symbol': 'pitch',
 					'marker-color': '#fa0'
 				})}).addTo(map);
+				poi_array[i]['marker'] = marker;
+
 			}
 			else if(j < pagicon.length){
 				/* if we have an icon for the type of POI, display it */
-				poi_array[i]["marker"] = L.marker([poi_array[i].latitude, poi_array[i].longitude], {    icon: L.mapbox.marker.icon({
+				var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude], {    icon: L.mapbox.marker.icon({
 					'marker-size': 'large',
 					'marker-symbol': pagicon[j][1],
 				})}).addTo(map);
 				
+				poi_array[i]['marker'] = marker;
 				overlayMaps[pagicon[j][2]].addLayer(poi_array[i]['marker']);
 			}
 			else{
-				poi_array[i]["marker"] = L.marker([poi_array[i].latitude, poi_array[i].longitude]).addTo(map); 
+				var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude]).addTo(map); 
+				poi_array[i]['marker'] = L.marker([poi_array[i].latitude, poi_array[i].longitude]).addTo(map); 
 			}
 			
 			popup_content += poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">" + <?php echo _MAP_POI_LINK; ?> + "</a> <br /> <a href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\">[+]</a></p>";
@@ -270,20 +227,21 @@ for(i = 0; i < Math.min(poi_array.nb_poi, 5); ++i) {
 		}
 
 		if(!ismerged){
-			poi_array[i]["marker"] = L.marker([user_latitude, user_longitude], {    icon: L.mapbox.marker.icon({
+			var marker = L.marker([user_latitude, user_longitude], {    icon: L.mapbox.marker.icon({
 					'marker-size': 'large',
 					'marker-symbol': 'pitch',
 					'marker-color': '#fa0'
 				})}).addTo(map);
 
-			poi_array[i]["marker"].bindPopup("Vous êtes ici !").openPopup();
+			marker.bindPopup("Vous êtes ici !").openPopup();
+
 		}
 
 		for(j = 0; j < pagicon.length; ++j) 
 			map.addLayer(overlayMaps[pagicon[j][2]]);
 
 		map.setView([user_latitude, user_longitude], 15);
-		</script>
+	</script>
 
 	</div>
 <div>

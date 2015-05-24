@@ -173,10 +173,16 @@ for(i = 0; i < Math.min(poi_array.nb_poi, 5); ++i) {
 					cartList[i - 1] = cartList[i];
 					cartList[i] = temp;
 				}
-			reloadCart();
+				
+<<<<<<< HEAD
+			}		
+=======
 			}
+			
+>>>>>>> 1ebab6d8e85e655ce56633af9b81ea5fb7bb94ec
+			reloadCart();
 		}
-	
+		
 		function reloadCart() {
 		
 			var i = 0;

@@ -77,3 +77,20 @@ define("_ABOUT_TEXT","
 //===> technical.php
 define("_TECHNICAL_TITLE",	"Informations Techniques");
 define("_TECHNICAL_TEXT",	"Ce site web est encore en construction, merci de revenir plus tard ! ;)");
+
+
+//===> map.php
+define("_MAP_POI_LINK",				"'Aller voir sur Wikipedia'");
+define("_MAP_POI_TYPE_CATHO",		"'Eglises'");
+define("_MAP_POI_TYPE_FOOD",		"'Restaurants'");
+define("_MAP_POI_TYPE_MONUM",		"'Monuments'");
+define("_MAP_POI_TYPE_JEWISH",		"'Synagogues'");
+define("_MAP_POI_TYPE_MUSEUM",		"'Musée'");
+define("_MAP_POI_TYPE_ART",			"'Musée d'art'");
+define("_MAP_POI_TYPE_SCHOOL",		"'Université'");
+define("_MAP_POI_TYPE_SUBWAY",		"'Stations de métro'");
+
+
+
+
+
