@@ -164,7 +164,7 @@
 			//else
 			//	popup_content = poi_array[i].name + "<br /> <a href=\"http://perdu.com\">[+]</a></p>";
 			var j=0;
-			var pagicon=[["16970", 'place-of-worship'], ["2095", 'restaurant'], ["12518", 'monument'], ["34627", 'religious-jewish'], ["10387575 916475 ozienf", 'town-hall'], ["207694", 'art-gallery']] ;
+			var pagicon=[["16970", 'place-of-worship'], ["2095", 'restaurant'], ["12518", 'monument'], ["34627", 'religious-jewish'], ["10387575 916475", 'town-hall'], ["207694", 'art-gallery']] ;
 			while((j < pagicon.length) && ((pagicon[j][0]).search(String(poi_array[i].type_id)))){
 				j++ ;
 			}
