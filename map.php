@@ -16,6 +16,7 @@
 	}
 	
 	$range = $_POST['range'];
+	$maxPOI = $_POST['maxPOI'];
 	
 	/* yolo la police */
 
@@ -29,7 +30,7 @@
 	
 	$poi_array["nb_poi"] = $nb_poi;
 	/* stocks latitude, longitude, name and description of every POI located by ↑ in $poi_array */
-	for($i = 0; $i < min($nb_poi, 5); $i++) {
+	for($i = 0; $i < min($nb_poi, $maxPOI); $i++) {
 		$temp_geoloc_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetclaims&format=json&entity=Q" . $poi_id_array_clean["$i"] . "&property=P625");
 		$temp_geoloc_array = json_decode($temp_geoloc_array_json, true);
 		$temp_poi_type_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetclaims&format=json&entity=Q" . $poi_id_array_clean["$i"] . "&property=P31");
@@ -189,9 +190,9 @@
 		//Complete list of symbols https://www.mapbox.com/maki/
 		
 		marker.bindPopup("Vous êtes ici !").openPopup();
-
+; 
 		/* place wiki POI */
-		for(i = 0; i < Math.min(poi_array.nb_poi, 5); ++i) {
+		for(i = 0; i < Math.min(poi_array.nb_poi, <?php echo $maxPOI ?>); ++i) {
 			var popup_content = new Array();
 			var j=0;
 			for(j = 0; ((j < pagicon.length) && ((pagicon[j][0]).search(String(poi_array[i].type_id)))); j++)
