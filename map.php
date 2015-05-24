@@ -133,7 +133,7 @@
 			{
 				document.getElementById("POI_CART").innerHTML = 
 				"<div class=\"eltCart\">" + cartList[i].name + "<br/><i>" + cartList[i].type_name + "</i><br/><a href="+cartList[i].sitelink + 
-				">See on Wikipedia</a><br/>" +
+				">" + <?php echo _MAP_POI_LINK; ?> + "</a><br/>" +
 				"<span><a class=\"icon-up-dir\" onclick=\" invertPOI("+ i +",'up'); \"></a>   <a class=\"icon-down-dir\" onclick=\" invertPOI("+ i +",'down'); \"></a>  <a class=\"icon-trash-empty\" onclick=\" deletePOI( " + i + "); \"></a></span></div>" 
 				
 				+ document.getElementById("POI_CART").innerHTML;
@@ -224,7 +224,7 @@
 				poi_array[i]['marker'] = L.marker([poi_array[i].latitude, poi_array[i].longitude]).addTo(map); 
 			}
 			
-			popup_content += poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">Lien wikipédia</a> <br /> <a href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\">[+]</a></p>";
+			popup_content += poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">" + <?php echo _MAP_POI_LINK; ?> + "</a> <br /> <a href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\">[+]</a></p>";
 			poi_array[i]['marker'].bindPopup(popup_content).openPopup();
 		}
 
