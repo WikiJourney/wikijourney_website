@@ -16,6 +16,8 @@
 		$user_longitude= $_POST[1];
 	}
 	
+	/* yolo la police */
+
 	/* P31 */
 	/* Returns a $poi_id_array_clean array with a list of wikidata pages ID within a $range km range from user location */
 	$range = 1;
