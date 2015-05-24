@@ -5,6 +5,22 @@
 <h1><?php echo _WELCOME_TITLE; ?></h1>
 
 <p>
+	<form method="post" action="map.php">
+		
+		<input type="radio" name="choice" value="around" onclick="document.getElementById('adressValue').style.display = 'none';">Around me !<br/>
+		<input type="radio" name="choice" value="adress" onclick="document.getElementById('adressValue').style.display = 'block';">Close to an adress !
+		<br/><input type="text" value="Type your adress here." name="adressValue" id="adressValue" />
+		<script type="text/javascript">
+			document.getElementById("adressValue").style.display = "none";
+		</script>
+		<br/><br/>
+		Options :<br/>
+		<label for="range">Range (km) : </label><input type="text" name="range" id="range" value="1"/><br/>
+		<label for="maxPOI">Max POI : </label><input type="text" name="maxPOI" id="maxPOI" value="10" /><br/><br/>
+		<input type="submit" value="Go !" />
+	</form>
+
+
  	<button onclick="getLocation()"><?php echo _BUTTON_POI_AROUND; ?></button>
 	<script type="text/javascript">
 	function openWithPostData(page,data) {
