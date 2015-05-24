@@ -208,7 +208,7 @@
 					'marker-color': '#fa0'
 				})}).addTo(map);
 				poi_array[i]['marker'] = marker;
-				popup_content += poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">Lien wikipédia</a> <br /> <a href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\">[+]</a></p>";
+
 			}
 			else if(j < pagicon.length){
 				var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude], {    icon: L.mapbox.marker.icon({
@@ -218,13 +218,15 @@
 				
 				poi_array[i]['marker'] = marker;
 				overlayMaps[pagicon[j][1]].addLayer(poi_array[i]['marker']);
-				popup_content = poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">Lien wikipédia</a> <br /> <a href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\">[+]</a></p>";
+
 			}
 			else{
-				popup_content = poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">Lien wikipédia</a> <br /> <a href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\">[+]</a></p>";
+
 				var marker = L.marker([poi_array[i].latitude, poi_array[i].longitude]).addTo(map); 
 				poi_array[i]['marker'] = L.marker([poi_array[i].latitude, poi_array[i].longitude]).addTo(map); 
 			}
+			
+			popup_content += poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"http:" + poi_array[i].sitelink + "\">Lien wikipédia</a> <br /> <a href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\">[+]</a></p>";
 			poi_array[i]['marker'].bindPopup(popup_content).openPopup();
 		}
 
