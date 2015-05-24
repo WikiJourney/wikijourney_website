@@ -3,24 +3,27 @@
 	include("./include/haut.php"); 
 	//error_reporting(E_ALL);
 	/* Obtain current user latitude/longitude */
-	if(isset($_POST['name'])) {
-		$name = $_POST['name'];
+	if($_POST['choice'] == 'adress') {
+		$name = $_POST['adressValue'];
 		$osm_array_json = file_get_contents("http://nominatim.openstreetmap.org/search?q=" . urlencode($name) . "&format=json");
 		$osm_array = json_decode($osm_array_json, true);
 		if ($osm_array == null) { header( 'Location: index.php?message=failure' ) ; }
 		$user_latitude = $osm_array[0]["lat"];
 		$user_longitude = $osm_array[0]["lon"];
 	}
-	else {
-		$user_latitude= $_POST[0];
-		$user_longitude= $_POST[1];
+	if($_POST['choice'] == 'around') {
+		$user_latitude= $_POST['latitude'];
+		$user_longitude= $_POST['longitude'];
 	}
+	
+	$range = $_POST['range'];
+	$maxPOI = $_POST['maxPOI'];
 	
 	/* yolo la police */
 
 	/* P31 */
 	/* Returns a $poi_id_array_clean array with a list of wikidata pages ID within a $range km range from user location */
-	$range = 1;
+	
 	$poi_id_array_json = file_get_contents("http://wdq.wmflabs.org/api?q=around[625,$user_latitude,$user_longitude,$range]");
 	$poi_id_array = json_decode($poi_id_array_json, true);
 	$poi_id_array_clean = $poi_id_array["items"];
@@ -28,7 +31,7 @@
 	
 	$poi_array["nb_poi"] = $nb_poi;
 	/* stocks latitude, longitude, name and description of every POI located by ↑ in $poi_array */
-	for($i = 0; $i < min($nb_poi, 5); $i++) {
+	for($i = 0; $i < min($nb_poi, $maxPOI); $i++) {
 		$temp_geoloc_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetclaims&format=json&entity=Q" . $poi_id_array_clean["$i"] . "&property=P625");
 		$temp_geoloc_array = json_decode($temp_geoloc_array_json, true);
 		$temp_poi_type_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetclaims&format=json&entity=Q" . $poi_id_array_clean["$i"] . "&property=P31");
@@ -188,8 +191,10 @@
 
 	//Complete list of symbols https://www.mapbox.com/maki/
 		
+		//marker.bindPopup("Vous êtes ici !").openPopup();
+
 		/* place wiki POI */
-		for(i = 0; i < Math.min(poi_array.nb_poi, 5); ++i) {
+		for(i = 0; i < Math.min(poi_array.nb_poi, <?php echo $maxPOI ?>); ++i) {
 			var popup_content = new Array();
 			var j=0;
 			for(j = 0; ((j < pagicon.length) && ((pagicon[j][0]).search(String(poi_array[i].type_id)))); j++)
