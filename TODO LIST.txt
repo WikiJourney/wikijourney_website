@@ -10,7 +10,9 @@ Map integration :
 - Finish the "cart" fonction : 
 	* JS function : have the clicked icon change color
 	
-- Optimise path (OpenRouteService API)
+- Path creation :
+	* Optimize Optimise path (OpenRouteService API)
+	* default : path is not displayed
 
 - Offline :
 	* create a button to import the path as .gpx
