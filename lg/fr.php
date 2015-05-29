@@ -28,6 +28,15 @@ define("_WELCOME_TITLE",	"Bienvenue !");
 define("_BUTTON_POI_AROUND","Trouver des points d'intérêts autour de moi !");
 define("_ADRESS_LOOK_UP",	"Ou à proximité d'une adresse !");
 define("_ADRESS_FAILURE",	"Cette adresse n'existe pas !");
+define("_AROUND_LOCATION", 	"Autour d'une adresse particulière");
+define("_AROUND_ME",		"Autour de ma position !");
+define("_NOTE_GEOLOC",		"Note : cette fonctionnalité utilise la géolocalisation. Il n'est pas toujours
+							possible de récupérer votre position, cela dépend de votre navigateur et de
+							votre connexion internet.");
+define("_OPTIONS",			"Options :");
+define("_RANGE",			"Rayon (km) : ");
+define("_MAX_POI",			"Maximum :");
+define("_PLACEHOLDER",		"Entrez un lieu ici.");
 
 //===> team.php
 define("_TEAM_TITLE",		"Notre Équipe");

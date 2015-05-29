@@ -28,6 +28,14 @@ define("_WELCOME_TITLE",	"Welcome!");
 define("_BUTTON_POI_AROUND","Find Point Of Interest around me!");
 define("_ADRESS_LOOK_UP",	"Or enter an adress to look up!");
 define("_ADRESS_FAILURE",	"Such a place doesn't exist!");
+define("_AROUND_LOCATION", 	"Close to a location !");
+define("_AROUND_ME",		"Around Me !");
+define("_NOTE_GEOLOC",		"Note : This fonctionnality involve geolocation and could not work, it
+							depends of the device you're on and the way you're connected to the internet.");
+define("_OPTIONS",			"Options :");
+define("_RANGE",			"Range (km) : ");
+define("_MAX_POI",			"Max POI : ");
+define("_PLACEHOLDER",		"Type a location here.");
 
 //===> team.php
 define("_TEAM_TITLE",		"Our Team!");
