@@ -33,8 +33,8 @@ define("_ADRESS_FAILURE",	"Cette adresse n'existe pas !");
 define("_TEAM_TITLE",		"Notre Équipe");
 define("_TEAM_WHO_R_WE",	"Qui sommes nous ?");
 define("_TEAM_QUICKDESC",	"Nous sommes une équipe de sept étudiants de l'École Centrale de Lille, école d'ingénieur généraliste située à Lille,
-							dans le Nord de la France. Il nous est imposé durant nos deux premières années d'études de développer un projet
-							multidisciplinaire, dans lequel nous mettrons nos connaissances en commun. Nous nous sommes donc retrouvés à sept 
+							dans le Nord de la France. Durant nos deux premières années d'études, nous devons développer un projet
+							multidisciplinaire, dans lequel nous mettons nos connaissances en commun. Nous nous sommes donc retrouvés à sept 
 							sur ce projet." );
 define("_S_ARNOUTS_DESC",	"J'ai rejoint le projet WikiJourney car je suis vraiment intéressé par la programmation et le développement informatique. Ce projet est pour moi l'occasion de mettre mes compétences de programmation au profit d'un réel projet, qui de plus se place dans le cadre du logiciel libre." );
 define("_S_ARNOUTS_POSTE", 	"Chef de Projet<br/>Développement Web") ;
