@@ -7,6 +7,9 @@ if(isset($_GET['lg'])) //Language modification
 	else if($_GET['lg'] == 'fr')
 		setcookie("lg","fr");
 
+	else if($_GET['lg'] == 'ch')
+		setcookie("lg","ch");
+
 	else
 		setcookie("lg","fr");
 		
