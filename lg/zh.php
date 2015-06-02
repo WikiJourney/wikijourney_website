@@ -1,6 +1,6 @@
 <?php
 //========================================================//
-//============> FICHIER DE LANGUE : FRANCAIS <============//
+//============> FICHIER DE LANGUE : CHINESE <============//
 //========================================================//
 
 
@@ -93,7 +93,7 @@ define("_MAP_POI_TYPE_FOOD",		"'饭店'");
 define("_MAP_POI_TYPE_MONUM",		"'古迹'");
 define("_MAP_POI_TYPE_JEWISH",		"'犹太教堂'");
 define("_MAP_POI_TYPE_MUSEUM",		"'博物馆'");
-define("_MAP_POI_TYPE_ART",			"'艺术馆");
+define("_MAP_POI_TYPE_ART",			"'艺术馆'");
 define("_MAP_POI_TYPE_SCHOOL",		"'大学'");
 define("_MAP_POI_TYPE_SUBWAY",		"'地铁站'");
 
