@@ -6,6 +6,8 @@ Map integration :
 - Filter Point of Interest by type : 
 	* enrich the table by finding new categories (query types on wikidata.org) and logos on maki
 	* make the table easier to modify by creating a .txt file
+	* filter Points by importance (weight linked with the size of the monument's Wikipedia page)
+	* create a cursor that allows the user to choose how many pages are displayed (weighted with importance)
 	
 - Finish the "cart" fonction : 
 	* JS function : have the clicked icon change color
