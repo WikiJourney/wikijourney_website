@@ -13,7 +13,7 @@
 					<td>
 						<a href="https://www.facebook.com/WikiJourney"><img src="../images/design/fb.png" alt="Facebook" title="Facebook" /></a>
 						<a href="https://twitter.com/WikiJourney"><img src="../images/design/twitter.png" alt="Twitter" title="Twitter" /></a>
-						<a href="https://github.com/sylvainar/wikijourney_website"><img src="../images/design/github.png" alt="GitHub" title="GitHub" /></a>
+						<a href="https://github.com/WikiJourney/"><img src="../images/design/github.png" alt="GitHub" title="GitHub" /></a>
 					</td>
 						
 					<!--<td>Blabla</td>-->
