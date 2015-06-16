@@ -1,0 +1,297 @@
+body{
+	
+	margin:0px;	
+	padding:0px;
+	background-color: rgb(247,247,247);
+	
+	overflow: scroll;
+}
+
+h1 {
+font-family: "Helvetica","Trebuchet MS";
+margin-top: 30px;
+margin-left: 50px;
+font-size: 26px;
+color: rgb(248,99,99);
+}
+
+h2 {
+font-family: "Helvetica", cambria;
+margin-top: 15px;
+margin-left: 70px;
+font-size: 20px;
+color: rgb(137,160,173);
+}
+
+
+a{
+text-decoration: none;
+color: grey;
+}
+
+label{
+display: block;
+float: left;
+width: 120px;
+}
+
+.miniInput {
+display: block;
+width: 50px;
+text-align: center;
+}
+/* ============= Trombinoscope ============= */
+#trombi {
+width: 80%;
+border-collapse: collapse;
+border: 1px solid black;
+margin: auto;
+background-color: rgba(155,222,255,0.3);
+}
+
+.tcol3{
+text-indent: 20px;
+text-align: justify;
+font-family: calibri;
+border: 1px solid black;
+padding: 10px;
+font-size: 14px;
+}
+
+.tcol2{
+width: 22%;
+text-align: center;
+border: 1px solid black;
+padding: 5px;
+}
+
+.trombiNom
+{
+font-family: "Courier New",Times;
+color: rgb(255,99,99);
+font-weight: bold;
+}
+
+.trombiFonc
+{
+font-family: calibri;
+color: grey;
+font-size: 13px;
+
+}
+
+.tcol1 img{
+width: 120px;
+
+vertical-align: bottom;
+}
+
+.tcol1{
+border: 1px solid black;
+margin: 0;
+padding : 0;
+}
+
+/* ============= HAUT ============= */
+#banniere {
+
+background-color:white;
+width: 100%;
+background-image: url("../images/design/new_york.jpg");
+margin: 0;
+height: 238px;
+border-bottom: 1px solid black;
+font-size: 32px;
+color: black;
+font-family: "Trebuchet MS";
+}
+
+#languagesBox {
+font-size: 14px;
+margin-left: 200px;
+width: 100px;
+padding: 5px;
+text-align: center;
+background-color: rgba(248,99,99,0.5);
+-webkit-border-radius: 10px;
+   -moz-border-radius: 10px;
+        border-radius: 10px;
+		
+border: 1px solid black;
+color: white;
+font-family: cambria;
+}
+
+#languagesBox a{
+color: white;
+}
+#languagesBox a:hover{
+font-weight: bold;
+}
+
+#bigtitre {
+padding-left: 50px;
+text-align: center;
+}
+
+#logoban{
+margin-left: 100px;
+height: 180px;
+}
+
+
+
+/* ============= MENU ============= */
+
+/* Block Menu */
+#menu {
+
+margin-left: auto;
+margin-right: auto;
+text-align: center;
+opacity: 0.9;
+height: 40px;
+width: 1002px;
+
+
+}
+/* Cellules */
+
+#menu td {
+-webkit-border-top-left-radius: 10px;
+-webkit-border-top-right-radius: 10px;
+-moz-border-radius-topleft: 10px;
+-moz-border-radius-topright: 10px;
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+
+background-color: rgb(248,99,99);
+border: 1px solid black;
+
+text-align: center;
+height : 40px;
+width : 250px;
+}
+
+/* Texte */
+#menu a {
+color: white;
+font-family: cambria;
+padding: 8px;
+display: block;
+
+text-decoration: none;
+font-weight: bold;
+font-size: 18px;
+
+}
+
+
+
+#menu td:hover {
+
+background-color: rgb(174,203,219);
+
+
+}
+/* ============= CORPS ============= */
+	
+#corps {
+margin-top : 50px;
+border: 1px solid black;
+margin-left: auto;
+margin-right: auto;
+width: 1000px;
+background-color: white;
+
+}
+
+
+
+#corps p, #corps form {
+margin: auto;
+width: 80%;
+text-align: justify;
+font-family: calibri;
+}
+
+/* ============= PIED ============= */
+
+#pied {
+margin-top: 20px;
+width: 100%;
+background-color: white;
+border: 1px solid black;
+border-left: none;
+border-right: none;
+padding-bottom: 10px;
+margin-bottom: 5px;
+}
+
+#pied table {
+margin-left: auto;
+margin-right: auto;
+width: 1000px;
+text-align: center;
+
+}
+#pied img {
+height: 35px;
+padding-left: 10px;
+padding-right: 10px;
+}
+#pied th {
+
+text-align: center;
+font-size: 14px;
+padding: 3px;
+font-family: "Trebuchet MS";
+}
+#pied td {
+font-family: cambria;
+text-align: center;
+font-size: 12px;
+}
+/* ============= MAP ============= */
+#map { 
+	
+	
+	padding: 0;
+	height: 500px; 
+	width: 70%;
+	border-collapse: collapse;
+	border: 1px solid black;
+	
+	
+}
+
+#POI_CART {
+	margin-right: 46px;
+	float: left;
+	width: 25%;
+	border: 1px solid black;
+	height: 500px;
+	
+
+}
+
+#map_cart_container {
+width: 1000px;
+margin: auto;
+margin-top: 15px;
+}
+
+.eltCart {
+width: 95%;
+border: 1px solid black;
+border-radius: 3px;
+margin: auto;
+margin-top: 5px;
+text-align: center;
+}
+
+#button-wrapper {
+    position: relative;
+    margin-left: 90%;
+    margin-top: -40px;
+}
