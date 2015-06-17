@@ -1,7 +1,7 @@
 <?php
 /* 
 ============================ WIKIJOURNEY API =========================
-Version Alpha 1.0
+Version Alpha 0.0.1
 ======================================================================
 
 Input :
@@ -25,7 +25,7 @@ Input :
 		- err_check		value			(true if error)
 					msg			(is set only if there's an error)
 		
-		- poi_list		id1			latitude				Note : poi_list isn't defined if there's an error
+		- poi_list		id1			latitude	Note : poi_list isn't defined if there's an error
 								longitude
 								name
 								sitelink
@@ -70,9 +70,9 @@ Input :
 	
 	
 	//============> INFO SECTION
-	$output['infos']['source'] 			= "WikiJourney API";
-	$output['infos']['link']			= "http://wikijourney.eu/";
-	$output['infos']['api_version']		= "alpha 1.0";
+	$output['infos']['source'] 		= "WikiJourney API";
+	$output['infos']['link']		= "http://wikijourney.eu/";
+	$output['infos']['api_version']		= "alpha 0.0.1";
 	
 
 	
@@ -114,11 +114,11 @@ Input :
 		
 			$poi_array[$i]["latitude"] = 		$temp_latitude;
 			$poi_array[$i]["longitude"] = 		$temp_longitude;
-			$poi_array[$i]["name"] = 			$name;
+			$poi_array[$i]["name"] = 		$name;
 			$poi_array[$i]["sitelink"] = 		$temp_sitelink;
 			$poi_array[$i]["type_name"] = 		$type_name;
 			$poi_array[$i]["type_id"] = 		$temp_poi_type_id;
-			$poi_array[$i]["id"] = 				$poi_id_array_clean[$i];
+			$poi_array[$i]["id"] = 			$poi_id_array_clean[$i];
 		}
 		
 		$poi_array_json_encoded = json_encode((array)$poi_array); //JSON encode
