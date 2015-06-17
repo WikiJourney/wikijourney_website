@@ -23,19 +23,19 @@ Input :
 					hour			TODO
 		
 		- err_check		value			(true if error)
-					msg				(is set only if there's an error)
+					msg			(is set only if there's an error)
 		
-		- poi_list		id1				latitude				Note : poi_list isn't defined if there's an error
-									longitude
-									name
-									sitelink
-									type_name
-									type_id
-									id (for Wikidata)
-					id2				...
-									...
-					id3				...
-									...
+		- poi_list		id1			latitude				Note : poi_list isn't defined if there's an error
+								longitude
+								name
+								sitelink
+								type_name
+								type_id
+								id (for Wikidata)
+					id2			...
+								...
+					id3			...
+								...
 					etc
 */			
 									
