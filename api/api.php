@@ -4,42 +4,8 @@
 Version Alpha 0.0.2
 ======================================================================
 
-Input :
-
-	http://wikijourney.eu/api/api.php?PARAMETERS
-	
-	Parameters could be :
-		- lat : 		user's latitude							[REQUIRED]
-		- long : 		user's longitude						[REQUIRED]
-		- range : 		Range around we're gonna find POI in kilometers			(default : 1km)
-		- maxPOI : 		number max of POI 						(default : 10)
-		- lg : 			language used 							(default : en)
-		
-	Output : a JSON file
-	Structure :
-		- infos			source
-					api_version
-					date			TODO
-					hour			TODO
-		
-		- err_check		value			(true if error)
-					msg			(is set only if there's an error)
-		
-		- poi	nb_poi
-		
-				poi_info	id1			latitude	Note : poi_list isn't defined if there's an error
-										longitude
-										name
-										sitelink
-										type_name
-										type_id
-										id (for Wikidata)
-							id2			...
-										...
-							id3			...
-										...
-							etc
-*/			
+See documentation on http://wikijourney.eu/api/documentation.php
+*/		
 	
 	error_reporting(0); //No need error reporting, or else it will crash the JSON export
 	
