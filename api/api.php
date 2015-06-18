@@ -88,6 +88,9 @@ Input :
 	//============> INFO POINT OF INTEREST
 	if(!isset($error))
 	{
+		$output['user_location']['latitude'] = $user_latitude;
+		$output['user_location']['longitude'] = $user_longitude;
+		
 		/* P31 */
 		/* Returns a $poi_id_array_clean array with a list of wikidata pages ID within a $range km range from user location */
 		
@@ -166,6 +169,7 @@ Input :
 		}
 		$output['poi']['nb_poi'] = $nb_poi;
 		$output['poi']['poi_info'] = $poi_array; //Output 
+		
 	}
 	
 	
