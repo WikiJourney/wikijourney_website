@@ -1,7 +1,7 @@
 <?php
 /* 
 ============================ WIKIJOURNEY API =========================
-Version Alpha 0.0.1
+Version Alpha 0.0.2
 ======================================================================
 
 Input :
@@ -25,23 +25,29 @@ Input :
 		- err_check		value			(true if error)
 					msg			(is set only if there's an error)
 		
-		- poi_list		id1			latitude	Note : poi_list isn't defined if there's an error
-								longitude
-								name
-								sitelink
-								type_name
-								type_id
-								id (for Wikidata)
-					id2			...
-								...
-					id3			...
-								...
-					etc
+		- poi	nb_poi
+		
+				poi_info	id1			latitude	Note : poi_list isn't defined if there's an error
+										longitude
+										name
+										sitelink
+										type_name
+										type_id
+										id (for Wikidata)
+							id2			...
+										...
+							id3			...
+										...
+							etc
 */			
 	
 	error_reporting(0); //No need error reporting, or else it will crash the JSON export
 	
-	
+	function test()
+	{
+		$error = "test";
+	}
+	 
 	function secureInput($string)
 	{
 		if(ctype_digit($string)) //If number
@@ -75,7 +81,7 @@ Input :
 	//============> INFO SECTION
 	$output['infos']['source'] 		= "WikiJourney API";
 	$output['infos']['link']		= "http://wikijourney.eu/";
-	$output['infos']['api_version']		= "alpha 0.0.1";
+	$output['infos']['api_version']		= "alpha 0.0.2";
 	
 
 	
@@ -97,23 +103,54 @@ Input :
 			$poi_id_array_clean = $poi_id_array["items"];
 			$nb_poi = count($poi_id_array_clean);
 			
-			$poi_array["nb_poi"] = $nb_poi;
+			
 			/* stocks latitude, longitude, name and description of every POI located by ↑ in $poi_array */
 			for($i = 0; $i < min($nb_poi, $maxPOI); $i++) {
+				
 				$temp_geoloc_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetclaims&format=json&entity=Q" . $poi_id_array_clean["$i"] . "&property=P625");
+				if($temp_geoloc_array_json == FALSE)
+				{
+					$error = "API Wikidata isn't responding on request 1.";
+					break;
+				}
+				
 				$temp_geoloc_array = json_decode($temp_geoloc_array_json, true);
 				$temp_poi_type_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetclaims&format=json&entity=Q" . $poi_id_array_clean["$i"] . "&property=P31");
+				if($temp_poi_type_array_json == FALSE)
+				{
+					$error = "API Wikidata isn't responding on request 2.";
+					break;
+				}
+				
 				$temp_poi_type_array = json_decode($temp_poi_type_array_json, true);
 				$temp_poi_type_id = $temp_poi_type_array["claims"]["P31"][0]["mainsnak"]["datavalue"]["value"]["numeric-id"];
 				$temp_description_type_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetentities&format=json&ids=Q" . $temp_poi_type_id . "&props=labels&languages=$language");
+				if($temp_description_type_array_json == FALSE)
+				{
+					$error = "API Wikidata isn't responding on request 3.";
+					break;
+				}
+				
 				$temp_description_type_array = json_decode($temp_description_type_array_json, true);
 				$type_name = $temp_description_type_array["entities"]["Q" . $temp_poi_type_id]["labels"]["$language"]["value"];
 				$temp_latitude = $temp_geoloc_array["claims"]["P625"][0]["mainsnak"]["datavalue"]["value"]["latitude"];
 				$temp_longitude = $temp_geoloc_array["claims"]["P625"][0]["mainsnak"]["datavalue"]["value"]["longitude"];
 				$temp_description_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetentities&format=json&ids=Q" . $poi_id_array_clean["$i"] . "&props=labels&languages=$language");
+				if($temp_description_array_json == FALSE)
+				{
+					$error = "API Wikidata isn't responding on request 4.";
+					break;
+				}
+				
 				$temp_description_array = json_decode($temp_description_array_json, true);
 				$name = $temp_description_array["entities"]["Q" . $poi_id_array_clean["$i"]]["labels"]["$language"]["value"];
 				$temp_sitelink_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q" . $poi_id_array_clean["$i"] . "&sitefilter=$language&props=sitelinks/urls&format=json");
+				if($temp_sitelink_array_json == FALSE)
+				{
+					$error = "API Wikidata isn't responding on request 5.";
+					break;
+				}
+				
 				$temp_sitelink_array = json_decode($temp_sitelink_array_json, true);
 				$temp_sitelink = $temp_sitelink_array["entities"]["Q" . $poi_id_array_clean["$i"]]["sitelinks"][$language . "wiki"]["url"];
 			
@@ -127,8 +164,8 @@ Input :
 				$poi_array[$i]["id"] = 			$poi_id_array_clean[$i];
 			}
 		}
-		
-		$output['poi_list'] = $poi_array; //Output 
+		$output['poi']['nb_poi'] = $nb_poi;
+		$output['poi']['poi_info'] = $poi_array; //Output 
 	}
 	
 	
