@@ -271,7 +271,7 @@ font-size: 12px;
 	width: 25%;
 	border: 1px solid black;
 	height: 500px;
-	
+	overflow-y: auto;
 
 }
 
