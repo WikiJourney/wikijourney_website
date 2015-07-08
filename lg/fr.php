@@ -90,7 +90,7 @@ define("_TECHNICAL_TEXT",	"Ce site web est encore en construction, merci de reve
 
 
 //===> map.php
-define("_MAP_POI_LINK",				"'Aller voir sur Wikipedia'");
+define("_MAP_POI_LINK",				"'Lien Wikipédia'");
 define("_MAP_POI_TYPE_CATHO",		"'Eglises'");
 define("_MAP_POI_TYPE_FOOD",		"'Restaurants'");
 define("_MAP_POI_TYPE_MONUM",		"'Monuments'");

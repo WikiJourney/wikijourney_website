@@ -46,7 +46,7 @@
 
 ?>
 
-<p>Searching around<br/>Lat : <?php echo $user_latitude; ?> Long : <?php echo $user_longitude; ?> <br/>Carte :</p>
+<p>Looking for POI around :<i style="float:right;">Lat : <?php echo round($user_latitude,3); ?>° Long : <?php echo round($user_longitude,3); ?>° </i></p>
 </div>
 
 <div id="map_cart_container">
