@@ -133,7 +133,7 @@ See documentation on http://wikijourney.eu/api/documentation.php
 				$poi_array[$i]["id"] = 			$poi_id_array_clean[$i];
 			}
 		}
-		$output['poi']['nb_poi'] = $nb_poi;
+		$output['poi']['nb_poi'] = $i;
 		$output['poi']['poi_info'] = $poi_array; //Output 
 		
 	}
