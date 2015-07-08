@@ -22,10 +22,20 @@
 	/* yolo la police */
 	
 	//Make the url
-	$api_url = "http://wikijourney.eu/api/api.php?long=".$user_longitude."&lat=".$user_latitude."&lg=".$language."&maxPOI=".$maxPOI."$range=".$range;
-
-	//Contacting WikiJourney API (yeay)
-	$api_answer_json = file_get_contents($api_url);
+	$api_url = "http://wikijourneydev.alwaysdata.net/api/api.php?long=".$user_longitude."&lat=".$user_latitude."&lg=".$language."&maxPOI=".$maxPOI."&range=".$range;
+	
+	//NOTE !
+	//It looks like we're experiencing trouble with this. Actually, it's hard to loopback on our own server with filegetcontents, curl or whatever.
+	//Like this, it works. Please don't touch.
+	
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, $api_url);
+	curl_setopt($ch, CURLOPT_FRESH_CONNECT, true);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_VERBOSE, true);
+	$api_answer_json = curl_exec($ch);
+	curl_close($ch);
+	
 	$api_answer_array = json_decode($api_answer_json,true); //Decoding the json into an array
 		
 	if($api_answer_array['err_check']['value'] == "true")
