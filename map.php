@@ -5,7 +5,7 @@
 	/* Obtain current user latitude/longitude */
 	if($_POST['choice'] == 'adress') {
 		$name = $_POST['adressValue'];
-		$osm_array_json = file_get_contents("http://nominatim.openstreetmap.org/search?q=" . urlencode($name) . "&format=json");
+		$osm_array_json = file_get_contents("http://nominatim.openstreetmap.org/search?q=" . $name . "&format=json");
 		$osm_array = json_decode($osm_array_json, true);
 		if ($osm_array == null) { header( 'Location: index.php?message=failure' ) ; }
 		$user_latitude = $osm_array[0]["lat"];
@@ -20,44 +20,20 @@
 	$maxPOI = $_POST['maxPOI'];
 	
 	/* yolo la police */
+	
+	//Make the url
+	$api_url = "http://wikijourney.eu/api/api.php?long=".$user_longitude."&lat=".$user_latitude."&lg=".$language."&maxPOI=".$maxPOI."$range=".$range;
 
-	/* P31 */
-	/* Returns a $poi_id_array_clean array with a list of wikidata pages ID within a $range km range from user location */
-	
-	$poi_id_array_json = file_get_contents("http://wdq.wmflabs.org/api?q=around[625,$user_latitude,$user_longitude,$range]");
-	$poi_id_array = json_decode($poi_id_array_json, true);
-	$poi_id_array_clean = $poi_id_array["items"];
-	$nb_poi = count($poi_id_array_clean);
-	
-	$poi_array["nb_poi"] = $nb_poi;
-	/* stocks latitude, longitude, name and description of every POI located by ↑ in $poi_array */
-	for($i = 0; $i < min($nb_poi, $maxPOI); $i++) {
-		$temp_geoloc_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetclaims&format=json&entity=Q" . $poi_id_array_clean["$i"] . "&property=P625");
-		$temp_geoloc_array = json_decode($temp_geoloc_array_json, true);
-		$temp_poi_type_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetclaims&format=json&entity=Q" . $poi_id_array_clean["$i"] . "&property=P31");
-		$temp_poi_type_array = json_decode($temp_poi_type_array_json, true);
-		$temp_poi_type_id = $temp_poi_type_array["claims"]["P31"][0]["mainsnak"]["datavalue"]["value"]["numeric-id"];
-		$temp_description_type_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetentities&format=json&ids=Q" . $temp_poi_type_id . "&props=labels&languages=$language");
-		$temp_description_type_array = json_decode($temp_description_type_array_json, true);
-		$type_name = $temp_description_type_array["entities"]["Q" . $temp_poi_type_id]["labels"]["$language"]["value"];
-		$temp_latitude = $temp_geoloc_array["claims"]["P625"][0]["mainsnak"]["datavalue"]["value"]["latitude"];
-		$temp_longitude = $temp_geoloc_array["claims"]["P625"][0]["mainsnak"]["datavalue"]["value"]["longitude"];
-		$temp_description_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetentities&format=json&ids=Q" . $poi_id_array_clean["$i"] . "&props=labels&languages=$language");
-		$temp_description_array = json_decode($temp_description_array_json, true);
-		$name = $temp_description_array["entities"]["Q" . $poi_id_array_clean["$i"]]["labels"]["$language"]["value"];
-		$temp_sitelink_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q" . $poi_id_array_clean["$i"] . "&sitefilter=$language&props=sitelinks/urls&format=json");
-		$temp_sitelink_array = json_decode($temp_sitelink_array_json, true);
-		$temp_sitelink = $temp_sitelink_array["entities"]["Q" . $poi_id_array_clean["$i"]]["sitelinks"][$language . "wiki"]["url"];
-	
-		$poi_array[$i]["latitude"] = 		$temp_latitude;
-		$poi_array[$i]["longitude"] = 		$temp_longitude;
-		$poi_array[$i]["name"] = 			$name;
-		$poi_array[$i]["sitelink"] = 		$temp_sitelink;
-		$poi_array[$i]["type_name"] = 		$type_name;
-		$poi_array[$i]["type_id"] = 		$temp_poi_type_id;
-		$poi_array[$i]["id"] = 				$poi_id_array_clean[$i];
-	}
-	$poi_array_json_encoded = json_encode((array)$poi_array);
+	//Contacting WikiJourney API (yeay)
+	$api_answer_json = file_get_contents($api_url);
+	$api_answer_array = json_decode($api_answer_json,true); //Decoding the json into an array
+		
+	if($api_answer_array['err_check']['value'] == "true")
+		die("Error found when contacting the API : ".$api_answer_array['err_check']['err_msg']);
+
+	//If no error, we put the POI array in a json to use it with JavaScript
+	$poi_array_json_encoded = json_encode($api_answer_array['poi']);
+
 ?>
 
 <p>Searching around<br/>Lat : <?php echo $user_latitude; ?> Long : <?php echo $user_longitude; ?> <br/>Carte :</p>
@@ -177,7 +153,8 @@
 			return (d < 0.07) ;
 		}
 
-		poi_array = <?php echo($poi_array_json_encoded); ?>;
+		poi_array_decode = <?php echo($poi_array_json_encoded); ?>;
+		poi_array = poi_array_decode['poi_info'];
 		user_latitude = <?php echo($user_latitude); ?>;
 		user_longitude = <?php echo($user_longitude); ?>;
 
@@ -209,7 +186,7 @@
 		//marker.bindPopup("Vous êtes ici !").openPopup();
 
 		/* place wiki POI */
-		for(i = 0; i < Math.min(poi_array.nb_poi, <?php echo $maxPOI ?>); ++i) {
+		for(i = 0; i < Math.min(poi_array_decode.nb_poi, <?php echo $maxPOI ?>); ++i) {
 			var popup_content = new Array();
 			var j=0;
 			for(j = 0; ((j < pagicon.length) && ((pagicon[j][0]).search(String(poi_array[i].type_id)))); j++)
