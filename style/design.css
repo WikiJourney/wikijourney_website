@@ -265,14 +265,22 @@ font-size: 12px;
 	
 }
 
-#POI_CART {
+#POI_CART_BLOCK {
 	margin-right: 46px;
 	float: left;
 	width: 25%;
 
 	height: 500px;
-	overflow-y: auto;
+}
 
+#POI_CART_TITLE {
+	font-family: "Helvetica","Trebuchet MS";
+	font-size: 22px;
+	text-decoration: none;
+}
+
+#POI_CART {
+	overflow-y: auto;
 }
 
 #map_cart_container {

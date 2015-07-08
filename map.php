@@ -50,7 +50,10 @@
 </div>
 
 <div id="map_cart_container">
-	<div id="POI_CART"></div>
+	<div id="POI_CART_BLOCK">
+		<div id="POI_CART_TITLE">C LE CADDIE LOL</div>
+		<div id="POI_CART"></div>
+	</div>
 	<div id="map" class="map"></div>
 	<div id="button-wrapper">
 		<input type="button" value="Centrer" onclick="center()">
@@ -105,15 +108,15 @@
 			//Cases where we can't do anything
 			var temp;
 			
-			if( ! ( (i == 0 && dir == 'down') || (i == cartList.length - 1 && dir == 'up') ) ) //Already at the bottom or at the top
+			if( ! ( (i == 0 && dir == 'up') || (i == cartList.length - 1 && dir == 'down') ) ) //Already at the bottom or at the top
 			{
-				if(dir == 'up')//Permutation
+				if(dir == 'down')//Permutation
 				{
 					temp = cartList[i + 1];
 					cartList[i + 1] = cartList[i];
 					cartList[i] = temp;
 				}
-				else if(dir == 'down')//Permutation
+				else if(dir == 'up')//Permutation
 				{
 					temp = cartList[i - 1];
 					cartList[i - 1] = cartList[i];
@@ -136,12 +139,12 @@
 			
 			for(i = 0; i <= cartList.length - 1; i++)//Display
 			{
-				document.getElementById("POI_CART").innerHTML = 
-				"<div class=\"eltCart\">" + cartList[i].name + "<br/><i>" + cartList[i].type_name + "</i><br/><a href="+cartList[i].sitelink + 
+				document.getElementById("POI_CART").innerHTML = document.getElementById("POI_CART").innerHTML +
+				"<div class=\"eltCart\">" + (i+1) + cartList[i].name + "<br/><i>" + cartList[i].type_name + "</i><br/><a href="+cartList[i].sitelink + 
 				">" + <?php echo _MAP_POI_LINK; ?> + "</a><br/>" +
 				"<span><a class=\"icon-up-dir\" onclick=\" invertPOI("+ i +",'up'); \"></a>   <a class=\"icon-down-dir\" onclick=\" invertPOI("+ i +",'down'); \"></a>  <a class=\"icon-trash-empty\" onclick=\" deletePOI( " + i + "); \"></a></span></div>" 
 				
-				+ document.getElementById("POI_CART").innerHTML;
+				
 			}
 		}
 		
