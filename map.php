@@ -20,6 +20,8 @@
 	$maxPOI = $_POST['maxPOI'];
 	
 	/* yolo la police */
+/*	
+	TEST ONLY !!
 	
 	//Make the url
 	$api_url = "http://wikijourneydev.alwaysdata.net/api/api.php?long=".$user_longitude."&lat=".$user_latitude."&lg=".$language."&maxPOI=".$maxPOI."&range=".$range;
@@ -37,7 +39,11 @@
 	curl_close($ch);
 	
 	$api_answer_array = json_decode($api_answer_json,true); //Decoding the json into an array
-		
+*/
+
+//The following line is for test only
+	$api_answer_array = json_decode('{"infos":{"source":"WikiJourney API","link":"http:\/\/wikijourney.eu\/","api_version":"alpha 0.0.2"},"user_location":{"latitude":"50.632042299999995","longitude":"3.095606"},"poi":{"nb_poi":5,"poi_info":[{"latitude":50.63306,"longitude":3.09,"name":"Fives, Nord","sitelink":"https:\/\/en.wikipedia.org\/wiki\/Fives,_Nord","type_name":"human settlement","type_id":486972,"id":663930},{"latitude":50.633,"longitude":3.09055,"name":"Fives (m\u00e9tro de Lille M\u00e9tropole)","sitelink":null,"type_name":"metro station","type_id":928830,"id":1936001},{"latitude":50.6366,"longitude":3.08729,"name":"Caulier (m\u00e9tro de Lille M\u00e9tropole)","sitelink":null,"type_name":"metro station","type_id":928830,"id":2274687},{"latitude":50.6301,"longitude":3.09796,"name":"Marbrerie (m\u00e9tro de Lille M\u00e9tropole)","sitelink":null,"type_name":"metro station","type_id":928830,"id":2383251},{"latitude":50.6319,"longitude":3.08516,"name":null,"sitelink":null,"type_name":null,"type_id":null,"id":3279788}]},"err_check":{"value":false}}',true);
+	
 	if($api_answer_array['err_check']['value'] == "true")
 		die("Error found when contacting the API : ".$api_answer_array['err_check']['err_msg']);
 
@@ -140,7 +146,8 @@
 			for(i = 0; i <= cartList.length - 1; i++)//Display
 			{
 				document.getElementById("POI_CART").innerHTML = document.getElementById("POI_CART").innerHTML +
-				"<div class=\"eltCart\">" + (i+1) + cartList[i].name + "<br/><i>" + cartList[i].type_name + "</i><br/><a href="+cartList[i].sitelink + 
+				"<div class=\"eltCart\"><div class=\"eltCartNumber\">" + (i+1) +"</div>" 
+				+cartList[i].name + "<br/><i>" + cartList[i].type_name + "</i><br/><a href="+cartList[i].sitelink + 
 				">" + <?php echo _MAP_POI_LINK; ?> + "</a><br/>" +
 				"<span><a class=\"icon-up-dir\" onclick=\" invertPOI("+ i +",'up'); \"></a>   <a class=\"icon-down-dir\" onclick=\" invertPOI("+ i +",'down'); \"></a>  <a class=\"icon-trash-empty\" onclick=\" deletePOI( " + i + "); \"></a></span></div>" 
 				
