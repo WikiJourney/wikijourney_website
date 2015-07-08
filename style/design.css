@@ -269,14 +269,23 @@ font-size: 12px;
 	margin-right: 46px;
 	float: left;
 	width: 25%;
-
+	border: 1px solid black;
+	border-radius: 8px;
 	height: 500px;
+	background-color: white;
 }
 
 #POI_CART_TITLE {
 	font-family: "Helvetica","Trebuchet MS";
 	font-size: 22px;
 	text-decoration: none;
+	text-align:center;
+	margin: auto;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-top: 5px;
+	width: 90%;
+	border-bottom: 2px solid rgb(248,99,99);
 }
 
 #POI_CART {
@@ -290,12 +299,28 @@ margin-top: 15px;
 }
 
 .eltCart {
-
-border: 1px solid black;
-
+font-family: "Calibri",Sans;
+width: 90%;
+border-bottom: 2px solid rgb(248,99,99);
+min-height: 74px;
 margin: auto;
-margin-top: 5px;
+
 text-align: center;
+padding: 5px;
+
+}
+
+.eltCartNumber {
+font-family: "Helvetica","Trebuchet MS";
+border-radius: 3px;
+float: left;
+margin: 5px;
+margin-top: 30px;
+width: 20px;
+border: 1px solid black;
+text-align:center;
+height:100%;
+background-color: rgb(174,203,219);
 }
 
 #button-wrapper {

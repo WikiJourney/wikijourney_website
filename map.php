@@ -57,7 +57,7 @@
 
 <div id="map_cart_container">
 	<div id="POI_CART_BLOCK">
-		<div id="POI_CART_TITLE">C LE CADDIE LOL</div>
+		<div id="POI_CART_TITLE">Votre Parcours</div>
 		<div id="POI_CART"></div>
 	</div>
 	<div id="map" class="map"></div>
