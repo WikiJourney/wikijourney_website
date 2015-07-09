@@ -90,32 +90,39 @@
 		user_longitude = <?php echo($user_longitude); ?>;
 		
 		function submitCart() {
-			//Because of markers stocked in cartList, we're obliged to recompose a clean table
-			var i;
-			var exportList = new Array();
-			
-			//This is the structure
-			function composeCartList(Nid, Nlatitude, Nlongitude, Nsite, Nname, Ntype_name)
-			{
-				this.id = Nid;
-				this.latitude = Nlatitude;
-				this.longitude = Nlongitude;
-				this.sitelink = Nsite;
-				this.name = Nname;
-				this.type_name = Ntype_name;
-			}
-			
-			for(i = 0; i < cartList.length; i++)
-			{
-				//Filling the new list
-				exportList[i] = new composeCartList(cartList[i].id, cartList[i].latitude, cartList[i].longitude, cartList[i].sitelink, cartList[i].name, cartList[i].type_name);
-			}
-			
-			//Putting the json list in an invisible form
-			document.getElementById('cartJsonExport').value = JSON.stringify(exportList);
-			//And submit this form
-			document.getElementById('hiddenForm').submit();
 		
+			if(cartList.length == 0) //The cart is empty
+			{
+				alert('Your cart is empty, please fill it before exporting it ! ;)');
+			}
+			else
+			{
+				//Because of markers objects are stocked in cartList, we're obliged to recompose a clean table
+				var i;
+				var exportList = new Array();
+				
+				//This is the structure
+				function composeCartList(Nid, Nlatitude, Nlongitude, Nsite, Nname, Ntype_name)
+				{
+					this.id = Nid;
+					this.latitude = Nlatitude;
+					this.longitude = Nlongitude;
+					this.sitelink = Nsite;
+					this.name = Nname;
+					this.type_name = Ntype_name;
+				}
+				
+				for(i = 0; i < cartList.length; i++)
+				{
+					//Filling the new list
+					exportList[i] = new composeCartList(cartList[i].id, cartList[i].latitude, cartList[i].longitude, cartList[i].sitelink, cartList[i].name, cartList[i].type_name);
+				}
+				
+				//Putting the json list in an invisible form
+				document.getElementById('cartJsonExport').value = JSON.stringify(exportList);
+				//And submit this form
+				document.getElementById('hiddenForm').submit();
+			}
 		}
 		
 		function addToCart(i) {
