@@ -343,12 +343,12 @@ background-color: rgb(174,203,219);
 
 #button-wrapper {
     position: relative;
-    margin-left: 80%;/* MAGIC NUMBERS <3 */
+    margin-left: 80%;/* MAGIC NUMBERS <3 */	
     margin-top: -50px;
 }
 
 #button-routing-wrapper {
     position: absolute;
-    margin-left: 550px;/* MAGIC NUMBERS <3 */
-    margin-top: -462px;
+    margin-left: 11px;/* MAGIC NUMBERS <3 */
+    margin-top: -400px;
 }

@@ -67,7 +67,6 @@
 
 	}
 </script>
-<a onclick="hideRoutingContainer();">Coucou</a>
 </p>
 
 </div>
@@ -96,7 +95,7 @@
 		<input type="button" value="<?php echo _CENTER_BUTTON; ?>" onclick="center()">
 	</div>
 	<div id="button-routing-wrapper">
-		<input type="button" value="Afficher/Masquer" onclick="hideRoutingContainer();">
+		<img src="./images/design/routing_icon.png" title="Hide/Show routing" alt="Hide/Show routing" onclick="hideRoutingContainer();" style="width: 28px;">
 	</div>
 
 	<script>
@@ -112,6 +111,7 @@
 		function showTheCart() {
 			document.getElementById('POI_CART_BLOCK').style.display = 'block';
 			document.getElementById('map').style.width = "70%";
+			document.getElementById('button-routing-wrapper').style.marginLeft = "308px"; //Magic number
 		}
 
 		function submitCart() {
