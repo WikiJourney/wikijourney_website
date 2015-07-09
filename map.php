@@ -54,6 +54,20 @@
 
 <p><?php echo _LOOKING_FOR; ?><i style="float:right;">Lat : <?php echo round($user_latitude,3); ?>° Long : <?php echo round($user_longitude,3); ?>° </i>
 
+<script type="text/javascript">
+	function hideRoutingContainer() {
+		if(document.getElementsByClassName('leaflet-routing-container')[0].style.display == "none")
+		{
+			document.getElementsByClassName('leaflet-routing-container')[0].style.display = "block";
+		}
+		else
+		{
+			document.getElementsByClassName('leaflet-routing-container')[0].style.display = "none";
+		}
+
+	}
+</script>
+<a onclick="hideRoutingContainer();">Coucou</a>
 </p>
 
 </div>
@@ -80,6 +94,9 @@
 	
 	<div id="button-wrapper">
 		<input type="button" value="<?php echo _CENTER_BUTTON; ?>" onclick="center()">
+	</div>
+	<div id="button-routing-wrapper">
+		<input type="button" value="Afficher/Masquer" onclick="hideRoutingContainer();">
 	</div>
 
 	<script>
