@@ -52,11 +52,14 @@
 
 ?>
 
-<p>Looking for POI around :<i style="float:right;">Lat : <?php echo round($user_latitude,3); ?>° Long : <?php echo round($user_longitude,3); ?>° </i></p>
+<p>Looking for POI around :<i style="float:right;">Lat : <?php echo round($user_latitude,3); ?>° Long : <?php echo round($user_longitude,3); ?>° </i>
+
+</p>
+
 </div>
 
 <div id="map_cart_container">
-	<div id="POI_CART_BLOCK">
+	<div id="POI_CART_BLOCK" style="display: none;">
 	
 		<div id="POI_CART_TITLE">Votre Parcours</div>
 		
@@ -73,7 +76,7 @@
 		
 	</div>
 	
-	<div id="map" class="map"></div>
+	<div id="map" class="map" style="width: 100%;"></div>
 	
 	<div id="button-wrapper">
 		<input type="button" value="Centrer" onclick="center()">
@@ -89,6 +92,11 @@
 		user_latitude = <?php echo($user_latitude); ?>;
 		user_longitude = <?php echo($user_longitude); ?>;
 		
+		function showTheCart() {
+			document.getElementById('POI_CART_BLOCK').style.display = 'block';
+			document.getElementById('map').style.width = "70%";
+		}
+
 		function submitCart() {
 		
 			if(cartList.length == 0) //The cart is empty
@@ -126,7 +134,9 @@
 		}
 		
 		function addToCart(i) {
-		//Add a marker to the cart. 
+		//Add a marker to the cart.
+
+		
 			var j = 0;
 			var flag;
 			
@@ -142,6 +152,11 @@
 				cartList[cartList.length] = poi_array[i];
 			
 			reloadCart(cartList);
+			
+			if(document.getElementById('POI_CART_BLOCK').style.display = "none")
+			{
+				showTheCart();
+			}
 		}
 		
 		function center(){ //Center the map on the user's position
@@ -235,9 +250,12 @@
 		/* Array of the form "poi type": { poi1, poi2 } */
 		var map = L.mapbox.map('map', 'polochon-street.kpogic18');
 		var routing_poi_list = new Array();
+		
 		var routing = L.Routing.control({
   				waypoints: routing_poi_list
 			}).addTo(map);
+			
+
 		routing.hide();
 
 		for(j = 0; j < pagicon.length; ++j) {
@@ -297,6 +315,7 @@
 			map.addLayer(overlayMaps[pagicon[j][2]]);
 
 		map.setView([user_latitude, user_longitude], 15);
+		
 		</script>
 
 	</div>
