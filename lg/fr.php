@@ -102,7 +102,7 @@ define("_MAP_POI_TYPE_SCHOOL",		"'Université'");
 define("_MAP_POI_TYPE_SUBWAY",		"'Stations de métro'");
 
 define("_LOOKING_FOR",				"Recherche des points d'intérêt à proximité : ");
-define("_YOUR_PATH",				"Votre Parcous");
+define("_YOUR_PATH",				"Votre Parcours");
 define("_CLEAR_CART",				"Vider");
 define("_SAVE_CART",				"Sauvegarder !");
 define("_CART_IS_EMPTY_POPUP",		"Votre parcours est vide, remplissez le avant de l\'exporter ! ;)");
