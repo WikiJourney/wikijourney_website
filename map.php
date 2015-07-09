@@ -57,17 +57,24 @@
 
 <div id="map_cart_container">
 	<div id="POI_CART_BLOCK">
+	
 		<div id="POI_CART_TITLE">Votre Parcours</div>
-		<div id="POI_CART"></div>
+		
+		<div id="POI_CART"><!-- THIS IS GOING TO BE FILLED BY CART ELEMENTS IN JAVASCRIPT --></div>
+		
 		<div id="POI_CART_FOOTER">
 			<input type="submit" id="razCart" value="Clear Cart"/>
-			<form action="map_export.php" method="post" style="display:inline;">
+			<input type="submit" id="exportCart" value="Save path !" onclick="submitCart();" />
+			
+			<form action="map_export.php" method="post" id="hiddenForm">
 				<input type="hidden" id="cartJsonExport" name="cartJsonExport" value="" />
-				<input type="submit" id="exportCart" value="Save path !" />
 			</form>
 		</div>
+		
 	</div>
+	
 	<div id="map" class="map"></div>
+	
 	<div id="button-wrapper">
 		<input type="button" value="Centrer" onclick="center()">
 	</div>
@@ -75,6 +82,41 @@
 	<script>
 		var poi_array = new Array();
 		var cartList = new Array();
+		
+		poi_array_decode = <?php echo($poi_array_json_encoded); ?>;
+		poi_array = poi_array_decode['poi_info'];
+
+		user_latitude = <?php echo($user_latitude); ?>;
+		user_longitude = <?php echo($user_longitude); ?>;
+		
+		function submitCart() {
+			//Because of markers stocked in cartList, we're obliged to recompose a clean table
+			var i;
+			var exportList = new Array();
+			
+			//This is the structure
+			function composeCartList(Nid, Nlatitude, Nlongitude, Nsite, Nname, Ntype_name)
+			{
+				this.id = Nid;
+				this.latitude = Nlatitude;
+				this.longitude = Nlongitude;
+				this.sitelink = Nsite;
+				this.name = Nname;
+				this.type_name = Ntype_name;
+			}
+			
+			for(i = 0; i < cartList.length; i++)
+			{
+				//Filling the new list
+				exportList[i] = new composeCartList(cartList[i].id, cartList[i].latitude, cartList[i].longitude, cartList[i].sitelink, cartList[i].name, cartList[i].type_name);
+			}
+			
+			//Putting the json list in an invisible form
+			document.getElementById('cartJsonExport').value = JSON.stringify(exportList);
+			//And submit this form
+			document.getElementById('hiddenForm').submit();
+		
+		}
 		
 		function addToCart(i) {
 		//Add a marker to the cart. 
@@ -172,11 +214,7 @@
 			return (d < 0.07) ;
 		}
 
-		poi_array_decode = <?php echo($poi_array_json_encoded); ?>;
-		poi_array = poi_array_decode['poi_info'];
 
-		user_latitude = <?php echo($user_latitude); ?>;
-		user_longitude = <?php echo($user_longitude); ?>;
 
 		/* Correspondances icônes/ID/label */
 		var pagicon = [["16970", 'place-of-worship', <?php echo _MAP_POI_TYPE_CATHO ?>], ["2095", 'restaurant', <?php echo _MAP_POI_TYPE_FOOD ?>], ["12518", 'monument', <?php echo _MAP_POI_TYPE_MONUM ?>], ["34627", 'religious-jewish', <?php echo _MAP_POI_TYPE_JEWISH ?>], ["10387575 916475", 'town-hall', <?php echo _MAP_POI_TYPE_MUSEUM ?>], ["207694", 'art-gallery', <?php echo _MAP_POI_TYPE_ART ?>], ["3914 3918 9826 847027", 'college', <?php echo _MAP_POI_TYPE_SCHOOL ?>], ["5503 928830", "rail-metro", <?php echo _MAP_POI_TYPE_SUBWAY ?>, ]];
