@@ -290,7 +290,8 @@ font-size: 12px;
 
 #POI_CART {
 	overflow-y: auto;
-	max-height: 450px;
+	
+	height: 425px;
 }
 #POI_CART::-webkit-scrollbar{
 border-radius: 4px;
@@ -300,6 +301,12 @@ background-color:#eeeeee;
 #POI_CART::-webkit-scrollbar-thumb{
 background-color:rgb(174,203,219);
 border-radius:4px;
+}
+
+#POI_CART_FOOTER{
+text-align: center;
+margin: auto;
+margin-top: 5px;
 }
 
 

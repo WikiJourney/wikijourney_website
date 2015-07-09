@@ -59,6 +59,13 @@
 	<div id="POI_CART_BLOCK">
 		<div id="POI_CART_TITLE">Votre Parcours</div>
 		<div id="POI_CART"></div>
+		<div id="POI_CART_FOOTER">
+			<input type="submit" id="razCart" value="Clear Cart"/>
+			<form action="map_export.php" method="post" style="display:inline;">
+				<input type="hidden" id="cartJsonExport" name="cartJsonExport" value="" />
+				<input type="submit" id="exportCart" value="Save path !" />
+			</form>
+		</div>
 	</div>
 	<div id="map" class="map"></div>
 	<div id="button-wrapper">
@@ -82,39 +89,25 @@
 					flag = 1;
 			}
 			
-			if(flag == 0)
+			if(flag == 0) //If not, add it
 				cartList[cartList.length] = poi_array[i];
 			
 			reloadCart(cartList);
-			var routing_poi_list = new Array();
-			routing_poi_list[0] = L.latLng(user_latitude, user_longitude);
-			for(j = 0; j < cartList.length; ++j)
-				routing_poi_list[j+1] = L.latLng(cartList[j].latitude, cartList[j].longitude);
-			routing.setWaypoints(routing_poi_list);
-		
-			routing.hide();
 		}
 		
-		function center(){
+		function center(){ //Center the map on the user's position
 			map.setView([user_latitude, user_longitude], 15);
 		}
 
-		function deletePOI(i) {
-				cartList.splice(i,1);
-				reloadCart();
-				routing_poi_list = [] ;
-				routing_poi_list[0] = L.latLng(user_latitude, user_longitude);
-				for(j = 0; j < cartList.length; ++j) {
-					routing_poi_list[j+1] = L.latLng(cartList[j].latitude, cartList[j].longitude);
-				}
-				routing.setWaypoints(routing_poi_list);
+		function deletePOI(i) { //Delete a POI from the cart
+				cartList.splice(i,1);//Splice the cart at the position wanted
+				reloadCart(); //And reload
 		}
 		
 		function invertPOI( i, dir) {
-			//Cases where we can't do anything
 			var temp;
 			
-			if( ! ( (i == 0 && dir == 'up') || (i == cartList.length - 1 && dir == 'down') ) ) //Already at the bottom or at the top
+			if( ! ( (i == 0 && dir == 'up') || (i == cartList.length - 1 && dir == 'down') ) ) //If not already at the bottom or at the top
 			{
 				if(dir == 'down')//Permutation
 				{
@@ -129,20 +122,15 @@
 					cartList[i] = temp;
 				}
 			reloadCart();
-			routing_poi_list = [] ;
-			routing_poi_list[0] = L.latLng(user_latitude, user_longitude);
-			for(j = 0; j < cartList.length; ++j) {
-				routing_poi_list[j+1] = L.latLng(cartList[j].latitude, cartList[j].longitude);
-			}
-			routing.setWaypoints(routing_poi_list);
 			}
 		}
 	
 		function reloadCart() {
 		
 			var i = 0;
-			document.getElementById("POI_CART").innerHTML = ''; //Reset
+			document.getElementById("POI_CART").innerHTML = ''; //Reset the cart 
 			
+			//Setting the cart with the POI in cartlist
 			for(i = 0; i <= cartList.length - 1; i++)//Display
 			{
 				document.getElementById("POI_CART").innerHTML = document.getElementById("POI_CART").innerHTML +
@@ -150,9 +138,20 @@
 				+cartList[i].name + "<br/><i>" + cartList[i].type_name + "</i><br/><a href="+cartList[i].sitelink + 
 				">" + <?php echo _MAP_POI_LINK; ?> + "</a><br/>" +
 				"<span><a class=\"icon-up-dir\" onclick=\" invertPOI("+ i +",'up'); \"></a>   <a class=\"icon-down-dir\" onclick=\" invertPOI("+ i +",'down'); \"></a>  <a class=\"icon-trash-empty\" onclick=\" deletePOI( " + i + "); \"></a></span></div>" 
-				
-				
 			}
+			
+			//Refreshing the routing
+			var routing_poi_list = new Array();
+			
+			routing_poi_list[0] = L.latLng(user_latitude, user_longitude);
+			for(j = 0; j < cartList.length; ++j)
+				routing_poi_list[j+1] = L.latLng(cartList[j].latitude, cartList[j].longitude);
+			routing.setWaypoints(routing_poi_list);
+		
+			//routing.hide();
+			//Encode in JSON and put it in the hidden form
+			//document.getElementById('cartJsonExport').value = JSON.stringify(cartList);
+			
 		}
 		
 		function distance(i){
@@ -175,6 +174,7 @@
 
 		poi_array_decode = <?php echo($poi_array_json_encoded); ?>;
 		poi_array = poi_array_decode['poi_info'];
+
 		user_latitude = <?php echo($user_latitude); ?>;
 		user_longitude = <?php echo($user_longitude); ?>;
 
