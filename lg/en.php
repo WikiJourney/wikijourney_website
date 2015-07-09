@@ -36,6 +36,7 @@ define("_OPTIONS",			"Options :");
 define("_RANGE",			"Range (km) : ");
 define("_MAX_POI",			"Max POI : ");
 define("_PLACEHOLDER",		"Type a location here.");
+define("_LOADING",			"Loading...");
 
 //===> team.php
 define("_TEAM_TITLE",		"Our Team!");
@@ -95,3 +96,10 @@ define("_MAP_POI_TYPE_ART",			"'Art Museum'");
 define("_MAP_POI_TYPE_SCHOOL",		"'University'");
 define("_MAP_POI_TYPE_SUBWAY",		"'Subway'");
 
+define("_LOOKING_FOR",				"Looking for POI around : ");
+define("_YOUR_PATH",				"Your Path");
+define("_CLEAR_CART",				"Clear Cart");
+define("_SAVE_CART",				"Save cart !");
+define("_CART_IS_EMPTY_POPUP",		"Your cart is empty, please fill it before exporting it ! ;)");
+define("_YOU_ARE_HERE",				"You're here !");
+define("_CENTER_BUTTON",			"Center on my position");

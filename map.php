@@ -52,7 +52,7 @@
 
 ?>
 
-<p>Looking for POI around :<i style="float:right;">Lat : <?php echo round($user_latitude,3); ?>° Long : <?php echo round($user_longitude,3); ?>° </i>
+<p><?php echo _LOOKING_FOR; ?><i style="float:right;">Lat : <?php echo round($user_latitude,3); ?>° Long : <?php echo round($user_longitude,3); ?>° </i>
 
 </p>
 
@@ -61,13 +61,13 @@
 <div id="map_cart_container">
 	<div id="POI_CART_BLOCK" style="display: none;">
 	
-		<div id="POI_CART_TITLE">Votre Parcours</div>
+		<div id="POI_CART_TITLE"><?php echo _YOUR_PATH; ?></div>
 		
 		<div id="POI_CART"><!-- THIS IS GOING TO BE FILLED BY CART ELEMENTS IN JAVASCRIPT --></div>
 		
 		<div id="POI_CART_FOOTER">
-			<input type="submit" id="razCart" value="Clear Cart"/>
-			<input type="submit" id="exportCart" value="Save path !" onclick="submitCart();" />
+			<input type="submit" id="razCart" value="<?php echo _CLEAR_CART; ?>"/>
+			<input type="submit" id="exportCart" value="<?php echo _SAVE_CART; ?>" onclick="submitCart();" />
 			
 			<form action="map_export.php" method="post" id="hiddenForm">
 				<input type="hidden" id="cartJsonExport" name="cartJsonExport" value="" />
@@ -79,7 +79,7 @@
 	<div id="map" class="map" style="width: 100%;"></div>
 	
 	<div id="button-wrapper">
-		<input type="button" value="Centrer" onclick="center()">
+		<input type="button" value="<?php echo _CENTER_BUTTON; ?>" onclick="center()">
 	</div>
 
 	<script>
@@ -101,7 +101,7 @@
 		
 			if(cartList.length == 0) //The cart is empty
 			{
-				alert('Your cart is empty, please fill it before exporting it ! ;)');
+				alert('<?php echo _CART_IS_EMPTY_POPUP; ?>');
 			}
 			else
 			{
@@ -277,7 +277,7 @@
 
 			if (distance(i) && !ismerged){
 				/* merge pop-ups if they are too close */
-				popup_content = "Vous êtes ici ! <br>" ;
+				popup_content = "<?php echo _YOU_ARE_HERE; ?><br>" ;
 			    ismerged = true ;
 			   	poi_array[i]['marker'] = L.marker([user_latitude, user_longitude], {    icon: L.mapbox.marker.icon({
 					'marker-size': 'large',
@@ -308,7 +308,7 @@
 				'marker-symbol': 'pitch', 
 				'marker-color': '#fa0'
 			})}).addTo(map);
-			marker.bindPopup("Vous êtes ici!").openPopup();
+			marker.bindPopup("<?php echo _YOU_ARE_HERE; ?>").openPopup();
 		}
 
 		for(j = 0; j < pagicon.length; ++j) 

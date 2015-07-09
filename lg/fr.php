@@ -37,6 +37,7 @@ define("_OPTIONS",			"Options :");
 define("_RANGE",			"Rayon (km) : ");
 define("_MAX_POI",			"Maximum :");
 define("_PLACEHOLDER",		"Entrez un lieu ici.");
+define("_LOADING",			"Chargement...");
 
 //===> team.php
 define("_TEAM_TITLE",		"Notre Équipe");
@@ -100,7 +101,13 @@ define("_MAP_POI_TYPE_ART",			"'Musée d\'art'");
 define("_MAP_POI_TYPE_SCHOOL",		"'Université'");
 define("_MAP_POI_TYPE_SUBWAY",		"'Stations de métro'");
 
-
+define("_LOOKING_FOR",				"Recherche des points d'intérêt à proximité : ");
+define("_YOUR_PATH",				"Votre Parcous");
+define("_CLEAR_CART",				"Vider");
+define("_SAVE_CART",				"Sauvegarder !");
+define("_CART_IS_EMPTY_POPUP",		"Votre parcours est vide, remplissez le avant de l\'exporter ! ;)");
+define("_YOU_ARE_HERE",				"Vous êtes ici !");
+define("_CENTER_BUTTON",			"Centrer la carte");
 
 
 

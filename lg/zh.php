@@ -36,7 +36,7 @@ define("_OPTIONS",			"选项 :");
 define("_RANGE",			"范围 (km) : ");
 define("_MAX_POI",			"最大值 :");
 define("_PLACEHOLDER",		"在此输入地点名称.");
-
+define("_LOADING",			"Loading...");
 //===> team.php
 define("_TEAM_TITLE",		"团队");
 define("_TEAM_WHO_R_WE",	"成员简介");
@@ -98,3 +98,10 @@ define("_MAP_POI_TYPE_ART",			"'艺术馆'");
 define("_MAP_POI_TYPE_SCHOOL",		"'大学'");
 define("_MAP_POI_TYPE_SUBWAY",		"'地铁站'");
 
+define("_LOOKING_FOR",				"Looking for POI around : ");
+define("_YOUR_PATH",				"Your Path");
+define("_CLEAR_CART",				"Clear Cart");
+define("_SAVE_CART",				"Save cart !");
+define("_CART_IS_EMPTY_POPUP",		"Your cart is empty, please fill it before exporting it ! ;)");
+define("_YOU_ARE_HERE",				"You're here !");
+define("_CENTER_BUTTON",			"Center on my position");
