@@ -25,7 +25,7 @@
 		<input type="hidden" name="longitude" id="longitude" value="" />
 		<input type="hidden" name="latitude" id="latitude" value="" />
 		
-		<input type="submit" value="Go !" />
+		<input type="submit" value="Go !" onclick="this.value='Loading...';"/>
 		
 		</p>
 	</form>
