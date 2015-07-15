@@ -3,6 +3,13 @@
 	include("./include/haut.php"); 
 	//error_reporting(E_ALL);
 	/* Obtain current user latitude/longitude */
+	if(!isset($_POST['choice']))
+		die('
+		<script type="text/javascript">
+			document.location.href = "index.php";
+		</script>
+		'); //In case the user arrived directly on the page, he's redirected to the index
+		
 	if($_POST['choice'] == 'adress') {
 		$name = $_POST['adressValue'];
 		$osm_array_json = file_get_contents("http://nominatim.openstreetmap.org/search?q=" . $name . "&format=json");
