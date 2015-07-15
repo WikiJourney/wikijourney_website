@@ -79,8 +79,8 @@
 		<div id="POI_CART"><!-- THIS IS GOING TO BE FILLED BY CART ELEMENTS IN JAVASCRIPT --></div>
 		
 		<div id="POI_CART_FOOTER">
-			<input type="submit" id="razCart" value="<?php echo _CLEAR_CART; ?>"/>
-			<input type="submit" id="exportCart" value="<?php echo _SAVE_CART; ?>" onclick="submitCart();" />
+			<input type="submit" id="razCart" value="<?php echo _CLEAR_CART; ?>" onclick="razCart();" />
+			<input type="submit" title="This function is unavailable for the moment. Stay tuned for the next version ! ;)" id="exportCart" value="<?php echo _SAVE_CART; ?>" onclick="submitCart();" disabled />
 			
 			<form action="map_export.php" method="post" id="hiddenForm">
 				<input type="hidden" id="cartJsonExport" name="cartJsonExport" value="" />
@@ -112,6 +112,11 @@
 			document.getElementById('POI_CART_BLOCK').style.display = 'block';
 			document.getElementById('map').style.width = "70%";
 			document.getElementById('button-routing-wrapper').style.marginLeft = "308px"; //Magic number
+		}
+		
+		function razCart() {
+			cartList.length = 0;
+			reloadCart();
 		}
 
 		function submitCart() {
