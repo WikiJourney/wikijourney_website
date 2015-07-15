@@ -8,7 +8,7 @@
 
 //===> General
 
-define("_TITLE",			"Wiki Journey - Revisitez le tourisme.");
+define("_TITLE",			"Wiki Journey - Rediscover Tourism.");
 define("_SRC_IMAGE_LOGO",	"./images/design/logo_and_catchphrase/en.png");
 //===> Top
 define("_INDEX",			"Index");
@@ -28,6 +28,7 @@ define("_WELCOME_TITLE",	"Welcome!");
 define("_BUTTON_POI_AROUND","Find Point Of Interest around me!");
 define("_ADRESS_LOOK_UP",	"Or enter an adress to look up!");
 define("_ADRESS_FAILURE",	"Such a place doesn't exist!");
+define("_GEOLOC_FAILURE",	"Sorry but we can't find your position.");
 define("_AROUND_LOCATION", 	"Close to a location !");
 define("_AROUND_ME",		"Around Me !");
 define("_NOTE_GEOLOC",		"Note : This fonctionnality involve geolocation and could not work, it

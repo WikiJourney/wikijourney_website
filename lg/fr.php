@@ -28,6 +28,7 @@ define("_WELCOME_TITLE",	"Bienvenue !");
 define("_BUTTON_POI_AROUND","Trouver des points d'intérêts autour de moi !");
 define("_ADRESS_LOOK_UP",	"Ou à proximité d'une adresse !");
 define("_ADRESS_FAILURE",	"Cette adresse n'existe pas !");
+define("_GEOLOC_FAILURE",	"Désolé, mais il est impossible de vous géolocaliser.");
 define("_AROUND_LOCATION", 	"Autour d'une adresse particulière");
 define("_AROUND_ME",		"Autour de ma position !");
 define("_NOTE_GEOLOC",		"Note : cette fonctionnalité utilise la géolocalisation. Il n'est pas toujours

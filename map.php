@@ -3,22 +3,31 @@
 	include("./include/haut.php"); 
 	//error_reporting(E_ALL);
 	/* Obtain current user latitude/longitude */
-	if(!isset($_POST['choice']))
+	
+	if(!isset($_POST['choice']))//In case the user arrived directly on the page, he's redirected to the index
 		die('
 		<script type="text/javascript">
 			document.location.href = "index.php";
 		</script>
-		'); //In case the user arrived directly on the page, he's redirected to the index
+		'); 
 		
+
+	
 	if($_POST['choice'] == 'adress') {
 		$name = $_POST['adressValue'];
 		$osm_array_json = file_get_contents("http://nominatim.openstreetmap.org/search?q=" . $name . "&format=json");
 		$osm_array = json_decode($osm_array_json, true);
-		if ($osm_array == null) { header( 'Location: index.php?message=failure' ) ; }
+		if ($osm_array == null) { header( 'Location: index.php?message=adress' ) ; }
 		$user_latitude = $osm_array[0]["lat"];
 		$user_longitude = $osm_array[0]["lon"];
 	}
 	if($_POST['choice'] == 'around') {
+		if(isset($_POST['latitude']) && $_POST['latitude'] == 0 && $_POST['longitude'] == 0) //In case geolocation has crashed (it can't be 0,0)
+			die('
+			<script type="text/javascript">
+				document.location.href = "index.php?message=geoloc";
+			</script>
+			'); 
 		$user_latitude= $_POST['latitude'];
 		$user_longitude= $_POST['longitude'];
 	}

@@ -8,7 +8,7 @@
 
 //===> General
 
-define("_TITLE",			"Wiki Journey - Revisitez le tourisme.");
+define("_TITLE",			"Wiki Journey - Rediscover Tourism.");
 define("_SRC_IMAGE_LOGO",	"./images/design/logo_and_catchphrase/fr.png");
 //===> Top
 define("_INDEX",			"首页");
@@ -28,6 +28,7 @@ define("_WELCOME_TITLE",	"欢迎访问 !");
 define("_BUTTON_POI_AROUND","在我周围寻找有意思的地点!");
 define("_ADRESS_LOOK_UP",	"在一个特定地点周围寻找!");
 define("_ADRESS_FAILURE",	"此地址不存在 !");
+define("_GEOLOC_FAILURE",	"Sorry but we can't find your position.");
 define("_AROUND_LOCATION", 	"在一个特定地点周围寻找!");
 define("_AROUND_ME",		"在我周围寻找有意思的地点!");
 define("_NOTE_GEOLOC",		
