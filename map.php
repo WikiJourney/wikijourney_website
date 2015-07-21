@@ -36,8 +36,7 @@
 	$maxPOI = intval($_POST['maxPOI']);
 	
 	/* yolo la police */
-/*	
-	TEST ONLY !!
+
 	
 	//Make the url
 	$api_url = "http://wikijourneydev.alwaysdata.net/api/api.php?long=".$user_longitude."&lat=".$user_latitude."&lg=".$language."&maxPOI=".$maxPOI."&range=".$range;
@@ -55,11 +54,7 @@
 	curl_close($ch);
 	
 	$api_answer_array = json_decode($api_answer_json,true); //Decoding the json into an array
-*/
 
-//The following line is for test only
-	$api_answer_array = json_decode('{"infos":{"source":"WikiJourney API","link":"http:\/\/wikijourney.eu\/","api_version":"alpha 0.0.2"},"user_location":{"latitude":"50.632042299999995","longitude":"3.095606"},"poi":{"nb_poi":5,"poi_info":[{"latitude":50.63306,"longitude":3.09,"name":"Fives, Nord","sitelink":"https:\/\/en.wikipedia.org\/wiki\/Fives,_Nord","type_name":"human settlement","type_id":486972,"id":663930},{"latitude":50.633,"longitude":3.09055,"name":"Fives (m\u00e9tro de Lille M\u00e9tropole)","sitelink":null,"type_name":"metro station","type_id":928830,"id":1936001},{"latitude":50.6366,"longitude":3.08729,"name":"Caulier (m\u00e9tro de Lille M\u00e9tropole)","sitelink":null,"type_name":"metro station","type_id":928830,"id":2274687},{"latitude":50.6301,"longitude":3.09796,"name":"Marbrerie (m\u00e9tro de Lille M\u00e9tropole)","sitelink":null,"type_name":"metro station","type_id":928830,"id":2383251},{"latitude":50.6319,"longitude":3.08516,"name":null,"sitelink":null,"type_name":null,"type_id":null,"id":3279788},{"latitude":50.6468319,"longitude":3.048658516,"name":"Dogeville","sitelink":null,"type_name":null,"type_id":null,"id":3279788}]},"err_check":{"value":false}}',true);
-	
 	if($api_answer_array['err_check']['value'] == "true") //Error check
 		die("Error found when contacting the API : ".$api_answer_array['err_check']['err_msg']);
 
@@ -71,9 +66,7 @@
 <!-- Loading the scripts for the cart management and stuff -->
 <input type="hidden" id="mapPoiLink" value="<?php echo _MAP_POI_LINK; ?>" /><!-- As we can't put php in the js file, we got to put "defines" for translation somewhere.. -->
 <script type="text/javascript" src="./scripts/map-scripts.js"></script>
-
-
-
+		
 <p><?php echo _LOOKING_FOR; ?><i style="float:right;">Lat : <?php echo round($user_latitude,3); ?>° Long : <?php echo round($user_longitude,3); ?>° </i></p>
 
 </div> <!-- Closing the div opened in haut.php -->
@@ -209,7 +202,6 @@
 		map.setView([user_latitude, user_longitude], 15);
 		
 		</script>
-
 	</div>
 <div>
 <?php
