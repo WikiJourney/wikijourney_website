@@ -141,8 +141,15 @@ function reloadCart() {
 	{
 		htmlElement =
 		"<div class=\"eltCart\"><div class=\"eltCartNumber\">" + (i+1) +"</div>" 
-		+cartList[i].name + "<br/><i>" + cartList[i].type_name + "</i><br/>";
+		+cartList[i].name + "<br/>";
 		
+		if(cartList[i].type_name != null)
+		{
+			htmlElement += "<i>" + cartList[i].type_name + "</i><br/>";
+		}
+		else
+			htmlElement += "<br/>";
+			
 		if(cartList[i].sitelink != null)
 		{
 			htmlElement  += "<a href=" + cartList[i].sitelink + ">" + _MAP_POI_LINK + "</a><br/>";
