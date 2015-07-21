@@ -89,7 +89,7 @@ define("_TECHNICAL_TEXT",	"此网页还在建设当中，敬请期待! ;)");
 
 
 //===> map.php
-define("_MAP_POI_LINK",				"'维基百科'");
+define("_MAP_POI_LINK",				"维基百科");
 define("_MAP_POI_TYPE_CATHO",		"'天主教教堂'");
 define("_MAP_POI_TYPE_FOOD",		"'饭店'");
 define("_MAP_POI_TYPE_MONUM",		"'古迹'");

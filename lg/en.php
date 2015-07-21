@@ -87,7 +87,7 @@ define("_TECHNICAL_TEXT",	"This website is still under construction, please come
 
 
 //===> map.php
-define("_MAP_POI_LINK",				"'See on Wikipedia'");
+define("_MAP_POI_LINK",				"See on Wikipedia");
 define("_MAP_POI_TYPE_CATHO",		"'Churches'");
 define("_MAP_POI_TYPE_FOOD",		"'Restaurants'");
 define("_MAP_POI_TYPE_MONUM",		"'Monuments'");
