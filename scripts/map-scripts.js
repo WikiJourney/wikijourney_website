@@ -131,17 +131,33 @@ function reloadCart() {
 
 	var i = 0;
 	var _MAP_POI_LINK = document.getElementById('mapPoiLink').value; //Yep, it's ugly.
+
+	var htmlElement;
 	
 	document.getElementById("POI_CART").innerHTML = ''; //Reset the cart 
 	
 	//Setting the cart with the POI in cartlist
 	for(i = 0; i <= cartList.length - 1; i++)//Display
 	{
-		document.getElementById("POI_CART").innerHTML = document.getElementById("POI_CART").innerHTML +
+		htmlElement =
 		"<div class=\"eltCart\"><div class=\"eltCartNumber\">" + (i+1) +"</div>" 
-		+cartList[i].name + "<br/><i>" + cartList[i].type_name + "</i><br/><a href="+cartList[i].sitelink + 
-		">" + _MAP_POI_LINK + "</a><br/>" +
-		"<span><a class=\"icon-up-dir\" onclick=\" invertPOI("+ i +",'up'); \"></a>   <a class=\"icon-down-dir\" onclick=\" invertPOI("+ i +",'down'); \"></a>  <a class=\"icon-trash-empty\" onclick=\" deletePOI( " + i + "); \"></a></span></div>" 
+		+cartList[i].name + "<br/>";
+		
+		if(cartList[i].type_name != null)
+		{
+			htmlElement += "<i>" + cartList[i].type_name + "</i><br/>";
+		}
+		else
+			htmlElement += "<br/>";
+			
+		if(cartList[i].sitelink != null)
+		{
+			htmlElement  += "<a href=" + cartList[i].sitelink + ">" + _MAP_POI_LINK + "</a><br/>";
+		}
+		
+		htmlElement  += "<span><a class=\"icon-up-dir\" onclick=\" invertPOI("+ i +",'up'); \"></a>   <a class=\"icon-down-dir\" onclick=\" invertPOI("+ i +",'down'); \"></a>  <a class=\"icon-trash-empty\" onclick=\" deletePOI( " + i + "); \"></a></span></div>";
+		
+		document.getElementById("POI_CART").innerHTML = document.getElementById("POI_CART").innerHTML + htmlElement;
 	}
 	
 	//Refreshing the routing

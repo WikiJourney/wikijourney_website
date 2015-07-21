@@ -122,18 +122,21 @@ See documentation on http://wikijourney.eu/api/documentation.php
 				
 				$temp_sitelink_array = json_decode($temp_sitelink_array_json, true);
 				$temp_sitelink = $temp_sitelink_array["entities"]["Q" . $poi_id_array_clean["$i"]]["sitelinks"][$language . "wiki"]["url"];
-			
-				$poi_array[$i]["latitude"] = 		$temp_latitude;
-				$poi_array[$i]["longitude"] = 		$temp_longitude;
 				
-				$poi_array[$i]["name"] = 		$name;
-				$poi_array[$i]["sitelink"] = 		$temp_sitelink;
-				$poi_array[$i]["type_name"] = 		$type_name;
-				$poi_array[$i]["type_id"] = 		$temp_poi_type_id;
-				$poi_array[$i]["id"] = 			$poi_id_array_clean[$i];
+				if($name != null)
+				{
+					$poi_array[$i]["latitude"] = 		$temp_latitude;
+					$poi_array[$i]["longitude"] = 		$temp_longitude;
+					
+					$poi_array[$i]["name"] = 		$name;
+					$poi_array[$i]["sitelink"] = 		$temp_sitelink;
+					$poi_array[$i]["type_name"] = 		$type_name;
+					$poi_array[$i]["type_id"] = 		$temp_poi_type_id;
+					$poi_array[$i]["id"] = 			$poi_id_array_clean[$i];
+				}
 			}
 		}
-		$output['poi']['nb_poi'] = $i;
+		$output['poi']['nb_poi'] = count($poi_array);
 		$output['poi']['poi_info'] = $poi_array; //Output 
 		
 	}
