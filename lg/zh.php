@@ -8,7 +8,7 @@
 
 //===> General
 
-define("_TITLE",			"Wiki Journey - Revisitez le tourisme.");
+define("_TITLE",			"Wiki Journey - Rediscover Tourism.");
 define("_SRC_IMAGE_LOGO",	"./images/design/logo_and_catchphrase/fr.png");
 //===> Top
 define("_INDEX",			"首页");
@@ -28,6 +28,7 @@ define("_WELCOME_TITLE",	"欢迎访问 !");
 define("_BUTTON_POI_AROUND","在我周围寻找有意思的地点!");
 define("_ADRESS_LOOK_UP",	"在一个特定地点周围寻找!");
 define("_ADRESS_FAILURE",	"此地址不存在 !");
+define("_GEOLOC_FAILURE",	"Sorry but we can't find your position.");
 define("_AROUND_LOCATION", 	"在一个特定地点周围寻找!");
 define("_AROUND_ME",		"在我周围寻找有意思的地点!");
 define("_NOTE_GEOLOC",		
@@ -36,7 +37,7 @@ define("_OPTIONS",			"选项 :");
 define("_RANGE",			"范围 (km) : ");
 define("_MAX_POI",			"最大值 :");
 define("_PLACEHOLDER",		"在此输入地点名称.");
-
+define("_LOADING",			"Loading...");
 //===> team.php
 define("_TEAM_TITLE",		"团队");
 define("_TEAM_WHO_R_WE",	"成员简介");
@@ -88,7 +89,7 @@ define("_TECHNICAL_TEXT",	"此网页还在建设当中，敬请期待! ;)");
 
 
 //===> map.php
-define("_MAP_POI_LINK",				"'维基百科'");
+define("_MAP_POI_LINK",				"维基百科");
 define("_MAP_POI_TYPE_CATHO",		"'天主教教堂'");
 define("_MAP_POI_TYPE_FOOD",		"'饭店'");
 define("_MAP_POI_TYPE_MONUM",		"'古迹'");
@@ -98,3 +99,10 @@ define("_MAP_POI_TYPE_ART",			"'艺术馆'");
 define("_MAP_POI_TYPE_SCHOOL",		"'大学'");
 define("_MAP_POI_TYPE_SUBWAY",		"'地铁站'");
 
+define("_LOOKING_FOR",				"Looking for POI around : ");
+define("_YOUR_PATH",				"Your Path");
+define("_CLEAR_CART",				"Clear Cart");
+define("_SAVE_CART",				"Save cart !");
+define("_CART_IS_EMPTY_POPUP",		"Your cart is empty, please fill it before exporting it ! ;)");
+define("_YOU_ARE_HERE",				"You're here !");
+define("_CENTER_BUTTON",			"Center on my position");

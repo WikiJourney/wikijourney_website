@@ -3,23 +3,40 @@
 	include("./include/haut.php"); 
 	//error_reporting(E_ALL);
 	/* Obtain current user latitude/longitude */
-	if($_POST['choice'] == 'adress') {
+	
+	if(!isset($_POST['choice']))//In case the user arrived directly on the page, he's redirected to the index
+		die('
+		<script type="text/javascript">
+			document.location.href = "index.php";
+		</script>
+		'); 
+		
+
+	
+	if($_POST['choice'] == 'adress') { //If the user typed an adress, we get location
 		$name = $_POST['adressValue'];
 		$osm_array_json = file_get_contents("http://nominatim.openstreetmap.org/search?q=" . $name . "&format=json");
 		$osm_array = json_decode($osm_array_json, true);
-		if ($osm_array == null) { header( 'Location: index.php?message=failure' ) ; }
+		if ($osm_array == null) { header( 'Location: index.php?message=adress' ) ; }
 		$user_latitude = $osm_array[0]["lat"];
 		$user_longitude = $osm_array[0]["lon"];
 	}
-	if($_POST['choice'] == 'around') {
+	if($_POST['choice'] == 'around') { //Else, we look for POI around him
+		if(isset($_POST['latitude']) && $_POST['latitude'] == 0 && $_POST['longitude'] == 0) //In case geolocation has crashed (it can't be 0,0 exactly)
+			die('
+			<script type="text/javascript">
+				document.location.href = "index.php?message=geoloc";
+			</script>
+			'); 
 		$user_latitude= $_POST['latitude'];
 		$user_longitude= $_POST['longitude'];
 	}
 	
-	$range = $_POST['range'];
-	$maxPOI = $_POST['maxPOI'];
+	$range = intval($_POST['range']);
+	$maxPOI = intval($_POST['maxPOI']);
 	
 	/* yolo la police */
+
 	
 	//Make the url
 	$api_url = "http://wikijourneydev.alwaysdata.net/api/api.php?long=".$user_longitude."&lat=".$user_latitude."&lg=".$language."&maxPOI=".$maxPOI."&range=".$range;
@@ -37,8 +54,8 @@
 	curl_close($ch);
 	
 	$api_answer_array = json_decode($api_answer_json,true); //Decoding the json into an array
-		
-	if($api_answer_array['err_check']['value'] == "true")
+
+	if($api_answer_array['err_check']['value'] == "true") //Error check
 		die("Error found when contacting the API : ".$api_answer_array['err_check']['err_msg']);
 
 	//If no error, we put the POI array in a json to use it with JavaScript
@@ -46,129 +63,59 @@
 
 ?>
 
-<p>Searching around<br/>Lat : <?php echo $user_latitude; ?> Long : <?php echo $user_longitude; ?> <br/>Carte :</p>
-</div>
+<!-- Loading the scripts for the cart management and stuff -->
+<input type="hidden" id="mapPoiLink" value="<?php echo _MAP_POI_LINK; ?>" /><!-- As we can't put php in the js file, we got to put "defines" for translation somewhere.. -->
+<script type="text/javascript" src="./scripts/map-scripts.js"></script>
+		
+<p><?php echo _LOOKING_FOR; ?><i style="float:right;">Lat : <?php echo round($user_latitude,3); ?>° Long : <?php echo round($user_longitude,3); ?>° </i></p>
+
+</div> <!-- Closing the div opened in haut.php -->
 
 <div id="map_cart_container">
-	<div id="POI_CART"></div>
-	<div id="map" class="map"></div>
+
+	<div id="POI_CART_BLOCK" style="display: none;"><!-- Contains the cart, the cart title... Initially hidden, will open with JS -->
+	
+		<div id="POI_CART_TITLE"><?php echo _YOUR_PATH; ?></div>
+		
+		<div id="POI_CART"><!-- THIS IS GOING TO BE FILLED BY CART ELEMENTS IN JAVASCRIPT --></div>
+		
+		<div id="POI_CART_FOOTER">
+			<input type="submit" id="razCart" value="<?php echo _CLEAR_CART; ?>" onclick="razCart();" />
+			<input type="submit" title="This function is unavailable for the moment. Stay tuned for the next version ! ;)" id="exportCart" value="<?php echo _SAVE_CART; ?>" onclick="submitCart();" disabled />
+			
+			<!-- Let's put the hidden form here.. Random. -->
+			<form action="map_export.php" method="post" id="hiddenForm">
+				<input type="hidden" id="cartJsonExport" name="cartJsonExport" value="" />
+			</form>
+			
+		</div>
+		
+	</div>
+	
+	<div id="map" class="map" style="width: 100%;"><!-- THIS IS GOING TO BE FILLED BY THE MAP THANKS TO MAPBOX --></div>
+	
 	<div id="button-wrapper">
-		<input type="button" value="Centrer" onclick="center()">
+		<input type="button" value="<?php echo _CENTER_BUTTON; ?>" onclick="center()">
+	</div>
+	<div id="button-routing-wrapper">
+		<img src="./images/design/routing_icon.png" title="Hide/Show routing" alt="Hide/Show routing" onclick="hideRoutingContainer();" style="width: 28px;">
 	</div>
 
 	<script>
 		var poi_array = new Array();
 		var cartList = new Array();
 		
-		function addToCart(i) {
-		//Add a marker to the cart. 
-			var j = 0;
-			var flag;
-			
-			flag = 0;
-			
-			for(j = 0; j < cartList.length; j++)
-			{
-				if( poi_array[i].id == cartList[j].id )//We test if this POI is already in the list
-					flag = 1;
-			}
-			
-			if(flag == 0)
-				cartList[cartList.length] = poi_array[i];
-			
-			reloadCart(cartList);
-			var routing_poi_list = new Array();
-			routing_poi_list[0] = L.latLng(user_latitude, user_longitude);
-			for(j = 0; j < cartList.length; ++j)
-				routing_poi_list[j+1] = L.latLng(cartList[j].latitude, cartList[j].longitude);
-			routing.setWaypoints(routing_poi_list);
-		
-			routing.hide();
-		}
-		
-		function center(){
-			map.setView([user_latitude, user_longitude], 15);
-		}
-
-		function deletePOI(i) {
-				cartList.splice(i,1);
-				reloadCart();
-				routing_poi_list = [] ;
-				routing_poi_list[0] = L.latLng(user_latitude, user_longitude);
-				for(j = 0; j < cartList.length; ++j) {
-					routing_poi_list[j+1] = L.latLng(cartList[j].latitude, cartList[j].longitude);
-				}
-				routing.setWaypoints(routing_poi_list);
-		}
-		
-		function invertPOI( i, dir) {
-			//Cases where we can't do anything
-			var temp;
-			
-			if( ! ( (i == 0 && dir == 'down') || (i == cartList.length - 1 && dir == 'up') ) ) //Already at the bottom or at the top
-			{
-				if(dir == 'up')//Permutation
-				{
-					temp = cartList[i + 1];
-					cartList[i + 1] = cartList[i];
-					cartList[i] = temp;
-				}
-				else if(dir == 'down')//Permutation
-				{
-					temp = cartList[i - 1];
-					cartList[i - 1] = cartList[i];
-					cartList[i] = temp;
-				}
-			reloadCart();
-			routing_poi_list = [] ;
-			routing_poi_list[0] = L.latLng(user_latitude, user_longitude);
-			for(j = 0; j < cartList.length; ++j) {
-				routing_poi_list[j+1] = L.latLng(cartList[j].latitude, cartList[j].longitude);
-			}
-			routing.setWaypoints(routing_poi_list);
-			}
-		}
-	
-		function reloadCart() {
-		
-			var i = 0;
-			document.getElementById("POI_CART").innerHTML = ''; //Reset
-			
-			for(i = 0; i <= cartList.length - 1; i++)//Display
-			{
-				document.getElementById("POI_CART").innerHTML = 
-				"<div class=\"eltCart\">" + cartList[i].name + "<br/><i>" + cartList[i].type_name + "</i><br/><a href="+cartList[i].sitelink + 
-				">" + <?php echo _MAP_POI_LINK; ?> + "</a><br/>" +
-				"<span><a class=\"icon-up-dir\" onclick=\" invertPOI("+ i +",'up'); \"></a>   <a class=\"icon-down-dir\" onclick=\" invertPOI("+ i +",'down'); \"></a>  <a class=\"icon-trash-empty\" onclick=\" deletePOI( " + i + "); \"></a></span></div>" 
-				
-				+ document.getElementById("POI_CART").innerHTML;
-			}
-		}
-		
-		function distance(i){
-			Math.radians = function(degrees) {
-			  return degrees * Math.PI / 180;
-			};
-
-			var userlat = Math.radians(user_latitude);
-			var userlong = Math.radians(user_longitude);
-			var poilat = Math.radians(poi_array[i].latitude);
-			var poilong = Math.radians(poi_array[i].longitude);
-			var r = 6633 ; //rayon de la Terre
-			//calcul de la distance précise
-			var dp = 2*Math.asin(Math.sqrt(Math.pow(Math.sin((userlat-poilat)/2),2)+Math.cos(userlat)*Math.cos(poilat)*Math.pow(Math.sin((userlong-poilong)/2),2)));
-			//en km :
-			var d = dp*r ;
-			//affiche ou pas ? TODO : le rendre plus précis...
-			return (d < 0.07) ;
-		}
-
 		poi_array_decode = <?php echo($poi_array_json_encoded); ?>;
 		poi_array = poi_array_decode['poi_info'];
+
 		user_latitude = <?php echo($user_latitude); ?>;
 		user_longitude = <?php echo($user_longitude); ?>;
+		
+		
 
-		/* Correspondances icônes/ID/label */
+
+
+		/* This is for the icon/ID/label association, to be completed */
 		var pagicon = [["16970", 'place-of-worship', <?php echo _MAP_POI_TYPE_CATHO ?>], ["2095", 'restaurant', <?php echo _MAP_POI_TYPE_FOOD ?>], ["12518", 'monument', <?php echo _MAP_POI_TYPE_MONUM ?>], ["34627", 'religious-jewish', <?php echo _MAP_POI_TYPE_JEWISH ?>], ["10387575 916475", 'town-hall', <?php echo _MAP_POI_TYPE_MUSEUM ?>], ["207694", 'art-gallery', <?php echo _MAP_POI_TYPE_ART ?>], ["3914 3918 9826 847027", 'college', <?php echo _MAP_POI_TYPE_SCHOOL ?>], ["5503 928830", "rail-metro", <?php echo _MAP_POI_TYPE_SUBWAY ?>, ]];
 		var j;
 		var ismerged = false;
@@ -177,13 +124,13 @@
 
 		/* Overlay (icons) management */
 		var overlayMaps = new Array();
-		/* Array of the form "poi type": { poi1, poi2 } */
 		var map = L.mapbox.map('map', 'polochon-street.kpogic18');
 		var routing_poi_list = new Array();
+		
 		var routing = L.Routing.control({
   				waypoints: routing_poi_list
 			}).addTo(map);
-		routing.hide();
+			
 
 		for(j = 0; j < pagicon.length; ++j) {
 			overlayMaps[pagicon[j][2]] = L.layerGroup([]);
@@ -191,9 +138,6 @@
 
 		L.control.layers(null, overlayMaps).addTo(map);
 
-	//Complete list of symbols https://www.mapbox.com/maki/
-		
-		//marker.bindPopup("Vous êtes ici !").openPopup();
 
 		/* place wiki POI */
 		for(i = 0; i < Math.min(poi_array_decode.nb_poi, <?php echo $maxPOI ?>); ++i) {
@@ -202,15 +146,15 @@
 			for(j = 0; ((j < pagicon.length) && ((pagicon[j][0]).search(String(poi_array[i].type_id)))); j++)
 				;
 
-			if (distance(i) && !ismerged){
+			if (distance(i) < 0.07 && !ismerged){
 				/* merge pop-ups if they are too close */
-				popup_content = "Vous êtes ici ! <br>" ;
+				popup_content = "<?php echo _YOU_ARE_HERE; ?><br>" ;
 			    ismerged = true ;
 			   	poi_array[i]['marker'] = L.marker([user_latitude, user_longitude], {    icon: L.mapbox.marker.icon({
 					'marker-size': 'large',
 					'marker-symbol': 'pitch',
 					'marker-color': '#fa0'
-				})}).addTo(map);
+				})}).addTo(map); 		//Complete list of symbols https://www.mapbox.com/maki/
 			}
 			else if(j < pagicon.length){
 				/* if we have an icon for the type of POI, display it */
@@ -225,7 +169,7 @@
 				poi_array[i]["marker"] = L.marker([poi_array[i].latitude, poi_array[i].longitude]).addTo(map); 
 			}
 			
-			popup_content += poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"" + poi_array[i].sitelink + "\">" + <?php echo _MAP_POI_LINK; ?> + "</a> <br /> <a href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\">[+]</a></p>";
+			popup_content += poi_array[i].name + "<br /> <p><a target=\"_blank\" href=\"" + poi_array[i].sitelink + "\">" + '<?php echo _MAP_POI_LINK; ?>' + "</a> <br /> <a href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\">[+]</a></p>";
 			poi_array[i]['marker'].bindPopup(popup_content).openPopup();
 		}
 
@@ -235,15 +179,29 @@
 				'marker-symbol': 'pitch', 
 				'marker-color': '#fa0'
 			})}).addTo(map);
-			marker.bindPopup("Vous êtes ici!").openPopup();
+			marker.bindPopup("<?php echo _YOU_ARE_HERE; ?>").openPopup();
 		}
 
 		for(j = 0; j < pagicon.length; ++j) 
 			map.addLayer(overlayMaps[pagicon[j][2]]);
+		
 
+		//Draw a circle on the map around user's position, the range is $range.
+		var circle_options = {
+			  color: ' rgb(248,99,99)',      // Stroke color
+			  opacity: 0.8,         // Stroke opacity
+			  weight: 3,         // Stroke weight
+			  fillColor: 'rgb(248,99,99)',  // Fill color
+			  fillOpacity: 0.05,    // Fill opacity
+			  dashArray: "5,10"
+		 };
+
+		var circle_range = L.circle([<?php echo $user_latitude; ?>, <?php echo $user_longitude; ?>], <?php echo $range*1000; ?>, circle_options).addTo(map);	
+		
+		//And setting the view.
 		map.setView([user_latitude, user_longitude], 15);
+		
 		</script>
-
 	</div>
 <div>
 <?php

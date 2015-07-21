@@ -8,7 +8,7 @@
 
 //===> General
 
-define("_TITLE",			"Wiki Journey - Revisitez le tourisme.");
+define("_TITLE",			"Wiki Journey - Rediscover Tourism.");
 define("_SRC_IMAGE_LOGO",	"./images/design/logo_and_catchphrase/en.png");
 //===> Top
 define("_INDEX",			"Index");
@@ -28,6 +28,7 @@ define("_WELCOME_TITLE",	"Welcome!");
 define("_BUTTON_POI_AROUND","Find Point Of Interest around me!");
 define("_ADRESS_LOOK_UP",	"Or enter an adress to look up!");
 define("_ADRESS_FAILURE",	"Such a place doesn't exist!");
+define("_GEOLOC_FAILURE",	"Sorry but we can't find your position.");
 define("_AROUND_LOCATION", 	"Close to a location !");
 define("_AROUND_ME",		"Around Me !");
 define("_NOTE_GEOLOC",		"Note : This fonctionnality involve geolocation and could not work, it
@@ -36,6 +37,7 @@ define("_OPTIONS",			"Options :");
 define("_RANGE",			"Range (km) : ");
 define("_MAX_POI",			"Max POI : ");
 define("_PLACEHOLDER",		"Type a location here.");
+define("_LOADING",			"Loading...");
 
 //===> team.php
 define("_TEAM_TITLE",		"Our Team!");
@@ -85,7 +87,7 @@ define("_TECHNICAL_TEXT",	"This website is still under construction, please come
 
 
 //===> map.php
-define("_MAP_POI_LINK",				"'See on Wikipedia'");
+define("_MAP_POI_LINK",				"See on Wikipedia");
 define("_MAP_POI_TYPE_CATHO",		"'Churches'");
 define("_MAP_POI_TYPE_FOOD",		"'Restaurants'");
 define("_MAP_POI_TYPE_MONUM",		"'Monuments'");
@@ -95,3 +97,10 @@ define("_MAP_POI_TYPE_ART",			"'Art Museum'");
 define("_MAP_POI_TYPE_SCHOOL",		"'University'");
 define("_MAP_POI_TYPE_SUBWAY",		"'Subway'");
 
+define("_LOOKING_FOR",				"Looking for POI around : ");
+define("_YOUR_PATH",				"Your Path");
+define("_CLEAR_CART",				"Clear Cart");
+define("_SAVE_CART",				"Save cart !");
+define("_CART_IS_EMPTY_POPUP",		"Your cart is empty, please fill it before exporting it ! ;)");
+define("_YOU_ARE_HERE",				"You're here !");
+define("_CENTER_BUTTON",			"Center on my position");

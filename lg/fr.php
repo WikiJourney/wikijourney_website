@@ -28,6 +28,7 @@ define("_WELCOME_TITLE",	"Bienvenue !");
 define("_BUTTON_POI_AROUND","Trouver des points d'intérêts autour de moi !");
 define("_ADRESS_LOOK_UP",	"Ou à proximité d'une adresse !");
 define("_ADRESS_FAILURE",	"Cette adresse n'existe pas !");
+define("_GEOLOC_FAILURE",	"Désolé, mais il est impossible de vous géolocaliser.");
 define("_AROUND_LOCATION", 	"Autour d'une adresse particulière");
 define("_AROUND_ME",		"Autour de ma position !");
 define("_NOTE_GEOLOC",		"Note : cette fonctionnalité utilise la géolocalisation. Il n'est pas toujours
@@ -37,6 +38,7 @@ define("_OPTIONS",			"Options :");
 define("_RANGE",			"Rayon (km) : ");
 define("_MAX_POI",			"Maximum :");
 define("_PLACEHOLDER",		"Entrez un lieu ici.");
+define("_LOADING",			"Chargement...");
 
 //===> team.php
 define("_TEAM_TITLE",		"Notre Équipe");
@@ -90,7 +92,7 @@ define("_TECHNICAL_TEXT",	"Ce site web est encore en construction, merci de reve
 
 
 //===> map.php
-define("_MAP_POI_LINK",				"'Aller voir sur Wikipedia'");
+define("_MAP_POI_LINK",				"Lien Wikipédia");
 define("_MAP_POI_TYPE_CATHO",		"'Eglises'");
 define("_MAP_POI_TYPE_FOOD",		"'Restaurants'");
 define("_MAP_POI_TYPE_MONUM",		"'Monuments'");
@@ -100,7 +102,13 @@ define("_MAP_POI_TYPE_ART",			"'Musée d\'art'");
 define("_MAP_POI_TYPE_SCHOOL",		"'Université'");
 define("_MAP_POI_TYPE_SUBWAY",		"'Stations de métro'");
 
-
+define("_LOOKING_FOR",				"Recherche des points d'intérêt à proximité : ");
+define("_YOUR_PATH",				"Votre Parcours");
+define("_CLEAR_CART",				"Vider");
+define("_SAVE_CART",				"Sauvegarder !");
+define("_CART_IS_EMPTY_POPUP",		"Votre parcours est vide, remplissez le avant de l\'exporter ! ;)");
+define("_YOU_ARE_HERE",				"Vous êtes ici !");
+define("_CENTER_BUTTON",			"Centrer la carte");
 
 
 
