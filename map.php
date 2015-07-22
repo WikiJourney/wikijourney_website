@@ -15,9 +15,16 @@
 	
 	if($_POST['choice'] == 'adress') { //If the user typed an adress, we get location
 		$name = $_POST['adressValue'];
-		$osm_array_json = file_get_contents("http://nominatim.openstreetmap.org/search?q=" . $name . "&format=json");
+		$osm_array_json = file_get_contents("http://nominatim.openstreetmap.org/search?format=json&q=\"" . urlencode($name)."\"");
 		$osm_array = json_decode($osm_array_json, true);
-		if ($osm_array == null) { header( 'Location: index.php?message=adress' ) ; }
+		
+		if (!isset($osm_array[0]["lat"]))
+			die('
+			<script type="text/javascript">
+				document.location.href = "index.php?message=adress";
+			</script>
+			'); 
+
 		$user_latitude = $osm_array[0]["lat"];
 		$user_longitude = $osm_array[0]["lon"];
 	}

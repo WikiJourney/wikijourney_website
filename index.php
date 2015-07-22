@@ -1,21 +1,7 @@
 <?php
 	include("./include/haut.php");
 	
-	if(isset($_GET['message']))
-	{
-		if($_GET['message'] == 'adress')
-		{
-			echo '<script>alert("';
-			echo _ADRESS_FAILURE;
-			echo '"); </script>';
-		}
-		if($_GET['message'] == 'geoloc')
-		{
-			echo '<script>alert("';
-			echo _GEOLOC_FAILURE;
-			echo '"); </script>';
-		}
-	}
+
 ?>
 
 <h1><?php echo _WELCOME_TITLE; ?></h1>
@@ -83,7 +69,23 @@
 
 
 
-
 <?php
 	include("./include/bas.php");
+
+	//At the end of the page, so it could load.
+	if(isset($_GET['message']))
+	{
+		if($_GET['message'] == 'adress')
+		{
+			echo '<script>alert("';
+			echo _ADRESS_FAILURE;
+			echo '"); </script>';
+		}
+		if($_GET['message'] == 'geoloc')
+		{
+			echo '<script>alert("';
+			echo _GEOLOC_FAILURE;
+			echo '"); </script>';
+		}
+	}
 ?>
