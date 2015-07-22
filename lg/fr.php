@@ -103,6 +103,7 @@ define("_MAP_POI_TYPE_SCHOOL",		"'Université'");
 define("_MAP_POI_TYPE_SUBWAY",		"'Stations de métro'");
 
 define("_LOOKING_FOR",				"Recherche des points d'intérêt à proximité : ");
+define("_SEE_WIKIVOYAGE_GUIDES",	"Consultez les guides WikiVoyage autour de vous !");
 define("_YOUR_PATH",				"Votre Parcours");
 define("_CLEAR_CART",				"Vider");
 define("_SAVE_CART",				"Sauvegarder !");

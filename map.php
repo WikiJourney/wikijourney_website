@@ -84,7 +84,7 @@ if($api_answer_array['guides']['nb_guides'] != 0) //If we got guides from WikiVo
 ?>
 	<div id="WikiVoyageBox">
 		<p>
-			<span id="WikiVoyageTitle">Consultez les guides WikiVoyage à proximité !</span>
+			<span id="WikiVoyageTitle"><?php echo _SEE_WIKIVOYAGE_GUIDES; ?></span>
 			<div id="WikiVoyageThumbnailContainer">
 				<div id="WikiVoyageThumbnailContainerScroll">
 				<?php 
