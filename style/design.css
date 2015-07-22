@@ -352,3 +352,58 @@ background-color: rgb(174,203,219);
     margin-left: 11px;/* MAGIC NUMBERS <3 */
     margin-top: -400px;
 }
+
+#WikiVoyageBox{
+	width: 95%;
+	padding-top: 20px;
+	height: 180px;
+	margin: auto;
+}
+
+#WikiVoyageThumbnailContainer{
+	overflow-x: scroll;
+	overflow-y: hidden;
+
+	margin: auto;
+	height: 160px;
+	width: 100%;
+}
+#WikiVoyageThumbnailContainerScroll{
+	width: auto; 
+	white-space: nowrap
+}
+
+#WikiVoyageThumbnailContainer::-webkit-scrollbar{
+border-radius: 4px;
+height:8px;
+background-color:#eeeeee;
+} 
+#WikiVoyageThumbnailContainer::-webkit-scrollbar-thumb{
+background-color:rgb(174,203,219);
+border-radius:4px;
+}
+
+.WikiVoyageElement{
+	height: 130px;
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
+	margin-left: 5px;
+	padding: 8px;
+	background-color: rgb(174,203,219);
+	min-width: 100px;
+	font-family: "Calibri",Sans;
+	font-size: 0.9em;
+	border-radius: 3px;
+	
+}
+.WikiVoyageElement a{
+	color:black;
+}
+.WikiVoyageElement a:hover{
+	color: grey;
+}
+.WikiVoyageImg{
+	margin-top: 8px;
+	height: 100px;
+}
