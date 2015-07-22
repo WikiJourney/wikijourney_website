@@ -76,7 +76,7 @@ See documentation on http://wikijourney.eu/api/documentation.php
 			{
 				$wikivoyageRequest = "https://".$language.".wikivoyage.org/w/api.php?action=query&format=json&" //Base
 									."prop=coordinates|info|pageterms|pageimages&"	//Props list
-									."piprop=thumbnail&pithumbsize=144&inprop=url&wbptterms=description" //Properties dedicated to image, url and description
+									."piprop=thumbnail&pithumbsize=144&pilimit=50&inprop=url&wbptterms=description" //Properties dedicated to image, url and description
 									."&generator=geosearch&ggscoord=$user_latitude|$user_longitude&ggsradius=10000&ggslimit=50"; //Properties dedicated to geosearch
 			}
 			else //Simplified request
@@ -98,13 +98,17 @@ See documentation on http://wikijourney.eu/api/documentation.php
 				{
 					$wikivoyage_output_array[$i]['pageid'] = $wikivoyage_clean_array[$i]['pageid'];
 					$wikivoyage_output_array[$i]['title'] = $wikivoyage_clean_array[$i]['title'];
+					$wikivoyage_output_array[$i]['pagelanguage'] = $wikivoyage_clean_array[$i]['pagelanguage'];
+					$wikivoyage_output_array[$i]['sitelink'] = $wikivoyage_clean_array[$i]['fullurl'];
 					if(isset($wikivoyage_clean_array[$i]['coordinates']['lat']))
 					{
 						$wikivoyage_output_array[$i]['latitude'] = $wikivoyage_clean_array[$i]['coordinates']['lat']; 	//Warning : could be null
 						$wikivoyage_output_array[$i]['longitude'] = $wikivoyage_clean_array[$i]['coordinates']['lon'];	//Warning : could be null
 					}
-					$wikivoyage_output_array[$i]['pagelanguage'] = $wikivoyage_clean_array[$i]['pagelanguage'];
-					$wikivoyage_output_array[$i]['sitelink'] = $wikivoyage_clean_array[$i]['fullurl'];
+					if(isset($wikivoyage_clean_array[$i]['terms']['description']))
+						$wikivoyage_output_array[$i]['description'] = $wikivoyage_clean_array[$i]['terms']['description'][0];
+					if(isset($wikivoyage_clean_array[$i]['thumbnail']['source']))
+						$wikivoyage_output_array[$i]['thumbnail'] = $wikivoyage_clean_array[$i]['thumbnail']['source'];
 				}
 				$output['guides']['nb_guides'] = $i;
 				$output['guides']['guides_info'] = $wikivoyage_output_array;
