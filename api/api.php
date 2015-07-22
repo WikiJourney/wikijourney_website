@@ -135,7 +135,7 @@ See documentation on http://wikijourney.eu/api/documentation.php
 						//No else, because if we didn't found the language it means that there's no guide for the user's language
 					}
 					$output['guides']['nb_guides'] = $realCount;
-					if($realCount != 0) $output['guides']['guides_info'] = $wikivoyage_output_array;
+					if($realCount != 0) $output['guides']['guides_info'] = array_values($wikivoyage_output_array);
 				}
 				else //Case we're in the middle of Siberia
 					$output['guides']['nb_guides'] = 0;

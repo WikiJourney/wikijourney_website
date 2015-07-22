@@ -39,7 +39,10 @@
 
 	
 	//Make the url
-	$api_url = "http://wikijourneydev.alwaysdata.net/api/api.php?long=".$user_longitude."&lat=".$user_latitude."&lg=".$language."&maxPOI=".$maxPOI."&range=".$range;
+	$api_url = "http://wikijourneydev.alwaysdata.net/api/api2.php?wikivoyage=1&long=".$user_longitude."&lat=".$user_latitude."&lg=".$language."&maxPOI=".$maxPOI."&range=".$range;
+	//DON'T FORGET TO REPLACE api2.php BY api.php
+	
+	echo "<!-- ".$api_url."-->"; //Test only ? Maybe.
 	
 	//NOTE !
 	//It looks like we're experiencing trouble with this. Actually, it's hard to loopback on our own server with filegetcontents, curl or whatever.
@@ -60,6 +63,7 @@
 
 	//If no error, we put the POI array in a json to use it with JavaScript
 	$poi_array_json_encoded = json_encode($api_answer_array['poi']);
+	
 
 ?>
 
@@ -68,6 +72,29 @@
 <script type="text/javascript" src="./scripts/map-scripts.js"></script>
 		
 <p><?php echo _LOOKING_FOR; ?><i style="float:right;">Lat : <?php echo round($user_latitude,3); ?>° Long : <?php echo round($user_longitude,3); ?>° </i></p>
+
+<?php 
+if($api_answer_array['guides']['nb_guides'] != 0) //If we got guides from WikiVoyage, display it
+{
+	$guides_array = $api_answer_array['guides']['guides_info'];
+?>
+	<div id="WikiVoyageBox">
+		<p>
+			<span id="WikiVoyageTitle">Consultez les guides WikiVoyage à proximité !</span>
+			<div id="WikiVoyageThumbnailContainer">
+				<?php 
+					for($i = 0; $i < $api_answer_array['guides']['nb_guides']; $i++)
+					{
+						echo $guides_array[$i]['title'];
+					}
+				
+				?>
+			</div>
+		</p>
+	</div>
+<?php
+}//End displaying guides from Wikivoyage
+?>
 
 </div> <!-- Closing the div opened in haut.php -->
 
