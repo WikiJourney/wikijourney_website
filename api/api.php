@@ -43,8 +43,9 @@ See documentation on http://wikijourney.eu/api/documentation.php
 	if(isset($_GET['lg'])) 		$language = secureInput($_GET['lg']);
 		else $language = 'en';
 	if(isset($_GET['displayDesc'])) $displayDesc = secureInput($_GET['displayDesc']);
-		else $displayDesc = 1;
-	
+		else $displayDesc = 0;
+	if(isset($_GET['wikivoyage'])) $wikivoyageSupport = secureInput($_GET['wikivoyage']);
+		else $wikivoyageSupport = 0;
 	
 	//============> INFO SECTION
 	$output['infos']['source'] 		= "WikiJourney API";
@@ -56,68 +57,96 @@ See documentation on http://wikijourney.eu/api/documentation.php
 	//============> INFO POINT OF INTEREST
 	if(!isset($error))
 	{
+		// ==================================> Put in the output the user location (can be useful)
 		$output['user_location']['latitude'] = $user_latitude;
 		$output['user_location']['longitude'] = $user_longitude;
 		
-		/* P31 */
-		/* Returns a $poi_id_array_clean array with a list of wikidata pages ID within a $range km range from user location */
+		// ==================================> Wikivoyage requests : find travel guides around
+		if($wikivoyageSupport == 1)
+		{
+			if($displayDesc == 1) //We add description and image
+			{
+				$wikivoyageRequest = "https://en.wikivoyage.org/w/api.php?action=query&format=json&" //Base
+									."prop=coordinates|info|pageterms|pageimages|langlinks&"	//Props list
+									."piprop=thumbnail&pithumbsize=144&pilimit=50&inprop=url&wbptterms=description" //Properties dedicated to image, url and description
+									."&llprop=url"//Properties dedicated to langlinks
+									."&generator=geosearch&ggscoord=$user_latitude|$user_longitude&ggsradius=10000&ggslimit=50"; //Properties dedicated to geosearch
+			}
+			else //Simplified request
+			{
+				$wikivoyageRequest = "https://en.wikivoyage.org/w/api.php?action=query&format=json&" //Base
+									."prop=coordinates|info|langlinks&"	//Props list
+									."inprop=url" //Properties dedicated to url
+									."&llprop=url"//Properties dedicated to langlinks
+									."&generator=geosearch&ggscoord=$user_latitude|$user_longitude&ggsradius=10000&ggslimit=50"; //Properties dedicated to geosearch
+			}
+			
+			echo $wikivoyageRequest; //TEST ONLY
+			
+			$wikivoyage_json = file_get_contents($wikivoyageRequest); //Request is sent to WikiVoyage API
+			
+			if($wikivoyage_json == FALSE)
+			{
+				$error = "API Wikivoyage is not responding.";
+			}
+			else
+			{
+				$wikivoyage_array = json_decode($wikivoyage_json, true);
+				
+				if(isset ($wikivoyage_array['query']['pages'])) //If there's guides around
+				{	
+				
+					$wikivoyage_clean_array = array_values($wikivoyage_array['query']['pages']);//Reindexing the array (because it's indexed by pageid)
+					
+					for($i = 0; $i < count($wikivoyage_clean_array); $i++)
+					{
+						$j = 0;
+						
+						while($wikivoyage_clean_array[$i]['langlinks'][$j]['lang'] != $language && $j < count($wikivoyage_clean_array[$i]['langlinks'])-1)
+							$j++; //We walk in the array trying to find the user's language
+
+						if($wikivoyage_clean_array[$i]['langlinks'][$j]['lang'] == $language) //If we found it
+						{
+							$wikivoyage_output_array[$i]['pageid'] = $wikivoyage_clean_array[$i]['pageid'];
+							$wikivoyage_output_array[$i]['title'] = $wikivoyage_clean_array[$i]['langlinks'][$j]['*'];
+							$wikivoyage_output_array[$i]['sitelink'] = $wikivoyage_clean_array[$i]['langlinks'][$j]['url'];
+							
+							if(isset($wikivoyage_clean_array[$i]['coordinates'][0]['lat'])) 	//If there are coordinates
+							{
+								$wikivoyage_output_array[$i]['latitude'] = $wikivoyage_clean_array[$i]['coordinates'][0]['lat']; 	//Warning : could be null
+								$wikivoyage_output_array[$i]['longitude'] = $wikivoyage_clean_array[$i]['coordinates'][0]['lon'];	//Warning : could be null
+							}
+							
+							if(isset($wikivoyage_clean_array[$i]['terms']['description'])) 	//If we can find a description
+								$wikivoyage_output_array[$i]['description'] = $wikivoyage_clean_array[$i]['terms']['description'][0];
+								
+							if(isset($wikivoyage_clean_array[$i]['thumbnail']['source'])) 	//If we can find an image
+								$wikivoyage_output_array[$i]['thumbnail'] = $wikivoyage_clean_array[$i]['thumbnail']['source'];
+						}
+						//No else, because if we didn't found the language it means that there's no guide for the user's language
+					}
+					$output['guides']['nb_guides'] = $i;
+					$output['guides']['guides_info'] = $wikivoyage_output_array;
+				}
+				else //Case we're in the middle of Siberia
+					$output['guides']['nb_guides'] = 0;
+					
+				
+			}
+		}
+
+		// ==================================> End Wikivoyage requests
 		
-		$poi_id_array_json = file_get_contents("http://wdq.wmflabs.org/api?q=around[625,$user_latitude,$user_longitude,$range]");
-		
+		// ==================================> Wikidata requests : find wikipedia pages around		
+
+		$poi_id_array_json = file_get_contents("http://wdq.wmflabs.org/api?q=around[625,$user_latitude,$user_longitude,$range]"); // Returns a $poi_id_array_clean array with a list of wikidata pages ID within a $range km range from user location 
 		if($poi_id_array_json == FALSE)
 		{
 			$error = "API WMFlabs isn't responding.";
 		}
 		else
 		{
-			// ==================================> Wikivoyage requests : find travel guides around
-			//https://en.wikivoyage.org/w/api.php?action=query&prop=coordinates|info|pageterms|pageimages&inprop=url&piprop=thumbnail&pithumbsize=144&generator=geosearch&wbptterms=description&ggscoord=50.6|3.02&ggsradius=10000&ggslimit=50&ggsradius=10000&ggslimit=50
-			if($displayDesc == 1) //We add description and image
-			{
-				$wikivoyageRequest = "https://".$language.".wikivoyage.org/w/api.php?action=query&format=json&" //Base
-									."prop=coordinates|info|pageterms|pageimages&"	//Props list
-									."piprop=thumbnail&pithumbsize=144&pilimit=50&inprop=url&wbptterms=description" //Properties dedicated to image, url and description
-									."&generator=geosearch&ggscoord=$user_latitude|$user_longitude&ggsradius=10000&ggslimit=50"; //Properties dedicated to geosearch
-			}
-			else //Simplified request
-			{
-				$wikivoyageRequest = "https://".$language.".wikivoyage.org/w/api.php?action=query&format=json&" //Base
-									."prop=coordinates|info&"	//Props list
-									."inprop=url" //Properties dedicated to url
-									."&generator=geosearch&ggscoord=$user_latitude|$user_longitude&ggsradius=10000&ggslimit=50"; //Properties dedicated to geosearch
-			}
-			echo $wikivoyageRequest;
-			$wikivoyage_json = file_get_contents($wikivoyageRequest);
 			
-			$wikivoyage_array = json_decode($wikivoyage_json, true);
-			
-			if(isset ($wikivoyage_array['query']['pages']))
-			{			
-				$wikivoyage_clean_array = array_values($wikivoyage_array['query']['pages']);
-				for($i = 0; $i < count($wikivoyage_clean_array); $i++)
-				{
-					$wikivoyage_output_array[$i]['pageid'] = $wikivoyage_clean_array[$i]['pageid'];
-					$wikivoyage_output_array[$i]['title'] = $wikivoyage_clean_array[$i]['title'];
-					$wikivoyage_output_array[$i]['pagelanguage'] = $wikivoyage_clean_array[$i]['pagelanguage'];
-					$wikivoyage_output_array[$i]['sitelink'] = $wikivoyage_clean_array[$i]['fullurl'];
-					if(isset($wikivoyage_clean_array[$i]['coordinates']['lat']))
-					{
-						$wikivoyage_output_array[$i]['latitude'] = $wikivoyage_clean_array[$i]['coordinates']['lat']; 	//Warning : could be null
-						$wikivoyage_output_array[$i]['longitude'] = $wikivoyage_clean_array[$i]['coordinates']['lon'];	//Warning : could be null
-					}
-					if(isset($wikivoyage_clean_array[$i]['terms']['description']))
-						$wikivoyage_output_array[$i]['description'] = $wikivoyage_clean_array[$i]['terms']['description'][0];
-					if(isset($wikivoyage_clean_array[$i]['thumbnail']['source']))
-						$wikivoyage_output_array[$i]['thumbnail'] = $wikivoyage_clean_array[$i]['thumbnail']['source'];
-				}
-				$output['guides']['nb_guides'] = $i;
-				$output['guides']['guides_info'] = $wikivoyage_output_array;
-			}
-			else
-				$output['guides']['nb_guides'] = 0;
-				
-			die(json_encode($output));
-			// ==================================> Wikidata requests : find wikipedia pages around
 			$poi_id_array = json_decode($poi_id_array_json, true);
 			$poi_id_array_clean = $poi_id_array["items"];
 			$nb_poi = count($poi_id_array_clean);
