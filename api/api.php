@@ -7,7 +7,7 @@ Version Alpha 0.0.3
 See documentation on http://wikijourney.eu/api/documentation.php
 */		
 	
-	//error_reporting(0); //No need error reporting, or else it will crash the JSON export
+	error_reporting(0); //No need error reporting, or else it will crash the JSON export
 	
 	function test()
 	{
@@ -95,7 +95,8 @@ See documentation on http://wikijourney.eu/api/documentation.php
 				
 				if(isset ($wikivoyage_array['query']['pages'])) //If there's guides around
 				{	
-				
+					$realCount = 0;
+					
 					$wikivoyage_clean_array = array_values($wikivoyage_array['query']['pages']);//Reindexing the array (because it's initially indexed by pageid)
 					
 					for($i = 0; $i < count($wikivoyage_clean_array); $i++)
@@ -105,11 +106,22 @@ See documentation on http://wikijourney.eu/api/documentation.php
 						while($wikivoyage_clean_array[$i]['langlinks'][$j]['lang'] != $language && $j < count($wikivoyage_clean_array[$i]['langlinks'])-1)
 							$j++; //We walk in the array trying to find the user's language
 
-						if($wikivoyage_clean_array[$i]['langlinks'][$j]['lang'] == $language) //If we found it
+						if($wikivoyage_clean_array[$i]['langlinks'][$j]['lang'] == $language || $language == 'en') //If we found it or if it's english
 						{
+							$realCount ++;
+							
 							$wikivoyage_output_array[$i]['pageid'] = $wikivoyage_clean_array[$i]['pageid'];
-							$wikivoyage_output_array[$i]['title'] = $wikivoyage_clean_array[$i]['langlinks'][$j]['*'];
-							$wikivoyage_output_array[$i]['sitelink'] = $wikivoyage_clean_array[$i]['langlinks'][$j]['url'];
+							
+							if($language == 'en') //Special for english
+							{
+								$wikivoyage_output_array[$i]['title'] = $wikivoyage_clean_array[$i]['title'];
+								$wikivoyage_output_array[$i]['sitelink'] = $wikivoyage_clean_array[$i]['fullurl'];
+							}
+							else
+							{
+								$wikivoyage_output_array[$i]['title'] = $wikivoyage_clean_array[$i]['langlinks'][$j]['*'];
+								$wikivoyage_output_array[$i]['sitelink'] = $wikivoyage_clean_array[$i]['langlinks'][$j]['url'];
+							}
 							
 							if(isset($wikivoyage_clean_array[$i]['coordinates'][0]['lat'])) 	//If there are coordinates
 							{
@@ -122,8 +134,8 @@ See documentation on http://wikijourney.eu/api/documentation.php
 						}
 						//No else, because if we didn't found the language it means that there's no guide for the user's language
 					}
-					$output['guides']['nb_guides'] = $i;
-					$output['guides']['guides_info'] = $wikivoyage_output_array;
+					$output['guides']['nb_guides'] = $realCount;
+					if($realCount != 0) $output['guides']['guides_info'] = $wikivoyage_output_array;
 				}
 				else //Case we're in the middle of Siberia
 					$output['guides']['nb_guides'] = 0;
@@ -229,8 +241,6 @@ See documentation on http://wikijourney.eu/api/documentation.php
 		$output['err_check']['value'] = false;
 	
 	echo json_encode($output); //Encode in JSON. (user will get it by file_get_contents, curl, wget, or whatever)
-	
-		
 	
 	//Next line is a legacy, please don't touch.
 	/* yolo la police */
