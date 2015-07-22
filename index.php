@@ -1,5 +1,7 @@
 <?php
 	include("./include/haut.php");
+	
+
 ?>
 
 <h1><?php echo _WELCOME_TITLE; ?></h1>
@@ -22,10 +24,10 @@
 			<label for="range"><?php echo _RANGE; ?></label><input class="miniInput" type="text" name="range" id="range" value="1"/><br/>
 			<label for="maxPOI"><?php echo _MAX_POI; ?></label><input class="miniInput" type="text" name="maxPOI" id="maxPOI" value="10" /><br/><br/>
 		
-		<input type="hidden" name="longitude" id="longitude" value="" />
-		<input type="hidden" name="latitude" id="latitude" value="" />
+		<input type="hidden" name="longitude" id="longitude" value="null" />
+		<input type="hidden" name="latitude" id="latitude" value="null" />
 		
-		<input type="submit" value="Go !" />
+		<input type="submit" value="Go !" onclick="this.value='<?php echo _LOADING; ?>';"/>
 		
 		</p>
 	</form>
@@ -42,7 +44,7 @@
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(showPosition);
 		} else {
-		x.innerHTML = "Sorry, but geolocation is not supported by this browser.";
+		alert("Sorry, but geolocation is not supported by this browser.");
 		}
 	}
 	
@@ -67,7 +69,23 @@
 
 
 
-
 <?php
 	include("./include/bas.php");
+
+	//At the end of the page, so it could load.
+	if(isset($_GET['message']))
+	{
+		if($_GET['message'] == 'adress')
+		{
+			echo '<script>alert("';
+			echo _ADRESS_FAILURE;
+			echo '"); </script>';
+		}
+		if($_GET['message'] == 'geoloc')
+		{
+			echo '<script>alert("';
+			echo _GEOLOC_FAILURE;
+			echo '"); </script>';
+		}
+	}
 ?>

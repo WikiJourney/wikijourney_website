@@ -22,6 +22,7 @@ if(isset($_COOKIE['lg']))
 	{
 		include("./lg/en.php");
 		setcookie("lg","en"); //Redefine cookie
+		$language = "en";
 	}
 }
 
