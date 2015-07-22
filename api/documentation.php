@@ -1,3 +1,4 @@
+<pre>
 			Documentation - WikiJourney API
 			
 			
@@ -5,6 +6,8 @@ This documentation refers to the API of Wikijourney's website.
 You can enter a position (latitude and longitude), it will return
 the point of interest around, with informations, including POI
 type, description, and link to the Wikipedia's page when available.
+Since the Alpha 0.0.3 version, this API is also able to look for
+WikiJourney guides around the user's position.
 
 This API is based on datas from WikiData, and uses the system
 of WFLabs to find POI around (thanks btw).
@@ -14,6 +17,7 @@ of WFLabs to find POI around (thanks btw).
 
 ALPHA
 
+0.0.3 : Added WikiVoyage informations.
 0.0.2 : Error gestion. More information in the output.
 0.0.1 : Creation of the API. Export in JSON.
 
@@ -26,9 +30,11 @@ Parameters could be (INS is for If Not Specified) :
 
 		- [REQUIRED]	lat : 		user's latitude	
 		- [REQUIRED]	long : 		user's longitude
-		- [INS 10km]	range : 	Range around we're gonna find POI in kilometers	
+		- [INS 1km ]	range : 	Range around we're gonna find POI in kilometers	
 		- [INS 10  ]	maxPOI : 	number max of POI 						
-		- [INS en  ] 	lg :		language used 							
+		- [INS en  ] 	lg :		language used 	
+		- [INS 0   ] 	wikivoyage :	contact or no WikiVoyage API. Value 0 or 1.
+		- [INS 0   ] 	displayImg :	download or no thumbnail adress from WikiVoyage. Value 0 or 1.	
 		
 Example : http://wikijourney.eu/api/api.php?latitude=2&longitude=2&lg=fr
 
@@ -44,6 +50,14 @@ Structure :
 - user_location
 	- latitude
 	- longitude
+- guides ==>  Available only if wikivoyage=1
+	- nb_guides
+	- guides_info ==> Contains the array with informations on WikiVoyage's guides
+		- pageid
+		- title
+		- sitelink
+		- latitude
+		- longitude
 - poi
 	- nb_poi
 	- poi_info ==> Contains the array with informations on POIs
@@ -70,6 +84,18 @@ Example :
       "latitude":50,
       "longitude":2
    },
+   "guides":{  
+      "nb_guides":1,
+      "guides_info":[  
+         {  
+            "pageid":19684,
+            "title":"Lille",
+            "sitelink":"https:\/\/en.wikivoyage.org\/wiki\/Lille",
+            "latitude":50.6372,
+            "longitude":3.0633
+         }
+      ]
+   },
    "poi":{  
       "nb_poi":1,
       "poi_info":[  
@@ -88,3 +114,4 @@ Example :
       "value":false
    }
 }
+</pre>
