@@ -98,6 +98,7 @@ define("_MAP_POI_TYPE_SCHOOL",		"'University'");
 define("_MAP_POI_TYPE_SUBWAY",		"'Subway'");
 
 define("_LOOKING_FOR",				"Looking for POI around : ");
+define("_SEE_WIKIVOYAGE_GUIDES",	"There are WikiVoyage guides around you.");
 define("_YOUR_PATH",				"Your Path");
 define("_CLEAR_CART",				"Clear Cart");
 define("_SAVE_CART",				"Save cart !");
