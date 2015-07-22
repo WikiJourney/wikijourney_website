@@ -42,8 +42,8 @@ See documentation on http://wikijourney.eu/api/documentation.php
 		else $maxPOI = 10;
 	if(isset($_GET['lg'])) 		$language = secureInput($_GET['lg']);
 		else $language = 'en';
-	if(isset($_GET['displayDesc'])) $displayDesc = secureInput($_GET['displayDesc']);
-		else $displayDesc = 0;
+	if(isset($_GET['displayImg'])) $displayImg = secureInput($_GET['displayImg']);
+		else $displayImg = 0;
 	if(isset($_GET['wikivoyage'])) $wikivoyageSupport = secureInput($_GET['wikivoyage']);
 		else $wikivoyageSupport = 0;
 	
@@ -54,7 +54,7 @@ See documentation on http://wikijourney.eu/api/documentation.php
 	
 
 	
-	//============> INFO POINT OF INTEREST
+	//============> INFO POINT OF INTEREST & WIKIVOYAGE GUIDES
 	if(!isset($error))
 	{
 		// ==================================> Put in the output the user location (can be useful)
@@ -64,7 +64,7 @@ See documentation on http://wikijourney.eu/api/documentation.php
 		// ==================================> Wikivoyage requests : find travel guides around
 		if($wikivoyageSupport == 1)
 		{
-			if($displayDesc == 1) //We add description and image
+			if($displayImg == 1) //We add description and image
 			{
 				$wikivoyageRequest = "https://en.wikivoyage.org/w/api.php?action=query&format=json&" //Base
 									."prop=coordinates|info|pageterms|pageimages|langlinks&"	//Props list
@@ -81,7 +81,7 @@ See documentation on http://wikijourney.eu/api/documentation.php
 									."&generator=geosearch&ggscoord=$user_latitude|$user_longitude&ggsradius=10000&ggslimit=50"; //Properties dedicated to geosearch
 			}
 			
-			echo $wikivoyageRequest; //TEST ONLY
+			//echo $wikivoyageRequest; //TEST ONLY
 			
 			$wikivoyage_json = file_get_contents($wikivoyageRequest); //Request is sent to WikiVoyage API
 			
@@ -96,7 +96,7 @@ See documentation on http://wikijourney.eu/api/documentation.php
 				if(isset ($wikivoyage_array['query']['pages'])) //If there's guides around
 				{	
 				
-					$wikivoyage_clean_array = array_values($wikivoyage_array['query']['pages']);//Reindexing the array (because it's indexed by pageid)
+					$wikivoyage_clean_array = array_values($wikivoyage_array['query']['pages']);//Reindexing the array (because it's initially indexed by pageid)
 					
 					for($i = 0; $i < count($wikivoyage_clean_array); $i++)
 					{
@@ -117,9 +117,6 @@ See documentation on http://wikijourney.eu/api/documentation.php
 								$wikivoyage_output_array[$i]['longitude'] = $wikivoyage_clean_array[$i]['coordinates'][0]['lon'];	//Warning : could be null
 							}
 							
-							if(isset($wikivoyage_clean_array[$i]['terms']['description'])) 	//If we can find a description
-								$wikivoyage_output_array[$i]['description'] = $wikivoyage_clean_array[$i]['terms']['description'][0];
-								
 							if(isset($wikivoyage_clean_array[$i]['thumbnail']['source'])) 	//If we can find an image
 								$wikivoyage_output_array[$i]['thumbnail'] = $wikivoyage_clean_array[$i]['thumbnail']['source'];
 						}
