@@ -353,10 +353,17 @@ background-color: rgb(174,203,219);
     margin-top: -400px;
 }
 
+#WikiVoyageTitle {
+	color: rgb(255,99,99);
+	font-size: 1.2em;
+	margin-bottom: 10px;
+	display: block;
+	font-weight: bold;
+}
 #WikiVoyageBox{
 	width: 95%;
 	padding-top: 20px;
-	height: 180px;
+	height:200px;
 	margin: auto;
 }
 
