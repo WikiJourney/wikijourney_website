@@ -1,13 +1,13 @@
 <?php
 /* 
 ============================ WIKIJOURNEY API =========================
-Version Alpha 0.0.2
+Version Alpha 0.0.3
 ======================================================================
 
 See documentation on http://wikijourney.eu/api/documentation.php
 */		
 	
-	error_reporting(0); //No need error reporting, or else it will crash the JSON export
+	//error_reporting(0); //No need error reporting, or else it will crash the JSON export
 	
 	function test()
 	{
@@ -36,18 +36,20 @@ See documentation on http://wikijourney.eu/api/documentation.php
 		else $error = "Longitude missing";
 	
 	//Not required
-	if(isset($_GET['range'])) $range = secureInput($_GET['range']);
+	if(isset($_GET['range'])) 	$range = secureInput($_GET['range']);
 		else $range = 1;
-	if(isset($_GET['maxPOI'])) $maxPOI = secureInput($_GET['maxPOI']);
+	if(isset($_GET['maxPOI'])) 	$maxPOI = secureInput($_GET['maxPOI']);
 		else $maxPOI = 10;
-	if(isset($_GET['lg'])) $language = secureInput($_GET['lg']);
+	if(isset($_GET['lg'])) 		$language = secureInput($_GET['lg']);
 		else $language = 'en';
+	if(isset($_GET['displayDesc'])) $displayDesc = secureInput($_GET['displayDesc']);
+		else $displayDesc = 1;
 	
 	
 	//============> INFO SECTION
 	$output['infos']['source'] 		= "WikiJourney API";
 	$output['infos']['link']		= "http://wikijourney.eu/";
-	$output['infos']['api_version']		= "alpha 0.0.2";
+	$output['infos']['api_version']		= "alpha 0.0.3";
 	
 
 	
@@ -68,6 +70,37 @@ See documentation on http://wikijourney.eu/api/documentation.php
 		}
 		else
 		{
+			// ==================================> Wikivoyage requests : find travel guides around
+			//https://en.wikivoyage.org/w/api.php?action=query&prop=coordinates|info|pageterms|pageimages&inprop=url&piprop=thumbnail&pithumbsize=144&generator=geosearch&wbptterms=description&ggscoord=50.6|3.02&ggsradius=10000&ggslimit=50&ggsradius=10000&ggslimit=50
+			if($displayDesc == 1) //We add description and image
+			{
+				$wikivoyageRequest = "https://".$language.".wikivoyage.org/w/api.php?action=query&format=json&" //Base
+									."prop=coordinates|info|pageterms|pageimages&"	//Props list
+									."piprop=thumbnail&pithumbsize=144&inprop=url&wbptterms=description" //Properties dedicated to image, url and description
+									."&generator=geosearch&ggscoord=$user_latitude|$user_longitude&ggsradius=10000&ggslimit=50"; //Properties dedicated to geosearch
+			}
+			else //Simplified request
+			{
+				$wikivoyageRequest = "https://".$language.".wikivoyage.org/w/api.php?action=query&format=json&" //Base
+									."prop=coordinates|info&"	//Props list
+									."inprop=url" //Properties dedicated to url
+									."&generator=geosearch&ggscoord=$user_latitude|$user_longitude&ggsradius=10000&ggslimit=50"; //Properties dedicated to geosearch
+			}
+			echo $wikivoyageRequest;
+			$wikivoyage_json = file_get_contents($wikivoyageRequest);
+			
+			$wikivoyage_array = json_decode($wikivoyage_json, true);
+			
+			if(isset ($wikivoyage_array['query']['pages']))
+			{			
+				$wikivoyage_clean_array = array_values($wikivoyage_array['query']['pages']);
+				for($i = 0; $i < count($wikivoyage_clean_array); $i++)
+					echo($wikivoyage_clean_array[$i]['title']);
+			}
+			else
+				echo("Loool");
+			die();
+			// ==================================> Wikidata requests : find wikipedia pages around
 			$poi_id_array = json_decode($poi_id_array_json, true);
 			$poi_id_array_clean = $poi_id_array["items"];
 			$nb_poi = count($poi_id_array_clean);
@@ -134,6 +167,8 @@ See documentation on http://wikijourney.eu/api/documentation.php
 					$poi_array[$i]["type_id"] = 		$temp_poi_type_id;
 					$poi_array[$i]["id"] = 			$poi_id_array_clean[$i];
 				}
+				
+
 			}
 		}
 		$output['poi']['nb_poi'] = count($poi_array);
