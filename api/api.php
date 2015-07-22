@@ -95,11 +95,24 @@ See documentation on http://wikijourney.eu/api/documentation.php
 			{			
 				$wikivoyage_clean_array = array_values($wikivoyage_array['query']['pages']);
 				for($i = 0; $i < count($wikivoyage_clean_array); $i++)
-					echo($wikivoyage_clean_array[$i]['title']);
+				{
+					$wikivoyage_output_array[$i]['pageid'] = $wikivoyage_clean_array[$i]['pageid'];
+					$wikivoyage_output_array[$i]['title'] = $wikivoyage_clean_array[$i]['title'];
+					if(isset($wikivoyage_clean_array[$i]['coordinates']['lat']))
+					{
+						$wikivoyage_output_array[$i]['latitude'] = $wikivoyage_clean_array[$i]['coordinates']['lat']; 	//Warning : could be null
+						$wikivoyage_output_array[$i]['longitude'] = $wikivoyage_clean_array[$i]['coordinates']['lon'];	//Warning : could be null
+					}
+					$wikivoyage_output_array[$i]['pagelanguage'] = $wikivoyage_clean_array[$i]['pagelanguage'];
+					$wikivoyage_output_array[$i]['sitelink'] = $wikivoyage_clean_array[$i]['fullurl'];
+				}
+				$output['guides']['nb_guides'] = $i;
+				$output['guides']['guides_info'] = $wikivoyage_output_array;
 			}
 			else
-				echo("Loool");
-			die();
+				$output['guides']['nb_guides'] = 0;
+				
+			die(json_encode($output));
 			// ==================================> Wikidata requests : find wikipedia pages around
 			$poi_id_array = json_decode($poi_id_array_json, true);
 			$poi_id_array_clean = $poi_id_array["items"];
