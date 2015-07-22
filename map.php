@@ -39,11 +39,11 @@
 		$user_longitude= $_POST['longitude'];
 	}
 	
-	if(ctype_digit($_POST['range']))
+	if(is_numeric($_POST['range']))
 		$range = $_POST['range'];
 	else
 		$range = 1;
-		
+
 	$maxPOI = intval($_POST['maxPOI']);
 	
 	/* yolo la police */

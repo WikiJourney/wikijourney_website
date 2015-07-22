@@ -16,15 +16,9 @@ See documentation on http://wikijourney.eu/api/documentation.php
 	 
 	function secureInput($string)
 	{
-		if(ctype_digit($string)) //If number
-		{
-			$string = intval($string);
-		}
-		else //If string
-		{
-			//To secure
-			$string = addcslashes($string, '%_');
-		}
+		$string = addcslashes($string, '%_');
+		//Add more securities here
+		
 		return $string;
 	}
 	

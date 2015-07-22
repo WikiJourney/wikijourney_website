@@ -408,7 +408,7 @@ border-radius:4px;
 	color:black;
 }
 .WikiVoyageElement a:hover{
-	color: grey;
+	color: rgb(255,50,50);
 }
 .WikiVoyageImg{
 	margin-top: 8px;
