@@ -79,7 +79,7 @@ else
 	<!-- End Piwik Code -->
 	
 	<div id="banniere">
-				<table>
+				<table id="logoLanguageBoxContainer">
 					<tr>
 						<td><img  id="logoban" src="<?php echo _SRC_IMAGE_LOGO; ?>" alt="Logo" /></td>
 						
