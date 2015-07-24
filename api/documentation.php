@@ -7,7 +7,7 @@ You can enter a position (latitude and longitude), it will return
 the point of interest around, with informations, including POI
 type, description, and link to the Wikipedia's page when available.
 Since the Alpha 0.0.3 version, this API is also able to look for
-WikiJourney guides around the user's position.
+WikiVoyage guides around the user's position.
 
 This API is based on datas from WikiData, and uses the system
 of WFLabs to find POI around (thanks btw).
