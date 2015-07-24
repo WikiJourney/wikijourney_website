@@ -99,9 +99,9 @@ margin: auto;
 
 #banniere {
 background-color:white;
-width: 100%;
+max-width: 1651px;
+margin: 0 auto;
 background-image: url("../images/design/new_york.jpg");
-margin: 0;
 height: 238px;
 border-bottom: 1px solid black;
 font-size: 32px;
