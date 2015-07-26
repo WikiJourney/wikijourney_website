@@ -1,7 +1,7 @@
 <?php
 /* 
 ============================ WIKIJOURNEY API =========================
-Version Alpha 0.0.3
+Version Alpha 0.0.4
 ======================================================================
 
 See documentation on http://wikijourney.eu/api/documentation.php
@@ -23,11 +23,28 @@ See documentation on http://wikijourney.eu/api/documentation.php
 	}
 	
 	//Required informations
-	if(isset($_GET['lat']))	$user_latitude = secureInput($_GET['lat']);
-		else $error = "Latitude missing";
+	if(isset($_GET['place'])) //If it's a place
+	{
+		$name = secureInput($_GET['place']);
+		$osm_array_json = file_get_contents("http://nominatim.openstreetmap.org/search?format=json&q=\"" . urlencode($name)."\""); //Contacting Nominatim API to have coordinates
+		$osm_array = json_decode($osm_array_json, true);
+		
+		if (!isset($osm_array[0]["lat"]))
+			$error = "Location doesn't exist";
+		else
+		{
+			$user_latitude = $osm_array[0]["lat"];
+			$user_longitude = $osm_array[0]["lon"];
+		}
+	}
+	else //Else it's long/lat
+	{
+		if(isset($_GET['lat']))	$user_latitude = secureInput($_GET['lat']);
+			else $error = "Latitude missing";
 	
-	if(isset($_GET['long']))$user_longitude = secureInput($_GET['long']);
-		else $error = "Longitude missing";
+		if(isset($_GET['long']))$user_longitude = secureInput($_GET['long']);
+			else $error = "Longitude missing";
+	}
 	
 	//Not required
 	if(isset($_GET['range'])) 	$range = secureInput($_GET['range']);
@@ -44,7 +61,7 @@ See documentation on http://wikijourney.eu/api/documentation.php
 	//============> INFO SECTION
 	$output['infos']['source'] 		= "WikiJourney API";
 	$output['infos']['link']		= "http://wikijourney.eu/";
-	$output['infos']['api_version']		= "alpha 0.0.3";
+	$output['infos']['api_version']		= "alpha 0.0.4";
 	
 
 	
