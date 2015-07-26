@@ -7,7 +7,7 @@ You can enter a position (latitude and longitude), it will return
 the point of interest around, with informations, including POI
 type, description, and link to the Wikipedia's page when available.
 Since the Alpha 0.0.3 version, this API is also able to look for
-WikiVoyage guides around the user's position.
+WikiVoyage guides around the user's position. 
 
 This API is based on datas from WikiData, and uses the system
 of WFLabs to find POI around (thanks btw).
@@ -17,6 +17,7 @@ of WFLabs to find POI around (thanks btw).
 
 ALPHA
 
+0.0.4 : Added Nominatim support
 0.0.3 : Added WikiVoyage informations.
 0.0.2 : Error gestion. More information in the output.
 0.0.1 : Creation of the API. Export in JSON.
@@ -30,13 +31,15 @@ Parameters could be (INS is for If Not Specified) :
 
 		- [REQUIRED]	lat : 		user's latitude	
 		- [REQUIRED]	long : 		user's longitude
+		- [OPTIONNAL]	place :		If you want to do a request with a place name instead of coordinates. Uses OSM nominatim system.
 		- [INS 1km ]	range : 	Range around we're gonna find POI in kilometers	
 		- [INS 10  ]	maxPOI : 	number max of POI 						
 		- [INS en  ] 	lg :		language used 	
 		- [INS 0   ] 	wikivoyage :	contact or no WikiVoyage API. Value 0 or 1.
 		- [INS 0   ] 	displayImg :	download or no thumbnail adress from WikiVoyage. Value 0 or 1.	
 		
-Example : http://wikijourney.eu/api/api.php?latitude=2&longitude=2&lg=fr
+Example : 	http://wikijourney.eu/api/api.php?latitude=2&longitude=2&lg=fr
+Example :	http://wikijourney.eu/api/api.php?place=Washington&lg=fr
 
 -------------> OUTPUT :
 

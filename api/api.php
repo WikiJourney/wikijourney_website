@@ -30,7 +30,7 @@ See documentation on http://wikijourney.eu/api/documentation.php
 		$osm_array = json_decode($osm_array_json, true);
 		
 		if (!isset($osm_array[0]["lat"]))
-			$error = "Localisation doesn't exist";
+			$error = "Location doesn't exist";
 		else
 		{
 			$user_latitude = $osm_array[0]["lat"];
@@ -61,7 +61,7 @@ See documentation on http://wikijourney.eu/api/documentation.php
 	//============> INFO SECTION
 	$output['infos']['source'] 		= "WikiJourney API";
 	$output['infos']['link']		= "http://wikijourney.eu/";
-	$output['infos']['api_version']		= "alpha 0.0.3";
+	$output['infos']['api_version']		= "alpha 0.0.4";
 	
 
 	
