@@ -161,8 +161,12 @@ if($api_answer_array['guides']['nb_guides'] != 0) //If we got guides from WikiVo
 
 
 		/* This is for the icon/ID/label association, to be completed */
-		var pagicon = [["16970", 'place-of-worship', <?php echo _MAP_POI_TYPE_CATHO ?>], ["2095", 'restaurant', <?php echo _MAP_POI_TYPE_FOOD ?>], ["12518", 'monument', <?php echo _MAP_POI_TYPE_MONUM ?>], ["34627", 'religious-jewish', <?php echo _MAP_POI_TYPE_JEWISH ?>], ["10387575 916475", 'town-hall', <?php echo _MAP_POI_TYPE_MUSEUM ?>], ["207694", 'art-gallery', <?php echo _MAP_POI_TYPE_ART ?>], ["3914 3918 9826 847027", 'college', <?php echo _MAP_POI_TYPE_SCHOOL ?>], ["928830", "rail-metro", <?php echo _MAP_POI_TYPE_SUBWAY ?>, ]];
-		var j;
+		var pagicon = <?php
+			$tabletype = fopen(_MAP_POI_TYPE_FILE, "r") or die("Unable to open file!");
+			echo fread($tabletype,filesize(_MAP_POI_TYPE_FILE));
+			fclose($tabletype);
+			?>;	
+			var j;
 		var ismerged = false;
 
 		L.mapbox.accessToken = 'pk.eyJ1IjoicG9sb2Nob24tc3RyZWV0IiwiYSI6Ikh5LVJqS0UifQ.J0NayavxaAYK1SxMnVcxKg';

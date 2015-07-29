@@ -97,6 +97,7 @@ define("_MAP_POI_TYPE_ART",			"'Art Museum'");
 define("_MAP_POI_TYPE_SCHOOL",		"'University'");
 define("_MAP_POI_TYPE_SUBWAY",		"'Subway'");
 
+define("_MAP_POI_TYPE_FILE",		"lg/en.txt");
 define("_LOOKING_FOR",				"Looking for POI around : ");
 define("_SEE_WIKIVOYAGE_GUIDES",	"There are WikiVoyage guides around you.");
 define("_YOUR_PATH",				"Your Path");
