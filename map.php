@@ -162,11 +162,26 @@ if($api_answer_array['guides']['nb_guides'] != 0) //If we got guides from WikiVo
 
 		/* This is for the icon/ID/label association, to be completed */
 		var pagicon = <?php
-			$tabletype = fopen(_MAP_POI_TYPE_FILE, "r") or die("Unable to open file!");
-			echo fread($tabletype,filesize(_MAP_POI_TYPE_FILE));
-			fclose($tabletype);
-			?>;	
-			var j;
+
+			if(file_exists(_MAP_POI_TYPE_FILE))
+			{
+				$tabletype = @fopen(_MAP_POI_TYPE_FILE, "r");
+				$content = fread($tabletype,filesize(_MAP_POI_TYPE_FILE));
+				
+				$table1 = explode("\r\n",$content);
+				for($i = 0;$i < count($table1);$i++)
+				{
+					$typesArray[$i] = explode(":",$table1[$i]);
+				}
+				echo json_encode($typesArray);
+						
+				fclose($tabletype);
+			}
+			else
+				echo "[]";
+			?>;
+			
+		var j;
 		var ismerged = false;
 
 		L.mapbox.accessToken = 'pk.eyJ1IjoicG9sb2Nob24tc3RyZWV0IiwiYSI6Ikh5LVJqS0UifQ.J0NayavxaAYK1SxMnVcxKg';
