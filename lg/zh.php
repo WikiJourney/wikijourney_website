@@ -90,15 +90,8 @@ define("_TECHNICAL_TEXT",	"此网页还在建设当中，敬请期待! ;)");
 
 //===> map.php
 define("_MAP_POI_LINK",				"维基百科");
-define("_MAP_POI_TYPE_CATHO",		"'天主教教堂'");
-define("_MAP_POI_TYPE_FOOD",		"'饭店'");
-define("_MAP_POI_TYPE_MONUM",		"'古迹'");
-define("_MAP_POI_TYPE_JEWISH",		"'犹太教堂'");
-define("_MAP_POI_TYPE_MUSEUM",		"'博物馆'");
-define("_MAP_POI_TYPE_ART",			"'艺术馆'");
-define("_MAP_POI_TYPE_SCHOOL",		"'大学'");
-define("_MAP_POI_TYPE_SUBWAY",		"'地铁站'");
 
+define("_MAP_POI_TYPE_FILE",		"lg/zh.txt");
 define("_LOOKING_FOR",				"Looking for POI around : ");
 define("_SEE_WIKIVOYAGE_GUIDES",	"There are WikiVoyage guides around you.");
 define("_YOUR_PATH",				"Your Path");

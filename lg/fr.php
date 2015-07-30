@@ -93,15 +93,8 @@ define("_TECHNICAL_TEXT",	"Ce site web est encore en construction, merci de reve
 
 //===> map.php
 define("_MAP_POI_LINK",				"Lien Wikipédia");
-define("_MAP_POI_TYPE_CATHO",		"'Eglises'");
-define("_MAP_POI_TYPE_FOOD",		"'Restaurants'");
-define("_MAP_POI_TYPE_MONUM",		"'Monuments'");
-define("_MAP_POI_TYPE_JEWISH",		"'Synagogues'");
-define("_MAP_POI_TYPE_MUSEUM",		"'Musée'");
-define("_MAP_POI_TYPE_ART",			"'Musée d\'art'");
-define("_MAP_POI_TYPE_SCHOOL",		"'Université'");
-define("_MAP_POI_TYPE_SUBWAY",		"'Stations de métro'");
 
+define("_MAP_POI_TYPE_FILE",		"lg/fr.txt");
 define("_LOOKING_FOR",				"Recherche des points d'intérêt à proximité : ");
 define("_SEE_WIKIVOYAGE_GUIDES",	"Consultez les guides WikiVoyage autour de vous !");
 define("_YOUR_PATH",				"Votre Parcours");

@@ -88,15 +88,8 @@ define("_TECHNICAL_TEXT",	"This website is still under construction, please come
 
 //===> map.php
 define("_MAP_POI_LINK",				"See on Wikipedia");
-define("_MAP_POI_TYPE_CATHO",		"'Churches'");
-define("_MAP_POI_TYPE_FOOD",		"'Restaurants'");
-define("_MAP_POI_TYPE_MONUM",		"'Monuments'");
-define("_MAP_POI_TYPE_JEWISH",		"'Synagogues'");
-define("_MAP_POI_TYPE_MUSEUM",		"'Museum'");
-define("_MAP_POI_TYPE_ART",			"'Art Museum'");
-define("_MAP_POI_TYPE_SCHOOL",		"'University'");
-define("_MAP_POI_TYPE_SUBWAY",		"'Subway'");
 
+define("_MAP_POI_TYPE_FILE",		"lg/en.txt");
 define("_LOOKING_FOR",				"Looking for POI around : ");
 define("_SEE_WIKIVOYAGE_GUIDES",	"There are WikiVoyage guides around you.");
 define("_YOUR_PATH",				"Your Path");
