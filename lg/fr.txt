@@ -2,7 +2,12 @@
 2095:restaurant:Restaurants
 12518:monument:Monuments
 34627:religious-jewish:Synagogues
-10387575 916475:town-hall:Musées
-207694:art-gallery:Musée d\'art
-3914 3918 9826 847027:college:Université
-5503 928830:rail-metro:Métro
+10387575:town-hall:Musées
+916475:town-hall:Musées
+207694:art-gallery:Musée d'art
+3914:college:Université
+3918:college:Université
+9826:college:Université
+847027:college:Université
+5503:rail-metro:Métro
+928830:rail-metro:Métro

@@ -171,7 +171,10 @@ if($api_answer_array['guides']['nb_guides'] != 0) //If we got guides from WikiVo
 				$table1 = explode("\r\n",$content);
 				for($i = 0;$i < count($table1);$i++)
 				{
-					$typesArray[$i] = explode(":",$table1[$i]);
+					if($table1[$i] != "")
+					{
+						$typesArray[$i] = explode(":",$table1[$i]);
+					}
 				}
 				echo json_encode($typesArray);
 						

@@ -2,7 +2,12 @@
 2095:restaurant:饭店
 12518:monument:古迹
 34627:religious-jewish:犹太教堂
-10387575 916475:town-hall:博物馆
+10387575:town-hall:博物馆
+916475:town-hall:博物馆
 207694:art-gallery:艺术馆
-3914 3918 9826 847027:college:大学
-5503 928830:rail-metro:地铁站
+3914:college:大学
+3918:college:大学
+9826:college:大学
+847027:college:大学
+5503:rail-metro:地铁站
+928830:rail-metro:地铁站
