@@ -1,22 +1,17 @@
 <?php
 /* 
 ============================ WIKIJOURNEY API =========================
-Version Alpha 0.0.4
+Version Alpha 0.0.5
 ======================================================================
 
 See documentation on http://wikijourney.eu/api/documentation.php
 */		
 	
 	error_reporting(0); //No need error reporting, or else it will crash the JSON export
-	
-	function test()
-	{
-		$error = "test";
-	}
-	 
+
 	function secureInput($string)
 	{
-		$string = addcslashes($string, '%_');
+		$string = addcslashes($string, '%_"');
 		//Add more securities here
 		
 		return $string;
@@ -61,9 +56,11 @@ See documentation on http://wikijourney.eu/api/documentation.php
 	//============> INFO SECTION
 	$output['infos']['source'] 		= "WikiJourney API";
 	$output['infos']['link']		= "http://wikijourney.eu/";
-	$output['infos']['api_version']		= "alpha 0.0.4";
+	$output['infos']['api_version']		= "alpha 0.0.5";
 	
-
+	//============> FAKE ERROR
+	if(isset($_GET['fakeError']) && $_GET['fakeError'] == "true")
+		$error = "Error ! If you want to see all the error messages that can be sent by our API, please refer to the source code on our GitHub repository.";
 	
 	//============> INFO POINT OF INTEREST & WIKIVOYAGE GUIDES
 	if(!isset($error))
