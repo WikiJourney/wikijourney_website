@@ -53,6 +53,9 @@ See documentation on http://wikijourney.eu/api/documentation.php
 	if(isset($_GET['wikivoyage'])) $wikivoyageSupport = secureInput($_GET['wikivoyage']);
 		else $wikivoyageSupport = 0;
 	
+	if(!(is_numeric($range) && is_numeric($user_latitude) && is_numeric($user_longitude) && is_numeric($maxPOI)))
+		$error = "Error : latitude, longitude, maxPOI and range should be numeric values.";
+		
 	//============> INFO SECTION
 	$output['infos']['source'] 		= "WikiJourney API";
 	$output['infos']['link']		= "http://wikijourney.eu/";
