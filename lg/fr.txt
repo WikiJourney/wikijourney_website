@@ -1,4 +1,4 @@
-16970:place-of-worship:Eglises
+﻿16970:place-of-worship:Églises
 2095:restaurant:Restaurants
 12518:monument:Monuments
 34627:religious-jewish:Synagogues
