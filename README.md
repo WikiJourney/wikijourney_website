@@ -2,7 +2,7 @@
 Code for Wiki Journey's website, an Android application made for tourism.
 If you're interested in making visiting a city easier, you can contribute to our project by improving our website or our application !
 
-Note : please make your push requests on the "Dev" branch.
+Note : please make your pull requests on the "Dev" branch.
 
 Links :
 
