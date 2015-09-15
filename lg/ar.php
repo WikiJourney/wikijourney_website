@@ -8,27 +8,27 @@
 
 //===> General
 
-define("_TITLE",			"Wiki Journey - Revisitez le tourisme.");
+define("_TITLE",			"ويكي جورني ــ أعيدوا النظر إلى السياحة");
 define("_SRC_IMAGE_LOGO",	"./images/design/logo_and_catchphrase/fr.png");
 //===> Top
-define("_INDEX",			"Accueil");
-define("_TEAM",				"L'Équipe");
-define("_ABOUT",			"À propos");
-define("_TECHNICAL",		"Informations Techniques");
+define("_INDEX",			"استقبال");
+define("_TEAM",				"الفريق");
+define("_ABOUT",			"المشروع");
+define("_TECHNICAL",		"المعلومات التقنية");
 
 //===> Bottom
-define("_OUR_PARTNERS",		"Nos partenaires");
-define("_NO_PARTNERS_LOL",	"Pas de partenaires pour l'instant. Un partenariat vous intéresse ? Contactez nous !");
-define("_FOLLOW_US",		"Suivez le projet !");
+define("_OUR_PARTNERS",		"شركائنا");
+define("_NO_PARTNERS_LOL",	".بدون شراكة حاليا. اتصلوا بنا");
+define("_FOLLOW_US",		"! إتبعنا");
 
 //========================> Pages <========================//
 
 //===> index.php
-define("_WELCOME_TITLE",	"Bienvenue !");
-define("_BUTTON_POI_AROUND","Trouver des points d'intérêts autour de moi !");
-define("_ADRESS_LOOK_UP",	"Ou à proximité d'une adresse !");
-define("_ADRESS_FAILURE",	"Cette adresse n'existe pas !");
-define("_GEOLOC_FAILURE",	"Désolé, mais il est impossible de vous géolocaliser.");
+define("_WELCOME_TITLE",	"! مرحبا");
+define("_BUTTON_POI_AROUND","! ابحث حولي");
+define("_ADRESS_LOOK_UP",	"! ابحث حول الموقع التالي");
+define("_ADRESS_FAILURE",	"! لا نجد هذا العنوان");
+define("_GEOLOC_FAILURE",	"لا نستطيع ايجاد موقعكم");
 define("_AROUND_LOCATION", 	"Autour d'une adresse particulière");
 define("_AROUND_ME",		"Autour de ma position !");
 define("_NOTE_GEOLOC",		"Note : cette fonctionnalité utilise la géolocalisation. Il n'est pas toujours
