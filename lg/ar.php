@@ -29,20 +29,18 @@ define("_BUTTON_POI_AROUND","! ابحث حولي");
 define("_ADRESS_LOOK_UP",	"! ابحث حول الموقع التالي");
 define("_ADRESS_FAILURE",	"! لا نجد هذا العنوان");
 define("_GEOLOC_FAILURE",	"لا نستطيع ايجاد موقعكم");
-define("_AROUND_LOCATION", 	"Autour d'une adresse particulière");
-define("_AROUND_ME",		"Autour de ma position !");
-define("_NOTE_GEOLOC",		"Note : cette fonctionnalité utilise la géolocalisation. Il n'est pas toujours
-							possible de récupérer votre position, cela dépend de votre navigateur et de
-							votre connexion internet.");
-define("_OPTIONS",			"Options :");
-define("_RANGE",			"Rayon (km) : ");
-define("_MAX_POI",			"Maximum :");
-define("_PLACEHOLDER",		"Entrez un lieu ici.");
-define("_LOADING",			"Chargement...");
+define("_AROUND_LOCATION", 	"حول موقع معين");
+define("_AROUND_ME",		"! حول موقعي");
+define("_NOTE_GEOLOC",		"ملاحظة : تستخدم هذه الميزة تحديد الموقع الجغرافي. من الممكن عدم استطاعتنا الحصول على موقعكم حسب المتصفح الذي تستعملونه.");
+define("_OPTIONS",			": خيارات");
+define("_RANGE",			": (الشعاع (كم");
+define("_MAX_POI",			": الحد الاقصى");
+define("_PLACEHOLDER",		".أدخل مكان هنا");
+define("_LOADING",			"Loading...");
 
 //===> team.php
-define("_TEAM_TITLE",		"Our Team!");
-define("_TEAM_WHO_R_WE",	"Who are we?");
+define("_TEAM_TITLE",		"! الفرقة");
+define("_TEAM_WHO_R_WE",	"من نحن؟");
 define("_TEAM_QUICKDESC",	"We're a team of seven students from the Ecole Centrale de Lille, a graduate school in Lille in the north of France. We
 							have to create a multidisciplinary project in two years, that's how we started to work together on WikiJourney. This project
 							is really important for us, that's why we will make everything we could to achieve it.");
