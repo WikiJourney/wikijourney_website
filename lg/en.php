@@ -25,6 +25,7 @@ define("_FOLLOW_US",		"Follow us !");
 
 //===> index.php
 define("_WELCOME_TITLE",	"Welcome!");
+define("_WELCOME_MESSAGE",	"Welcome to WikiJourney Project! We offer you a quick look around a place (yours or one you choose) using Wikimedia's data! <br> Please fill in the form to begin. <br> <br>");
 define("_BUTTON_POI_AROUND","Find Point Of Interest around me!");
 define("_ADRESS_LOOK_UP",	"Or enter an adress to look up!");
 define("_ADRESS_FAILURE",	"Such a place doesn't exist!");
