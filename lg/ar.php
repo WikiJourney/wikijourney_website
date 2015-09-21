@@ -60,19 +60,19 @@ define("_Y_WANG_DESC",		"I know well C and C++ languages, and I learned all by m
 define("_Y_WANG_POSTE", 	"Mobile Development");
 
 //===> about.php
-define("_ABOUT_TITLE", 		"Qu’est-ce que Wikijourney ?");
+define("_ABOUT_TITLE", 		"ما هو المشروع ويكيجورني؟");
 define("_ABOUT_TEXT","		
-							<p>Wikijourney est un projet étudiant visant à mettre en lien un utilisateur et le contenu informatif de Wikipedia, via sa position dans une ville.
-							<br> Concrètement, nous souhaitons coder une application qui proposerait au touriste des points d’intérêts à visiter. Rentrez vos préférences, choisissez un itinéraire et c’est parti !
+							<p>.ويكيجورني مشروع طالب يحقق الربط بين المستخدم و محتوى ويكيبيديا عبر موقعه في مدينة ما
+							<br> !نريد توفير تطبيق يقترح على السائح مجموعة من النقط المهمة حوله. أدخل تفضيلاتك، إختر مسار رحلتك، إنطلق
 							</p>
 
-							<h2>Pourquoi une application ? </h2>
+							<h2> لماذا التطبيق؟ </h2>
 							<p>
-							Tout simplement parce qu’il s’agit du moyen technologique le plus portatif. Grâce aux forfaits 3G, il est plus simple de jeter un coup d’oeil à son portable pour obtenir des informations, un itinéraire, que de transporter avec soi son ordinateur !
-							<br>Nous proposerons également de préparer son parcours à l’avance, via un module web ainsi qu’un mode hors-ligne.
+							.ببساطة، بفضل الاشتراكات 3ج، من الأسهل النظر إلى الهاتف النقال و الحصول على المعلومة و المسار عوض استعمال الحاسوب
+							<br>.نقترح أيضا إعداد المسارات مقدما عن طريق وحدة ويب و استعمالها لاحقا
 							</p>
 
-							<h2>WanderWiki revient ! </h2>
+							<h2>! وندر ويكي يعود مرة اخرى </h2>
 							<p>
 							Si vous utilisiez déjà l’application <a href=\"http://wiki-geolocalisation.wix.com/wanderwiki\">WanderWiki</a>, vous ne serez pas désorientés : WikiJourney reprend le projet. Wanderwiki revient, avec une nouvelle charte graphique et de nouvelles fonctionnalités !
 							</p>
