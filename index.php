@@ -6,6 +6,12 @@
 
 <h1><?php echo _WELCOME_TITLE; ?></h1>
 
+	<div id="welcome">
+		<?php 
+			if (defined('_WELCOME_MESSAGE')){
+				echo _WELCOME_MESSAGE;
+			} ?>
+	</div>
 
 	<form method="post" action="map.php" id="formPOI">
 		<p>

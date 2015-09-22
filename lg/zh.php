@@ -25,6 +25,7 @@ define("_FOLLOW_US",		"关注我们 !");
 
 //===> index.php
 define("_WELCOME_TITLE",	"欢迎访问 !");
+define("_WELCOME_MESSAGE",	"欢迎来到WikiJourney! 我们根据您选择的地点在周围显示地图并向您提供维基百科的信息 <br> 请填写信息开始探索吧！ <br> <br>");
 define("_BUTTON_POI_AROUND","在我周围寻找有意思的地点!");
 define("_ADRESS_LOOK_UP",	"在一个特定地点周围寻找!");
 define("_ADRESS_FAILURE",	"此地址不存在 !");

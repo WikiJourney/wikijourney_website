@@ -25,6 +25,7 @@ define("_FOLLOW_US",		"Suivez le projet !");
 
 //===> index.php
 define("_WELCOME_TITLE",	"Bienvenue !");
+define("_WELCOME_MESSAGE",	"Bonjour et bienvenue sur le site du projet WikiJourney ! Nous vous proposons d'explorer vos environs, ou bien un lieu que vous choisirez, grâce à des données libres ! <br> Pour commencer, remplissez simplement ce formulaire. <br> <br>");
 define("_BUTTON_POI_AROUND","Trouver des points d'intérêts autour de moi !");
 define("_ADRESS_LOOK_UP",	"Ou à proximité d'une adresse !");
 define("_ADRESS_FAILURE",	"Cette adresse n'existe pas !");
