@@ -74,12 +74,12 @@ define("_ABOUT_TEXT","
 
 							<h2>! وندر ويكي يعود مرة اخرى </h2>
 							<p>
-							Si vous utilisiez déjà l’application <a href=\"http://wiki-geolocalisation.wix.com/wanderwiki\">WanderWiki</a>, vous ne serez pas désorientés : WikiJourney reprend le projet. Wanderwiki revient, avec une nouvelle charte graphique et de nouvelles fonctionnalités !
+							!إن كنتم من مستعملي وندرويكي، فإن ويكي جورني يتولى المشروع. وندر ويكي يعود بوظائف و ألوان جديدة
 							</p>
 
-							<h2>Des questions, des propositions ? </h2>
+							<h2> هل لديك أسئلة أو اقتراحات؟ </h2>
 							<p>
-							Nous sommes ouverts à toute piste d’amélioration ! Contribuez au projet <a href=\"mailto:wikijourneydev@gmail.com\">en nous contactant par mail</a> ou en codant directement vos propositions sur notre Git !
+							! او عبر جيت <a href=\"mailto:wikijourneydev@gmail.com\">بالاتصال بنا عبر البريد الالكتروني</a> ساهموا في المشروع
 							</p>");
 							
 							
