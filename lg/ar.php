@@ -79,27 +79,28 @@ define("_ABOUT_TEXT","
 
 							<h2> هل لديك أسئلة أو اقتراحات؟ </h2>
 							<p>
-							! او عبر جيت <a href=\"mailto:wikijourneydev@gmail.com\">بالاتصال بنا عبر البريد الالكتروني</a> ساهموا في المشروع
+							! او عبر جيت <a href=\"mailto:wikijourneydev@gmail.com\"> بالاتصال بنا عبر البريد الالكتروني</a> ساهموا في المشروع
 							</p>");
 							
 							
 //===> technical.php
-define("_TECHNICAL_TITLE",	"Informations Techniques");
-define("_TECHNICAL_TEXT",	"Ce site web est encore en construction, merci de revenir plus tard ! ;)");
+define("_TECHNICAL_TITLE",	"المعلومات التقنية");
+define("_TECHNICAL_TEXT",	"! هذا الموقع في طور الانشاء، زورونا لاحقا");
 
 
 //===> map.php
-define("_MAP_POI_LINK",				"Lien Wikipédia");
+define("_MAP_POI_LINK",				"الرابط ويكيبيديا");
 
-define("_MAP_POI_TYPE_FILE",		"lg/fr.txt");
-define("_LOOKING_FOR",				"Recherche des points d'intérêt à proximité : ");
-define("_SEE_WIKIVOYAGE_GUIDES",	"Consultez les guides WikiVoyage autour de vous !");
-define("_YOUR_PATH",				"Votre Parcours");
-define("_CLEAR_CART",				"Vider");
-define("_SAVE_CART",				"Sauvegarder !");
-define("_CART_IS_EMPTY_POPUP",		"Votre parcours est vide, remplissez le avant de l\'exporter ! ;)");
-define("_YOU_ARE_HERE",				"Vous êtes ici !");
-define("_CENTER_BUTTON",			"Centrer la carte");
+define("_MAP_POI_TYPE_FILE",		"lg/ar.txt");
+define("_LOOKING_FOR",				" : البحث عن المواقع القريبة");
+define("_SEE_WIKIVOYAGE_GUIDES",	"! استشيروا ادلة ويكيفواياج حولكم");
+define("_YOUR_PATH",				"مساركم");
+define("_CLEAR_CART",				"افراغ");
+define("_SAVE_CART",				"! احفظ");
+define("_CART_IS_EMPTY_POPUP",		"! مساركم فارغ، املئوه قبل تصديره");
+define("_YOU_ARE_HERE",				"! انتم هنا");
+define("_CENTER_BUTTON",			"وسط الخريطة");
+define("_WELCOME_MESSAGE", "! مرحبا");
 
 
 
