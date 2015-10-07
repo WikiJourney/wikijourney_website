@@ -36,9 +36,8 @@ width: 120px;
 }
 
 #welcome{
-font-family: "Helvetica","Trebuchet MS";
-margin-top: 30px;
-margin-left: 50px;
+font-family: "Calibri","Trebuchet MS";
+margin: 30px 50px 20px 50px;
 }
 
 .miniInput {
