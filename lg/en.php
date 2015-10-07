@@ -79,7 +79,8 @@ define("_ABOUT_TEXT","		<p>It's a student project, which was made to connect a u
 							it more powerful, with new functionalities.</p>
 
 							<h2>Questions, Proposals...?</h2>
-							<p>We are listening to anyone! Contribute on our Git, or <a href=\"mailto:wikijourneydev@gmail.com\">send us a mail</a>!</p>");
+							<p>We are listening to anyone! Contribute on our Git, or <a href=\"mailto:wikijourneydev@gmail.com\">send us a mail</a>!<br/>
+							Or <a href=\"https://play.google.com/apps/testing/com.wikijourney.wikijourney\">test the app</a> !</p>");
 														
 														
 //===> technical.php
