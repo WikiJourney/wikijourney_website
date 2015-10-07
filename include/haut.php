@@ -35,13 +35,14 @@ else
 {
 	include("./lg/fr.php");
 	setcookie("lg","fr"); //Define cookie
+	$language = "fr";
 }
 	
 
 
 ?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="<?php echo $language; ?>">
 	<head>
 
 	<title><?php echo _TITLE; ?></title>
