@@ -17,6 +17,11 @@ if(isset($_COOKIE['lg']))
 		include("./lg/zh.php");
 		$language = "zh";
 	}
+	
+	else if($_COOKIE['lg'] == 'ar') {
+		include("./lg/ar.php");
+		$language = "ar";
+	}
 
 	else //Not normal
 	{
@@ -86,7 +91,8 @@ else
 						<td><p id="languagesBox">
 							<a href="action.php?lg=en">English</a><br/>
 							<a href="action.php?lg=fr">Français</a><br/>
-							<a href="action.php?lg=zh">中文</a>
+							<a href="action.php?lg=zh">中文</a><br/>
+							<a href="action.php?lg=ar">عربية</a>
 							</p>
 						</td>
 						
