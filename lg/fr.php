@@ -25,6 +25,7 @@ define("_FOLLOW_US",		"Suivez le projet !");
 
 //===> index.php
 define("_WELCOME_TITLE",	"Bienvenue !");
+define("_WELCOME_MESSAGE",	"Bonjour et bienvenue sur le site du projet WikiJourney ! Nous vous proposons d'explorer vos environs, ou bien un lieu que vous choisirez, grâce à des données libres ! Les informations viennent de Wikipédia, de Wikidata et de WikiVoyage, et les cartes d'OpenStreetMaps !<br> Pour commencer, remplissez simplement ce formulaire. ");
 define("_BUTTON_POI_AROUND","Trouver des points d'intérêts autour de moi !");
 define("_ADRESS_LOOK_UP",	"Ou à proximité d'une adresse !");
 define("_ADRESS_FAILURE",	"Cette adresse n'existe pas !");
@@ -82,7 +83,8 @@ define("_ABOUT_TEXT","
 
 							<h2>Des questions, des propositions ? </h2>
 							<p>
-							Nous sommes ouverts à toute piste d’amélioration ! Contribuez au projet <a href=\"mailto:wikijourneydev@gmail.com\">en nous contactant par mail</a> ou en codant directement tes propositions sur notre Git !
+							Nous sommes ouverts à toute piste d’amélioration ! Contribuez au projet <a href=\"mailto:wikijourneydev@gmail.com\">en nous contactant par mail</a> ou en codant directement vos propositions sur notre Git !<br/>
+							Ou devenez <a href=\"https://play.google.com/apps/testing/com.wikijourney.wikijourney\">testeur de l'application</a> !
 							</p>");
 							
 							
@@ -93,15 +95,8 @@ define("_TECHNICAL_TEXT",	"Ce site web est encore en construction, merci de reve
 
 //===> map.php
 define("_MAP_POI_LINK",				"Lien Wikipédia");
-define("_MAP_POI_TYPE_CATHO",		"'Eglises'");
-define("_MAP_POI_TYPE_FOOD",		"'Restaurants'");
-define("_MAP_POI_TYPE_MONUM",		"'Monuments'");
-define("_MAP_POI_TYPE_JEWISH",		"'Synagogues'");
-define("_MAP_POI_TYPE_MUSEUM",		"'Musée'");
-define("_MAP_POI_TYPE_ART",			"'Musée d\'art'");
-define("_MAP_POI_TYPE_SCHOOL",		"'Université'");
-define("_MAP_POI_TYPE_SUBWAY",		"'Stations de métro'");
 
+define("_MAP_POI_TYPE_FILE",		"lg/fr.txt");
 define("_LOOKING_FOR",				"Recherche des points d'intérêt à proximité : ");
 define("_SEE_WIKIVOYAGE_GUIDES",	"Consultez les guides WikiVoyage autour de vous !");
 define("_YOUR_PATH",				"Votre Parcours");

@@ -25,6 +25,7 @@ define("_FOLLOW_US",		"Follow us !");
 
 //===> index.php
 define("_WELCOME_TITLE",	"Welcome!");
+define("_WELCOME_MESSAGE",	"Welcome to WikiJourney Project! We offer you a quick look around a place (yours or one you choose) using Wikimedia's data! <br> Please fill in the form to begin. <br> <br>");
 define("_BUTTON_POI_AROUND","Find Point Of Interest around me!");
 define("_ADRESS_LOOK_UP",	"Or enter an adress to look up!");
 define("_ADRESS_FAILURE",	"Such a place doesn't exist!");
@@ -78,7 +79,8 @@ define("_ABOUT_TEXT","		<p>It's a student project, which was made to connect a u
 							it more powerful, with new functionalities.</p>
 
 							<h2>Questions, Proposals...?</h2>
-							<p>We are listening to anyone! Contribute on our Git, or <a href=\"mailto:wikijourneydev@gmail.com\">send us a mail</a>!</p>");
+							<p>We are listening to anyone! Contribute on our Git, or <a href=\"mailto:wikijourneydev@gmail.com\">send us a mail</a>!<br/>
+							Or <a href=\"https://play.google.com/apps/testing/com.wikijourney.wikijourney\">test the app</a> !</p>");
 														
 														
 //===> technical.php
@@ -88,15 +90,8 @@ define("_TECHNICAL_TEXT",	"This website is still under construction, please come
 
 //===> map.php
 define("_MAP_POI_LINK",				"See on Wikipedia");
-define("_MAP_POI_TYPE_CATHO",		"'Churches'");
-define("_MAP_POI_TYPE_FOOD",		"'Restaurants'");
-define("_MAP_POI_TYPE_MONUM",		"'Monuments'");
-define("_MAP_POI_TYPE_JEWISH",		"'Synagogues'");
-define("_MAP_POI_TYPE_MUSEUM",		"'Museum'");
-define("_MAP_POI_TYPE_ART",			"'Art Museum'");
-define("_MAP_POI_TYPE_SCHOOL",		"'University'");
-define("_MAP_POI_TYPE_SUBWAY",		"'Subway'");
 
+define("_MAP_POI_TYPE_FILE",		"lg/en.txt");
 define("_LOOKING_FOR",				"Looking for POI around : ");
 define("_SEE_WIKIVOYAGE_GUIDES",	"There are WikiVoyage guides around you.");
 define("_YOUR_PATH",				"Your Path");

@@ -17,6 +17,7 @@ of WFLabs to find POI around (thanks btw).
 
 ALPHA
 
+0.0.5 : Added the fake error function. 
 0.0.4 : Added Nominatim support
 0.0.3 : Added WikiVoyage informations.
 0.0.2 : Error gestion. More information in the output.

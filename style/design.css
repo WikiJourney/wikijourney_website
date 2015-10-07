@@ -35,6 +35,11 @@ float: left;
 width: 120px;
 }
 
+#welcome{
+font-family: "Calibri","Trebuchet MS";
+margin: 30px 50px 50px 50px;
+}
+
 .miniInput {
 display: block;
 width: 50px;

@@ -1,6 +1,6 @@
 <?php
 //========================================================//
-//============> LANGAGE FILE : CHINEESE <=================//
+//============> LANGAGE FILE : CHINESE <==================//
 //========================================================//
 
 
@@ -25,12 +25,13 @@ define("_FOLLOW_US",		"关注我们 !");
 
 //===> index.php
 define("_WELCOME_TITLE",	"欢迎访问 !");
+define("_WELCOME_MESSAGE",	"欢迎来到WikiJourney! 我们根据您选择的地点在周围显示地图并向您提供维基百科的信息 <br> 请填写信息开始探索吧！ <br> <br>");
 define("_BUTTON_POI_AROUND","在我周围寻找有意思的地点!");
 define("_ADRESS_LOOK_UP",	"在一个特定地点周围寻找!");
 define("_ADRESS_FAILURE",	"此地址不存在 !");
 define("_GEOLOC_FAILURE",	"Sorry but we can't find your position.");
 define("_AROUND_LOCATION", 	"在一个特定地点周围寻找!");
-define("_AROUND_ME",		"在我周围寻找有意思的地点!");
+define("_AROUND_ME",		"在附近寻找有意思的地点!");
 define("_NOTE_GEOLOC",		
 	                        "注意：此功能需要用到定位。只有在您的定位器工作正常和网络连接的情况下才可以确定您的位置。");
 define("_OPTIONS",			"选项 :");
@@ -42,7 +43,7 @@ define("_LOADING",			"Loading...");
 define("_TEAM_TITLE",		"团队");
 define("_TEAM_WHO_R_WE",	"成员简介");
 define("_TEAM_QUICKDESC",	 
-	                        "我们是法国里尔中央理工学院一个学生项目开发团队，学校在法国北方省首府里尔市。在我们前两年的学习中，我们需要组成一个团队共同开发一个实际项目。这个项目即为我们选择开发的项目。");
+	                        "我们是法国里尔中央理工学院一个七个学生组成的项目开发团队，学校在法国北方省首府里尔市。在我们前两年的学习中，我们需要组成一个团队共同开发一个实际项目。我们会做到最好来实现这个项目");
 
 define("_S_ARNOUTS_DESC",	"我对于编程和信息技术很感兴趣，所以我选择了加入这个项目。这个项目属于开源开发程序，对于我来说是一个将我的能力应用到一个实际项目中的很好的机会。");
 define("_S_ARNOUTS_POSTE", 	"项目主管<br/>Web开发") ;
@@ -78,10 +79,8 @@ define("_ABOUT_TEXT","
 							</p>
 
 							<h2>问题和建议 </h2>
-							<p>
-							我们希望倾听您的所有意见或建议。通过 <a href=\"mailto:wikijourneydev@gmail.com\">电子邮件</a> 或者直接通过Git编程来提出您的建议吧！
-							</p>");
-							
+							<p>我们期待您的建议和意见! 通过Git参与我们的项目, 或者通过电子邮件 <a href=\"mailto:wikijourneydev@gmail.com\">联系我们</a>!</p>");
+						
 							
 //===> technical.php
 define("_TECHNICAL_TITLE",	"技术支持");
@@ -90,20 +89,13 @@ define("_TECHNICAL_TEXT",	"此网页还在建设当中，敬请期待! ;)");
 
 //===> map.php
 define("_MAP_POI_LINK",				"维基百科");
-define("_MAP_POI_TYPE_CATHO",		"'天主教教堂'");
-define("_MAP_POI_TYPE_FOOD",		"'饭店'");
-define("_MAP_POI_TYPE_MONUM",		"'古迹'");
-define("_MAP_POI_TYPE_JEWISH",		"'犹太教堂'");
-define("_MAP_POI_TYPE_MUSEUM",		"'博物馆'");
-define("_MAP_POI_TYPE_ART",			"'艺术馆'");
-define("_MAP_POI_TYPE_SCHOOL",		"'大学'");
-define("_MAP_POI_TYPE_SUBWAY",		"'地铁站'");
 
-define("_LOOKING_FOR",				"Looking for POI around : ");
-define("_SEE_WIKIVOYAGE_GUIDES",	"There are WikiVoyage guides around you.");
-define("_YOUR_PATH",				"Your Path");
-define("_CLEAR_CART",				"Clear Cart");
-define("_SAVE_CART",				"Save cart !");
-define("_CART_IS_EMPTY_POPUP",		"Your cart is empty, please fill it before exporting it ! ;)");
-define("_YOU_ARE_HERE",				"You're here !");
-define("_CENTER_BUTTON",			"Center on my position");
+define("_MAP_POI_TYPE_FILE",		"lg/zh.txt");
+define("_LOOKING_FOR",				"在我周围寻找: ");
+define("_SEE_WIKIVOYAGE_GUIDES",	"在您周围有wiki电子导游信息.");
+define("_YOUR_PATH",				"我的路线");
+define("_CLEAR_CART",				"清除地图现有路线");
+define("_SAVE_CART",				"保存地图 !");
+define("_CART_IS_EMPTY_POPUP",		"您的地图为空，请在导出前加入景点和路线;)");
+define("_YOU_ARE_HERE",				"您在这里 !");
+define("_CENTER_BUTTON",			"以我的位置为中央显示");

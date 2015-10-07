@@ -1,0 +1,13 @@
+﻿16970:place-of-worship:كنائس
+2095:restaurant:مطاعم
+12518:monument:آثار
+34627:religious-jewish:معابد اليهود
+10387575:town-hall:المتاحف
+916475:town-hall:المتاحف
+207694:art-gallery:متاحف الفن
+3914:college:جامعات
+3918:college:جامعات
+9826:college:جامعات
+847027:college:جامعات
+5503:rail-metro:مترو
+928830:rail-metro:مترو
