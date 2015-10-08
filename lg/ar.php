@@ -14,7 +14,7 @@ define("_SRC_IMAGE_LOGO",	"./images/design/logo_and_catchphrase/fr.png");
 define("_INDEX",			"استقبال");
 define("_TEAM",				"الفريق");
 define("_ABOUT",			"المشروع");
-define("_TECHNICAL",		"المعلومات التقنية");
+define("_BLOG",				"بلوق");
 
 //===> Bottom
 define("_OUR_PARTNERS",		"شركائنا");
