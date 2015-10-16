@@ -11,3 +11,6 @@
 847027:college:Université
 5503:rail-metro:Métro
 928830:rail-metro:Métro
+2399626:village:Quartiers
+3591586:college:Éducation
+484170:city:Ville
