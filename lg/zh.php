@@ -14,7 +14,7 @@ define("_SRC_IMAGE_LOGO",	"./images/design/logo_and_catchphrase/fr.png");
 define("_INDEX",			"首页");
 define("_TEAM",				"团队");
 define("_ABOUT",			"关于我们");
-define("_TECHNICAL",		"技术支持");
+define("_BLOG",				"博客");
 
 //===> Bottom
 define("_OUR_PARTNERS",		"合作伙伴");
