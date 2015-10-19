@@ -181,17 +181,17 @@ See documentation on http://wikijourney.eu/api/documentation.php
 					$error = "API Wikidata isn't responding on request 1.";
 					break;
 				}
-				
 				$temp_geoloc_array = json_decode($temp_geoloc_array_json, true);
+				
 				$temp_poi_type_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetclaims&format=json&entity=Q" . $poi_id_array_clean["$i"] . "&property=P31");
 				if($temp_poi_type_array_json == FALSE)
 				{
 					$error = "API Wikidata isn't responding on request 2.";
 					break;
 				}
-				
 				$temp_poi_type_array = json_decode($temp_poi_type_array_json, true);
 				$temp_poi_type_id = $temp_poi_type_array["claims"]["P31"][0]["mainsnak"]["datavalue"]["value"]["numeric-id"];
+				
 				$temp_description_type_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetentities&format=json&ids=Q" . $temp_poi_type_id . "&props=labels&languages=$language");
 				if($temp_description_type_array_json == FALSE)
 				{
