@@ -8,6 +8,8 @@ See documentation on http://wikijourney.eu/api/documentation.php
 */		
 	
 	error_reporting(0); //No need error reporting, or else it will crash the JSON export
+	
+	require("multiCurl.php");
 
 	function secureInput($string)
 	{
@@ -172,11 +174,24 @@ See documentation on http://wikijourney.eu/api/documentation.php
 			$nb_poi = count($poi_id_array_clean);
 			
 			
-			/* stocks latitude, longitude, name and description of every POI located by ↑ in $poi_array */
+			/* stocks latitude, longitude, name and description of every POI located by ? in $poi_array */
 			for($i = 0; $i < min($nb_poi, $maxPOI); $i++) {
 				
+				
+				$URL_list = array(
+					//Geoloc infos
+					"https://www.wikidata.org/w/api.php?action=wbgetclaims&format=json&entity=Q" . $poi_id_array_clean["$i"] . "&property=P625",
+					//Type ID
+					"https://www.wikidata.org/w/api.php?action=wbgetclaims&format=json&entity=Q" . $poi_id_array_clean["$i"] . "&property=P31",
+					//Description
+					"https://www.wikidata.org/w/api.php?action=wbgetentities&format=json&ids=Q" . $poi_id_array_clean["$i"] . "&props=labels&languages=$language",
+					//Sitelink
+					"https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q" . $poi_id_array_clean["$i"] . "&sitefilter=$language&props=sitelinks/urls&format=json");
+				
+				$curl_return = reqMultiCurls($URL_list); //Using multithreading to fetch urls
+				
 				//Get geoloc infos
-				$temp_geoloc_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetclaims&format=json&entity=Q" . $poi_id_array_clean["$i"] . "&property=P625");
+				$temp_geoloc_array_json = $curl_return[0];
 				if($temp_geoloc_array_json == FALSE)
 				{
 					$error = "API Wikidata isn't responding on request 1.";
@@ -187,7 +202,7 @@ See documentation on http://wikijourney.eu/api/documentation.php
 				$temp_longitude = $temp_geoloc_array["claims"]["P625"][0]["mainsnak"]["datavalue"]["value"]["longitude"];
 				
 				//Get type id
-				$temp_poi_type_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetclaims&format=json&entity=Q" . $poi_id_array_clean["$i"] . "&property=P31");
+				$temp_poi_type_array_json = $curl_return[1];
 				if($temp_poi_type_array_json == FALSE)
 				{
 					$error = "API Wikidata isn't responding on request 2.";
@@ -207,7 +222,7 @@ See documentation on http://wikijourney.eu/api/documentation.php
 				$type_name = $temp_description_type_array["entities"]["Q" . $temp_poi_type_id]["labels"]["$language"]["value"];
 				
 				//Get description
-				$temp_description_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetentities&format=json&ids=Q" . $poi_id_array_clean["$i"] . "&props=labels&languages=$language");
+				$temp_description_array_json = $curl_return[2];
 				if($temp_description_array_json == FALSE)
 				{
 					$error = "API Wikidata isn't responding on request 4.";
@@ -217,7 +232,7 @@ See documentation on http://wikijourney.eu/api/documentation.php
 				$name = $temp_description_array["entities"]["Q" . $poi_id_array_clean["$i"]]["labels"]["$language"]["value"];
 				
 				//Get sitelink
-				$temp_sitelink_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q" . $poi_id_array_clean["$i"] . "&sitefilter=$language&props=sitelinks/urls&format=json");
+				$temp_sitelink_array_json = $curl_return[3];
 				if($temp_sitelink_array_json == FALSE)
 				{
 					$error = "API Wikidata isn't responding on request 5.";
