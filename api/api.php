@@ -1,7 +1,7 @@
 <?php
 /* 
 ============================ WIKIJOURNEY API =========================
-Version Alpha 0.0.5
+Version Alpha 0.0.6
 ======================================================================
 
 See documentation on http://wikijourney.eu/api/documentation.php
@@ -61,7 +61,7 @@ See documentation on http://wikijourney.eu/api/documentation.php
 	//============> INFO SECTION
 	$output['infos']['source'] 		= "WikiJourney API";
 	$output['infos']['link']		= "http://wikijourney.eu/";
-	$output['infos']['api_version']		= "alpha 0.0.5";
+	$output['infos']['api_version']		= "alpha 0.0.6";
 	
 	//============> FAKE ERROR
 	if(isset($_GET['fakeError']) && $_GET['fakeError'] == "true")

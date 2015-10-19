@@ -1,4 +1,13 @@
 <?php
+/* 
+============================ WIKIJOURNEY API =========================
+=> multiCurl.php
+======================================================================
+
+This function is needed by the API. 
+Added on alpha 0.0.6
+
+*/
 
 function reqMultiCurls($urls) {
 	
