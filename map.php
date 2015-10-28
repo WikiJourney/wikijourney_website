@@ -50,7 +50,7 @@
 
 	
 	//Make the url
-	$api_url = "http://wikijourneydev.alwaysdata.net/api/api.php?displayImg=1&wikivoyage=1&long=".$user_longitude."&lat=".$user_latitude."&lg=".$language."&maxPOI=".$maxPOI."&range=".$range;
+	$api_url = "http://wikijourney.eu/api/api.php?displayImg=1&wikivoyage=1&long=".$user_longitude."&lat=".$user_latitude."&lg=".$language."&maxPOI=".$maxPOI."&range=".$range;
 
 	echo "<!-- ".$api_url."-->"; //Test only ? Maybe.
 
