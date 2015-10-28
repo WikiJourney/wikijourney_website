@@ -1,7 +1,7 @@
 <?php
 /* 
 ============================ WIKIJOURNEY API =========================
-Version Alpha 0.0.6
+Version Beta 1.0
 ======================================================================
 
 See documentation on http://wikijourney.eu/api/documentation.php
@@ -54,14 +54,16 @@ See documentation on http://wikijourney.eu/api/documentation.php
 		else $displayImg = 0;
 	if(isset($_GET['wikivoyage'])) $wikivoyageSupport = secureInput($_GET['wikivoyage']);
 		else $wikivoyageSupport = 0;
+	if(isset($_GET['thumbnailWidth'])) $thumbnailWidth = secureInput($_GET['thumbnailWidth']);
+		else $thumbnailWidth = 500;
 	
-	if(!(is_numeric($range) && is_numeric($user_latitude) && is_numeric($user_longitude) && is_numeric($maxPOI)))
-		$error = "Error : latitude, longitude, maxPOI and range should be numeric values.";
+	if(!(is_numeric($range) && is_numeric($user_latitude) && is_numeric($user_longitude) && is_numeric($maxPOI) && is_numeric($thumbnailWidth)))
+		$error = "Error : latitude, longitude, maxPOI, thumbnailWidth and range should be numeric values.";
 		
 	//============> INFO SECTION
 	$output['infos']['source'] 		= "WikiJourney API";
 	$output['infos']['link']		= "http://wikijourney.eu/";
-	$output['infos']['api_version']		= "alpha 0.0.6";
+	$output['infos']['api_version']		= "Beta 1.0";
 	
 	//============> FAKE ERROR
 	if(isset($_GET['fakeError']) && $_GET['fakeError'] == "true")
@@ -243,7 +245,7 @@ See documentation on http://wikijourney.eu/api/documentation.php
 						//Type
 						"https://www.wikidata.org/w/api.php?action=wbgetentities&format=json&ids=Q" . $temp_poi_type_id . "&props=labels&languages=$language",
 						//Images
-						"https://".$language.".wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&pithumbsize=100&pilimit=1&titles=".$temp_url_end);
+						"https://".$language.".wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&pithumbsize=".$thumbnailWidth."&pilimit=1&titles=".$temp_url_end);
 					
 					$curl_return = reqMultiCurls($URL_list);
 					
@@ -269,18 +271,17 @@ See documentation on http://wikijourney.eu/api/documentation.php
 					$image_url = @array_values(json_decode($temp_image_json, true)["query"]["pages"])[0]["thumbnail"]["source"];
 				
 				
-				//=============> And now we can format the output
+				//=============> And now we can make the output
 				if($name != null)
 				{
 					$poi_array[$i]["latitude"] = 		$temp_latitude;
 					$poi_array[$i]["longitude"] = 		$temp_longitude;
-					
-					$poi_array[$i]["name"] = 		$name;
+					$poi_array[$i]["name"] = 			$name;
 					$poi_array[$i]["sitelink"] = 		$temp_sitelink;
 					$poi_array[$i]["type_name"] = 		$type_name;
 					$poi_array[$i]["type_id"] = 		$temp_poi_type_id;
-					$poi_array[$i]["id"] = 			$poi_id_array_clean[$i];
-					$poi_array[$i]["image_url"] = 			$image_url;
+					$poi_array[$i]["id"] = 				$poi_id_array_clean[$i];
+					$poi_array[$i]["image_url"] = 		$image_url;
 				}
 				
 
