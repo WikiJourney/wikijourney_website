@@ -211,16 +211,6 @@ See documentation on http://wikijourney.eu/api/documentation.php
 				$temp_poi_type_array = json_decode($temp_poi_type_array_json, true);
 				$temp_poi_type_id = $temp_poi_type_array["claims"]["P31"][0]["mainsnak"]["datavalue"]["value"]["numeric-id"];
 				
-				//Get type
-				$temp_description_type_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetentities&format=json&ids=Q" . $temp_poi_type_id . "&props=labels&languages=$language");
-				if($temp_description_type_array_json == FALSE)
-				{
-					$error = "API Wikidata isn't responding on request 3.";
-					break;
-				}
-				$temp_description_type_array = json_decode($temp_description_type_array_json, true);
-				$type_name = $temp_description_type_array["entities"]["Q" . $temp_poi_type_id]["labels"]["$language"]["value"];
-				
 				//Get description
 				$temp_description_array_json = $curl_return[2];
 				if($temp_description_array_json == FALSE)
@@ -241,6 +231,29 @@ See documentation on http://wikijourney.eu/api/documentation.php
 				$temp_sitelink_array = json_decode($temp_sitelink_array_json, true);
 				$temp_sitelink = $temp_sitelink_array["entities"]["Q" . $poi_id_array_clean["$i"]]["sitelinks"][$language . "wiki"]["url"];
 				
+				//Get type
+				$temp_description_type_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetentities&format=json&ids=Q" . $temp_poi_type_id . "&props=labels&languages=$language");
+				if($temp_description_type_array_json == FALSE)
+				{
+					$error = "API Wikidata isn't responding on request 3.";
+					break;
+				}
+				$temp_description_type_array = json_decode($temp_description_type_array_json, true);
+				$type_name = $temp_description_type_array["entities"]["Q" . $temp_poi_type_id]["labels"]["$language"]["value"];
+				
+				//Get image
+				$temp_url_explode = explode("/", $temp_sitelink);
+				$temp_url_end = $temp_url_explode[count($temp_url_explode)-1];
+				$temp_image_json = file_get_contents("https://".$language.".wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&pithumbsize=100&pilimit=1&titles=".$temp_url_end);
+				if($temp_image_json == FALSE)
+				{
+					$error = "API Wikidata isn't responding on request 6.";
+					break;
+				}
+				//We put an @ because it can be null (case there is no image for this article)
+				$image_url = @array_values(json_decode($temp_image_json, true)["query"]["pages"])[0]["thumbnail"]["source"];
+				
+				
 				if($name != null)
 				{
 					$poi_array[$i]["latitude"] = 		$temp_latitude;
@@ -251,6 +264,7 @@ See documentation on http://wikijourney.eu/api/documentation.php
 					$poi_array[$i]["type_name"] = 		$type_name;
 					$poi_array[$i]["type_id"] = 		$temp_poi_type_id;
 					$poi_array[$i]["id"] = 			$poi_id_array_clean[$i];
+					$poi_array[$i]["image_url"] = 			$image_url;
 				}
 				
 
