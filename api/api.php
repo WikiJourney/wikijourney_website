@@ -1,7 +1,7 @@
 <?php
 /* 
 ============================ WIKIJOURNEY API =========================
-Version Alpha 0.0.6
+Version Beta 1.0
 ======================================================================
 
 See documentation on http://wikijourney.eu/api/documentation.php
@@ -54,14 +54,16 @@ See documentation on http://wikijourney.eu/api/documentation.php
 		else $displayImg = 0;
 	if(isset($_GET['wikivoyage'])) $wikivoyageSupport = secureInput($_GET['wikivoyage']);
 		else $wikivoyageSupport = 0;
+	if(isset($_GET['thumbnailWidth'])) $thumbnailWidth = secureInput($_GET['thumbnailWidth']);
+		else $thumbnailWidth = 500;
 	
-	if(!(is_numeric($range) && is_numeric($user_latitude) && is_numeric($user_longitude) && is_numeric($maxPOI)))
-		$error = "Error : latitude, longitude, maxPOI and range should be numeric values.";
+	if(!(is_numeric($range) && is_numeric($user_latitude) && is_numeric($user_longitude) && is_numeric($maxPOI) && is_numeric($thumbnailWidth)))
+		$error = "Error : latitude, longitude, maxPOI, thumbnailWidth and range should be numeric values.";
 		
 	//============> INFO SECTION
 	$output['infos']['source'] 		= "WikiJourney API";
 	$output['infos']['link']		= "http://wikijourney.eu/";
-	$output['infos']['api_version']		= "alpha 0.0.6";
+	$output['infos']['api_version']		= "Beta 1.0";
 	
 	//============> FAKE ERROR
 	if(isset($_GET['fakeError']) && $_GET['fakeError'] == "true")
@@ -174,9 +176,9 @@ See documentation on http://wikijourney.eu/api/documentation.php
 			$nb_poi = count($poi_id_array_clean);
 			
 			
-			/* stocks latitude, longitude, name and description of every POI located by ? in $poi_array */
 			for($i = 0; $i < min($nb_poi, $maxPOI); $i++) {
 				
+				//=============> First call, we're gonna fetch geoloc infos, type ID, description and sitelink
 				
 				$URL_list = array(
 					//Geoloc infos
@@ -190,67 +192,96 @@ See documentation on http://wikijourney.eu/api/documentation.php
 				
 				$curl_return = reqMultiCurls($URL_list); //Using multithreading to fetch urls
 				
-				//Get geoloc infos
-				$temp_geoloc_array_json = $curl_return[0];
-				if($temp_geoloc_array_json == FALSE)
-				{
-					$error = "API Wikidata isn't responding on request 1.";
-					break;
-				}
-				$temp_geoloc_array = json_decode($temp_geoloc_array_json, true);
-				$temp_latitude = $temp_geoloc_array["claims"]["P625"][0]["mainsnak"]["datavalue"]["value"]["latitude"];
-				$temp_longitude = $temp_geoloc_array["claims"]["P625"][0]["mainsnak"]["datavalue"]["value"]["longitude"];
+				//==> Get geoloc infos
+					$temp_geoloc_array_json = $curl_return[0];
+					if($temp_geoloc_array_json == FALSE)
+					{
+						$error = "API Wikidata isn't responding on request 1.";
+						break;
+					}
+					$temp_geoloc_array = json_decode($temp_geoloc_array_json, true);
+					$temp_latitude = $temp_geoloc_array["claims"]["P625"][0]["mainsnak"]["datavalue"]["value"]["latitude"];
+					$temp_longitude = $temp_geoloc_array["claims"]["P625"][0]["mainsnak"]["datavalue"]["value"]["longitude"];
+					
+				//==> Get type id
+					$temp_poi_type_array_json = $curl_return[1];
+					if($temp_poi_type_array_json == FALSE)
+					{
+						$error = "API Wikidata isn't responding on request 2.";
+						break;
+					}
+					$temp_poi_type_array = json_decode($temp_poi_type_array_json, true);
+					$temp_poi_type_id = $temp_poi_type_array["claims"]["P31"][0]["mainsnak"]["datavalue"]["value"]["numeric-id"];
+					
+				//==> Get description
+					$temp_description_array_json = $curl_return[2];
+					if($temp_description_array_json == FALSE)
+					{
+						$error = "API Wikidata isn't responding on request 3.";
+						break;
+					}
+					$temp_description_array = json_decode($temp_description_array_json, true);
+					$name = $temp_description_array["entities"]["Q" . $poi_id_array_clean["$i"]]["labels"]["$language"]["value"];
+					
+				//==> Get sitelink
+					$temp_sitelink_array_json = $curl_return[3];
+					if($temp_sitelink_array_json == FALSE)
+					{
+						$error = "API Wikidata isn't responding on request 4.";
+						break;
+					}
+					$temp_sitelink_array = json_decode($temp_sitelink_array_json, true);
+					$temp_sitelink = $temp_sitelink_array["entities"]["Q" . $poi_id_array_clean["$i"]]["sitelinks"][$language . "wiki"]["url"];
+					
 				
-				//Get type id
-				$temp_poi_type_array_json = $curl_return[1];
-				if($temp_poi_type_array_json == FALSE)
-				{
-					$error = "API Wikidata isn't responding on request 2.";
-					break;
-				}
-				$temp_poi_type_array = json_decode($temp_poi_type_array_json, true);
-				$temp_poi_type_id = $temp_poi_type_array["claims"]["P31"][0]["mainsnak"]["datavalue"]["value"]["numeric-id"];
+				//=============> Now we make a second call to fetch images and types' titles
 				
-				//Get type
-				$temp_description_type_array_json = file_get_contents("http://www.wikidata.org/w/api.php?action=wbgetentities&format=json&ids=Q" . $temp_poi_type_id . "&props=labels&languages=$language");
-				if($temp_description_type_array_json == FALSE)
-				{
-					$error = "API Wikidata isn't responding on request 3.";
-					break;
-				}
-				$temp_description_type_array = json_decode($temp_description_type_array_json, true);
-				$type_name = $temp_description_type_array["entities"]["Q" . $temp_poi_type_id]["labels"]["$language"]["value"];
+				//==> With the sitelink, we make the image's url
+					$temp_url_explode = explode("/", $temp_sitelink);
+					$temp_url_end = $temp_url_explode[count($temp_url_explode)-1];
+					
+				//==> Calling APIs
+					$URL_list = array(
+						//Type
+						"https://www.wikidata.org/w/api.php?action=wbgetentities&format=json&ids=Q" . $temp_poi_type_id . "&props=labels&languages=$language",
+						//Images
+						"https://".$language.".wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&pithumbsize=".$thumbnailWidth."&pilimit=1&titles=".$temp_url_end);
+					
+					$curl_return = reqMultiCurls($URL_list);
+					
+						
+				//==> Get type
+					$temp_description_type_array_json = $curl_return[0];
+					if($temp_description_type_array_json == FALSE)
+					{
+						$error = "API Wikidata isn't responding on request 5.";
+						break;
+					}
+					$temp_description_type_array = json_decode($temp_description_type_array_json, true);
+					$type_name = $temp_description_type_array["entities"]["Q" . $temp_poi_type_id]["labels"]["$language"]["value"];
+					
+				//==> Get image
+					$temp_image_json = $curl_return[1];
+					if($temp_image_json == FALSE)
+					{
+						$error = "API Wikidata isn't responding on request 6.";
+						break;
+					}
+					//We put an @ because it can be null (case there is no image for this article)
+					$image_url = @array_values(json_decode($temp_image_json, true)["query"]["pages"])[0]["thumbnail"]["source"];
 				
-				//Get description
-				$temp_description_array_json = $curl_return[2];
-				if($temp_description_array_json == FALSE)
-				{
-					$error = "API Wikidata isn't responding on request 4.";
-					break;
-				}
-				$temp_description_array = json_decode($temp_description_array_json, true);
-				$name = $temp_description_array["entities"]["Q" . $poi_id_array_clean["$i"]]["labels"]["$language"]["value"];
 				
-				//Get sitelink
-				$temp_sitelink_array_json = $curl_return[3];
-				if($temp_sitelink_array_json == FALSE)
-				{
-					$error = "API Wikidata isn't responding on request 5.";
-					break;
-				}
-				$temp_sitelink_array = json_decode($temp_sitelink_array_json, true);
-				$temp_sitelink = $temp_sitelink_array["entities"]["Q" . $poi_id_array_clean["$i"]]["sitelinks"][$language . "wiki"]["url"];
-				
+				//=============> And now we can make the output
 				if($name != null)
 				{
 					$poi_array[$i]["latitude"] = 		$temp_latitude;
 					$poi_array[$i]["longitude"] = 		$temp_longitude;
-					
-					$poi_array[$i]["name"] = 		$name;
+					$poi_array[$i]["name"] = 			$name;
 					$poi_array[$i]["sitelink"] = 		$temp_sitelink;
 					$poi_array[$i]["type_name"] = 		$type_name;
 					$poi_array[$i]["type_id"] = 		$temp_poi_type_id;
-					$poi_array[$i]["id"] = 			$poi_id_array_clean[$i];
+					$poi_array[$i]["id"] = 				$poi_id_array_clean[$i];
+					$poi_array[$i]["image_url"] = 		$image_url;
 				}
 				
 

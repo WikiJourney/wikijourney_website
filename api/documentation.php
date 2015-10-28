@@ -14,6 +14,9 @@ of WFLabs to find POI around (thanks btw).
 
 -------------> Versions :
 
+BETA
+
+1.0.0 : Added thumbnail for POIs. New technology implemented, making the API faster.
 
 ALPHA
 
@@ -38,6 +41,7 @@ Parameters could be (INS is for If Not Specified) :
 		- [INS en  ] 	lg :		language used 	
 		- [INS 0   ] 	wikivoyage :	contact or no WikiVoyage API. Value 0 or 1.
 		- [INS 0   ] 	displayImg :	download or no thumbnail adress from WikiVoyage. Value 0 or 1.	
+		- [INS 500 ]	thumbnailWidth : maximum width of thumbnails from Wikipedia's article. Value is in px, and has to be numeric.
 		
 Example : 	http://wikijourney.eu/api/api.php?latitude=2&longitude=2&lg=fr
 Example :	http://wikijourney.eu/api/api.php?place=Washington&lg=fr
@@ -69,6 +73,7 @@ Structure :
 		- longitude
 		- name
 		- sitelink (could be null)
+		- image_url (link to thumbnail - could be null)
 		- type_name
 		- type_id
 		- id
@@ -107,10 +112,11 @@ Example :
             "latitude":50.007283,
             "longitude":1.997088,
             "name":"Longpre-les-Corps Saints British Cemetery",
-            "sitelink":null,
+			"sitelink":null,
             "type_name":"cemetery",
             "type_id":39614,
-            "id":2364019
+            "id":2364019,
+			"image_url":null
          }
       ]
    },
