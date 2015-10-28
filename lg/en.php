@@ -14,7 +14,7 @@ define("_SRC_IMAGE_LOGO",	"./images/design/logo_and_catchphrase/en.png");
 define("_INDEX",			"Index");
 define("_TEAM",				"Team");
 define("_ABOUT",			"About");
-define("_TECHNICAL",		"Technical Informations");
+define("_BLOG",				"Blog");
 
 //===> Bottom
 define("_OUR_PARTNERS",		"Our partners");

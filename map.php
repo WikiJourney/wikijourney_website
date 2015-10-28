@@ -165,10 +165,9 @@ if($api_answer_array['guides']['nb_guides'] != 0) //If we got guides from WikiVo
 
 			if(file_exists(_MAP_POI_TYPE_FILE))
 			{
-				$tabletype = @fopen(_MAP_POI_TYPE_FILE, "r");
-				$content = fread($tabletype,filesize(_MAP_POI_TYPE_FILE));
+				$content = file_get_contents(_MAP_POI_TYPE_FILE);
 				
-				$table1 = explode("\r\n",$content);
+				$table1 = explode("\n",$content);
 				for($i = 0;$i < count($table1);$i++)
 				{
 					if($table1[$i] != "")
