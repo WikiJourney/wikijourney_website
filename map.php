@@ -126,7 +126,7 @@
 <input type="hidden" id="mapPoiLink" value="<?php echo _MAP_POI_LINK; ?>" /><!-- As we can't put php in the js file, we got to put "defines" for translation somewhere.. -->
 <script type="text/javascript" src="./scripts/map-scripts.js"></script>
 		
-<p><?php echo _LOOKING_FOR; ?><i style="float:right;">Lat : <?php echo round($user_latitude,3); ?>° Long : <?php echo round($user_longitude,3); ?>° </i></p>
+<p><?php echo _LOOKING_FOR; ?><i style="float:right;">Lat : <?php echo round($user_latitude,3); ?>° Long : <?php echo round($user_longitude,3); ?>° -- <?php echo $api_answer_array['poi']['nb_poi'];?> POI - <?php echo $api_answer_array['guides']['nb_guides']; ?> WikiVoyage</i></p>
 
 <?php 
 	//****************************************************************
