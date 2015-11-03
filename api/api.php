@@ -177,21 +177,27 @@ See documentation on http://wikijourney.eu/api/documentation.php
 			$poi_id_array_clean = $poi_id_array["items"];
 			$nb_poi = count($poi_id_array_clean);
 			
-			for($i = 0; $i < min($nb_poi, $maxPOI); $i++) {
+			for($i = 0; $i < min($nb_poi, $maxPOI); $i++) 
+			{
 				
-				//=============> Database connexion : we look in the cache to know if the POI is there
-				$answer = mysqli_query($db,"SELECT * FROM poi_cache WHERE id=$id");
-				$dataPOI = mysqli_fetch_array($db, $answer);
-				
-				//=============> If we have it we can display it
-				if(count($dataPOI) != 0)
+				//=============> We check if the db is online. If not, then bypass the cache.
+				if($handler_db)
 				{
-						$poi_array[$i] = $data;				
+					//==> We look in the cache to know if the POI is there
+					$answer = mysqli_query($handler_db,"SELECT * FROM poi_cache WHERE id=$id");
+					$dataPOI = mysqli_fetch_assoc($answer);
+					
+					//==> If we have it we can display it
+					if(count($dataPOI) != 0)
+					{
+							$poi_array[$i] = $dataPOI;
+					}
+					mysqli_free_result($answer);
 				}
 				
 				
-				//=============> If not, contact Wikipedia API
-				else
+				//=============> If the POI is not in the cache, or if the database is unreachable, then contact APIs.
+				if($poi_array[$i] == NULL)
 				{
 					
 					
@@ -303,6 +309,7 @@ See documentation on http://wikijourney.eu/api/documentation.php
 				}
 
 			}
+			mysqli_close($db_handler); //Close the database.
 		}
 		$output['poi']['nb_poi'] = count($poi_array);
 		$output['poi']['poi_info'] = $poi_array; //Output 
