@@ -9,7 +9,7 @@ See documentation on http://wikijourney.eu/api/documentation.php
 	
 	error_reporting(0); //No need error reporting, or else it will crash the JSON export
 	
-	require("../include/connectdb.php");
+	$db = mysqli_query('localhost','root','','wikijourney'); //Connect to db
 	
 	require("multiCurl.php");
 
@@ -184,7 +184,7 @@ See documentation on http://wikijourney.eu/api/documentation.php
 				if($handler_db)
 				{
 					//==> We look in the cache to know if the POI is there
-					$answer = mysqli_query($handler_db,"SELECT * FROM poi_cache WHERE id=$id");
+					$answer = mysqli_query($handler_db,"SELECT * FROM cache_".$language." WHERE id=$id");
 					$dataPOI = mysqli_fetch_assoc($answer);
 					
 					//==> If we have it we can display it
@@ -305,7 +305,20 @@ See documentation on http://wikijourney.eu/api/documentation.php
 						$poi_array[$i]["type_id"] = 		$temp_poi_type_id;
 						$poi_array[$i]["id"] = 				$poi_id_array_clean[$i];
 						$poi_array[$i]["image_url"] = 		$image_url;
-					}
+						if($handler_db)
+						{
+							//Insert this POI in the cache
+							mysqli_query($db_handler,"INSERT INTO cache_".$language." VALUES(
+								".$poi_id_array_clean[$i].",
+								'$temp_latitude',
+								'$temp_longitude,'
+								'$name',
+								'$temp_sitelink',
+								'$type_name',
+								$temp_poi_type_id,
+								'$image_url',
+								NOW())");
+						}
 				}
 
 			}
