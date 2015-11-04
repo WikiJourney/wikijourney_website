@@ -8,9 +8,16 @@ See documentation on http://wikijourney.eu/api/documentation.php
 */		
 	
 	error_reporting(0); //No need error reporting, or else it will crash the JSON export
+	header('Content-Type: text/html; charset=utf-8');
 	
-	$db = mysqli_query('localhost','root','','wikijourney'); //Connect to db
-	
+	$handler_db = mysqli_connect('localhost','wikijourney_web','','wikijourney'); //Connect to db
+
+	if(!$handler_db) 
+	{
+	die('Erreur de connexion (' . mysqli_connect_errno() . ') '
+            . mysqli_connect_error());
+	}
+
 	require("multiCurl.php");
 
 	function secureInput($string)
@@ -179,19 +186,21 @@ See documentation on http://wikijourney.eu/api/documentation.php
 			
 			for($i = 0; $i < min($nb_poi, $maxPOI); $i++) 
 			{
-				
+				$id = $poi_id_array_clean[$i];
 				//=============> We check if the db is online. If not, then bypass the cache.
 				if($handler_db)
 				{
+					
 					//==> We look in the cache to know if the POI is there
-					$answer = mysqli_query($handler_db,"SELECT * FROM cache_".$language." WHERE id=$id");
+					$answer = mysqli_query($handler_db,"SELECT * FROM cache_".$language." WHERE id=$id") or die(mysqli_error($handler_db));
 					$dataPOI = mysqli_fetch_assoc($answer);
 					
 					//==> If we have it we can display it
 					if(count($dataPOI) != 0)
 					{
-							$poi_array[$i] = $dataPOI;
+						$poi_array[$i] = $dataPOI;
 					}
+					
 					mysqli_free_result($answer);
 				}
 				
@@ -308,21 +317,15 @@ See documentation on http://wikijourney.eu/api/documentation.php
 						if($handler_db)
 						{
 							//Insert this POI in the cache
-							mysqli_query($db_handler,"INSERT INTO cache_".$language." VALUES(
-								".$poi_id_array_clean[$i].",
-								'$temp_latitude',
-								'$temp_longitude,'
-								'$name',
-								'$temp_sitelink',
-								'$type_name',
-								$temp_poi_type_id,
-								'$image_url',
-								NOW())");
+							
+							$sql_query = "INSERT INTO cache_".$language." VALUES ($id,$temp_latitude,$temp_longitude,'$name','$temp_sitelink','$type_name','$temp_poi_type_id','$image_url',NOW())";
+							mysqli_query($handler_db,$sql_query) or die(mysqli_error($handler_db));
 						}
+					}
 				}
 
 			}
-			mysqli_close($db_handler); //Close the database.
+			mysqli_close($handler_db); //Close the database.
 		}
 		$output['poi']['nb_poi'] = count($poi_array);
 		$output['poi']['poi_info'] = $poi_array; //Output 
