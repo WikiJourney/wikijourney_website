@@ -1,22 +1,15 @@
 <?php
 /* 
 ============================ WIKIJOURNEY API =========================
-Version Beta 1.0
+Version Beta 1.1
 ======================================================================
 
 See documentation on http://wikijourney.eu/api/documentation.php
 */		
 	
 	error_reporting(0); //No need error reporting, or else it will crash the JSON export
-	header('Content-Type: text/html; charset=utf-8');
-	
+	header('Content-Type: text/html; charset=utf-8'); //Set the header to UTF8
 	$handler_db = mysqli_connect('localhost','wikijourney_web','','wikijourney'); //Connect to db
-
-	if(!$handler_db) 
-	{
-	die('Erreur de connexion (' . mysqli_connect_errno() . ') '
-            . mysqli_connect_error());
-	}
 
 	require("multiCurl.php");
 
@@ -72,7 +65,7 @@ See documentation on http://wikijourney.eu/api/documentation.php
 	//============> INFO SECTION
 	$output['infos']['source'] 		= "WikiJourney API";
 	$output['infos']['link']		= "http://wikijourney.eu/";
-	$output['infos']['api_version']		= "Beta 1.0";
+	$output['infos']['api_version']		= "Beta 1.1";
 	
 	//============> FAKE ERROR
 	if(isset($_GET['fakeError']) && $_GET['fakeError'] == "true")
@@ -104,8 +97,6 @@ See documentation on http://wikijourney.eu/api/documentation.php
 									."&llprop=url"//Properties dedicated to langlinks
 									."&generator=geosearch&ggscoord=$user_latitude|$user_longitude&ggsradius=10000&ggslimit=50"; //Properties dedicated to geosearch
 			}
-			
-			//echo $wikivoyageRequest; //TEST ONLY
 			
 			$wikivoyage_json = file_get_contents($wikivoyageRequest); //Request is sent to WikiVoyage API
 			
@@ -187,6 +178,7 @@ See documentation on http://wikijourney.eu/api/documentation.php
 			for($i = 0; $i < min($nb_poi, $maxPOI); $i++) 
 			{
 				$id = $poi_id_array_clean[$i];
+				
 				//=============> We check if the db is online. If not, then bypass the cache.
 				if($handler_db)
 				{
@@ -314,20 +306,19 @@ See documentation on http://wikijourney.eu/api/documentation.php
 						$poi_array[$i]["type_id"] = 		$temp_poi_type_id;
 						$poi_array[$i]["id"] = 				$poi_id_array_clean[$i];
 						$poi_array[$i]["image_url"] = 		$image_url;
+						
 						if($handler_db)
 						{
 							//Insert this POI in the cache
-							
+						
 							$sql_query = "INSERT INTO cache_".$language." VALUES ($id,$temp_latitude,$temp_longitude,'".mysqli_real_escape_string ($handler_db,$name)."','".mysqli_real_escape_string($handler_db,$temp_sitelink)."','".mysqli_real_escape_string($handler_db,$type_name)."','".mysqli_real_escape_string($handler_db,$temp_poi_type_id)."','".mysqli_real_escape_string($handler_db,$image_url)."',NOW())";
+							@mysqli_query($handler_db,$sql_query); //No error display, or else it crashes the JSON. 
 							
-							
-							@mysqli_query($handler_db,$sql_query);
 						}
 					}
 				}
 
 			}
-			mysqli_close($handler_db); //Close the database.
 		}
 		$output['poi']['nb_poi'] = count($poi_array);
 		$output['poi']['poi_info'] = $poi_array; //Output 
@@ -344,6 +335,8 @@ See documentation on http://wikijourney.eu/api/documentation.php
 		$output['err_check']['value'] = false;
 	
 	echo json_encode($output); //Encode in JSON. (user will get it by file_get_contents, curl, wget, or whatever)
+	
+	mysqli_close($handler_db); //Close the database.
 	
 	//Next line is a legacy, please don't touch.
 	/* yolo la police */
