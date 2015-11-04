@@ -318,8 +318,10 @@ See documentation on http://wikijourney.eu/api/documentation.php
 						{
 							//Insert this POI in the cache
 							
-							$sql_query = "INSERT INTO cache_".$language." VALUES ($id,$temp_latitude,$temp_longitude,'$name','$temp_sitelink','$type_name','$temp_poi_type_id','$image_url',NOW())";
-							mysqli_query($handler_db,$sql_query) or die(mysqli_error($handler_db));
+							$sql_query = "INSERT INTO cache_".$language." VALUES ($id,$temp_latitude,$temp_longitude,'".mysqli_real_escape_string ($handler_db,$name)."','".mysqli_real_escape_string($handler_db,$temp_sitelink)."','".mysqli_real_escape_string($handler_db,$type_name)."','".mysqli_real_escape_string($handler_db,$temp_poi_type_id)."','".mysqli_real_escape_string($handler_db,$image_url)."',NOW())";
+							
+							
+							@mysqli_query($handler_db,$sql_query);
 						}
 					}
 				}
