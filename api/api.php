@@ -9,7 +9,7 @@ See documentation on http://wikijourney.eu/api/documentation.php
 	
 	error_reporting(0); //No need error reporting, or else it will crash the JSON export
 	header('Content-Type: text/html; charset=utf-8'); //Set the header to UTF8
-	$handler_db = mysqli_connect('localhost','wikijourney_web','','wikijourney'); //Connect to db
+	$handler_db = mysqli_connect('localhost','wikijourney_web','','wikijourney_cache'); //Connect to db
 
 	require("multiCurl.php");
 
