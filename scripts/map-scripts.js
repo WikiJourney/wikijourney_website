@@ -179,10 +179,10 @@ function distance(i){
 	var userlong = Math.radians(user_longitude);
 	var poilat = Math.radians(poi_array[i].latitude);
 	var poilong = Math.radians(poi_array[i].longitude);
-	var r = 6633 ; //rayon de la Terre
-	//calcul de la distance précise
+	var r = 6633 ; //Earth's radius
+	//Precise distance
 	var dp = 2*Math.asin(Math.sqrt(Math.pow(Math.sin((userlat-poilat)/2),2)+Math.cos(userlat)*Math.cos(poilat)*Math.pow(Math.sin((userlong-poilong)/2),2)));
-	//en km :
+	//Conversion to kilometers
 	var d = dp*r ;
 
 	return d;
