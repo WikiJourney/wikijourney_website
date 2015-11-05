@@ -1,19 +1,34 @@
 <?php
+
+//================== WIKIJOURNEY - MAP.PHP =======================
+//
+//This file loads the map, displays the user's position on it, shows
+//POIs around, and create routing. It uses Wikijourney's API.
+//
+//License : Apache 2.0
+//
+//Source : https://github.com/WikiJourney/wikijourney_website
+
+
+	//==> First, include the top, with special properties.
 	$INCLUDE_MAP_PROPERTIES = 1;
-	include("./include/haut.php"); 
-	//error_reporting(E_ALL);
-	/* Obtain current user latitude/longitude */
+	include("./include/haut.php");
+	//This include also loads translation for all the text in this page.
 	
-	if(!isset($_POST['choice']))//In case the user arrived directly on the page, he's redirected to the index
+	//==> In case the user arrived directly on the page, he's redirected to the index
+	if(!isset($_POST['choice']))
 		die('
 		<script type="text/javascript">
 			document.location.href = "index.php";
 		</script>
 		'); 
-		
-
 	
-	if($_POST['choice'] == 'adress') { //If the user typed an adress, we get location
+	//****************************************************************
+	//***************** Getting user's coordinates *******************
+	//****************************************************************
+	
+	//==> If the user typed an adress, we get location with OSM Nominatim
+	if($_POST['choice'] == 'adress') { 
 		$name = $_POST['adressValue'];
 		$osm_array_json = file_get_contents("http://nominatim.openstreetmap.org/search?format=json&q=\"" . urlencode($name)."\"");
 		$osm_array = json_decode($osm_array_json, true);
@@ -28,17 +43,20 @@
 		$user_latitude = $osm_array[0]["lat"];
 		$user_longitude = $osm_array[0]["lon"];
 	}
-	if($_POST['choice'] == 'around') { //Else, we look for POI around him
+	
+	//==> Else, we look for POI around his geolocation
+	if($_POST['choice'] == 'around') { 
 		if(isset($_POST['latitude']) && $_POST['latitude'] == 0 && $_POST['longitude'] == 0) //In case geolocation has crashed (it can't be 0,0 exactly)
 			die('
 			<script type="text/javascript">
 				document.location.href = "index.php?message=geoloc";
 			</script>
-			'); 
+			'); //Redirect to homepage with a failure message
 		$user_latitude= $_POST['latitude'];
 		$user_longitude= $_POST['longitude'];
 	}
 	
+	//==> Get range and maxPOI from POST data
 	if(is_numeric($_POST['range']))
 		$range = $_POST['range'];
 	else
@@ -46,14 +64,17 @@
 
 	$maxPOI = intval($_POST['maxPOI']);
 	
-	/* yolo la police */
 
+	//****************************************************************
+	//*********************** Contact the API ************************
+	//****************************************************************
 	
-	//Make the url
+	//==> Make the url
 	$api_url = "http://wikijourney.eu/api/api.php?displayImg=1&wikivoyage=1&long=".$user_longitude."&lat=".$user_latitude."&lg=".$language."&maxPOI=".$maxPOI."&range=".$range;
 
-	echo "<!-- ".$api_url."-->"; //Test only ? Maybe.
+	echo "<!-- ".$api_url."-->"; //For debugging purpose.
 
+	//==> Make the request
 	
 	//NOTE !
 	//It looks like we're experiencing trouble with this. Actually, it's hard to loopback on our own server with filegetcontents, curl or whatever.
@@ -67,24 +88,51 @@
 	$api_answer_json = curl_exec($ch);
 	curl_close($ch);
 	
-	$api_answer_array = json_decode($api_answer_json,true); //Decoding the json into an array
+	//==> Decoding the json into an array
+	$api_answer_array = json_decode($api_answer_json,true); 
 
 	if($api_answer_array['err_check']['value'] == "true") //Error check
 		die("Error found when contacting the API : ".$api_answer_array['err_check']['err_msg']);
 
-	//If no error, we put the POI array in a json to use it with JavaScript
+	//==> If no error, we put the POI array in a json to use it with JavaScript
 	$poi_array_json_encoded = json_encode($api_answer_array['poi']);
+
+	//****************************************************************
+	//*************** Load File with Pagicon name ********************
+	//****************************************************************	
 	
+	if(file_exists(_MAP_POI_TYPE_FILE)) //It depends of the language selected.
+	{
+		$content = file_get_contents(_MAP_POI_TYPE_FILE); //Read only.
+		
+		$table1 = explode("\n",$content);
+		for($i = 0;$i < count($table1);$i++)
+		{
+			if($table1[$i] != "")
+			{
+				$typesArray[$i] = explode(":",$table1[$i]);
+			}
+		}
+		$pagicon_json_array = json_encode($typesArray);
+
+	}
+	else
+		$pagicon_json_array = "[]";
 
 ?>
+
 
 <!-- Loading the scripts for the cart management and stuff -->
 <input type="hidden" id="mapPoiLink" value="<?php echo _MAP_POI_LINK; ?>" /><!-- As we can't put php in the js file, we got to put "defines" for translation somewhere.. -->
 <script type="text/javascript" src="./scripts/map-scripts.js"></script>
 		
-<p><?php echo _LOOKING_FOR; ?><i style="float:right;">Lat : <?php echo round($user_latitude,3); ?>° Long : <?php echo round($user_longitude,3); ?>° </i></p>
+<p><?php echo _LOOKING_FOR; ?><i style="float:right;">Lat : <?php echo round($user_latitude,3); ?>° Long : <?php echo round($user_longitude,3); ?>° -- <?php echo $api_answer_array['poi']['nb_poi'];?> POI - <?php echo $api_answer_array['guides']['nb_guides']; ?> WikiVoyage</i></p>
 
 <?php 
+	//****************************************************************
+	//************** Display Guides from WikiVoyage ******************
+	//****************************************************************
+	
 if($api_answer_array['guides']['nb_guides'] != 0) //If we got guides from WikiVoyage, display it
 {
 	$guides_array = $api_answer_array['guides']['guides_info'];
@@ -147,137 +195,130 @@ if($api_answer_array['guides']['nb_guides'] != 0) //If we got guides from WikiVo
 	</div>
 
 	<script>
-		var poi_array = new Array();
-		var cartList = new Array();
+	//****************************************************************
+	//***************** Get data from PHP script *********************
+	//****************************************************************
+	var poi_array = new Array();	
+	var poi_array_decode = new Array();
+	
+	poi_array_decode = 	<?php echo $poi_array_json_encoded; ?>;
+	poi_array = 		poi_array_decode['poi_info'];
+
+	user_latitude = 	<?php echo $user_latitude; ?>;
+	user_longitude = 	<?php echo $user_longitude; ?>;
+	
+	var pagicon = 		<?php echo $pagicon_json_array; ?> //For the icon/ID/label association
+	
+	//****************************************************************
+	//***************** Variables declaration ************************
+	//****************************************************************
+	
+	var cartList = new Array();
+	var j;
+	var ismerged = false;
+
+	L.mapbox.accessToken = 'pk.eyJ1IjoicG9sb2Nob24tc3RyZWV0IiwiYSI6Ikh5LVJqS0UifQ.J0NayavxaAYK1SxMnVcxKg';
+
+	/* Overlay (icons) management */
+	var overlayMaps = new Array();
+	var map = L.mapbox.map('map', 'polochon-street.kpogic18');
+	var routing_poi_list = new Array();
 		
-		poi_array_decode = <?php echo($poi_array_json_encoded); ?>;
-		poi_array = poi_array_decode['poi_info'];
-
-		user_latitude = <?php echo($user_latitude); ?>;
-		user_longitude = <?php echo($user_longitude); ?>;
-		
+	var routing = L.Routing.control({
+			waypoints: routing_poi_list
+		}).addTo(map);
 		
 
+	for(j = 0; j < pagicon.length; ++j) {
+		overlayMaps[pagicon[j][2]] = L.layerGroup([]);
+	}
 
+	L.control.layers(null, overlayMaps).addTo(map);
 
-		/* This is for the icon/ID/label association, to be completed */
-		var pagicon = <?php
-
-			if(file_exists(_MAP_POI_TYPE_FILE))
-			{
-				$content = file_get_contents(_MAP_POI_TYPE_FILE);
-				
-				$table1 = explode("\n",$content);
-				for($i = 0;$i < count($table1);$i++)
-				{
-					if($table1[$i] != "")
-					{
-						$typesArray[$i] = explode(":",$table1[$i]);
-					}
-				}
-				echo json_encode($typesArray);
-						
-				fclose($tabletype);
-			}
-			else
-				echo "[]";
-			?>;
-			
-		var j;
-		var ismerged = false;
-
-		L.mapbox.accessToken = 'pk.eyJ1IjoicG9sb2Nob24tc3RyZWV0IiwiYSI6Ikh5LVJqS0UifQ.J0NayavxaAYK1SxMnVcxKg';
-
-		/* Overlay (icons) management */
-		var overlayMaps = new Array();
-		var map = L.mapbox.map('map', 'polochon-street.kpogic18');
-		var routing_poi_list = new Array();
+	//****************************************************************
+	//***************** Place POI on the map *************************
+	//****************************************************************
+	
+	for(i = 0; i < Math.min(poi_array_decode.nb_poi, <?php echo $maxPOI ?>); ++i) 
+	{
+		var popup_content = new Array();
+		var j = 0;
 		
-		var routing = L.Routing.control({
-  				waypoints: routing_poi_list
-			}).addTo(map);
-			
+		for(j = 0; ((j < pagicon.length) && ((pagicon[j][0]).search(String(poi_array[i].type_id)))); j++)
+			;
 
-		for(j = 0; j < pagicon.length; ++j) {
-			overlayMaps[pagicon[j][2]] = L.layerGroup([]);
-		}
-
-		L.control.layers(null, overlayMaps).addTo(map);
-
-
-		/* place wiki POI */
-		for(i = 0; i < Math.min(poi_array_decode.nb_poi, <?php echo $maxPOI ?>); ++i) {
-			var popup_content = new Array();
-			var j=0;
-			for(j = 0; ((j < pagicon.length) && ((pagicon[j][0]).search(String(poi_array[i].type_id)))); j++)
-				;
-
-			if (distance(i) < 0.07 && !ismerged){
-				/* merge pop-ups if they are too close */
-				popup_content = "<?php echo _YOU_ARE_HERE; ?><br>" ;
-			    ismerged = true ;
-			   	poi_array[i]['marker'] = L.marker([user_latitude, user_longitude], {    icon: L.mapbox.marker.icon({
-					'marker-size': 'large',
-					'marker-symbol': 'pitch',
-					'marker-color': '#fa0'
-				})}).addTo(map); 		//Complete list of symbols https://www.mapbox.com/maki/
-			}
-			else if(j < pagicon.length){
-				/* if we have an icon for the type of POI, display it */
-				poi_array[i]["marker"] = L.marker([poi_array[i].latitude, poi_array[i].longitude], {    icon: L.mapbox.marker.icon({
-					'marker-size': 'large',
-					'marker-symbol': pagicon[j][1],
-				})}).addTo(map);
-				
-				overlayMaps[pagicon[j][2]].addLayer(poi_array[i]['marker']);
-			}
-			else{
-				poi_array[i]["marker"] = L.marker([poi_array[i].latitude, poi_array[i].longitude]).addTo(map); 
-			}
-			
-			//Putting name in the box
-			popup_content += poi_array[i].name + "<br /> <p>"; 
-			//Link to Wikipedia if available
-			if(poi_array[i].sitelink != null)
-			{
-				popup_content += "<a target=\"_blank\" href=\"" + poi_array[i].sitelink + "\">" + '<?php echo _MAP_POI_LINK; ?>' + "</a> <br />";
-			}
-			//And [+] to put it in the cart
-			popup_content += "<a href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\">[+]</a></p>";
-			
-			
-			poi_array[i]['marker'].bindPopup(popup_content).openPopup();
-		}
-
-		if(!ismerged){
-			var marker = L.marker([user_latitude, user_longitude], {    icon: L.mapbox.marker.icon({
+		if (distance(i) < 0.07 && !ismerged){
+			/* merge pop-ups if they are too close */
+			popup_content = "<?php echo _YOU_ARE_HERE; ?><br>" ;
+			ismerged = true ;
+			poi_array[i]['marker'] = L.marker([user_latitude, user_longitude], {    icon: L.mapbox.marker.icon({
 				'marker-size': 'large',
-				'marker-symbol': 'pitch', 
+				'marker-symbol': 'pitch',
 				'marker-color': '#fa0'
-			})}).addTo(map);
-			marker.bindPopup("<?php echo _YOU_ARE_HERE; ?>").openPopup();
+			})}).addTo(map); 		//Complete list of symbols https://www.mapbox.com/maki/
 		}
-
-		for(j = 0; j < pagicon.length; ++j) 
-			map.addLayer(overlayMaps[pagicon[j][2]]);
+		else if(j < pagicon.length){
+			/* if we have an icon for the type of POI, display it */
+			poi_array[i]["marker"] = L.marker([poi_array[i].latitude, poi_array[i].longitude], {    icon: L.mapbox.marker.icon({
+				'marker-size': 'large',
+				'marker-symbol': pagicon[j][1],
+			})}).addTo(map);
+			
+			overlayMaps[pagicon[j][2]].addLayer(poi_array[i]['marker']);
+		}
+		else{
+			poi_array[i]["marker"] = L.marker([poi_array[i].latitude, poi_array[i].longitude]).addTo(map); 
+		}
 		
-
-		//Draw a circle on the map around user's position, the range is $range.
-		var circle_options = {
-			  color: ' rgb(248,99,99)',      // Stroke color
-			  opacity: 0.8,         // Stroke opacity
-			  weight: 3,         // Stroke weight
-			  fillColor: 'rgb(248,99,99)',  // Fill color
-			  fillOpacity: 0.05,    // Fill opacity
-			  dashArray: "5,10"
-		 };
-
-		var circle_range = L.circle([<?php echo $user_latitude; ?>, <?php echo $user_longitude; ?>], <?php echo $range*1000; ?>, circle_options).addTo(map);	
+		//Putting name in the box
+		popup_content += poi_array[i].name + "<br /> <p>"; 
+		//Link to Wikipedia if available
+		if(poi_array[i].sitelink != null)
+		{
+			popup_content += "<a target=\"_blank\" href=\"" + poi_array[i].sitelink + "\">" + '<?php echo _MAP_POI_LINK; ?>' + "</a> <br />";
+		}
+		//And [+] to put it in the cart
+		popup_content += "<a href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\">[+]</a></p>";
 		
-		//And setting the view.
-		map.setView([user_latitude, user_longitude], 15);
 		
-		</script>
+		poi_array[i]['marker'].bindPopup(popup_content).openPopup();
+	}
+	
+	//****************************************************************
+	//*********** Add a marker on user's position ********************
+	//****************************************************************
+	if(!ismerged){
+		var marker = L.marker([user_latitude, user_longitude], {    icon: L.mapbox.marker.icon({
+			'marker-size': 'large',
+			'marker-symbol': 'pitch', 
+			'marker-color': '#fa0'
+		})}).addTo(map);
+		marker.bindPopup("<?php echo _YOU_ARE_HERE; ?>").openPopup();
+	}
+
+	for(j = 0; j < pagicon.length; ++j) 
+		map.addLayer(overlayMaps[pagicon[j][2]]);
+	
+	//****************************************************************
+	//*************** Drawing a circle on the map ********************
+	//****************************************************************
+	var circle_options = {
+		  color: ' rgb(248,99,99)',      // Stroke color
+		  opacity: 0.8,         // Stroke opacity
+		  weight: 3,         // Stroke weight
+		  fillColor: 'rgb(248,99,99)',  // Fill color
+		  fillOpacity: 0.05,    // Fill opacity
+		  dashArray: "5,10"
+	 };
+
+	var circle_range = L.circle([<?php echo $user_latitude; ?>, <?php echo $user_longitude; ?>], <?php echo $range*1000; ?>, circle_options).addTo(map);	
+	
+	//****************************************************************
+	//*********** Set the view on the user's position ****************
+	//****************************************************************
+	map.setView([user_latitude, user_longitude], 15);
+	
+	</script>
 	</div>
 <div>
 <?php
