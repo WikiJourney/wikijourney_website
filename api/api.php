@@ -184,7 +184,7 @@ See documentation on http://wikijourney.eu/api/documentation.php
 				{
 					
 					//==> We look in the cache to know if the POI is there
-					$answer = mysqli_query($handler_db,"SELECT * FROM cache_".$language." WHERE id=$id") or die(mysqli_error($handler_db));
+					$answer = mysqli_query($handler_db,"SELECT * FROM cache_".$language." WHERE id=$id");
 					$dataPOI = mysqli_fetch_assoc($answer);
 					
 					//==> If we have it we can display it
