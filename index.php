@@ -28,14 +28,13 @@
 			
 
 			<?php echo _OPTIONS; ?><p>
-			<!-- if IE then usual else cursor -->
-			<!-- <script>
+			<!-- if IE then usual else cursor --> <!--
+			<script>
 				var isIE = /*@cc_on!@*/false || !!document.documentMode;
 				if (isIE) {
-					document.getElementById("range").innerHTML = "<input class='miniInput' type='text' name='range' id='range' value='1'/>"
+					document.getElementById("range").innerHTML = '<input class="miniInput" type="text" name="range" id="range" value="1"/>'
 				} else {
-					document.getElementById("range").innerHTML = "20<input class='range' type='range' name='points' id='range2' min='20' max='150' step='25'/>150"
-						'au revoir'
+					document.getElementById("range").innerHTML = '20<input class="range" type="range" name="points" id="range2" min="20" max="150" step="25"/>150'
 				}
 			</script>
 			<label for="range"><?php echo _RANGE; ?></label><div id="range"></div><br/>
