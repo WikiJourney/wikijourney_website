@@ -26,10 +26,26 @@
 			<br/>
 			<br/>
 			
+
 			<?php echo _OPTIONS; ?><p>
-			<label for="range"><?php echo _RANGE; ?></label><input class="miniInput" type="text" name="range" id="range" value="1"/><br/>
+			<!-- if IE then usual else cursor -->
+			<!-- <script>
+				var isIE = /*@cc_on!@*/false || !!document.documentMode;
+				if (isIE) {
+					document.getElementById("range").innerHTML = "<input class='miniInput' type='text' name='range' id='range' value='1'/>"
+				} else {
+					document.getElementById("range").innerHTML = "20<input class='range' type='range' name='points' id='range2' min='20' max='150' step='25'/>150"
+						'au revoir'
+				}
+			</script>
+			<label for="range"><?php echo _RANGE; ?></label><div id="range"></div><br/>
 			<label for="maxPOI"><?php echo _MAX_POI; ?></label><input class="miniInput" type="text" name="maxPOI" id="maxPOI" value="10" /><br/><br/>
-		
+			-->
+			
+			<label for="range"><?php echo _RANGE; ?></label>
+				<input type="range" value="" max="5" min="1" step="1" name="profile">
+			<br/><br/>
+
 		<input type="hidden" name="longitude" id="longitude" value="null" />
 		<input type="hidden" name="latitude" id="latitude" value="null" />
 		

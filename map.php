@@ -57,13 +57,38 @@
 	}
 	
 	//==> Get range and maxPOI from POST data
-	if(is_numeric($_POST['range']))
+	/*if(is_numeric($_POST['range']))
 		$range = $_POST['range'];
 	else
 		$range = 1;
 
-	$maxPOI = intval($_POST['maxPOI']);
-	
+	$maxPOI = intval($_POST['maxPOI']); */
+	if(is_numeric($_POST['profile']))
+		$profile = $_POST['profile'];
+	else
+		$profile = 1;
+	switch ($profile) {
+		case '1':
+			$range = 10 ;
+			$maxPOI = 30 ;
+			break;
+		case '2':
+			$range = 2 ;
+			$maxPOI = 20 ;
+			break;
+		case '3':
+			$range = 1 ;
+			$maxPOI = 20 ;
+			break;
+		case '4':
+			$range = 1 ;
+			$maxPOI = 30 ;
+			break;
+		default:
+			$range = 0.5;
+			$maxPOI = 100;
+			break;
+	}
 
 	//****************************************************************
 	//*********************** Contact the API ************************
