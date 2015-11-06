@@ -48,6 +48,7 @@ else
 	<title><?php echo _TITLE; ?></title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" media="screen" type="text/css" href="./style/design.css" />
+	<link rel="stylesheet" media="all" type="text/css" href="./style/design.php" />
 	<link rel="stylesheet" media="screen" type="text/css" href="./style/fontello.css" />
 	<link rel="Shortcut icon" href="./images/design/favicon.ico" />
 	

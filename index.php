@@ -42,7 +42,7 @@
 			<label for="maxPOI"><?php echo _MAX_POI; ?></label><input class="miniInput" type="text" name="maxPOI" id="maxPOI" value="10" /><br/><br/>
 			-->
 			
-			<label for="range"><?php echo _RANGE; ?></label>
+			<label for="range"><?php echo _PROFILE; ?></label>
 				<input type="range" value="" max="5" min="1" step="1" name="profile">
 			<br/><br/>
 

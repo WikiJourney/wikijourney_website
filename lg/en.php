@@ -35,6 +35,9 @@ define("_AROUND_ME",		"Around Me !");
 define("_NOTE_GEOLOC",		"Note : This fonctionnality involve geolocation and could not work, it
 							depends of the device you're on and the way you're connected to the internet.");
 define("_OPTIONS",			"Options :");
+define("_PROFILE",			"Tour profile : ");
+define("_PROFILE_LANDSCAPE",	"Countryside");
+define("_PROFILE_CITY",			"Capital City");
 define("_RANGE",			"Range (km) : ");
 define("_MAX_POI",			"Max POI : ");
 define("_PLACEHOLDER",		"Type a location here.");
