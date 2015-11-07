@@ -36,8 +36,11 @@ define("_NOTE_GEOLOC",
 	                        "注意：此功能需要用到定位。只有在您的定位器工作正常和网络连接的情况下才可以确定您的位置。");
 define("_OPTIONS",			"选项 :");
 define("_PROFILE",			"Tour profile : ");
-define("_PROFILE_LANDSCAPE",	"Countryside");
-define("_PROFILE_CITY",			"Capital City");
+define("_PROFILE_LANDSCAPE",	"'Countryside'");
+define("_PROFILE_SMALLTOWN",	"'Small Town'");
+define("_PROFILE_MIDTOWN",		"'Town'");
+define("_PROFILE_BIGTOWN",		"'Small City'");
+define("_PROFILE_CITY",			"'Big City'");
 define("_RANGE",			"范围 (km) : ");
 define("_MAX_POI",			"最大值 :");
 define("_PLACEHOLDER",		"在此输入地点名称.");

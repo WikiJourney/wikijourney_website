@@ -37,8 +37,11 @@ define("_NOTE_GEOLOC",		"Note : cette fonctionnalité utilise la géolocalisatio
 							votre connexion internet.");
 define("_OPTIONS",			"Options :");
 define("_PROFILE",			"Type de visite : ");
-define("_PROFILE_LANDSCAPE",	"Rase campagne");
-define("_PROFILE_CITY",			"Capitale");
+define("_PROFILE_LANDSCAPE",	"'Rase campagne'");
+define("_PROFILE_SMALLTOWN",	"'Petite ville'");
+define("_PROFILE_MIDTOWN",		"'Ville'");
+define("_PROFILE_BIGTOWN",		"'Grande ville'");
+define("_PROFILE_CITY",			"'Capitale'");
 define("_RANGE",			"Rayon (km) : ");
 define("_MAX_POI",			"Maximum :");
 define("_PLACEHOLDER",		"Entrez un lieu ici.");
