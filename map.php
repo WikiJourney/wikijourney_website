@@ -240,47 +240,54 @@ if($api_answer_array['guides']['nb_guides'] != 0) //If we got guides from WikiVo
 	
 	for(i = 0; i < Math.min(poi_array_decode.nb_poi, <?php echo $maxPOI ?>); ++i) 
 	{
-		var popup_content = new Array();
-		var j = 0;
-		
-		for(j = 0; ((j < pagicon.length) && ((pagicon[j][0]).search(String(poi_array[i].type_id)))); j++)
-			;
-
-		if (distance(i) < 0.07 && !ismerged){
-			/* merge pop-ups if they are too close */
-			popup_content = "<?php echo _YOU_ARE_HERE; ?><br>" ;
-			ismerged = true ;
-			poi_array[i]['marker'] = L.marker([user_latitude, user_longitude], {    icon: L.mapbox.marker.icon({
-				'marker-size': 'large',
-				'marker-symbol': 'pitch',
-				'marker-color': '#fa0'
-			})}).addTo(map); 		//Complete list of symbols https://www.mapbox.com/maki/
-		}
-		else if(j < pagicon.length){
-			/* if we have an icon for the type of POI, display it */
-			poi_array[i]["marker"] = L.marker([poi_array[i].latitude, poi_array[i].longitude], {    icon: L.mapbox.marker.icon({
-				'marker-size': 'large',
-				'marker-symbol': pagicon[j][1],
-			})}).addTo(map);
+		if(poi_array[i] != undefined) { 
+			//TODO:remove poi_array[i] if undefined
+			var popup_content = new Array();
+			var j = 0;
 			
-			overlayMaps[pagicon[j][2]].addLayer(poi_array[i]['marker']);
+			try {
+				for(j = 0; ((j < pagicon.length) && ((pagicon[j][0]).search(String(poi_array[i].type_id)))); j++)
+				;
+			} catch(err) {
+				j = pagicon.length ;
+			}
+
+			if (distance(i) < 0.07 && !ismerged){
+				/* merge pop-ups if they are too close */
+				popup_content = "<?php echo _YOU_ARE_HERE; ?><br>" ;
+				ismerged = true ;
+				poi_array[i]['marker'] = L.marker([user_latitude, user_longitude], {    icon: L.mapbox.marker.icon({
+					'marker-size': 'large',
+					'marker-symbol': 'pitch',
+					'marker-color': '#fa0'
+				})}).addTo(map); 		//Complete list of symbols https://www.mapbox.com/maki/
+			}
+			else if(j < pagicon.length){
+				/* if we have an icon for the type of POI, display it */
+				poi_array[i]["marker"] = L.marker([poi_array[i].latitude, poi_array[i].longitude], {    icon: L.mapbox.marker.icon({
+					'marker-size': 'large',
+					'marker-symbol': pagicon[j][1],
+				})}).addTo(map);
+				
+				overlayMaps[pagicon[j][2]].addLayer(poi_array[i]['marker']);
+			}
+			else{
+				poi_array[i]["marker"] = L.marker([poi_array[i].latitude, poi_array[i].longitude]).addTo(map); 
+			}
+			
+			//Putting name in the box
+			popup_content += poi_array[i].name + "<br /> <p>"; 
+			//Link to Wikipedia if available
+			if(poi_array[i].sitelink != null)
+			{
+				popup_content += "<a target=\"_blank\" href=\"" + poi_array[i].sitelink + "\">" + '<?php echo _MAP_POI_LINK; ?>' + "</a> <br />";
+			}
+			//And [+] to put it in the cart
+			popup_content += "<a href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\">[+]</a></p>";
+			
+			
+			poi_array[i]['marker'].bindPopup(popup_content).openPopup();
 		}
-		else{
-			poi_array[i]["marker"] = L.marker([poi_array[i].latitude, poi_array[i].longitude]).addTo(map); 
-		}
-		
-		//Putting name in the box
-		popup_content += poi_array[i].name + "<br /> <p>"; 
-		//Link to Wikipedia if available
-		if(poi_array[i].sitelink != null)
-		{
-			popup_content += "<a target=\"_blank\" href=\"" + poi_array[i].sitelink + "\">" + '<?php echo _MAP_POI_LINK; ?>' + "</a> <br />";
-		}
-		//And [+] to put it in the cart
-		popup_content += "<a href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\">[+]</a></p>";
-		
-		
-		poi_array[i]['marker'].bindPopup(popup_content).openPopup();
 	}
 	
 	//****************************************************************

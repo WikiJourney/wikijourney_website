@@ -118,7 +118,9 @@ else
 				$nomPage = preg_replace($reg, '$2', $nomPage); 
 			?>
 			<script type="text/javascript">
-				document.getElementById("lien_" + "<?php echo $nomPage; ?>").style.cssText = "background-color: rgb(137,160,173);";
+				if(document.getElementById("lien_" + "<?php echo $nomPage; ?>")){
+									document.getElementById("lien_" + "<?php echo $nomPage; ?>").style.cssText = "background-color: rgb(137,160,173);";
+				}
 			</script>
 		
 		</div>
