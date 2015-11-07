@@ -28,6 +28,7 @@
 			
 			
 			<?php echo _OPTIONS; ?><p>
+			<p id="browserType"></p><br/>
 
 			<script type="text/javascript">
 			function displayVal(value)
@@ -69,28 +70,25 @@
 					document.getElementById('maxPOI').value = maxPOI;
 					document.getElementById('range').value = range;
 			}
-			</script>
 			
-			<!-- if IE then usual else cursor --> <!--
-			<script>
-				var isIE = /*@cc_on!@*/false || !!document.documentMode;
+			// if IE then input text else cursor
+				var isIE = false || !!document.documentMode;
 				if (isIE) {
-					document.getElementById('range').innerHTML = '<input class="miniInput" type="text" name="range" id="range2" value="1"/>' ;
+					htmlfill = '<label for="range"><?php echo _RANGE; ?></label>' +
+								'<input class="miniInput" type="text" name="range" id="range2" value="1"/>' +
+								'<label for="maxPOI"><?php echo _MAX_POI; ?></label>' +
+								'<input class="miniInput" type="text" name="maxPOI" id="maxPOI" value="10" /><br/><br/>' ;
 				} else {
-					var html = '<input id="profile" type="range" value="" max="5" min="1" step="1" value="1" name="profile" oninput="displayVal(this.value)" onchange="displayVal(this.value)">'
-					document.getElementById('range').innerHTML = html ;
+					var htmlfill = '<label for="range"><?php echo _PROFILE; ?></label>' +
+								'<input id="profile" type="range" value="" max="5" min="1" step="1" value="1" name="profile" oninput="displayVal(this.value)" onchange="displayVal(this.value)">' +
+									'<p id="name" style="float:right"> </p>' +
+								'<br/><br/>' +
+								'<input type="hidden" value="" id="maxPOI" name="maxPOI"/>' +
+								'<input type="hidden" value="" id="range" name="range"/> ' ;
 				}
+				document.getElementById('browserType').innerHTML = htmlfill ;
 			</script>
-			<label for="range"><?php echo _RANGE; ?></label><p id="range"> bouh</p><br/>
-			<label for="maxPOI"><?php echo _MAX_POI; ?></label><input class="miniInput" type="text" name="maxPOI" id="maxPOI" value="10" /><br/><br/>
-			-->
-			
-			<label for="range"><?php echo _PROFILE; ?></label>
-				<input id="profile" type="range" value="" max="5" min="1" step="1" value="1" name="profile" oninput="displayVal(this.value)" onchange="displayVal(this.value)">
-				<p id="name" style="float:right"> </p>
-			<br/><br/>
-			<input type="hidden" value="" id="maxPOI" name="maxPOI"/>
-			<input type="hidden" value="" id="range" name="range"/>
+
 
 		<input type="hidden" name="longitude" id="longitude" value="null" />
 		<input type="hidden" name="latitude" id="latitude" value="null" />
