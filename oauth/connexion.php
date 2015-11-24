@@ -21,12 +21,12 @@ $consumerSecret = 'OurSecretKey';
 // $client->setExtraParam('title','Special:OAuth/whatever') for each step.
 // If your wiki uses wgSecureLogin, the canonicalServerUrl will point to http://
 $config = new MWOAuthClientConfig(
-	'https://localhost/w/index.php?title=Special:OAuth', // url to use
+	'http://en.wikipedia.org/w/index.php?title=Special:OAuth', // url to use
 	true, // do we use SSL? (we should probably detect that from the url)
 	false // do we validate the SSL certificate? Always use 'true' in production.
 );
-$config->canonicalServerUrl = 'http://localhost';
-$config->redirURL = 'https://localhost/view/Special:OAuth?';
+$config->canonicalServerUrl = 'http://wikijourney.eu';
+$config->redirURL = 'http://wikijourney.eu';
 $cmrToken = new OAuthToken( $consumerKey, $consumerSecret );
 $client = new MWOAuthClient( $config, $cmrToken );
 // Step 1 - Get a request token
