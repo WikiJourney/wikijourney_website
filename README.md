@@ -1,8 +1,21 @@
 # WikiJourney (web)
-Wikijourney is a collection of services - a [website](http://wikijourney.eu), and an Android applicaton - that aims to promote free (as in a speech) tourism.<br />
-The website's main purpose is to locate the user, display points of interest around him and allow him to create an itinerary made from these POIs; in this repository you'll find the website's entire source code.
 
-It uses [Leaflet](http://leafletjs.com/) displaying [OSM](http://www.openstreetmap.org) tiles, and [Leaflet Routing Machine](http://www.liedman.net/leaflet-routing-machine/) for the direction part.
+A website and an API made for tourism, based on Wikipedia information.
+
+## Features
+ - Find points of interest around you
+ - Display them on a map
+ - Link to the Wikipedia pages for each point of interest
+ - Integration of Wikivoyage guides
+ - Planification of routing (search around a place) and directions
+
+## Planned features
+ See the [TODO file](TODO.md) for more information.
+
+## Resources used
+
+The application uses [Leaflet](http://leafletjs.com/) to display [OSM](http://www.openstreetmap.org) tiles as well as [Leaflet Routing Machine](http://www.liedman.net/leaflet-routing-machine/) to guide users.
+Some icons from [Font Awesome](http://fontawesome.io/) were compiled using [Fontello](http://fontello.com/).
 
 Links :
 - [WikiJourney website](http://wikijourney.eu)
@@ -10,7 +23,9 @@ Links :
 - [Twitter account](https://twitter.com/WikiJourney)
 - [App Repository](https://github.com/WikiJourney/wikijourney_app/)
 
-
-
-
 ![wikijourney.logo](http://wikijourneydev.alwaysdata.net/images/design/logo.png)
+
+If you're interested in making cities easier to visit, you can contribute to our project by improving our website or our application!
+
+-----------
+Software under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.html)
