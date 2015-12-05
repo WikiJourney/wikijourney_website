@@ -70,7 +70,7 @@
 	//****************************************************************
 	
 	//==> Make the url
-	$api_url = "http://wikijourney.eu/api/api.php?displayImg=1&wikivoyage=1&long=".$user_longitude."&lat=".$user_latitude."&lg=".$language."&maxPOI=".$maxPOI."&range=".$range;
+	$api_url = "https://www.wikijourney.eu/api/api.php?displayImg=1&wikivoyage=1&long=".$user_longitude."&lat=".$user_latitude."&lg=".$language."&maxPOI=".$maxPOI."&range=".$range;
 
 	echo "<!-- ".$api_url."-->"; //For debugging purpose.
 
@@ -85,9 +85,11 @@
 	curl_setopt($ch, CURLOPT_FRESH_CONNECT, true);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($ch, CURLOPT_VERBOSE, true);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+	curl_setopt($ch, CURLOPT_CAINFO, "/srv/fullchain.pem");
 	$api_answer_json = curl_exec($ch);
 	curl_close($ch);
-	
 	//==> Decoding the json into an array
 	$api_answer_array = json_decode($api_answer_json,true); 
 
