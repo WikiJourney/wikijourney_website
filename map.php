@@ -9,7 +9,11 @@
 //
 //Source : https://github.com/WikiJourney/wikijourney_website
 
-
+	//==> Configuration
+	
+	$CONFIG_USE_SSL = 1; //Set this to 1 to use SSL
+	$CONFIG_LINK_PEM = '/srv/fullchain.pem'; //Link to the pem file you want to use
+	
 	//==> First, include the top, with special properties.
 	$INCLUDE_MAP_PROPERTIES = 1;
 	include("./include/haut.php");
@@ -85,9 +89,14 @@
 	curl_setopt($ch, CURLOPT_FRESH_CONNECT, true);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($ch, CURLOPT_VERBOSE, true);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-	curl_setopt($ch, CURLOPT_CAINFO, "/srv/fullchain.pem");
+	
+	if($CONFIG_USE_SSL == 1)
+	{
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+		curl_setopt($ch, CURLOPT_CAINFO, $CONFIG_LINK_PEM);
+	}
+	
 	$api_answer_json = curl_exec($ch);
 	curl_close($ch);
 	//==> Decoding the json into an array
