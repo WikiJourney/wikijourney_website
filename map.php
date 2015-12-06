@@ -13,6 +13,7 @@
 	
 	$CONFIG_USE_SSL = 1; //Set this to 1 to use SSL
 	$CONFIG_LINK_PEM = '/srv/fullchain.pem'; //Link to the pem file you want to use
+	$CONFIG_API_URL = "https://www.wikijourney.eu/api/api.php";
 	
 	//==> First, include the top, with special properties.
 	$INCLUDE_MAP_PROPERTIES = 1;
@@ -74,7 +75,7 @@
 	//****************************************************************
 	
 	//==> Make the url
-	$api_url = "https://www.wikijourney.eu/api/api.php?displayImg=1&wikivoyage=1&long=".$user_longitude."&lat=".$user_latitude."&lg=".$language."&maxPOI=".$maxPOI."&range=".$range;
+	$api_url = $CONFIG_API_URL."?displayImg=1&wikivoyage=1&long=".$user_longitude."&lat=".$user_latitude."&lg=".$language."&maxPOI=".$maxPOI."&range=".$range;
 
 	echo "<!-- ".$api_url."-->"; //For debugging purpose.
 
