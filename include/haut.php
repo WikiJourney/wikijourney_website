@@ -113,12 +113,13 @@ else
 			</div>	
 			<?php
 			//Colorating the active page
-				$nomPage = $_SERVER['PHP_SELF'];
+				$nomPage = $_SERVER['SCRIPT_FILENAME'];
 				$reg = '#^(.+[\\\/])*([^\\\/]+)$#';
 				$nomPage = preg_replace($reg, '$2', $nomPage); 
 			?>
 			<script type="text/javascript">
-				document.getElementById("lien_" + "<?php echo $nomPage; ?>").style.cssText = "background-color: rgb(137,160,173);";
+				if(document.getElementById("lien_" + "<?php echo $nomPage; ?>") != null)
+					document.getElementById("lien_" + "<?php echo $nomPage; ?>").style.cssText = "background-color: rgb(137,160,173);";
 			</script>
 		
 		</div>

@@ -75,8 +75,8 @@ See documentation on http://wikijourney.eu/api/documentation.php
 	if(!isset($error))
 	{
 		// ==================================> Put in the output the user location (can be useful)
-		$output['user_location']['latitude'] = $user_latitude;
-		$output['user_location']['longitude'] = $user_longitude;
+		$output['user_location']['latitude'] = floatval($user_latitude);
+		$output['user_location']['longitude'] = floatval($user_longitude);
 		
 		// ==================================> Wikivoyage requests : find travel guides around
 		if($wikivoyageSupport == 1)

@@ -1,15 +1,34 @@
 <?php
+/*
+================== WIKIJOURNEY - MAP.PHP =======================
 
-//================== WIKIJOURNEY - MAP.PHP =======================
-//
-//This file loads the map, displays the user's position on it, shows
-//POIs around, and create routing. It uses Wikijourney's API.
-//
-//License : Apache 2.0
-//
-//Source : https://github.com/WikiJourney/wikijourney_website
+This file loads the map, displays the user's position on it, shows
+POIs around, and create routing. It uses Wikijourney's API.
 
+Source : https://github.com/WikiJourney/wikijourney_website
 
+Copyright 2015 WikiJourney
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+*/
+
+	//==> Configuration
+	
+	$CONFIG_USE_SSL = 1; //Set this to 1 to use SSL
+	$CONFIG_LINK_PEM = '/srv/fullchain.pem'; //Link to the pem file you want to use
+	$CONFIG_API_URL = "https://www.wikijourney.eu/api/api.php";
+	
 	//==> First, include the top, with special properties.
 	$INCLUDE_MAP_PROPERTIES = 1;
 	include("./include/haut.php");
@@ -70,7 +89,7 @@
 	//****************************************************************
 	
 	//==> Make the url
-	$api_url = "http://wikijourney.eu/api/api.php?displayImg=1&wikivoyage=1&long=".$user_longitude."&lat=".$user_latitude."&lg=".$language."&maxPOI=".$maxPOI."&range=".$range;
+	$api_url = $CONFIG_API_URL."?displayImg=1&wikivoyage=1&long=".$user_longitude."&lat=".$user_latitude."&lg=".$language."&maxPOI=".$maxPOI."&range=".$range;
 
 	echo "<!-- ".$api_url."-->"; //For debugging purpose.
 
@@ -85,9 +104,16 @@
 	curl_setopt($ch, CURLOPT_FRESH_CONNECT, true);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($ch, CURLOPT_VERBOSE, true);
+	
+	if($CONFIG_USE_SSL == 1)
+	{
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+		curl_setopt($ch, CURLOPT_CAINFO, $CONFIG_LINK_PEM);
+	}
+	
 	$api_answer_json = curl_exec($ch);
 	curl_close($ch);
-	
 	//==> Decoding the json into an array
 	$api_answer_array = json_decode($api_answer_json,true); 
 
