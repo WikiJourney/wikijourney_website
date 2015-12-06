@@ -113,7 +113,7 @@ else
 			</div>	
 			<?php
 			//Colorating the active page
-				$nomPage = $_SERVER['PHP_SELF'];
+				$nomPage = $_SERVER['SCRIPT_FILENAME'];
 				$reg = '#^(.+[\\\/])*([^\\\/]+)$#';
 				$nomPage = preg_replace($reg, '$2', $nomPage); 
 			?>
