@@ -174,7 +174,7 @@ if($api_answer_array['guides']['nb_guides'] != 0) //If we got guides from WikiVo
 		
 		<div id="POI_CART_FOOTER">
 			<input type="submit" id="razCart" value="<?php echo _CLEAR_CART; ?>" onclick="razCart();" />
-			<input type="submit" title="This function is unavailable for the moment. Stay tuned for the next version ! ;)" id="exportCart" value="<?php echo _SAVE_CART; ?>" onclick="submitCart();" disabled />
+			<input type="submit" title="This function is unavailable for the moment. Stay tuned for the next version ! ;)" id="exportCart" value="<?php echo _SAVE_CART; ?>" onclick="submitCart();" />
 			
 			<!-- Let's put the hidden form here.. Random. -->
 			<form action="map_export.php" method="post" id="hiddenForm">
