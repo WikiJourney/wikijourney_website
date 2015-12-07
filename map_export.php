@@ -19,18 +19,21 @@ limitations under the License.
 */
 
 session_start();
-
-include('./include/haut.php');
+echo $_SESSION['wj_username'];
+//include('./include/haut.php');
 
 if(isset($_POST['cartJsonExport']))
 {
-	$_SESSION['temp_path'] = $_POST['cartJsonExport'];
+	setcookie("temp_path",$_POST['cartJsonExport'],time()+500);
+	echo "Parcours sauvegarde.";
+	echo $_POST['cartJsonExport'];
+	
 }
 
 if(isset($_SESSION['wj_username']))
 {
 	echo "Connected, we can save your path with that JSON : <br/>";
-	echo $_SESSION['temp_path'];
+	echo $_COOKIE['temp_path'];
 }
 
 else
