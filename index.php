@@ -17,8 +17,14 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-	include("./include/haut.php");
-	
+
+//Oauth redirection 
+if(isset($_GET['oauth_verifier']) OR isset($_GET['oauth_token'])) 
+{
+	header('Location: https://dev.wikijourney.eu/dev_oauth/oauth/oauth_connexion.php?oauth_verifier='.$_GET['oauth_verifier'].'&oauth_token='.$_GET['oauth_token'].'');
+}	
+
+include('./include/haut.php');
 
 ?>
 
