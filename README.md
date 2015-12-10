@@ -1,6 +1,6 @@
 # WikiJourney (web)
 
-A website and an API made for tourism, based on Wikipedia information.
+A website made for tourism, based on Wikipedia information.
 
 ## Features
  - Find points of interest around you
@@ -17,11 +17,17 @@ A website and an API made for tourism, based on Wikipedia information.
 The application uses [Leaflet](http://leafletjs.com/) to display [OSM](http://www.openstreetmap.org) tiles as well as [Leaflet Routing Machine](http://www.liedman.net/leaflet-routing-machine/) to guide users.
 Some icons from [Font Awesome](http://fontawesome.io/) were compiled using [Fontello](http://fontello.com/).
 
+## Contributing
+If you want to contribute, first: Thank you! Some advices though:
+ - Please create a branch on your fork, with a relevant name (avoid working directly on the `master` branch).
+ - Please push to our `dev` branch, so we can integrate it with other features before merging into the master for a new release.
+ 
 Links :
 - [WikiJourney website](http://wikijourney.eu)
 - [Facebook page](https://www.facebook.com/WikiJourney)
 - [Twitter account](https://twitter.com/WikiJourney)
 - [App Repository](https://github.com/WikiJourney/wikijourney_app/)
+- [API Repository](https://github.com/WikiJourney/wikijourney_api/)
 
 ![wikijourney.logo](http://wikijourneydev.alwaysdata.net/images/design/logo.png)
 
