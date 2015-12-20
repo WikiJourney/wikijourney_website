@@ -90,7 +90,7 @@ define("_TECHNICAL_TEXT",	"This website is still under construction, please come
 
 //===> map.php
 define("_MAP_POI_LINK",				"See on Wikipedia");
-
+define("_MAP_CART_LINK",			"Add to your path!");
 define("_MAP_POI_TYPE_FILE",		"lg/en.txt");
 define("_LOOKING_FOR",				"Looking for POI around : ");
 define("_SEE_WIKIVOYAGE_GUIDES",	"There are WikiVoyage guides around you.");

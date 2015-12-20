@@ -11,9 +11,9 @@
 
 	//==> Configuration
 	
-	$CONFIG_USE_SSL = 1; //Set this to 1 to use SSL
+	$CONFIG_USE_SSL = 0; //Set this to 1 to use SSL
 	$CONFIG_LINK_PEM = '/srv/fullchain.pem'; //Link to the pem file you want to use
-	$CONFIG_API_URL = "https://www.wikijourney.eu/api/api.php";
+	$CONFIG_API_URL = "http://api.wikijourney.eu/";
 	
 	//==> First, include the top, with special properties.
 	$INCLUDE_MAP_PROPERTIES = 1;
@@ -283,14 +283,28 @@ if($api_answer_array['guides']['nb_guides'] != 0) //If we got guides from WikiVo
 		}
 		
 		//Putting name in the box
-		popup_content += poi_array[i].name + "<br /> <p>"; 
+		popup_content += '<p class="POPUP_title">' + poi_array[i].name.charAt(0).toUpperCase() + poi_array[i].name.substring(1).toLowerCase() + " <a title=\"<?php echo _MAP_CART_LINK; ?>\" alt=\"<?php echo _MAP_CART_LINK; ?>\" class=\"icon-plus\" href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\"></a></p>"; 
+		//Thumbnail if available
+		if(poi_array[i].image_url != null)
+		{
+			popup_content += "<img class=\"POPUP_img\" src=\"" + poi_array[i].image_url + "\" title=\"image\" alt=\"image\" /><br/>";
+		}
+		
+		popup_content += '<p class="POPUP_links">';
+		
+		
+		//Button to put it in the cart
+		popup_content += "<a title=\"<?php echo _MAP_CART_LINK; ?>\" href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\"><?php echo _MAP_CART_LINK; ?></a>";
+
 		//Link to Wikipedia if available
 		if(poi_array[i].sitelink != null)
 		{
-			popup_content += "<a target=\"_blank\" href=\"" + poi_array[i].sitelink + "\">" + '<?php echo _MAP_POI_LINK; ?>' + "</a> <br />";
+			popup_content += "<br/><a target=\"_blank\" href=\"" + poi_array[i].sitelink + "\">" + '<?php echo _MAP_POI_LINK; ?>' + "</a>";
 		}
-		//And [+] to put it in the cart
-		popup_content += "<a href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\">[+]</a></p>";
+		
+
+		
+		popup_content += "</p>";
 		
 		
 		poi_array[i]['marker'].bindPopup(popup_content).openPopup();

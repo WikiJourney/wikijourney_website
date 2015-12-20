@@ -141,11 +141,11 @@ function reloadCart() {
 	{
 		htmlElement =
 		"<div class=\"eltCart\"><div class=\"eltCartNumber\">" + (i+1) +"</div>" 
-		+cartList[i].name + "<br/>";
+		+cartList[i].name.charAt(0).toUpperCase() + cartList[i].name.substring(1).toLowerCase() + "<br/>";
 		
 		if(cartList[i].type_name != null)
 		{
-			htmlElement += "<i>" + cartList[i].type_name + "</i><br/>";
+			htmlElement += "<i>" + cartList[i].type_name.charAt(0).toUpperCase() + cartList[i].type_name.substring(1).toLowerCase() + "</i><br/>";
 		}
 		else
 			htmlElement += "<br/>";
@@ -155,7 +155,7 @@ function reloadCart() {
 			htmlElement  += "<a href=" + cartList[i].sitelink + ">" + _MAP_POI_LINK + "</a><br/>";
 		}
 		
-		htmlElement  += "<span><a class=\"icon-up-dir\" onclick=\" invertPOI("+ i +",'up'); \"></a>   <a class=\"icon-down-dir\" onclick=\" invertPOI("+ i +",'down'); \"></a>  <a class=\"icon-trash-empty\" onclick=\" deletePOI( " + i + "); \"></a></span></div>";
+		htmlElement  += "<span class=\"POI_CART_icons\"><a class=\"icon-up-dir\" onclick=\" invertPOI("+ i +",'up'); \"></a>   <a class=\"icon-down-dir\" onclick=\" invertPOI("+ i +",'down'); \"></a>  <a class=\"icon-trash-empty\" onclick=\" deletePOI( " + i + "); \"></a></span></div>";
 		
 		document.getElementById("POI_CART").innerHTML = document.getElementById("POI_CART").innerHTML + htmlElement;
 	}

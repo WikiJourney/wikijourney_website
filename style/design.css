@@ -317,6 +317,9 @@ margin: auto;
 margin-top: 5px;
 }
 
+.POI_CART_icons{
+cursor: pointer;
+}
 
 #map_cart_container {
 width: 1000px;
@@ -359,6 +362,23 @@ background-color: rgb(174,203,219);
     position: absolute;
     margin-left: 11px;/* MAGIC NUMBERS <3 */
     margin-top: -400px;
+}
+
+.POPUP_title{
+font-weight: bold;
+margin: auto;
+text-align: center;
+}
+
+.POPUP_img{
+max-height: 100px;
+width: 100px;
+margin: auto;
+display: block;
+}
+
+.POPUP_links{
+text-align: center;
 }
 
 #WikiVoyageTitle {
