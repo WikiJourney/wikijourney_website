@@ -317,6 +317,9 @@ margin: auto;
 margin-top: 5px;
 }
 
+.POI_CART_icons{
+cursor: pointer;
+}
 
 #map_cart_container {
 width: 1000px;

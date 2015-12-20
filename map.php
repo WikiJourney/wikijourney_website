@@ -283,7 +283,7 @@ if($api_answer_array['guides']['nb_guides'] != 0) //If we got guides from WikiVo
 		}
 		
 		//Putting name in the box
-		popup_content += '<p class="POPUP_title">' + poi_array[i].name.charAt(0).toUpperCase() + poi_array[i].name.substring(1).toLowerCase() + "</p>"; 
+		popup_content += '<p class="POPUP_title">' + poi_array[i].name.charAt(0).toUpperCase() + poi_array[i].name.substring(1).toLowerCase() + " <a title=\"<?php echo _MAP_CART_LINK; ?>\" alt=\"<?php echo _MAP_CART_LINK; ?>\" class=\"icon-plus\" href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\"></a></p>"; 
 		//Thumbnail if available
 		if(poi_array[i].image_url != null)
 		{
@@ -295,11 +295,11 @@ if($api_answer_array['guides']['nb_guides'] != 0) //If we got guides from WikiVo
 		//Link to Wikipedia if available
 		if(poi_array[i].sitelink != null)
 		{
-			popup_content += "<a target=\"_blank\" href=\"" + poi_array[i].sitelink + "\">" + '<?php echo _MAP_POI_LINK; ?>' + "</a> - ";
+			popup_content += "<a target=\"_blank\" href=\"" + poi_array[i].sitelink + "\">" + '<?php echo _MAP_POI_LINK; ?>' + "</a>";
 		}
 
 		//And [+] to put it in the cart
-		popup_content += "<a href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\">[+]</a></p>";
+		popup_content += "</p>";
 		
 		
 		poi_array[i]['marker'].bindPopup(popup_content).openPopup();
