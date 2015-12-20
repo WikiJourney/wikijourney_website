@@ -90,7 +90,7 @@ define("_TECHNICAL_TEXT",	"! هذا الموقع في طور الانشاء، ز
 
 //===> map.php
 define("_MAP_POI_LINK",				"الرابط ويكيبيديا");
-
+define("_MAP_CART_LINK",			"Add to your path!");
 define("_MAP_POI_TYPE_FILE",		"lg/ar.txt");
 define("_LOOKING_FOR",				" : البحث عن المواقع القريبة");
 define("_SEE_WIKIVOYAGE_GUIDES",	"! استشيروا ادلة ويكيفواياج حولكم");
