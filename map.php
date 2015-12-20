@@ -292,13 +292,18 @@ if($api_answer_array['guides']['nb_guides'] != 0) //If we got guides from WikiVo
 		
 		popup_content += '<p class="POPUP_links">';
 		
+		
+		//Button to put it in the cart
+		popup_content += "<a title=\"<?php echo _MAP_CART_LINK; ?>\" href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\"><?php echo _MAP_CART_LINK; ?></a>";
+
 		//Link to Wikipedia if available
 		if(poi_array[i].sitelink != null)
 		{
-			popup_content += "<a target=\"_blank\" href=\"" + poi_array[i].sitelink + "\">" + '<?php echo _MAP_POI_LINK; ?>' + "</a>";
+			popup_content += "<br/><a target=\"_blank\" href=\"" + poi_array[i].sitelink + "\">" + '<?php echo _MAP_POI_LINK; ?>' + "</a>";
 		}
+		
 
-		//And [+] to put it in the cart
+		
 		popup_content += "</p>";
 		
 		
