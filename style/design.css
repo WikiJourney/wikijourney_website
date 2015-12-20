@@ -361,6 +361,23 @@ background-color: rgb(174,203,219);
     margin-top: -400px;
 }
 
+.POPUP_title{
+font-weight: bold;
+margin: auto;
+text-align: center;
+}
+
+.POPUP_img{
+max-height: 100px;
+width: 100px;
+margin: auto;
+display: block;
+}
+
+.POPUP_links{
+text-align: center;
+}
+
 #WikiVoyageTitle {
 	color: rgb(255,99,99);
 	font-size: 1.2em;
