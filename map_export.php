@@ -25,15 +25,16 @@ include('./include/connectdb.php');
 include('./include/haut.php');
 
 //==> Final case, we have to enter the path in the database
-if(isset($_POST['path'])) 
+if(isset($_POST['title'])) 
 {
 	$username = mysqli_real_escape_string($handler_db,$_SESSION['wj_username']);
 	$usermail = mysqli_real_escape_string($handler_db,$_SESSION['wj_email']);
 	$path = mysqli_real_escape_string($handler_db,$_COOKIE['temp_path']);
 	$title = mysqli_real_escape_string($handler_db,$_POST['title']);
 	$desc = mysqli_real_escape_string($handler_db,$_POST['desc']);
+	$name = mysqli_real_escape_string($handler_db,$_POST['image']);
 	
-	$query = "INSERT INTO savedpaths VALUES('','$username','$usermail','$title','$desc','$path',NOW())";
+	$query = "INSERT INTO savedpaths VALUES('','$username','$usermail','$title','$desc','$path','$name',NOW())";
 	
 	mysqli_query($handler_db,$query) or die(mysqli_error($handler_db));
 	
@@ -70,20 +71,24 @@ if(isset($_POST['cartJsonExport']) OR isset($_COOKIE['temp_path']))
 		}
 			
 		?>
-		<h2>To save your path, please give it a name and description</h2>
+		<h2>More information before saving your path !</h2>
 
 		<form action="" method="POST">
+		<h3>Give it a name and a description</h3>
+		<p>
 			<label for="title">Title :</label><input type="text" id="title" name="title" required /><br/>
 			<label for="desc">Description :</label><input type="text" id="desc" name="desc" required /><br/>
-			
+			<br/>
+		</p>	
+		<h3>Choose a cute picture to describe it</h3>
 			<?php
 			for($i = 0; $i<$j; $i++)
 			{
-				echo '<div class="thumbnail_export"><img src="'.$imgArray[$i].'" title="Thumbnail" alt="Thumbnail" /><br/><input type="radio" name="image" value="'.$i.'" id="radio'.$i.'" checked /></div>';
+				echo '<div class="thumbnail_export"><img src="'.$imgArray[$i].'" title="Thumbnail" alt="Thumbnail" /><br/><input type="radio" name="image" value="'.$imgArray[$i].'" checked /></div>';
 				
 			}
 			?>
-			<input type="submit" value="Go!" />
+			<br/><input type="submit" value="Go!" /><br/><br/>
 		</form>
 		
 		<?php

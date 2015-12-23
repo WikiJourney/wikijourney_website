@@ -403,7 +403,7 @@ background-color: rgb(174,203,219);
 }
 #WikiVoyageThumbnailContainerScroll{
 	width: auto; 
-	white-space: nowrap
+	white-space: nowrap;
 }
 
 #WikiVoyageThumbnailContainer::-webkit-scrollbar{
@@ -441,6 +441,21 @@ border-radius:4px;
 	height: 100px;
 }
 
+.thumbnail_export img{
+height: 120px;
+}
+
 .thumbnail_export{
-width: 20px;
+	height: 140px;
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
+	margin: 20px;
+	margin-left: 5px;
+	padding: 8px;
+	background-color: rgb(174,203,219);
+	min-width: 100px;
+	font-family: "Calibri",Sans;
+	font-size: 0.9em;
+	border-radius: 3px;
 }
