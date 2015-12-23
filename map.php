@@ -25,9 +25,9 @@ limitations under the License.
 
 	//==> Configuration
 	
-	$CONFIG_USE_SSL = 1; //Set this to 1 to use SSL
+	$CONFIG_USE_SSL = 0; //Set this to 1 to use SSL
 	$CONFIG_LINK_PEM = '/srv/fullchain.pem'; //Link to the pem file you want to use
-	$CONFIG_API_URL = "https://www.wikijourney.eu/api/api.php";
+	$CONFIG_API_URL = "http://api.wikijourney.eu/";
 	
 	//==> First, include the top, with special properties.
 	$INCLUDE_MAP_PROPERTIES = 1;

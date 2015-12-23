@@ -59,13 +59,14 @@ $errorCode = 200;
 // ****************** END CONFIGURATION ******************
 
 // Setup the session cookie
+/*
 session_name( 'OAuthHelloWorld' );
 $params = session_get_cookie_params();
 session_set_cookie_params(
 	$params['lifetime'],
 	dirname( $_SERVER['SCRIPT_NAME'] )
 );
-
+*/
 
 // Read the ini file
 $ini = parse_ini_file( $inifile );
@@ -260,10 +261,10 @@ function doIdentify() {
 	print_r($payload);
 	echo '</pre>';
 	*/
-	
+	session_start();
 	$_SESSION['wj_username'] = $payload->username;
 	$_SESSION['wj_email'] = $payload->email;
-
+	session_write_close();
 }
 
 function fetchAccessToken() {
@@ -403,6 +404,7 @@ else
 	}
 		
 	echo "Bonjour ".$_SESSION['wj_username'];
+
 }
 ?>
 

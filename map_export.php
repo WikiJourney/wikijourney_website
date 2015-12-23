@@ -19,6 +19,7 @@ limitations under the License.
 */
 
 session_start();
+
 echo $_SESSION['wj_username'];
 //include('./include/haut.php');
 
