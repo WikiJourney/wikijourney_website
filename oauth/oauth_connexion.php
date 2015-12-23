@@ -390,7 +390,6 @@ if(!isset($_SESSION['wj_username']))
 {
 	
 ?>
-Pas co.
 <li><a href="<?php echo htmlspecialchars( $_SERVER['SCRIPT_NAME'] );?>?action=authorize">Authorize this application</a></li>
 <?php
 }

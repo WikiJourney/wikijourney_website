@@ -20,30 +20,45 @@ limitations under the License.
 
 session_start();
 
-echo $_SESSION['wj_username'];
-//include('./include/haut.php');
 
-if(isset($_POST['cartJsonExport']))
-{
-	setcookie("temp_path",$_POST['cartJsonExport'],time()+500);
-	echo "Parcours sauvegarde.";
-	echo $_POST['cartJsonExport'];
-	
-}
+include('./include/connectdb.php');
+include('./include/haut.php');
 
-if(isset($_SESSION['wj_username']))
+//==> Final case, we have to enter the path in the database
+if(0) //TODO
 {
+	$username = mysqli_real_escape_string($handler_db,$_SESSION['wj_username']);
+	$usermail = mysqli_real_escape_string($handler_db,$_SESSION['wj_email']);
+	$path = mysqli_real_escape_string($handler_db,$_SESSION['wj_email']);
 	echo "Connected, we can save your path with that JSON : <br/>";
 	echo $_COOKIE['temp_path'];
+	mysqli_query($handler_db,"INSERT INTO savedpaths VALUES ('','$username,'$usermail','Sans titre 1','blablabla','',NOW())");
+	echo "Parcours sauvegarde.";
 }
 
-else
+//==> Case we have data from form or cookies
+if(isset($_POST['cartJsonExport']) OR isset($_COOKIE['temp_path']))
 {
-	?>
-	<a href="./oauth/oauth_connexion.php?action=authorize">Cliquez ici pour vous connecter avec votre compte WikiMedia !</a>
+	if(isset($_POST['cartJsonExport']))//First, set the path in a cookie. In this way, if the user has to go to Wikimedia to be registered, his path is saved somewhere.
+	{
+		setcookie("temp_path",$_POST['cartJsonExport'],time()+500);
+	}
+	
+	//==> If he has already a session, we can display the form
+	if(isset($_SESSION['wj_username'])) 
+	{
+		echo "This is the form";
+		echo $_COOKIE['temp_path'];
+	}
+	
+	//==> If not, we send him to Wikimedia to register
+	else
+	{
+		?>
+		<a href="./oauth/oauth_connexion.php?action=authorize">Click here to register with your Wikimedia account !</a>
+		<?php
+	}
 
-	<?php
 }
-
 ?>
 
