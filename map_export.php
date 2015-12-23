@@ -25,15 +25,19 @@ include('./include/connectdb.php');
 include('./include/haut.php');
 
 //==> Final case, we have to enter the path in the database
-if(0) //TODO
+if(isset($_POST['path'])) 
 {
 	$username = mysqli_real_escape_string($handler_db,$_SESSION['wj_username']);
 	$usermail = mysqli_real_escape_string($handler_db,$_SESSION['wj_email']);
-	$path = mysqli_real_escape_string($handler_db,$_SESSION['wj_email']);
-	echo "Connected, we can save your path with that JSON : <br/>";
-	echo $_COOKIE['temp_path'];
-	mysqli_query($handler_db,"INSERT INTO savedpaths VALUES ('','$username,'$usermail','Sans titre 1','blablabla','',NOW())");
-	echo "Parcours sauvegarde.";
+	$path = mysqli_real_escape_string($handler_db,$_COOKIE['temp_path']);
+	$title = mysqli_real_escape_string($handler_db,$_POST['title']);
+	$desc = mysqli_real_escape_string($handler_db,$_POST['desc']);
+	
+	$query = "INSERT INTO savedpaths VALUES('','$username','$usermail','$title','$desc','$path',NOW())";
+	
+	mysqli_query($handler_db,$query) or die(mysqli_error($handler_db));
+	
+	header("Location:index.php?message=confirm");
 }
 
 //==> Case we have data from form or cookies
@@ -47,8 +51,17 @@ if(isset($_POST['cartJsonExport']) OR isset($_COOKIE['temp_path']))
 	//==> If he has already a session, we can display the form
 	if(isset($_SESSION['wj_username'])) 
 	{
-		echo "This is the form";
-		echo $_COOKIE['temp_path'];
+		?>
+		<h2>To save your path, please give it a name and description</h2>
+
+		<form action="" method="POST">
+			<label for="title">Title :</label><input type="text" id="title" name="title" required /><br/>
+			<label for="desc">Description :</label><input type="text" id="desc" name="desc" required /><br/>
+			<input type="hidden" value="<?php echo $_COOKIE['temp_path']; ?>" name="path" /><br/>
+			<input type="submit" value="Go!" />
+		</form>
+		
+		<?php
 	}
 	
 	//==> If not, we send him to Wikimedia to register

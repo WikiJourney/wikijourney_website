@@ -399,7 +399,7 @@ else
 	if(isset($_COOKIE['temp_path']))
 	{
 		echo "Redirection";
-//		header("Location:../map_export.php");
+		header("Location:../map_export.php");
 	}
 		
 	echo "Bonjour ".$_SESSION['wj_username'];
