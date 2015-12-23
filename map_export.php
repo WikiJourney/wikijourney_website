@@ -43,21 +43,46 @@ if(isset($_POST['path']))
 //==> Case we have data from form or cookies
 if(isset($_POST['cartJsonExport']) OR isset($_COOKIE['temp_path']))
 {
+	$justDefined = false;
 	if(isset($_POST['cartJsonExport']))//First, set the path in a cookie. In this way, if the user has to go to Wikimedia to be registered, his path is saved somewhere.
 	{
 		setcookie("temp_path",$_POST['cartJsonExport'],time()+500);
+		$justDefined = true;
 	}
 	
 	//==> If he has already a session, we can display the form
 	if(isset($_SESSION['wj_username'])) 
 	{
+		if($justDefined == true)
+			$jsonExport = json_decode($_POST['cartJsonExport'],1);
+		else
+			$jsonExport = json_decode($_COOKIE['temp_path'],1);
+		
+		$j = 0;
+		
+		for($i = 0; $i < count($jsonExport); $i++)
+		{
+			if($jsonExport[$i]['image_url'] != NULL)
+			{
+				$imgArray[$j] = $jsonExport[$i]['image_url'];
+				$j ++;
+			}
+		}
+			
 		?>
 		<h2>To save your path, please give it a name and description</h2>
 
 		<form action="" method="POST">
 			<label for="title">Title :</label><input type="text" id="title" name="title" required /><br/>
 			<label for="desc">Description :</label><input type="text" id="desc" name="desc" required /><br/>
-			<input type="hidden" value="<?php echo $_COOKIE['temp_path']; ?>" name="path" /><br/>
+			
+			<?php
+			for($i = 0; $i<$j; $i++)
+			{
+				echo '<div class="thumbnail_export"><img src="'.$imgArray[$i].'" title="Thumbnail" alt="Thumbnail" /><br/><input type="radio" name="image" value="'.$i.'" id="radio'.$i.'" checked /></div>';
+				
+			}
+			?>
 			<input type="submit" value="Go!" />
 		</form>
 		

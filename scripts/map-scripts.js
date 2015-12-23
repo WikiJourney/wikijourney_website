@@ -45,7 +45,7 @@ function submitCart() {
 		var exportList = new Array();
 		
 		//This is the structure
-		function composeCartList(Nid, Nlatitude, Nlongitude, Nsite, Nname, Ntype_name)
+		function composeCartList(Nid, Nlatitude, Nlongitude, Nsite, Nname, Ntype_name, Nimage_url)
 		{
 			this.id = Nid;
 			this.latitude = Nlatitude;
@@ -53,12 +53,13 @@ function submitCart() {
 			this.sitelink = Nsite;
 			this.name = Nname;
 			this.type_name = Ntype_name;
+			this.image_url = Nimage_url;
 		}
 		
 		for(i = 0; i < cartList.length; i++)
 		{
 			//Filling the new list
-			exportList[i] = new composeCartList(cartList[i].id, cartList[i].latitude, cartList[i].longitude, cartList[i].sitelink, cartList[i].name, cartList[i].type_name);
+			exportList[i] = new composeCartList(cartList[i].id, cartList[i].latitude, cartList[i].longitude, cartList[i].sitelink, cartList[i].name, cartList[i].type_name, cartList[i].image_url);
 		}
 		
 		//Putting the json list in an invisible form
