@@ -57,7 +57,7 @@ else
 		echo '<tr>';
 		echo '<td><p class="paths_title">'.$data['title'].'</p><img class="thumbnail_paths" src="'.$data['image_url'].'" alt="Thumbnail" title="Thumbnail"/></td>';
 		echo '<td>'.$data['description'].'</td>';
-		echo '<td><a href="">Load</a></td>';
+		echo '<td><a href="map.php?id='.$data['id'].'">Load</a></td>';
 		echo '<td><a href="paths.php?action=del&id='.$data['id'].'">Remove</a></td>';
 		echo '</tr>';
 	}
