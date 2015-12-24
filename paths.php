@@ -23,8 +23,8 @@ include('./include/haut.php');
 
 if(!isset($_SESSION['wj_username']))
 {
-	echo "You need to be connected to access to this function.";
-	echo '<a href="./oauth/oauth_connexion.php?action=authorize">Click here to register with your Wikimedia account !</a>';
+	echo "<p>You need to be connected to access to this function.";
+	echo ' <a href="./oauth/oauth_connexion.php?action=authorize">Click here to register with your Wikimedia account !</a></p>';
 }
 else if(isset($_GET['action']))
 {
@@ -43,7 +43,7 @@ else
 	
 	$username = mysqli_real_escape_string($handler_db,$_SESSION['wj_username']);
 	$usermail = mysqli_real_escape_string($handler_db,$_SESSION['wj_email']);
-	echo '<p>Connected as '.$usermail.'</p>';
+	echo '<p>Connected as '.$usermail.'. <a href="oauth/destroy.php">Log Out</a></p>';
 	$query = mysqli_query($handler_db,"SELECT * FROM savedpaths WHERE usermail='$usermail'") or die(mysqli_error($handler_db));
 	
 	echo '<h1>Your paths</h1>';
