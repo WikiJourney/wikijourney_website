@@ -1,6 +1,30 @@
 <?php
-	include("./include/haut.php");
-	
+	/*
+================== WIKIJOURNEY - INDEX.PHP =======================
+Index page of the website
+
+
+
+Source : https://github.com/WikiJourney/wikijourney_website
+Copyright 2015 WikiJourney
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+//Oauth redirection 
+if(isset($_GET['oauth_verifier']) OR isset($_GET['oauth_token'])) 
+{
+	header('Location: https://dev.wikijourney.eu/dev_oauth/oauth/oauth_connexion.php?oauth_verifier='.$_GET['oauth_verifier'].'&oauth_token='.$_GET['oauth_token'].'');
+}	
+
+include('./include/haut.php');
 
 ?>
 
@@ -91,6 +115,12 @@
 		{
 			echo '<script>alert("';
 			echo _GEOLOC_FAILURE;
+			echo '"); </script>';
+		}
+		if($_GET['message'] == 'confirm')
+		{
+			echo '<script>alert("';
+			echo "Your path was successfully created !";
 			echo '"); </script>';
 		}
 	}

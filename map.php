@@ -1,13 +1,27 @@
 <?php
+/*
+================== WIKIJOURNEY - MAP.PHP =======================
 
-//================== WIKIJOURNEY - MAP.PHP =======================
-//
-//This file loads the map, displays the user's position on it, shows
-//POIs around, and create routing. It uses Wikijourney's API.
-//
-//License : Apache 2.0
-//
-//Source : https://github.com/WikiJourney/wikijourney_website
+This file loads the map, displays the user's position on it, shows
+POIs around, and create routing. It uses Wikijourney's API.
+
+Source : https://github.com/WikiJourney/wikijourney_website
+
+Copyright 2015 WikiJourney
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+*/
 
 	//==> Configuration
 	
@@ -186,7 +200,7 @@ if($api_answer_array['guides']['nb_guides'] != 0) //If we got guides from WikiVo
 		
 		<div id="POI_CART_FOOTER">
 			<input type="submit" id="razCart" value="<?php echo _CLEAR_CART; ?>" onclick="razCart();" />
-			<input type="submit" title="This function is unavailable for the moment. Stay tuned for the next version ! ;)" id="exportCart" value="<?php echo _SAVE_CART; ?>" onclick="submitCart();" disabled />
+			<input type="submit" title="This function is unavailable for the moment. Stay tuned for the next version ! ;)" id="exportCart" value="<?php echo _SAVE_CART; ?>" onclick="submitCart();" />
 			
 			<!-- Let's put the hidden form here.. Random. -->
 			<form action="map_export.php" method="post" id="hiddenForm">
