@@ -128,6 +128,7 @@ limitations under the License.
 
 		//==> If no error, we put the POI array in a json to use it with JavaScript
 		$poi_array_json_encoded = json_encode($api_answer_array['poi']);
+		$thePathWasSaved = false;
 	}
 	//****************************************************************
 	//************* The user wants to load a path ********************
@@ -145,11 +146,13 @@ limitations under the License.
 		$array = json_decode($poi_array_json_encoded,1);
 		$user_latitude = $array[0]['latitude'];
 		$user_longitude = $array[0]['longitude'];
+				
+		//==> Format the json array for the JS script
 		$nbPOI = $maxPOI = count($array);
-		
 		$outputArray['nb_poi'] = $maxPOI;
 		$outputArray['poi_info'] = $array;
 		$poi_array_json_encoded = json_encode($outputArray);
+		$thePathWasSaved = true;
 	}
 	//****************************************************************
 	//*************** Load File with Pagicon name ********************
@@ -350,6 +353,12 @@ if($api_answer_array['guides']['nb_guides'] != 0) //If we got guides from WikiVo
 		
 		
 		poi_array[i]['marker'].bindPopup(popup_content).openPopup();
+		
+		
+		<?php
+		if($thePathWasSaved == true)
+			echo "addToCart(i,cartList);";//If the path was saved, we put all POI directly in the cart
+		?>
 	}
 	
 	//****************************************************************
