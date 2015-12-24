@@ -8,6 +8,17 @@ if(!isset($_SESSION['wj_username']))
 	echo "You need to be connected to access to this function.";
 	echo '<a href="./oauth/oauth_connexion.php?action=authorize">Click here to register with your Wikimedia account !</a>';
 }
+else if(isset($_GET['action']))
+{
+	if($_GET['action'] == 'del')
+	{
+		include('./include/connectdb.php');
+		$id = mysqli_real_escape_string($handler_db,$_GET['id']);
+		$usermail = mysqli_real_escape_string($handler_db,$_SESSION['wj_email']);
+		mysqli_query($handler_db,"DELETE FROM savedpaths WHERE usermail='$usermail' AND id='$id'");
+		header('Location:paths.php');
+	}
+}
 else
 {
 	include('./include/connectdb.php');
@@ -29,7 +40,7 @@ else
 		echo '<td><p class="paths_title">'.$data['title'].'</p><img class="thumbnail_paths" src="'.$data['image_url'].'" alt="Thumbnail" title="Thumbnail"/></td>';
 		echo '<td>'.$data['description'].'</td>';
 		echo '<td><a href="">Load</a></td>';
-		echo '<td><a href="">Remove</a></td>';
+		echo '<td><a href="paths.php?action=del&id='.$data['id'].'">Remove</a></td>';
 		echo '</tr>';
 	}
 	
