@@ -63,7 +63,7 @@ if(isset($_POST['cartJsonExport']) OR isset($_COOKIE['temp_path']))
 		
 		for($i = 0; $i < count($jsonExport); $i++)
 		{
-			if($jsonExport[$i]['image_url'] != NULL)
+			if(isset($jsonExport[$i]['image_url']) && $jsonExport[$i]['image_url'] != NULL )
 			{
 				$imgArray[$j] = $jsonExport[$i]['image_url'];
 				$j ++;
@@ -80,15 +80,17 @@ if(isset($_POST['cartJsonExport']) OR isset($_COOKIE['temp_path']))
 			<label for="desc">Description :</label><input type="text" id="desc" name="desc" required /><br/>
 			<br/>
 		</p>	
-		<h3>Choose a cute picture to describe it</h3>
-			<?php
-			for($i = 0; $i<$j; $i++)
-			{
-				echo '<div class="thumbnail_export"><img src="'.$imgArray[$i].'" title="Thumbnail" alt="Thumbnail" /><br/><input type="radio" name="image" value="'.$imgArray[$i].'" checked /></div>';
-				
-			}
-			?>
-			<br/><input type="submit" value="Go!" /><br/><br/>
+		
+		<?php
+		if($j != 0) echo "<h3>Choose a cute picture to describe it</h3>";
+		
+		for($i = 0; $i<$j; $i++)
+		{
+			echo '<div class="thumbnail_export"><img src="'.$imgArray[$i].'" title="Thumbnail" alt="Thumbnail" /><br/><input type="radio" name="image" value="'.$imgArray[$i].'" checked /></div>';
+			
+		}
+		?>
+		<br/><input type="submit" value="Go!" /><br/><br/>
 		</form>
 		
 		<?php
