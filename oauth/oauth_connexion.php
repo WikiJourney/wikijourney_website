@@ -395,14 +395,17 @@ if(!isset($_SESSION['wj_username']))
 }
 else
 {
-
-	if(isset($_COOKIE['temp_path']))
+	if(isset($_SESSION['redir']) && $_SESSION['redir'] == 'path')
+		header("Location:../paths.php");
+		
+	else if(isset($_COOKIE['temp_path']))
 	{
 		echo "Redirection";
 		header("Location:../map_export.php");
 	}
 		
-	echo "Bonjour ".$_SESSION['wj_username'];
+	else
+		header("Location:../index.php");
 
 }
 ?>

@@ -479,3 +479,30 @@ height: 120px;
 	font-size: 0.9em;
 	border-radius: 3px;
 }
+
+.thumbnail_paths{
+max-height: 140px;
+margin: auto;
+display: block;
+}
+
+#paths{
+margin: auto;
+width: 90%;
+border-collapse: collapse;
+}
+
+#paths td{
+border: 1px solid rgb(174,203,219);
+font-family: "Calibri",Sans;
+padding: 2px 20px 2px 20px;
+text-align: justify;
+}
+
+.paths_title{
+padding: 5px;
+font-size: 20px;
+font-weight: bold;
+text-align: center !important;
+width: 100%;
+}
