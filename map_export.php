@@ -33,8 +33,10 @@ if(isset($_POST['title']))
 	$title = mysqli_real_escape_string($handler_db,$_POST['title']);
 	$desc = mysqli_real_escape_string($handler_db,$_POST['desc']);
 	$name = mysqli_real_escape_string($handler_db,$_POST['image']);
+	$mean_lat = mysqli_real_escape_string($handler_db,$_POST['mean_lat']);
+	$mean_long = mysqli_real_escape_string($handler_db,$_POST['mean_long']);
 	
-	$query = "INSERT INTO savedpaths VALUES('','$username','$usermail','$title','$desc','$path','$name',NOW())";
+	$query = "INSERT INTO savedpaths VALUES('','$username','$usermail','$title','$desc','$path','$name','$mean_lat','$mean_long',NOW())";
 	
 	mysqli_query($handler_db,$query) or die(mysqli_error($handler_db));
 	
@@ -60,6 +62,8 @@ if(isset($_POST['cartJsonExport']) OR isset($_COOKIE['temp_path']))
 			$jsonExport = json_decode($_COOKIE['temp_path'],1);
 		
 		$j = 0;
+		$mean_lat = 0;
+		$mean_long = 0;
 		
 		for($i = 0; $i < count($jsonExport); $i++)
 		{
@@ -68,8 +72,19 @@ if(isset($_POST['cartJsonExport']) OR isset($_COOKIE['temp_path']))
 				$imgArray[$j] = $jsonExport[$i]['image_url'];
 				$j ++;
 			}
+			
+		
+			
+			$mean_lat += $jsonExport[$i]['latitude'];
+			$mean_long += $jsonExport[$i]['longitude'];
 		}
 			
+		if($i == 0) die; //Case there is no POI in the cart
+		
+		$mean_lat = $mean_lat/$i;
+		$mean_long = $mean_long/$i;
+		
+		
 		?>
 		<h2>More information before saving your path !</h2>
 
@@ -78,6 +93,8 @@ if(isset($_POST['cartJsonExport']) OR isset($_COOKIE['temp_path']))
 		<p>
 			<label for="title">Title :</label><input type="text" id="title" name="title" required /><br/>
 			<label for="desc">Description :</label><input type="text" id="desc" name="desc" required /><br/>
+			<input type="hidden" name="mean_lat" value="<?php echo $mean_lat; ?>" /><br/>
+			<input type="hidden" name="mean_long" value="<?php echo $mean_long; ?>" /><br/>
 			<br/>
 		</p>	
 		

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Jeu 24 Décembre 2015 à 11:28
+-- Généré le: Sam 26 Décembre 2015 à 15:41
 -- Version du serveur: 5.5.46
 -- Version de PHP: 5.4.45-0+deb7u2
 
@@ -34,9 +34,11 @@ CREATE TABLE IF NOT EXISTS `savedpaths` (
   `description` text NOT NULL,
   `path` text NOT NULL,
   `image_url` text NOT NULL,
+  `mean_lat` float NOT NULL,
+  `mean_long` float NOT NULL,
   `date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
