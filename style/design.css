@@ -1,3 +1,21 @@
+/*
+================== WIKIJOURNEY - design.css =======================
+This file is for the design of Wikijourney's website.
+
+Source : https://github.com/WikiJourney/wikijourney_website
+Copyright 2015 WikiJourney
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+
 body{
 	
 	margin:0px;	
@@ -405,7 +423,7 @@ text-align: center;
 }
 #WikiVoyageThumbnailContainerScroll{
 	width: auto; 
-	white-space: nowrap
+	white-space: nowrap;
 }
 
 #WikiVoyageThumbnailContainer::-webkit-scrollbar{
@@ -441,4 +459,50 @@ border-radius:4px;
 .WikiVoyageImg{
 	margin-top: 8px;
 	height: 100px;
+}
+
+.thumbnail_export img{
+height: 120px;
+}
+
+.thumbnail_export{
+	height: 140px;
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
+	margin: 20px;
+	margin-left: 5px;
+	padding: 8px;
+	background-color: rgb(174,203,219);
+	min-width: 100px;
+	font-family: "Calibri",Sans;
+	font-size: 0.9em;
+	border-radius: 3px;
+}
+
+.thumbnail_paths{
+max-height: 140px;
+margin: auto;
+display: block;
+}
+
+#paths{
+margin: auto;
+width: 90%;
+border-collapse: collapse;
+}
+
+#paths td{
+border: 1px solid rgb(174,203,219);
+font-family: "Calibri",Sans;
+padding: 2px 20px 2px 20px;
+text-align: justify;
+}
+
+.paths_title{
+padding: 5px;
+font-size: 20px;
+font-weight: bold;
+text-align: center !important;
+width: 100%;
 }

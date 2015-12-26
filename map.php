@@ -1,13 +1,27 @@
 <?php
+/*
+================== WIKIJOURNEY - MAP.PHP =======================
 
-//================== WIKIJOURNEY - MAP.PHP =======================
-//
-//This file loads the map, displays the user's position on it, shows
-//POIs around, and create routing. It uses Wikijourney's API.
-//
-//License : Apache 2.0
-//
-//Source : https://github.com/WikiJourney/wikijourney_website
+This file loads the map, displays the user's position on it, shows
+POIs around, and create routing. It uses Wikijourney's API.
+
+Source : https://github.com/WikiJourney/wikijourney_website
+
+Copyright 2015 WikiJourney
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+*/
 
 	//==> Configuration
 	
@@ -16,12 +30,13 @@
 	$CONFIG_API_URL = "http://api.wikijourney.eu/";
 	
 	//==> First, include the top, with special properties.
+	session_start();
 	$INCLUDE_MAP_PROPERTIES = 1;
 	include("./include/haut.php");
 	//This include also loads translation for all the text in this page.
 	
 	//==> In case the user arrived directly on the page, he's redirected to the index
-	if(!isset($_POST['choice']))
+	if(!(isset($_POST['choice']) OR isset($_GET['id'])))
 		die('
 		<script type="text/javascript">
 			document.location.href = "index.php";
@@ -29,86 +44,116 @@
 		'); 
 	
 	//****************************************************************
-	//***************** Getting user's coordinates *******************
+	//************* The user is looking for POI around ***************
 	//****************************************************************
-	
-	//==> If the user typed an adress, we get location with OSM Nominatim
-	if($_POST['choice'] == 'adress') { 
-		$name = $_POST['adressValue'];
-		$osm_array_json = file_get_contents("http://nominatim.openstreetmap.org/search?format=json&q=\"" . urlencode($name)."\"");
-		$osm_array = json_decode($osm_array_json, true);
-		
-		if (!isset($osm_array[0]["lat"]))
-			die('
-			<script type="text/javascript">
-				document.location.href = "index.php?message=adress";
-			</script>
-			'); 
-
-		$user_latitude = $osm_array[0]["lat"];
-		$user_longitude = $osm_array[0]["lon"];
-	}
-	
-	//==> Else, we look for POI around his geolocation
-	if($_POST['choice'] == 'around') { 
-		if(isset($_POST['latitude']) && $_POST['latitude'] == 0 && $_POST['longitude'] == 0) //In case geolocation has crashed (it can't be 0,0 exactly)
-			die('
-			<script type="text/javascript">
-				document.location.href = "index.php?message=geoloc";
-			</script>
-			'); //Redirect to homepage with a failure message
-		$user_latitude= $_POST['latitude'];
-		$user_longitude= $_POST['longitude'];
-	}
-	
-	//==> Get range and maxPOI from POST data
-	if(is_numeric($_POST['range']))
-		$range = $_POST['range'];
-	else
-		$range = 1;
-
-	$maxPOI = intval($_POST['maxPOI']);
-	
-
-	//****************************************************************
-	//*********************** Contact the API ************************
-	//****************************************************************
-	
-	//==> Make the url
-	$api_url = $CONFIG_API_URL."?displayImg=1&wikivoyage=1&long=".$user_longitude."&lat=".$user_latitude."&lg=".$language."&maxPOI=".$maxPOI."&range=".$range;
-
-	echo "<!-- ".$api_url."-->"; //For debugging purpose.
-
-	//==> Make the request
-	
-	//NOTE !
-	//It looks like we're experiencing trouble with this. Actually, it's hard to loopback on our own server with filegetcontents, curl or whatever.
-	//Like this, it works. Please don't touch.
-	
-	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_URL, $api_url);
-	curl_setopt($ch, CURLOPT_FRESH_CONNECT, true);
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($ch, CURLOPT_VERBOSE, true);
-	
-	if($CONFIG_USE_SSL == 1)
+	if(isset($_POST['choice']))
 	{
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-		curl_setopt($ch, CURLOPT_CAINFO, $CONFIG_LINK_PEM);
+		//****************************************************************
+		//***************** Getting user's coordinates *******************
+		//****************************************************************
+		
+		//==> If the user typed an adress, we get location with OSM Nominatim
+		if($_POST['choice'] == 'adress') { 
+			$name = $_POST['adressValue'];
+			$osm_array_json = file_get_contents("http://nominatim.openstreetmap.org/search?format=json&q=\"" . urlencode($name)."\"");
+			$osm_array = json_decode($osm_array_json, true);
+			
+			if (!isset($osm_array[0]["lat"]))
+				die('
+				<script type="text/javascript">
+					document.location.href = "index.php?message=adress";
+				</script>
+				'); 
+
+			$user_latitude = $osm_array[0]["lat"];
+			$user_longitude = $osm_array[0]["lon"];
+		}
+		
+		//==> Else, we look for POI around his geolocation
+		if($_POST['choice'] == 'around') { 
+			if(isset($_POST['latitude']) && $_POST['latitude'] == 0 && $_POST['longitude'] == 0) //In case geolocation has crashed (it can't be 0,0 exactly)
+				die('
+				<script type="text/javascript">
+					document.location.href = "index.php?message=geoloc";
+				</script>
+				'); //Redirect to homepage with a failure message
+			$user_latitude= $_POST['latitude'];
+			$user_longitude= $_POST['longitude'];
+		}
+		
+		//==> Get range and maxPOI from POST data
+		if(is_numeric($_POST['range']))
+			$range = $_POST['range'];
+		else
+			$range = 1;
+
+		$maxPOI = intval($_POST['maxPOI']);
+		
+
+		//****************************************************************
+		//*********************** Contact the API ************************
+		//****************************************************************
+		
+		//==> Make the url
+		$api_url = $CONFIG_API_URL."?displayImg=1&wikivoyage=1&long=".$user_longitude."&lat=".$user_latitude."&lg=".$language."&maxPOI=".$maxPOI."&range=".$range;
+
+		echo "<!-- ".$api_url."-->"; //For debugging purpose.
+
+		//==> Make the request
+		
+		//NOTE !
+		//It looks like we're experiencing trouble with this. Actually, it's hard to loopback on our own server with filegetcontents, curl or whatever.
+		//Like this, it works. Please don't touch.
+		
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $api_url);
+		curl_setopt($ch, CURLOPT_FRESH_CONNECT, true);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_VERBOSE, true);
+		
+		if($CONFIG_USE_SSL == 1)
+		{
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+			curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+			curl_setopt($ch, CURLOPT_CAINFO, $CONFIG_LINK_PEM);
+		}
+		
+		$api_answer_json = curl_exec($ch);
+		curl_close($ch);
+		//==> Decoding the json into an array
+		$api_answer_array = json_decode($api_answer_json,true); 
+
+		if($api_answer_array['err_check']['value'] == "true") //Error check
+			die("Error found when contacting the API : ".$api_answer_array['err_check']['err_msg']);
+
+		//==> If no error, we put the POI array in a json to use it with JavaScript
+		$poi_array_json_encoded = json_encode($api_answer_array['poi']);
+		$thePathWasSaved = false;
 	}
-	
-	$api_answer_json = curl_exec($ch);
-	curl_close($ch);
-	//==> Decoding the json into an array
-	$api_answer_array = json_decode($api_answer_json,true); 
-
-	if($api_answer_array['err_check']['value'] == "true") //Error check
-		die("Error found when contacting the API : ".$api_answer_array['err_check']['err_msg']);
-
-	//==> If no error, we put the POI array in a json to use it with JavaScript
-	$poi_array_json_encoded = json_encode($api_answer_array['poi']);
-
+	//****************************************************************
+	//************* The user wants to load a path ********************
+	//****************************************************************
+	if(isset($_GET['id']))
+	{
+		//==> Looking in the database and fetch the path
+		include("./include/connectdb.php");
+		$id = mysqli_real_escape_string($handler_db,$_GET['id']);
+		$usermail = mysqli_real_escape_string($handler_db,$_SESSION['wj_email']);
+		$query = mysqli_query($handler_db,"SELECT path FROM savedpaths WHERE usermail='$usermail' AND id='$id'");
+		$poi_array_json_encoded = mysqli_fetch_array($query)['path'];
+		
+		//==> Setting user's position on first point
+		$array = json_decode($poi_array_json_encoded,1);
+		$user_latitude = $array[0]['latitude'];
+		$user_longitude = $array[0]['longitude'];
+				
+		//==> Format the json array for the JS script
+		$nbPOI = $maxPOI = count($array);
+		$outputArray['nb_poi'] = $maxPOI;
+		$outputArray['poi_info'] = $array;
+		$poi_array_json_encoded = json_encode($outputArray);
+		$thePathWasSaved = true;
+	}
 	//****************************************************************
 	//*************** Load File with Pagicon name ********************
 	//****************************************************************	
@@ -186,7 +231,7 @@ if($api_answer_array['guides']['nb_guides'] != 0) //If we got guides from WikiVo
 		
 		<div id="POI_CART_FOOTER">
 			<input type="submit" id="razCart" value="<?php echo _CLEAR_CART; ?>" onclick="razCart();" />
-			<input type="submit" title="This function is unavailable for the moment. Stay tuned for the next version ! ;)" id="exportCart" value="<?php echo _SAVE_CART; ?>" onclick="submitCart();" disabled />
+			<input type="submit" title="This function is unavailable for the moment. Stay tuned for the next version ! ;)" id="exportCart" value="<?php echo _SAVE_CART; ?>" onclick="submitCart();" />
 			
 			<!-- Let's put the hidden form here.. Random. -->
 			<form action="map_export.php" method="post" id="hiddenForm">
@@ -308,6 +353,12 @@ if($api_answer_array['guides']['nb_guides'] != 0) //If we got guides from WikiVo
 		
 		
 		poi_array[i]['marker'].bindPopup(popup_content).openPopup();
+		
+		
+		<?php
+		if($thePathWasSaved == true)
+			echo "addToCart(i,cartList);";//If the path was saved, we put all POI directly in the cart
+		?>
 	}
 	
 	//****************************************************************
