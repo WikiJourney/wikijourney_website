@@ -18,25 +18,25 @@ define("_BLOG",				"Blog");
 
 //===> Bottom
 define("_OUR_PARTNERS",		"Our partners");
-define("_NO_PARTNERS_LOL",	"No partners for the moment. If interested in a partnership, contact us !");
-define("_FOLLOW_US",		"Follow us !");
+define("_NO_PARTNERS_LOL",	"No partners for the moment. If interested in a partnership, contact us!");
+define("_FOLLOW_US",		"Follow us!");
 
 //========================> Pages <========================//
 
 //===> index.php
 define("_WELCOME_TITLE",	"Welcome!");
 define("_WELCOME_MESSAGE",	"Welcome to WikiJourney Project! We offer you a quick look around a place (yours or one you choose) using Wikimedia's data! <br> Please fill in the form to begin. <br> <br>");
-define("_BUTTON_POI_AROUND","Find Point Of Interest around me!");
+define("_BUTTON_POI_AROUND","Find Points Of Interest around me!");
 define("_ADRESS_LOOK_UP",	"Or enter an adress to look up!");
 define("_ADRESS_FAILURE",	"Such a place doesn't exist!");
-define("_GEOLOC_FAILURE",	"Sorry but we can't find your position.");
-define("_AROUND_LOCATION", 	"Close to a location !");
-define("_AROUND_ME",		"Around Me !");
-define("_NOTE_GEOLOC",		"Note : This fonctionnality involve geolocation and could not work, it
-							depends of the device you're on and the way you're connected to the internet.");
-define("_OPTIONS",			"Options :");
-define("_RANGE",			"Range (km) : ");
-define("_MAX_POI",			"Max POI : ");
+define("_GEOLOC_FAILURE",	"Sorry, we can't find your location.");
+define("_AROUND_LOCATION", 	"Close to a location!");
+define("_AROUND_ME",		"Around Me!");
+define("_NOTE_GEOLOC",		"Note: This fonctionnality involves geolocation;
+							depending on the device you're using and the way you're connected to the internet, it may not be working.");
+define("_OPTIONS",			"Options:");
+define("_RANGE",			"Range (km): ");
+define("_MAX_POI",			"Max POI: ");
 define("_PLACEHOLDER",		"Type a location here.");
 define("_LOADING",			"Loading...");
 
@@ -65,21 +65,21 @@ define("_Y_WANG_POSTE", 	"Mobile Development");
 
 //===> about.php
 define("_ABOUT_TITLE", 		"Tell me more about WikiJourney");
-define("_ABOUT_TEXT","		<p>It's a student project, which was made to connect a user and Wikimedia content, linked by its position in a city.<br/>
-							We are trying to release a mobile app which will recommend to tourists some points of interest to visit. Adjust your settings, chose a path, and let's go!
+define("_ABOUT_TEXT","		<p>WikiJourney is a student project, which goal is to connect users to Wikimedia content, using geolocation.<br/>
+							We also released a mobile app which will recommend to tourists some points of interest to visit. Adjust your settings, chose a path, and let's go!
 							</p>
 							<h2>Why an application?</h2>
 							<p>
-							Because it's the more portative way, and the simplest when we talk about tourism. When you're walking in a city, you'd rather take a quick look at your phone than using your laptop, aren't you?
-							<br/>It will also be possible to prepare ones trip before, on a computer. Data will be viewable thanks to an offline mode.
+							It is much easier to walk around with a cellphone than a computer; that's the idea behind exporting WikiJourney to cellphones.
+							<br/>We are also working on a function that will allow you to prepare your trips on your computer, then access them on your cell. Data will be viewable thanks to an offline mode.
 							</p>
 							<h2>WanderWiki is back! </h2>
 							<p>
-							You already knew about <a href=\"http://wiki-geolocalisation.wix.com/\">WanderWiki</a>? Great! WikiJourney is the pursuit of this project. We are trying to make
+							You already knew about <a href=\"http://wiki-geolocalisation.wix.com/\">WanderWiki</a>? Great! WikiJourney is the latest form of this project. We are trying to make
 							it more powerful, with new functionalities.</p>
 
 							<h2>Questions, Proposals...?</h2>
-							<p>We are listening to anyone! Contribute on our Git, or <a href=\"mailto:wikijourneydev@gmail.com\">send us a mail</a>!<br/>
+							<p>We pay attention to every idea! Contribute on our Git, or <a href=\"mailto:wikijourneydev@gmail.com\">send us a mail</a>!<br/>
 							Or <a href=\"https://play.google.com/apps/testing/com.wikijourney.wikijourney\">test the app</a> !</p>");
 														
 														
@@ -92,11 +92,11 @@ define("_TECHNICAL_TEXT",	"This website is still under construction, please come
 define("_MAP_POI_LINK",				"See on Wikipedia");
 define("_MAP_CART_LINK",			"Add to your path!");
 define("_MAP_POI_TYPE_FILE",		"lg/en.txt");
-define("_LOOKING_FOR",				"Looking for POI around : ");
+define("_LOOKING_FOR",				"Looking for POI around the given address: ");
 define("_SEE_WIKIVOYAGE_GUIDES",	"There are WikiVoyage guides around you.");
 define("_YOUR_PATH",				"Your Path");
 define("_CLEAR_CART",				"Clear Cart");
-define("_SAVE_CART",				"Save cart !");
-define("_CART_IS_EMPTY_POPUP",		"Your cart is empty, please fill it before exporting it ! ;)");
-define("_YOU_ARE_HERE",				"You're here !");
+define("_SAVE_CART",				"Save Cart!");
+define("_CART_IS_EMPTY_POPUP",		"Your cart is empty, please fill it before exporting it! ;)");
+define("_YOU_ARE_HERE",				"You're here!");
 define("_CENTER_BUTTON",			"Center on my position");
