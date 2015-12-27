@@ -86,20 +86,20 @@ if(isset($_POST['cartJsonExport']) OR isset($_COOKIE['temp_path']))
 		
 		
 		?>
-		<h2>More information before saving your path !</h2>
+		<h2><?php echo _PATH_HEADER ?></h2>
 
 		<form action="" method="POST">
-		<h3>Give it a name and a description</h3>
+		<h3><?php echo _PATH_TITLE ?></h3>
 		<p>
-			<label for="title">Title :</label><input type="text" id="title" name="title" required /><br/>
-			<label for="desc">Description :</label><input type="text" id="desc" name="desc" required /><br/>
+			<label for="title"><?php echo _PATH_NAME ?></label><input type="text" id="title" name="title" required /><br/>
+			<label for="desc"><?php echo _PATH_DESC ?></label><input type="text" id="desc" name="desc" required /><br/>
 			<input type="hidden" name="mean_lat" value="<?php echo $mean_lat; ?>" /><br/>
 			<input type="hidden" name="mean_long" value="<?php echo $mean_long; ?>" /><br/>
 			<br/>
 		</p>	
 		
 		<?php
-		if($j != 0) echo "<h3>Choose a cute picture to describe it</h3>";
+		if($j != 0) echo "<h3>". _PATH_IMG ."</h3>";
 		
 		for($i = 0; $i<$j; $i++)
 		{
@@ -117,7 +117,7 @@ if(isset($_POST['cartJsonExport']) OR isset($_COOKIE['temp_path']))
 	else
 	{
 		?>
-		<a href="./oauth/oauth_connexion.php?action=authorize">Click here to register with your Wikimedia account !</a>
+		<a href="./oauth/oauth_connexion.php?action=authorize"><?php echo _PATH_LOGIN ?></a>
 		<?php
 	}
 

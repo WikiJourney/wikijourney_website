@@ -23,8 +23,8 @@ include('./include/haut.php');
 
 if(!isset($_SESSION['wj_username']))
 {
-	echo "<p>You need to be connected to access to this function.";
-	echo ' <a href="./oauth/oauth_connexion.php?action=authorize">Click here to register with your Wikimedia account !</a></p>';
+	echo _CONNECT_NECESS;
+	echo ' <a href="./oauth/oauth_connexion.php?action=authorize">'._REGISTRATION.'</a></p>';
 }
 else if(isset($_GET['action']))
 {
