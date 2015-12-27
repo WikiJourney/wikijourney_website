@@ -100,3 +100,15 @@ define("_SAVE_CART",				"Save Cart!");
 define("_CART_IS_EMPTY_POPUP",		"Your cart is empty, please fill it before exporting it! ;)");
 define("_YOU_ARE_HERE",				"You're here!");
 define("_CENTER_BUTTON",			"Center on my position");
+
+//===> paths.php
+define("_CONNECT_NECESS",			"<p>You need to log in to use to this function.");
+define("_REGISTRATION",				"Click here to log in with your Wikimedia account!");
+
+//===> map_export.php
+define("_PATH_HEADER",				"More information is needed before saving your path!");
+define("_PATH_TITLE",				"Give it a name and a description");
+define("_PATH_NAME",				"Name:");
+define("_PATH_DESC",				"Description:");
+define("_PATH_IMG",					"Choose a picture that reminds you of it");
+define("_PATH_LOGIN",				"Click here to register with your Wikimedia account!");

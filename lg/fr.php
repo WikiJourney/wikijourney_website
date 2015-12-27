@@ -106,5 +106,15 @@ define("_CART_IS_EMPTY_POPUP",		"Votre parcours est vide, remplissez le avant de
 define("_YOU_ARE_HERE",				"Vous êtes ici !");
 define("_CENTER_BUTTON",			"Centrer la carte");
 
+//===> paths.php
+define("_CONNECT_NECESS",			"<p>Enregistrez-vous pour utiliser votre compte :");
+define("_REGISTRATION",				"Cliquez ici pour utiliser votre compte Wikimedia !");
 
+//===> map_export.php
+define("_PATH_HEADER",				"Quelques données sont nécessaires à la création de votre parcours :");
+define("_PATH_TITLE",				"Donnez un nom et une description :");
+define("_PATH_NAME",				"Nom :");
+define("_PATH_DESC",				"Description:");
+define("_PATH_IMG",					"Choisissez une image :");
+define("_PATH_LOGIN",				"Cliquez ici pour utiliser votre compte Wikimedia :");
 

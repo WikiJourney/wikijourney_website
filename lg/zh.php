@@ -99,3 +99,15 @@ define("_SAVE_CART",				"保存地图 !");
 define("_CART_IS_EMPTY_POPUP",		"您的地图为空，请在导出前加入景点和路线;)");
 define("_YOU_ARE_HERE",				"您在这里 !");
 define("_CENTER_BUTTON",			"以我的位置为中央显示");
+
+//===> paths.php
+define("_CONNECT_NECESS",			"<p>You need to log in to use to this function.");
+define("_REGISTRATION",				"Click here to log in with your Wikimedia account!");
+
+//===> map_export.php
+define("_PATH_HEADER",				"More information is needed before saving your path!");
+define("_PATH_TITLE",				"Give it a name and a description");
+define("_PATH_NAME",				"Name:");
+define("_PATH_DESC",				"Description:");
+define("_PATH_IMG",					"Choose a picture that reminds you of it");
+define("_PATH_LOGIN",				"Click here to register with your Wikimedia account!");
