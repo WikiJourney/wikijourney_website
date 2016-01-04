@@ -40,6 +40,7 @@ define("_RANGE",			"Rayon (km) : ");
 define("_MAX_POI",			"Maximum :");
 define("_PLACEHOLDER",		"Entrez un lieu ici.");
 define("_LOADING",			"Chargement...");
+define("_PATH_CREATED",		"Votre parcours a bien été créé !");
 
 //===> team.php
 define("_TEAM_TITLE",		"Notre Équipe");
@@ -109,6 +110,11 @@ define("_CENTER_BUTTON",			"Centrer la carte");
 //===> paths.php
 define("_CONNECT_NECESS",			"<p>Enregistrez-vous pour utiliser votre compte :");
 define("_REGISTRATION",				"Cliquez ici pour utiliser votre compte Wikimedia !");
+define("_YOUR_PATHS",				"Vos parcours");
+define("_LOAD",						"Charger");
+define("_REMOVE",					"Supprimer");
+define("_NO_PATHS_SAVED",			"Pas de parcours sauvegardés.");
+define("_LOGOUT",					"Se déconnecter");
 
 //===> map_export.php
 define("_PATH_HEADER",				"Quelques données sont nécessaires à la création de votre parcours :");
@@ -116,5 +122,5 @@ define("_PATH_TITLE",				"Donnez un nom et une description :");
 define("_PATH_NAME",				"Nom :");
 define("_PATH_DESC",				"Description:");
 define("_PATH_IMG",					"Choisissez une image :");
-define("_PATH_LOGIN",				"Cliquez ici pour utiliser votre compte Wikimedia :");
+define("_PATH_LOGIN",				"Cliquez ici pour utiliser votre compte Wikimedia");
 

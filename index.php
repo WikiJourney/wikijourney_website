@@ -120,7 +120,7 @@ include('./include/haut.php');
 		if($_GET['message'] == 'confirm')
 		{
 			echo '<script>alert("';
-			echo "Your path was successfully created !";
+			echo _PATH_CREATED;
 			echo '"); </script>';
 		}
 	}

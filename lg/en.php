@@ -39,6 +39,7 @@ define("_RANGE",			"Range (km): ");
 define("_MAX_POI",			"Max POI: ");
 define("_PLACEHOLDER",		"Type a location here.");
 define("_LOADING",			"Loading...");
+define("_PATH_CREATED",		"Your path has been created!");
 
 //===> team.php
 define("_TEAM_TITLE",		"Our Team!");
@@ -104,6 +105,11 @@ define("_CENTER_BUTTON",			"Center on my position");
 //===> paths.php
 define("_CONNECT_NECESS",			"<p>You need to log in to use to this function.");
 define("_REGISTRATION",				"Click here to log in with your Wikimedia account!");
+define("_YOUR_PATHS",				"Your paths");
+define("_LOAD",						"Load");
+define("_REMOVE",					"Remove");
+define("_NO_PATHS_SAVED",			"No paths saved!");
+define("_LOGOUT",					"Log Out");
 
 //===> map_export.php
 define("_PATH_HEADER",				"More information is needed before saving your path!");

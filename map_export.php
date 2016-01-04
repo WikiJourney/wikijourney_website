@@ -117,7 +117,7 @@ if(isset($_POST['cartJsonExport']) OR isset($_COOKIE['temp_path']))
 	else
 	{
 		?>
-		<a href="./oauth/oauth_connexion.php?action=authorize"><?php echo _PATH_LOGIN ?></a>
+		<p><a href="./oauth/oauth_connexion.php?action=authorize"><?php echo _PATH_LOGIN ?></a></p>
 		<?php
 	}
 

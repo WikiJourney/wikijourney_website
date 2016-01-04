@@ -37,6 +37,7 @@ define("_RANGE",			": (الشعاع (كم");
 define("_MAX_POI",			": الحد الاقصى");
 define("_PLACEHOLDER",		".أدخل مكان هنا");
 define("_LOADING",			"Loading...");
+define("_PATH_CREATED",		"Your path has been created!");
 
 //===> team.php
 define("_TEAM_TITLE",		"! الفرقة");
@@ -105,6 +106,11 @@ define("_WELCOME_MESSAGE", "! مرحبا");
 //===> paths.php
 define("_CONNECT_NECESS",			"<p>You need to log in to use to this function.");
 define("_REGISTRATION",				"Click here to log in with your Wikimedia account!");
+define("_YOUR_PATHS",				"Your paths");
+define("_LOAD",						"Load");
+define("_REMOVE",					"Remove");
+define("_NO_PATHS_SAVED",			"No paths saved!");
+define("_LOGOUT",					"Log Out");
 
 //===> map_export.php
 define("_PATH_HEADER",				"More information is needed before saving your path!");
