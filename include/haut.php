@@ -105,8 +105,8 @@ else
 				<table id="liste_menu.php" style="border-collapse: separate;" >
 					<tr>
 						<td id="lien_index.php"><a href="index.php"><?php echo _INDEX ;?></a></td>
+						<td id="lien_paths.php"><a href="paths.php"><?php echo _YOUR_PATHS;?></a></td>
 						<td id="lien_about.php"><a href="about.php"><?php echo _ABOUT ;?></a></td>
-						<td id="lien_team.php"><a href="team.php"><?php echo _TEAM ;?></a></td>
 						<td id="lien_contact.php"><a href="http://blog.wikijourney.eu/" target="_blank"><?php echo _BLOG ;?></a></td>
 					</tr>
 				</table>

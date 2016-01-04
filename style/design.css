@@ -15,18 +15,21 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+/* ============================================= */
+/* ============= Global Properties ============= */
+/* ============================================= */
+
+/* ===> Global blocks and inline <=== */
 
 body{
-	
-	margin:0px;	
-	padding:0px;
-	background-color: rgb(247,247,247);
-	
-	overflow: scroll;
+margin:0px;	
+padding:0px;
+background-color: rgb(247,247,247);
+overflow: scroll;
 }
 
 h1 {
-font-family: "Helvetica","Trebuchet MS";
+font-family: "Helvetica","Trebuchet MS",sans;
 margin-top: 30px;
 margin-left: 50px;
 font-size: 26px;
@@ -34,13 +37,12 @@ color: rgb(248,99,99);
 }
 
 h2 {
-font-family: "Helvetica", cambria;
+font-family: "Helvetica", cambria,sans;
 margin-top: 15px;
 margin-left: 70px;
 font-size: 20px;
 color: rgb(137,160,173);
 }
-
 
 a{
 text-decoration: none;
@@ -53,69 +55,8 @@ float: left;
 width: 120px;
 }
 
-#welcome{
-font-family: "Calibri","Trebuchet MS";
-margin: 30px 50px 50px 50px;
-}
+/* ===> Top <=== */
 
-.miniInput {
-display: block;
-width: 50px;
-text-align: center;
-}
-/* ============= Trombinoscope ============= */
-#trombi {
-width: 80%;
-border-collapse: collapse;
-border: 1px solid black;
-margin: auto;
-background-color: rgba(155,222,255,0.3);
-}
-
-.tcol3{
-text-indent: 20px;
-text-align: justify;
-font-family: calibri;
-border: 1px solid black;
-padding: 10px;
-font-size: 14px;
-}
-
-.tcol2{
-width: 22%;
-text-align: center;
-border: 1px solid black;
-padding: 5px;
-}
-
-.trombiNom
-{
-font-family: "Courier New",Times;
-color: rgb(255,99,99);
-font-weight: bold;
-}
-
-.trombiFonc
-{
-font-family: calibri;
-color: grey;
-font-size: 13px;
-
-}
-
-.tcol1 img{
-width: 120px;
-
-vertical-align: bottom;
-}
-
-.tcol1{
-border: 1px solid black;
-margin: 0;
-padding : 0;
-}
-
-/* ============= HAUT ============= */
 #logoLanguageBoxContainer {
 margin: auto;
 }
@@ -129,7 +70,7 @@ height: 238px;
 border-bottom: 1px solid black;
 font-size: 32px;
 color: black;
-font-family: "Trebuchet MS";
+font-family: "Trebuchet MS",Helvetica,sans;
 }
 
 #languagesBox {
@@ -145,12 +86,13 @@ background-color: rgba(248,99,99,0.5);
 		
 border: 1px solid black;
 color: white;
-font-family: cambria;
+font-family: cambria,Helvetica,sans;
 }
 
 #languagesBox a{
 color: white;
 }
+
 #languagesBox a:hover{
 font-weight: bold;
 }
@@ -165,11 +107,10 @@ margin-left: 100px;
 height: 180px;
 }
 
+/* ===> Menu <===*/
 
+/* => Block Menu */
 
-/* ============= MENU ============= */
-
-/* Block Menu */
 #menu {
 
 margin-left: auto;
@@ -178,10 +119,9 @@ text-align: center;
 opacity: 0.9;
 height: 40px;
 width: 1002px;
-
-
 }
-/* Cellules */
+
+/* => Cells */
 
 #menu td {
 -webkit-border-top-left-radius: 10px;
@@ -190,37 +130,30 @@ width: 1002px;
 -moz-border-radius-topright: 10px;
 border-top-left-radius: 10px;
 border-top-right-radius: 10px;
-
 background-color: rgb(248,99,99);
 border: 1px solid black;
-
 text-align: center;
 height : 40px;
 width : 250px;
 }
 
-/* Texte */
+/* => Text */
+
 #menu a {
 color: white;
-font-family: cambria;
+font-family: cambria,Helvetica,sans;
 padding: 8px;
 display: block;
-
 text-decoration: none;
 font-weight: bold;
 font-size: 18px;
-
 }
-
-
 
 #menu td:hover {
-
 background-color: rgb(174,203,219);
-
-
 }
-/* ============= CORPS ============= */
+
+/* ===> Body <=== */
 	
 #corps {
 margin-top : 50px;
@@ -229,19 +162,16 @@ margin-left: auto;
 margin-right: auto;
 width: 1000px;
 background-color: white;
-
 }
-
-
 
 #corps p, #corps form {
 margin: auto;
 width: 80%;
 text-align: justify;
-font-family: calibri;
+font-family: Calibri,Helvetica,sans;
 }
 
-/* ============= PIED ============= */
+/* ===> Footer <=== */
 
 #pied {
 margin-top: 20px;
@@ -259,65 +189,106 @@ margin-left: auto;
 margin-right: auto;
 width: 1000px;
 text-align: center;
-
 }
+
 #pied img {
 height: 35px;
 padding-left: 10px;
 padding-right: 10px;
 }
-#pied th {
 
+#pied th {
 text-align: center;
 font-size: 14px;
 padding: 3px;
-font-family: "Trebuchet MS";
+font-family: "Trebuchet MS", Helvetica,sans;
 }
+
 #pied td {
-font-family: cambria;
+font-family: cambria,Helvetica,sans;
 text-align: center;
 font-size: 12px;
 }
-/* ============= MAP ============= */
+
+/* ============================================= */
+/* ========= Specific Pages Properties ========= */
+/* ============================================= */
+
+/* ===> map.php <=== */
+
+/* => Map block and children (buttons, popup...) */
+
 #map { 
-	
-	
-	padding: 0;
-	height: 500px; 
-	width: 70%; 
-	border-collapse: collapse;
-	border: 1px solid black;
-	
-	
+padding: 0;
+height: 500px; 
+width: 70%; 
+border-collapse: collapse;
+border: 1px solid black;
 }
 
+#map_cart_container {
+width: 1000px;
+margin: auto;
+margin-top: 15px;
+}
+
+#button-wrapper {
+position: relative;
+margin-left: 80%;/* MAGIC NUMBERS <3 */	
+margin-top: -50px;
+}
+
+#button-routing-wrapper {
+position: absolute;
+margin-left: 11px;/* MAGIC NUMBERS <3 */
+margin-top: -400px;
+}
+
+.POPUP_title{
+font-weight: bold;
+margin: auto;
+text-align: center;
+}
+
+.POPUP_img{
+max-height: 100px;
+width: 100px;
+margin: auto;
+display: block;
+}
+
+.POPUP_links{
+text-align: center;
+}
+
+/* => Cart block and children (cart elements, buttons...) */
+
 #POI_CART_BLOCK {
-	margin-right: 46px;
-	float: left;
-	width: 25%;
-	border: 1px solid black;
-	border-radius: 8px;
-	height: 500px;
-	background-color: white;
+margin-right: 46px;
+float: left;
+width: 25%;
+border: 1px solid black;
+border-radius: 8px;
+height: 500px;
+background-color: white;
 }
 
 #POI_CART_TITLE {
-	font-family: "Helvetica","Trebuchet MS";
-	font-size: 22px;
-	text-decoration: none;
-	text-align:center;
-	margin: auto;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	margin-top: 5px;
-	width: 90%;
-	border-bottom: 2px solid rgb(248,99,99);
+font-family: "Helvetica","Trebuchet MS",sans;
+font-size: 22px;
+text-decoration: none;
+text-align:center;
+margin: auto;
+padding-top: 5px;
+padding-bottom: 5px;
+margin-top: 5px;
+width: 90%;
+border-bottom: 2px solid rgb(248,99,99);
 }
 
 #POI_CART {
-	overflow-y: auto;
-	
-	height: 425px;
+overflow-y: auto;
+height: 425px;
 }
 #POI_CART::-webkit-scrollbar{
 border-radius: 4px;
@@ -339,22 +310,14 @@ margin-top: 5px;
 cursor: pointer;
 }
 
-#map_cart_container {
-width: 1000px;
-margin: auto;
-margin-top: 15px;
-}
-
 .eltCart {
 font-family: "Calibri",Sans;
 width: 90%;
 border-bottom: 2px solid rgb(248,99,99);
 min-height: 74px;
 margin: auto;
-
 text-align: center;
 padding: 5px;
-
 }
 
 .eltCartNumber {
@@ -370,93 +333,184 @@ height:100%;
 background-color: rgb(174,203,219);
 }
 
-#button-wrapper {
-    position: relative;
-    margin-left: 80%;/* MAGIC NUMBERS <3 */	
-    margin-top: -50px;
-}
-
-#button-routing-wrapper {
-    position: absolute;
-    margin-left: 11px;/* MAGIC NUMBERS <3 */
-    margin-top: -400px;
-}
-
-.POPUP_title{
-font-weight: bold;
-margin: auto;
-text-align: center;
-}
-
-.POPUP_img{
-max-height: 100px;
-width: 100px;
-margin: auto;
-display: block;
-}
-
-.POPUP_links{
-text-align: center;
-}
+/* => WikiVoyage section */
 
 #WikiVoyageTitle {
-	color: rgb(255,99,99);
-	font-size: 1.2em;
-	margin-bottom: 10px;
-	display: block;
-	font-weight: bold;
+color: rgb(255,99,99);
+font-size: 1.2em;
+margin-bottom: 10px;
+display: block;
+font-weight: bold;
 }
+
 #WikiVoyageBox{
-	width: 95%;
-	padding-top: 20px;
-	height:200px;
-	margin: auto;
+width: 95%;
+padding-top: 20px;
+height:200px;
+margin: auto;
 }
 
 #WikiVoyageThumbnailContainer{
-	overflow-x: scroll;
-	overflow-y: hidden;
-
-	margin: auto;
-	height: 160px;
-	width: 100%;
+overflow-x: scroll;
+overflow-y: hidden;
+margin: auto;
+height: 160px;
+width: 100%;
 }
+
 #WikiVoyageThumbnailContainerScroll{
-	width: auto; 
-	white-space: nowrap
+width: auto; 
+white-space: nowrap;
 }
 
 #WikiVoyageThumbnailContainer::-webkit-scrollbar{
 border-radius: 4px;
 height:8px;
 background-color:#eeeeee;
-} 
+}
+
 #WikiVoyageThumbnailContainer::-webkit-scrollbar-thumb{
 background-color:rgb(174,203,219);
 border-radius:4px;
 }
 
 .WikiVoyageElement{
-	height: 130px;
-	display: inline-block;
-	text-align: center;
-	vertical-align: top;
-	margin-left: 5px;
-	padding: 8px;
-	background-color: rgb(174,203,219);
-	min-width: 100px;
-	font-family: "Calibri",Sans;
-	font-size: 0.9em;
-	border-radius: 3px;
-	
+height: 130px;
+display: inline-block;
+text-align: center;
+vertical-align: top;
+margin-left: 5px;
+padding: 8px;
+background-color: rgb(174,203,219);
+min-width: 100px;
+font-family: "Calibri",Sans;
+font-size: 0.9em;
+border-radius: 3px;
 }
+
 .WikiVoyageElement a{
-	color:black;
+color:black;
 }
+
 .WikiVoyageElement a:hover{
-	color: rgb(255,50,50);
+color: rgb(255,50,50);
 }
+
 .WikiVoyageImg{
-	margin-top: 8px;
-	height: 100px;
+margin-top: 8px;
+height: 100px;
+}
+
+/* ===> map_export.php <=== */
+
+.thumbnail_export img{
+height: 120px;
+}
+
+.thumbnail_export{
+height: 140px;
+display: inline-block;
+text-align: center;
+vertical-align: top;
+margin: 20px;
+margin-left: 5px;
+padding: 8px;
+background-color: rgb(174,203,219);
+min-width: 100px;
+font-family: "Calibri",Sans;
+font-size: 0.9em;
+border-radius: 3px;
+}
+
+/* ===> paths.php <=== */
+
+.thumbnail_paths{
+max-height: 140px;
+margin: auto;
+display: block;
+}
+
+#paths{
+margin: auto;
+width: 90%;
+border-collapse: collapse;
+}
+
+#paths td{
+border: 1px solid rgb(174,203,219);
+font-family: "Calibri",Sans;
+padding: 2px 20px 2px 20px;
+text-align: justify;
+}
+
+.paths_title{
+padding: 5px;
+font-size: 20px;
+font-weight: bold;
+text-align: center !important;
+width: 100%;
+}
+
+/* ===> index.php <=== */
+
+#welcome{
+margin: 30px 50px 50px 50px;
+font-family: Calibri,Helvetica,sans;
+text-align:justify;
+}
+
+.miniInput {
+display: block;
+width: 50px;
+text-align: center;
+}
+
+/* ===> team.php <=== */
+#trombi {
+width: 80%;
+border-collapse: collapse;
+border: 1px solid black;
+margin: auto;
+background-color: rgba(155,222,255,0.3);
+}
+
+.tcol3{
+text-indent: 20px;
+text-align: justify;
+font-family: calibri,Helvetica,sans;
+border: 1px solid black;
+padding: 10px;
+font-size: 14px;
+}
+
+.tcol2{
+width: 22%;
+text-align: center;
+border: 1px solid black;
+padding: 5px;
+}
+
+.trombiNom
+{
+font-family: "Courier New",Times,sans;
+color: rgb(255,99,99);
+font-weight: bold;
+}
+
+.trombiFonc
+{
+font-family: calibri, Helvetica,sans;
+color: grey;
+font-size: 13px;
+}
+
+.tcol1 img{
+width: 120px;
+vertical-align: bottom;
+}
+
+.tcol1{
+border: 1px solid black;
+margin: 0;
+padding : 0;
 }

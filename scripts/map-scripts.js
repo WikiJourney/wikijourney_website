@@ -1,8 +1,20 @@
-//-------------- map-script.js ---------------
-//
-// Contains scripts used in map.php, in order
-// to add POIs in the cart and make operations
-// on them.
+/*
+================== WIKIJOURNEY - MAP-SCRIPTS.JS =======================
+Contains scripts used in map.php, in order to add POIs in the cart 
+and make operations on them.
+
+Source : https://github.com/WikiJourney/wikijourney_website
+Copyright 2015 WikiJourney
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 
 //hideRoutingContainer() : Hide or show the routing container when the button is clicked
 function hideRoutingContainer() {
@@ -45,7 +57,7 @@ function submitCart() {
 		var exportList = new Array();
 		
 		//This is the structure
-		function composeCartList(Nid, Nlatitude, Nlongitude, Nsite, Nname, Ntype_name)
+		function composeCartList(Nid, Nlatitude, Nlongitude, Nsite, Nname, Ntype_name, Nimage_url)
 		{
 			this.id = Nid;
 			this.latitude = Nlatitude;
@@ -53,12 +65,13 @@ function submitCart() {
 			this.sitelink = Nsite;
 			this.name = Nname;
 			this.type_name = Ntype_name;
+			this.image_url = Nimage_url;
 		}
 		
 		for(i = 0; i < cartList.length; i++)
 		{
 			//Filling the new list
-			exportList[i] = new composeCartList(cartList[i].id, cartList[i].latitude, cartList[i].longitude, cartList[i].sitelink, cartList[i].name, cartList[i].type_name);
+			exportList[i] = new composeCartList(cartList[i].id, cartList[i].latitude, cartList[i].longitude, cartList[i].sitelink, cartList[i].name, cartList[i].type_name, cartList[i].image_url);
 		}
 		
 		//Putting the json list in an invisible form

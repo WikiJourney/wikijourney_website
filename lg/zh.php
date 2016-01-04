@@ -39,6 +39,8 @@ define("_RANGE",			"范围 (km) : ");
 define("_MAX_POI",			"最大值 :");
 define("_PLACEHOLDER",		"在此输入地点名称.");
 define("_LOADING",			"Loading...");
+define("_PATH_CREATED",		"Your path has been created!");
+
 //===> team.php
 define("_TEAM_TITLE",		"团队");
 define("_TEAM_WHO_R_WE",	"成员简介");
@@ -99,3 +101,20 @@ define("_SAVE_CART",				"保存地图 !");
 define("_CART_IS_EMPTY_POPUP",		"您的地图为空，请在导出前加入景点和路线;)");
 define("_YOU_ARE_HERE",				"您在这里 !");
 define("_CENTER_BUTTON",			"以我的位置为中央显示");
+
+//===> paths.php
+define("_CONNECT_NECESS",			"<p>You need to log in to use to this function.");
+define("_REGISTRATION",				"Click here to log in with your Wikimedia account!");
+define("_YOUR_PATHS",				"Your paths");
+define("_LOAD",						"Load");
+define("_REMOVE",					"Remove");
+define("_NO_PATHS_SAVED",			"No paths saved!");
+define("_LOGOUT",					"Log Out");
+
+//===> map_export.php
+define("_PATH_HEADER",				"More information is needed before saving your path!");
+define("_PATH_TITLE",				"Give it a name and a description");
+define("_PATH_NAME",				"Name:");
+define("_PATH_DESC",				"Description:");
+define("_PATH_IMG",					"Choose a picture that reminds you of it");
+define("_PATH_LOGIN",				"Click here to register with your Wikimedia account!");
