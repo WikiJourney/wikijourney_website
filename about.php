@@ -29,6 +29,9 @@ limitations under the License.
 <p>Wiki : <a href="https://github.com/WikiJourney/wikijourney_website/wiki" title="Wiki">GitHub</a></p>
 <p>Blog : <a href="http://blog.wikijourney.eu" title="Blog">Blog</a></p>
 
+<h2><?php echo _TEAM_TITLE; ?></h2>
+<p><a href="team.php"><?php echo _TEAM_WHO_R_WE; ?></a></p>
+
 <?php
 	include("./include/bas.php");
 ?>
