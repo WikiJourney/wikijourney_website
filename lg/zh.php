@@ -12,7 +12,7 @@ define("_TITLE",			"Wiki Journey - Rediscover Tourism.");
 define("_SRC_IMAGE_LOGO",	"./images/design/logo_and_catchphrase/fr.png");
 //===> Top
 define("_INDEX",			"首页");
-define("_TEAM",				"团队");
+define("_TEAM",				"您的路线");
 define("_ABOUT",			"关于我们");
 define("_BLOG",				"博客");
 
