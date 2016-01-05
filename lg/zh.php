@@ -91,7 +91,7 @@ define("_TECHNICAL_TEXT",	"此网页还在建设当中，敬请期待! ;)");
 
 //===> map.php
 define("_MAP_POI_LINK",				"维基百科");
-define("_MAP_CART_LINK",			"Add to your path!");
+define("_MAP_CART_LINK",			"添加您的路径!");
 define("_MAP_POI_TYPE_FILE",		"lg/zh.txt");
 define("_LOOKING_FOR",				"在我周围寻找: ");
 define("_SEE_WIKIVOYAGE_GUIDES",	"在您周围有wiki电子导游信息.");
