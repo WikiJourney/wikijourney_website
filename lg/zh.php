@@ -103,18 +103,18 @@ define("_YOU_ARE_HERE",				"您在这里 !");
 define("_CENTER_BUTTON",			"以我的位置为中央显示");
 
 //===> paths.php
-define("_CONNECT_NECESS",			"<p>You need to log in to use to this function.");
-define("_REGISTRATION",				"Click here to log in with your Wikimedia account!");
-define("_YOUR_PATHS",				"Your paths");
-define("_LOAD",						"Load");
-define("_REMOVE",					"Remove");
-define("_NO_PATHS_SAVED",			"No paths saved!");
-define("_LOGOUT",					"Log Out");
+define("_CONNECT_NECESS",			"<p>您需要登录以便使用此项功能");
+define("_REGISTRATION",				"点击这里用您的维基账户登录！!");
+define("_YOUR_PATHS",				"您的路径");
+define("_LOAD",						"载入");
+define("_REMOVE",					"移除");
+define("_NO_PATHS_SAVED",			"没有可保存的路径!");
+define("_LOGOUT",					"登出");
 
 //===> map_export.php
-define("_PATH_HEADER",				"More information is needed before saving your path!");
-define("_PATH_TITLE",				"Give it a name and a description");
-define("_PATH_NAME",				"Name:");
-define("_PATH_DESC",				"Description:");
-define("_PATH_IMG",					"Choose a picture that reminds you of it");
-define("_PATH_LOGIN",				"Click here to register with your Wikimedia account!");
+define("_PATH_HEADER",				"在保存您的路径前需要更多的信息!");
+define("_PATH_TITLE",				"添加名称和描述");
+define("_PATH_NAME",				"名称:");
+define("_PATH_DESC",				"描述:");
+define("_PATH_IMG",					"选择一个用于提醒您的照片");
+define("_PATH_LOGIN",				"点击这里用您的维基账户注册");
