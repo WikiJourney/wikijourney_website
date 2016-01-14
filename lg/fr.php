@@ -47,7 +47,7 @@ define("_TEAM_TITLE",		"Notre Équipe");
 define("_TEAM_WHO_R_WE",	"Qui sommes nous ?");
 define("_TEAM_QUICKDESC",	"Nous sommes une équipe de sept étudiants de l'École Centrale de Lille, école d'ingénieur généraliste située à Lille,
 							dans le Nord de la France. Durant nos deux premières années d'études, nous devons développer un projet
-							multidisciplinaire, dans lequel nous mettons nos connaissances en commun. Nous nous sommes donc retrouvés à sept 
+							multidisciplinaire, dans lequel nous mettons nos connaissances en commun. Nous nous sommes donc retrouvés à sept
 							sur ce projet." );
 define("_S_ARNOUTS_DESC",	"J'ai rejoint le projet WikiJourney car je suis vraiment intéressé par la programmation et le développement informatique. Ce projet est pour moi l'occasion de mettre mes compétences de programmation au profit d'un réel projet, qui de plus se place dans le cadre du logiciel libre." );
 define("_S_ARNOUTS_POSTE", 	"Chef de Projet<br/>Développement Web") ;
@@ -66,7 +66,7 @@ define("_Y_WANG_POSTE", 	"Développement Java");
 
 //===> about.php
 define("_ABOUT_TITLE", 		"Qu’est-ce que Wikijourney ?");
-define("_ABOUT_TEXT","		
+define("_ABOUT_TEXT","
 							<p>Wikijourney est un projet étudiant visant à mettre en lien un utilisateur et le contenu informatif de Wikipedia, via sa position dans une ville.
 							<br> Concrètement, nous souhaitons coder une application qui proposerait au touriste des points d’intérêts à visiter. Rentrez vos préférences, choisissez un itinéraire et c’est parti !
 							</p>
@@ -87,8 +87,8 @@ define("_ABOUT_TEXT","
 							Nous sommes ouverts à toute piste d’amélioration ! Contribuez au projet <a href=\"mailto:wikijourneydev@gmail.com\">en nous contactant par mail</a> ou en codant directement vos propositions sur notre Git !<br/>
 							Ou devenez <a href=\"https://play.google.com/apps/testing/com.wikijourney.wikijourney\">testeur de l'application</a> !
 							</p>");
-							
-							
+
+
 //===> technical.php
 define("_TECHNICAL_TITLE",	"Informations Techniques");
 define("_TECHNICAL_TEXT",	"Ce site web est encore en construction, merci de revenir plus tard ! ;)");
@@ -99,7 +99,7 @@ define("_MAP_POI_LINK",				"Voir sur Wikipédia");
 define("_MAP_CART_LINK",			"Ajouter au parcours !");
 define("_MAP_POI_TYPE_FILE",		"lg/fr.txt");
 define("_LOOKING_FOR",				"Recherche des points d'intérêt à proximité : ");
-define("_SEE_WIKIVOYAGE_GUIDES",	"Consultez les guides WikiVoyage autour de vous !");
+define("_SEE_WIKIVOYAGE_GUIDES",	"Guides");
 define("_YOUR_PATH",				"Votre Parcours");
 define("_CLEAR_CART",				"Vider");
 define("_SAVE_CART",				"Sauvegarder !");
@@ -123,4 +123,3 @@ define("_PATH_NAME",				"Nom :");
 define("_PATH_DESC",				"Description:");
 define("_PATH_IMG",					"Choisissez une image :");
 define("_PATH_LOGIN",				"Cliquez ici pour utiliser votre compte Wikimedia");
-

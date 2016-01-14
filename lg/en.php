@@ -82,8 +82,8 @@ define("_ABOUT_TEXT","		<p>WikiJourney is a student project, which goal is to co
 							<h2>Questions, Proposals...?</h2>
 							<p>We pay attention to every idea! Contribute on our Git, or <a href=\"mailto:wikijourneydev@gmail.com\">send us a mail</a>!<br/>
 							Or <a href=\"https://play.google.com/apps/testing/com.wikijourney.wikijourney\">test the app</a> !</p>");
-														
-														
+
+
 //===> technical.php
 define("_TECHNICAL_TITLE",	"Technical Informations");
 define("_TECHNICAL_TEXT",	"This website is still under construction, please come back later ;)");
@@ -93,7 +93,7 @@ define("_TECHNICAL_TEXT",	"This website is still under construction, please come
 define("_MAP_POI_LINK",				"See on Wikipedia");
 define("_MAP_CART_LINK",			"Add to your path!");
 define("_MAP_POI_TYPE_FILE",		"lg/en.txt");
-define("_LOOKING_FOR",				"Looking for POI around the given address: ");
+define("_LOOKING_FOR",				"Looking for POI around :");
 define("_SEE_WIKIVOYAGE_GUIDES",	"There are WikiVoyage guides around you.");
 define("_YOUR_PATH",				"Your Path");
 define("_CLEAR_CART",				"Clear Cart");

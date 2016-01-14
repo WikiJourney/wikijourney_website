@@ -1,4 +1,4 @@
-﻿<?php 
+﻿<?php
 
 if(isset($_COOKIE['lg']))
 {
@@ -7,7 +7,7 @@ if(isset($_COOKIE['lg']))
 		include("./lg/en.php"); // TODO dynamic pages
 		$language = "en";
 	}
-	
+
 	else if($_COOKIE['lg'] == 'fr') {
 		include("./lg/fr.php");
 		$language = "fr";
@@ -17,7 +17,7 @@ if(isset($_COOKIE['lg']))
 		include("./lg/zh.php");
 		$language = "zh";
 	}
-	
+
 	else if($_COOKIE['lg'] == 'ar') {
 		include("./lg/ar.php");
 		$language = "ar";
@@ -31,13 +31,13 @@ if(isset($_COOKIE['lg']))
 	}
 }
 
-else 
+else
 {
 	include("./lg/fr.php");
 	setcookie("lg","fr"); //Define cookie
 	$language = "fr";
 }
-	
+
 
 
 ?>
@@ -47,10 +47,18 @@ else
 
 	<title><?php echo _TITLE; ?></title>
 	<meta charset="utf-8">
+	<?php
+
+	if(!isset($INCLUDE_MAP_PROPERTIES)) //The map has its own design
+	{
+	?>
 	<link rel="stylesheet" media="screen" type="text/css" href="./style/design.css" />
+	<?php
+	}
+	?>
 	<link rel="stylesheet" media="screen" type="text/css" href="./style/fontello.css" />
 	<link rel="Shortcut icon" href="./images/design/favicon.ico" />
-	
+
 	<?php
 	if(isset($INCLUDE_MAP_PROPERTIES)) //Properties dedicated to the map
 	{
@@ -58,16 +66,17 @@ else
 		<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 		<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js'></script>
 		<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css' rel='stylesheet' />
+		<link rel="stylesheet" href="./style/style_map.css">
 		<link rel="stylesheet" href="./style/leaflet-routing-machine.css" />
 		<script src="scripts/leaflet-routing-machine.js"></script>
 	<?php
 	}
 	?>
 
-	
+
 	</head>
 	<body>
-	
+
 	<!-- Piwik -->
 	<script type="text/javascript">
 	  var _paq = _paq || [];
@@ -83,12 +92,15 @@ else
 	</script>
 	<noscript><p><img src="//piwik.wikijourney.eu/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
 	<!-- End Piwik Code -->
-	
+	<?php
+	if(!isset($INCLUDE_MAP_PROPERTIES)) //the map has its own header
+	{
+	?>
 	<div id="banniere">
 				<table id="logoLanguageBoxContainer">
 					<tr>
 						<td><img  id="logoban" src="<?php echo _SRC_IMAGE_LOGO; ?>" alt="Logo" /></td>
-						
+
 						<td><p id="languagesBox">
 							<a href="action.php?lg=en">English</a><br/>
 							<a href="action.php?lg=fr">Français</a><br/>
@@ -96,11 +108,11 @@ else
 							<a href="action.php?lg=ar">عربية</a>
 							</p>
 						</td>
-						
+
 					</tr>
 				</table>
-			
-			
+
+
 			<div id="menu">
 				<table id="liste_menu.php" style="border-collapse: separate;" >
 					<tr>
@@ -110,17 +122,20 @@ else
 						<td id="lien_contact.php"><a href="http://blog.wikijourney.eu/" target="_blank"><?php echo _BLOG ;?></a></td>
 					</tr>
 				</table>
-			</div>	
+			</div>
 			<?php
 			//Colorating the active page
 				$nomPage = $_SERVER['SCRIPT_FILENAME'];
 				$reg = '#^(.+[\\\/])*([^\\\/]+)$#';
-				$nomPage = preg_replace($reg, '$2', $nomPage); 
+				$nomPage = preg_replace($reg, '$2', $nomPage);
 			?>
 			<script type="text/javascript">
 				if(document.getElementById("lien_" + "<?php echo $nomPage; ?>") != null)
 					document.getElementById("lien_" + "<?php echo $nomPage; ?>").style.cssText = "background-color: rgb(137,160,173);";
 			</script>
-		
+
 		</div>
 		<div id="corps">
+			<?php
+			}
+			?>
