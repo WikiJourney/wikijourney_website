@@ -52,7 +52,7 @@ include('./include/haut.php');
 			
 			<?php echo _OPTIONS; ?><p>
 			<label for="range"><?php echo _RANGE; ?></label><input class="miniInput" type="text" name="range" id="range" value="1"/><br/>
-			<label for="maxPOI"><?php echo _MAX_POI; ?></label><input class="miniInput" type="text" name="maxPOI" id="maxPOI" value="10" /><br/><br/>
+			<label for="maxPOI"><?php echo _MAX_POI; ?></label><input class="miniInput" type="text" name="maxPOI" id="maxPOI" value="25" /><br/><br/>
 		
 		<input type="hidden" name="longitude" id="longitude" value="null" />
 		<input type="hidden" name="latitude" id="latitude" value="null" />
