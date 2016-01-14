@@ -156,7 +156,7 @@ else
 			}
 			#stores_logos_block img
 			{
-			width: 70px;
+			height: 40px;
 			display: inline-block;
 			margin: 5px 40px 10px 40px;
 			}
@@ -165,9 +165,9 @@ else
 			<div id="banniere_sup">
 			<?php
 			if($language == 'fr')
-				echo '<p>Téléchargez notre application mobile OpenSource !</p>';
+				echo '<p>Téléchargez notre application mobile !</p>';
 			else
-				echo '<p>Download our OpenSource mobile app !</p>';
+				echo '<p>Download our mobile app!</p>';
 			?>
 			<div id="stores_logos_block">
 				<a target="_blank" href="https://play.google.com/store/apps/details?id=eu.wikijourney.wikijourney"><img src="./images/design/google_play.png" alt="Google Play" title="Google Play" /></a>
