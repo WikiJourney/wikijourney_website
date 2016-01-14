@@ -78,23 +78,6 @@ include('./include/haut.php');
 		}
 	}
 	
-	/*
-	function openWithPostData(page,data) {
-		var form = document.createElement('form');
-    	form.setAttribute('action', page);
-    	form.setAttribute('method', 'post');
-    	for (var n in data) {
-        	var inputvar = document.createElement('input');
-        	inputvar.setAttribute('type', 'hidden');
-        	inputvar.setAttribute('name', n);
-        	inputvar.setAttribute('value', data[n]);
-        	form.appendChild(inputvar);
-    	}
-    document.body.appendChild(form);
-    form.submit();
-	}
-	*/
-
 	</script>   
 
 
