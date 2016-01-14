@@ -173,7 +173,7 @@ else
 				<a target="_blank" href="https://play.google.com/store/apps/details?id=eu.wikijourney.wikijourney"><img src="./images/design/google_play.png" alt="Google Play" title="Google Play" /></a>
 				<a target="_blank" href="https://f-droid.org/repository/browse/?fdid=com.wikijourney.wikijourney"><img src="./images/design/fdroid.png" alt="F-Droid" title="F-Droid" /></a>
 				<a target="_blank" href="http://www.amazon.com/WikiJourney/dp/B0191WMI52/"><img src="./images/design/amazon.png" alt="Amazon" title="Amazon" /></a>
-				<a target="_blank" href="http://wikijourney.store.aptoide.com/app/market/com.wikijourney.wikijourney/16/14074410/WikiJourney"><img src="./images/design/aptoide.png" alt="Aptoide" title="Aptoide" /></a>
+				<a target="_blank" href="http://wikijourney.store.aptoide.com/"><img src="./images/design/aptoide.png" alt="Aptoide" title="Aptoide" /></a>
 			</div>
 			</div>
 			<!-- End temporary code -->
