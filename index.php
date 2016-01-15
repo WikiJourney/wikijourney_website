@@ -52,7 +52,7 @@ include('./include/haut.php');
 			
 			<?php echo _OPTIONS; ?><p>
 			<label for="range"><?php echo _RANGE; ?></label><input class="miniInput" type="text" name="range" id="range" value="1"/><br/>
-			<label for="maxPOI"><?php echo _MAX_POI; ?></label><input class="miniInput" type="text" name="maxPOI" id="maxPOI" value="10" /><br/><br/>
+			<label for="maxPOI"><?php echo _MAX_POI; ?></label><input class="miniInput" type="text" name="maxPOI" id="maxPOI" value="25" /><br/><br/>
 		
 		<input type="hidden" name="longitude" id="longitude" value="null" />
 		<input type="hidden" name="latitude" id="latitude" value="null" />
@@ -78,23 +78,6 @@ include('./include/haut.php');
 		}
 	}
 	
-	/*
-	function openWithPostData(page,data) {
-		var form = document.createElement('form');
-    	form.setAttribute('action', page);
-    	form.setAttribute('method', 'post');
-    	for (var n in data) {
-        	var inputvar = document.createElement('input');
-        	inputvar.setAttribute('type', 'hidden');
-        	inputvar.setAttribute('name', n);
-        	inputvar.setAttribute('value', data[n]);
-        	form.appendChild(inputvar);
-    	}
-    document.body.appendChild(form);
-    form.submit();
-	}
-	*/
-
 	</script>   
 
 

@@ -116,6 +116,7 @@ else
 				$nomPage = $_SERVER['SCRIPT_FILENAME'];
 				$reg = '#^(.+[\\\/])*([^\\\/]+)$#';
 				$nomPage = preg_replace($reg, '$2', $nomPage); 
+				
 			?>
 			<script type="text/javascript">
 				if(document.getElementById("lien_" + "<?php echo $nomPage; ?>") != null)
@@ -123,4 +124,60 @@ else
 			</script>
 		
 		</div>
+		<?php
+		if($nomPage == 'index.php')
+		{
+		?>
+			<!-- Temporary code for app launching -->
+			<style>
+			#banniere_sup {
+			margin-top : 20px;
+			border: 1px solid black;
+			margin-left: auto;
+			margin-right: auto;
+			width: 1000px;
+			background-color: white;
+			}
+			
+			#banniere_sup p{
+			text-align: left;
+			font-family: "Helvetica","Trebuchet MS";
+			font-weight: bold;
+			margin: 10px;
+			margin-left: 50px;
+			font-size: 26px;
+			
+			color: rgb(248,99,99);
+
+			}
+
+			#stores_logos_block{
+			text-align: center;
+			}
+			#stores_logos_block img
+			{
+			height: 40px;
+			display: inline-block;
+			margin: 5px 40px 10px 40px;
+			}
+			</style>
+
+			<div id="banniere_sup">
+			<?php
+			if($language == 'fr')
+				echo '<p>Téléchargez notre application mobile !</p>';
+			else
+				echo '<p>Download our mobile app!</p>';
+			?>
+			<div id="stores_logos_block">
+				<a target="_blank" href="https://play.google.com/store/apps/details?id=eu.wikijourney.wikijourney"><img src="./images/design/google_play.png" alt="Google Play" title="Google Play" /></a>
+				<a target="_blank" href="https://f-droid.org/repository/browse/?fdid=com.wikijourney.wikijourney"><img src="./images/design/fdroid.png" alt="F-Droid" title="F-Droid" /></a>
+				<a target="_blank" href="http://www.amazon.com/WikiJourney/dp/B0191WMI52/"><img src="./images/design/amazon.png" alt="Amazon" title="Amazon" /></a>
+				<a target="_blank" href="http://wikijourney.store.aptoide.com/"><img src="./images/design/aptoide.png" alt="Aptoide" title="Aptoide" /></a>
+			</div>
+			</div>
+			<!-- End temporary code -->
+		<?php
+		}
+		?>
 		<div id="corps">

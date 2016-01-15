@@ -81,7 +81,7 @@ define("_ABOUT_TEXT","		<p>WikiJourney is a student project, which goal is to co
 
 							<h2>Questions, Proposals...?</h2>
 							<p>We pay attention to every idea! Contribute on our Git, or <a href=\"mailto:wikijourneydev@gmail.com\">send us a mail</a>!<br/>
-							Or <a href=\"https://play.google.com/apps/testing/com.wikijourney.wikijourney\">test the app</a> !</p>");
+							Or <a target=\"_blank\" href=\"https://play.google.com/store/apps/details?id=eu.wikijourney.wikijourney\">test the app</a> !</p>");
 														
 														
 //===> technical.php
