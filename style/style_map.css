@@ -180,7 +180,7 @@ text-align: center;
     top: 55px;
     bottom: 0;
     left: 0;
-    width: 200px;
+    width: 400px;
     transform: scaleX(0.00001);
     transform-origin: 0% 50%;
     transition: transform 0.3s ease-in-out;
@@ -200,10 +200,10 @@ Poi cart display
     position: absolute;
     top: 55px;
     bottom: 0;
-    right: 0;
-    width: 200px;
+    left: 0;
+    width: 250px;
     transform: scaleX(0.00001);
-    transform-origin: 100% 50%;
+    transform-origin: 0% 50%;
     transition: transform 0.3s ease-in-out;
     box-shadow: 0px 10px 10px 00 black;
     background: #5f6975;
@@ -230,7 +230,7 @@ Poi cart display
   width: 100%;
   padding-top: 5px;
   padding-bottom: 5px;
-	border-bottom: 1px solid #575f6a;
+	border-bottom: 2px solid #575f6a;
 }
 
 .eltCart:hover{
