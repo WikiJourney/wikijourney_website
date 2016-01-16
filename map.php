@@ -293,7 +293,8 @@ limitations under the License.
 	var routing_poi_list = new Array();
 
 	var routing = L.Routing.control({
-			waypoints: routing_poi_list
+			waypoints: routing_poi_list,
+			router: L.Routing.mapbox(L.mapbox.accessToken)
 		}).addTo(map);
 
 

@@ -69,6 +69,7 @@ else
 		<link rel="stylesheet" href="./style/style_map.css">
 		<link rel="stylesheet" href="./style/leaflet-routing-machine.css" />
 		<script src="scripts/leaflet-routing-machine.js"></script>
+		<script src="scripts/lrm-mapbox.js"></script>
 	<?php
 	}
 	?>
