@@ -31,15 +31,46 @@ function hideRoutingContainer() {
 
 //DisplayCart() : display or hide the Cart when cart button is clicked
 function displayCart(){
-	if(document.getElementById("POI_CART_BLOCK").style.transform != 'scaleX(1)'){
-	document.getElementById("POI_CART_BLOCK").style.transform = 'scaleX(1)';
+	if(document.getElementById("lef-pannel").style.transform != 'scaleX(1)'){
+	document.getElementById("lef-pannel").style.transform = 'scaleX(1)';
+	document.getElementById("POI_CART_BLOCK").style.display = 'block';
+	document.getElementById("WIKIVOYAGE_BLOCK").style.display = 'none';
 	document.getElementsByClassName("leaflet-top leaflet-left")[0].style.transform="translateX(250px)";
 	document.getElementsByClassName("leaflet-top leaflet-left")[0].style.transition= "transform 0.3s ease-in-out";
 	document.getElementById("button-routing-wrapper").style.transform="translateX(250px)";
 } else {
-	document.getElementById("POI_CART_BLOCK").style.transform = 'scaleX(0.001)';
-	document.getElementsByClassName("leaflet-top leaflet-left")[0].style.transform="translateX(0)";
-	document.getElementById("button-routing-wrapper").style.transform="translateX(0)";
+	if(document.getElementById("POI_CART_BLOCK").style.display == 'block')
+	{
+		document.getElementById("lef-pannel").style.transform = 'scaleX(0.001)';
+		document.getElementsByClassName("leaflet-top leaflet-left")[0].style.transform="translateX(0)";
+		document.getElementById("button-routing-wrapper").style.transform="translateX(0)";
+		document.getElementById("POI_CART_BLOCK").style.display = 'none';
+	} else {
+		document.getElementById("POI_CART_BLOCK").style.display = 'block';
+		document.getElementById("WIKIVOYAGE_BLOCK").style.display = 'none';
+	}
+	}
+}
+
+function displayGuides(){
+	if(document.getElementById("lef-pannel").style.transform != 'scaleX(1)'){
+	document.getElementById("lef-pannel").style.transform = 'scaleX(1)';
+	document.getElementById("POI_CART_BLOCK").style.display = 'none';
+	document.getElementById("WIKIVOYAGE_BLOCK").style.display = 'block';
+	document.getElementsByClassName("leaflet-top leaflet-left")[0].style.transform="translateX(250px)";
+	document.getElementsByClassName("leaflet-top leaflet-left")[0].style.transition= "transform 0.3s ease-in-out";
+	document.getElementById("button-routing-wrapper").style.transform="translateX(250px)";
+} else {
+	if(document.getElementById("WIKIVOYAGE_BLOCK").style.display == 'block')
+	{
+		document.getElementById("lef-pannel").style.transform = 'scaleX(0.001)';
+		document.getElementsByClassName("leaflet-top leaflet-left")[0].style.transform="translateX(0)";
+		document.getElementById("button-routing-wrapper").style.transform="translateX(0)";
+		document.getElementById("WIKIVOYAGE_BLOCK").style.display = 'none';
+	} else {
+		document.getElementById("POI_CART_BLOCK").style.display = 'none';
+		document.getElementById("WIKIVOYAGE_BLOCK").style.display = 'block';
+	}
 	}
 }
 
@@ -107,13 +138,7 @@ function addToCart(i) {
 
 	reloadCart(cartList);
 
-	if(document.getElementById("POI_CART_BLOCK").style.transform != 'scaleX(1)')
-	{
-	document.getElementById("POI_CART_BLOCK").style.transform = 'scaleX(1)';
-	document.getElementsByClassName("leaflet-top leaflet-left")[0].style.transform="translateX(250px)";
-	document.getElementsByClassName("leaflet-top leaflet-left")[0].style.transition= "transform 0.3s ease-in-out";
-	document.getElementById("button-routing-wrapper").style.transform="translateX(250px)";
-	}
+	displayCart();
 }
 
 //center() : Center the map on the user's position when button is clicked

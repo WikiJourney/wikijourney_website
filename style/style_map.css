@@ -104,16 +104,6 @@ nav ul ul ul {
 	height: 30px;
 }
 
-/*Left Menu*/
-
-.left_menu{
-	position: absolute;
-	top:0;
-	left: 260px;
-	text-align: center;
-	display: block;
-}
-
 /*Right Menu*/
 
 .right_menu{
@@ -122,21 +112,6 @@ nav ul ul ul {
 	top:0;
 	text-align: center;
 	display: block;
-}
-
-.buttons{
-	float: right;
-	display: inline;
-	height: auto;
-}
-
-.buttons li{
-	height: 55px;
-	width: 70px;
-}
-
-.buttons li a{
-	width: auto;
 }
 
 /*--------------*\
@@ -186,20 +161,28 @@ text-align: center;
 Poi cart display
 \*--------------*/
 
+#lef-pannel{
+	position: absolute;
+	top: 55px;
+	bottom: 0;
+	left: 0;
+	width: 250px;
+	transform: scaleX(0.00001);
+	transform-origin: 0% 50%;
+	transition: transform 0.3s ease-in-out;
+	box-shadow: 0px 10px 10px 00 black;
+	background: #5f6975;
+	padding-top: 10px;
+	opacity: 0.9;
+	z-index: 1001;
+}
+
+#WIKIVOYAGE_BLOCK{
+	display: none;
+}
+
 #POI_CART_BLOCK {
-    position: absolute;
-    top: 55px;
-    bottom: 0;
-    left: 0;
-    width: 250px;
-    transform: scaleX(0.00001);
-    transform-origin: 0% 50%;
-    transition: transform 0.3s ease-in-out;
-    box-shadow: 0px 10px 10px 00 black;
-    background: #5f6975;
-    padding-top: 10px;
-    opacity: 0.9;
-		z-index: 1001;
+display: none;
 }
 
 #POI_CART_TITLE {

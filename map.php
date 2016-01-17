@@ -185,36 +185,6 @@ limitations under the License.
 
 <header>
 	<a href="index.php"><img src="images/design/logo_and_catchphrase/fr.png" alt="Logo" id="WJ_logo" /></a>
-	<nav class="left_menu">
-		<ul>
-
-<?php
-	//****************************************************************
-	//************** Display Guides from WikiVoyage ******************
-	//****************************************************************
-
-	if($api_answer_array['guides']['nb_guides'] != 0) //If we got guides from WikiVoyage, display it
-	{
-			$guides_array = $api_answer_array['guides']['guides_info'];
-	?>
-		<li> <a href=#><?php echo _SEE_WIKIVOYAGE_GUIDES; ?></a>
-							<ul>
-								<?php
-									for($i = 0; $i < $api_answer_array['guides']['nb_guides']; $i++)
-									{
-										echo '<li><a target="_blank" href="'. $guides_array[$i]['sitelink'] .'">';
-										echo $guides_array[$i]['title'];
-										if(isset($guides_array[$i]['thumbnail']))
-										echo '</a></li>';
-									}
-								?>
-							</ul>
-						</li>
-				 <?php
-				 }//End displaying guides from Wikivoyage
-				 ?>
-			 </ul>
-			</nav>
 	<nav class="right_menu">
 		<ul>
 			<li id="lien_index.php"><a href="index.php"><?php echo _INDEX ;?></a></li>
@@ -224,9 +194,6 @@ limitations under the License.
 			<li id="lien_about.php"><a href="about.php"><?php echo _ABOUT ;?></a></li>
 			<li id="lien_contact.php"><a href="http://blog.wikijourney.eu/" target="_blank"><?php echo _BLOG ;?></a></li>
 		</ul>
-		<ul class="buttons">
-			<li><a href="#" onclick="displayCart()"><img src="images/design/cart.png" class="icon"/></a></li>
-		</ul>
 	</nav>
 </header>
 
@@ -234,35 +201,66 @@ limitations under the License.
 
 <div id="map_cart_container">
 
+	<div id ="lef-pannel">
 	<div id="POI_CART_BLOCK"><!-- Contains the cart, the cart title... Initially hidden, will open with JS -->
-
 		<div id="POI_CART_TITLE"><?php echo _YOUR_PATH; ?></div>
-
 		<div id="POI_CART"><!-- THIS IS GOING TO BE FILLED BY CART ELEMENTS IN JAVASCRIPT --></div>
-
 		<div id="POI_CART_FOOTER">
 			<input type="submit" id="razCart" value="<?php echo _CLEAR_CART; ?>" onclick="razCart();" />
 			<input type="submit" title="This function is unavailable for the moment. Stay tuned for the next version ! ;)" id="exportCart" value="<?php echo _SAVE_CART; ?>" onclick="submitCart();" />
-
 			<!-- Let's put the hidden form here.. Random. -->
 			<form action="map_export.php" method="post" id="hiddenForm">
 				<input type="hidden" id="cartJsonExport" name="cartJsonExport" value="" />
 			</form>
-
 		</div>
-
 	</div>
+
+	<div id="WIKIVOYAGE_BLOCK">
+		<div id="WIKIVOYAGE_TITLE"><?php echo _SEE_WIKIVOYAGE_GUIDES; ?></div>
+		<ul>
+			<?php
+				//****************************************************************
+				//************** Display Guides from WikiVoyage ******************
+				//****************************************************************
+
+				if($api_answer_array['guides']['nb_guides'] != 0) //If we got guides from WikiVoyage, display it
+				{
+						$guides_array = $api_answer_array['guides']['guides_info'];
+				?>
+					<li> <a href=#><?php echo _SEE_WIKIVOYAGE_GUIDES; ?></a>
+										<ul>
+											<?php
+												for($i = 0; $i < $api_answer_array['guides']['nb_guides']; $i++)
+												{
+													echo '<li><a target="_blank" href="'. $guides_array[$i]['sitelink'] .'">';
+													echo $guides_array[$i]['title'];
+													if(isset($guides_array[$i]['thumbnail']))
+													echo '</a></li>';
+												}
+											?>
+										</ul>
+									</li>
+							 <?php
+							 }//End displaying guides from Wikivoyage
+							 ?>
+
+	</ul>
+	</div>
+
+</div>
 
 	<div id="map" class="map" style="width: 100%;"><!-- THIS IS GOING TO BE FILLED BY THE MAP THANKS TO MAPBOX -->
 		<div id="button-wrapper">
 			<input type="button" value="<?php echo _CENTER_BUTTON; ?>" onclick="center()">
 		</div>
 		<div id="button-routing-wrapper">
-			<a href="#" onclick="hideRoutingContainer();"><img src="./images/design/routing_icon.png" title="Hide/Show routing" alt="Hide/Show routing" style="width: 28px;"></a>
+			<ul>
+				<li><a href="#" onclick="hideRoutingContainer();"><img src="./images/design/routing_icon.png" title="Hide/Show routing" alt="Hide/Show routing" style="width: 28px;"></a></li>
+				<li><a href="#" onclick="displayCart()"><img src="images/design/cart.png" class="icon"/></a></li>
+				<li><a href="#" onClick="displayGuides()"><img src="images/design/Wikivoyage-Logo.png" class="icon"/></a></li>
+			</ul>
 		</div>
 	</div>
-
-
 
 	<script>
 	//****************************************************************
