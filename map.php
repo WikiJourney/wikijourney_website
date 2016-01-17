@@ -227,18 +227,20 @@ limitations under the License.
 				{
 						$guides_array = $api_answer_array['guides']['guides_info'];
 				?>
-					<li> <a href=#><?php echo _SEE_WIKIVOYAGE_GUIDES; ?></a>
+					<li>
 										<ul>
 											<?php
 												for($i = 0; $i < $api_answer_array['guides']['nb_guides']; $i++)
 												{
-													echo '<li><a target="_blank" href="'. $guides_array[$i]['sitelink'] .'">';
+													echo '<div class="WikiVoyageElement">';
+													echo '<a target="_blank" href="'. $guides_array[$i]['sitelink'] .'">';
 													echo $guides_array[$i]['title'];
 													if(isset($guides_array[$i]['thumbnail']))
-													echo '</a></li>';
+														echo '<br/><img class="WikiVoyageImg" src="'.$guides_array[$i]['thumbnail'].'" />';
+													echo '</a></div>';
 												}
-											?>
-										</ul>
+
+											?>										</ul>
 									</li>
 							 <?php
 							 }//End displaying guides from Wikivoyage

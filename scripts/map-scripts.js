@@ -35,9 +35,9 @@ function displayCart(){
 	document.getElementById("lef-pannel").style.transform = 'scaleX(1)';
 	document.getElementById("POI_CART_BLOCK").style.display = 'block';
 	document.getElementById("WIKIVOYAGE_BLOCK").style.display = 'none';
-	document.getElementsByClassName("leaflet-top leaflet-left")[0].style.transform="translateX(250px)";
+	document.getElementsByClassName("leaflet-top leaflet-left")[0].style.transform="translateX(300px)";
 	document.getElementsByClassName("leaflet-top leaflet-left")[0].style.transition= "transform 0.3s ease-in-out";
-	document.getElementById("button-routing-wrapper").style.transform="translateX(250px)";
+	document.getElementById("button-routing-wrapper").style.transform="translateX(300px)";
 } else {
 	if(document.getElementById("POI_CART_BLOCK").style.display == 'block')
 	{
@@ -57,9 +57,9 @@ function displayGuides(){
 	document.getElementById("lef-pannel").style.transform = 'scaleX(1)';
 	document.getElementById("POI_CART_BLOCK").style.display = 'none';
 	document.getElementById("WIKIVOYAGE_BLOCK").style.display = 'block';
-	document.getElementsByClassName("leaflet-top leaflet-left")[0].style.transform="translateX(250px)";
+	document.getElementsByClassName("leaflet-top leaflet-left")[0].style.transform="translateX(300px)";
 	document.getElementsByClassName("leaflet-top leaflet-left")[0].style.transition= "transform 0.3s ease-in-out";
-	document.getElementById("button-routing-wrapper").style.transform="translateX(250px)";
+	document.getElementById("button-routing-wrapper").style.transform="translateX(300px)";
 } else {
 	if(document.getElementById("WIKIVOYAGE_BLOCK").style.display == 'block')
 	{
@@ -138,7 +138,13 @@ function addToCart(i) {
 
 	reloadCart(cartList);
 
-	displayCart();
+	//display the cart when a POI is added
+	document.getElementById("lef-pannel").style.transform = 'scaleX(1)';
+	document.getElementById("POI_CART_BLOCK").style.display = 'block';
+	document.getElementById("WIKIVOYAGE_BLOCK").style.display = 'none';
+	document.getElementsByClassName("leaflet-top leaflet-left")[0].style.transform="translateX(300px)";
+	document.getElementsByClassName("leaflet-top leaflet-left")[0].style.transition= "transform 0.3s ease-in-out";
+	document.getElementById("button-routing-wrapper").style.transform="translateX(300px)";
 }
 
 //center() : Center the map on the user's position when button is clicked
@@ -188,7 +194,7 @@ function reloadCart() {
 	for(i = 0; i <= cartList.length - 1; i++)//Display
 	{
 		htmlElement =
-		"<div class=\"eltCart\"><div class=\"eltCartNumber\">" + (i+1) +"</div>"
+		"<div class=\"eltCart\">"
 		+cartList[i].name.charAt(0).toUpperCase() + cartList[i].name.substring(1).toLowerCase();
 		htmlElement  += "<span class=\"POI_CART_icons\"><a class=\"icon-up-dir\" onclick=\" invertPOI("+ i +",'up'); \"></a>   <a class=\"icon-down-dir\" onclick=\" invertPOI("+ i +",'down'); \"></a>  <a class=\"icon-trash-empty\" onclick=\" deletePOI( " + i + "); \"></a></span>";
 
@@ -205,7 +211,6 @@ function reloadCart() {
 		{
 			htmlElement  += "<a href=" + cartList[i].sitelink + ">" + _MAP_POI_LINK + "</a><br/>";
 		}
-
 
 		htmlElement += "</div></div>"
 		document.getElementById("POI_CART").innerHTML = document.getElementById("POI_CART").innerHTML + htmlElement;
