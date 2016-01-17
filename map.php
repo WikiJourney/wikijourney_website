@@ -252,14 +252,12 @@ limitations under the License.
 </div>
 
 	<div id="map" class="map" style="width: 100%;"><!-- THIS IS GOING TO BE FILLED BY THE MAP THANKS TO MAPBOX -->
-		<div id="button-wrapper">
-			<input type="button" value="<?php echo _CENTER_BUTTON; ?>" onclick="center()">
-		</div>
 		<div id="button-routing-wrapper">
 			<ul>
 				<li><a href="#" onclick="hideRoutingContainer();"><img src="./images/design/routing_icon.png" title="Hide/Show routing" alt="Hide/Show routing" style="width: 28px;"></a></li>
 				<li><a href="#" onclick="displayCart()"><img src="images/design/cart.png" class="icon"/></a></li>
 				<li><a href="#" onClick="displayGuides()"><img src="images/design/Wikivoyage-Logo.png" class="icon"/></a></li>
+				<li><a href="#" onclick="center()"><img src="images/design/center_button.png" class="icon" alt="<?php echo _CENTER_BUTTON; ?>"/></a></li>
 			</ul>
 		</div>
 	</div>

@@ -125,13 +125,6 @@ nav ul ul ul {
 	width: 100%;
 }
 
-#button-wrapper{
-	position:absolute;
-	bottom: 15px;
-	left: 15px;
-	z-index: 10;
-}
-
 #button-routing-wrapper{
 	position: relative;
 	top: 70px;
