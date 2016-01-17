@@ -162,6 +162,7 @@ nav ul ul ul {
 	top: 70px;
 	left: 10px;
 	z-index: 10;
+	transition: transform 0.3s ease-in-out;
 }
 
 .POPUP_title{

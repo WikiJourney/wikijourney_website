@@ -29,17 +29,17 @@ function hideRoutingContainer() {
 
 }
 
-//showTheCart() : On the adding of the first POI in the cart, display the cart
-function showTheCart() {
-	document.getElementById("POI_CART_BLOCK").style.transform = 'scaleX(1)';
-}
-
 //DisplayCart() : display or hide the Cart when cart button is clicked
 function displayCart(){
 	if(document.getElementById("POI_CART_BLOCK").style.transform != 'scaleX(1)'){
 	document.getElementById("POI_CART_BLOCK").style.transform = 'scaleX(1)';
+	document.getElementsByClassName("leaflet-top leaflet-left")[0].style.transform="translateX(250px)";
+	document.getElementsByClassName("leaflet-top leaflet-left")[0].style.transition= "transform 0.3s ease-in-out";
+	document.getElementById("button-routing-wrapper").style.transform="translateX(250px)";
 } else {
 	document.getElementById("POI_CART_BLOCK").style.transform = 'scaleX(0.001)';
+	document.getElementsByClassName("leaflet-top leaflet-left")[0].style.transform="translateX(0)";
+	document.getElementById("button-routing-wrapper").style.transform="translateX(0)";
 	}
 }
 
@@ -110,6 +110,9 @@ function addToCart(i) {
 	if(document.getElementById("POI_CART_BLOCK").style.transform != 'scaleX(1)')
 	{
 	document.getElementById("POI_CART_BLOCK").style.transform = 'scaleX(1)';
+	document.getElementsByClassName("leaflet-top leaflet-left")[0].style.transform="translateX(250px)";
+	document.getElementsByClassName("leaflet-top leaflet-left")[0].style.transition= "transform 0.3s ease-in-out";
+	document.getElementById("button-routing-wrapper").style.transform="translateX(250px)";
 	}
 }
 
