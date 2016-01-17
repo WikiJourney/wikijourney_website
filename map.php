@@ -253,14 +253,16 @@ limitations under the License.
 
 	</div>
 
-	<div id="map" class="map" style="width: 100%;"><!-- THIS IS GOING TO BE FILLED BY THE MAP THANKS TO MAPBOX --></div>
+	<div id="map" class="map" style="width: 100%;"><!-- THIS IS GOING TO BE FILLED BY THE MAP THANKS TO MAPBOX -->
+		<div id="button-wrapper">
+			<input type="button" value="<?php echo _CENTER_BUTTON; ?>" onclick="center()">
+		</div>
+		<div id="button-routing-wrapper">
+			<a href="#" onclick="hideRoutingContainer();"><img src="./images/design/routing_icon.png" title="Hide/Show routing" alt="Hide/Show routing" style="width: 28px;"></a>
+		</div>
+	</div>
 
-	<div id="button-wrapper">
-		<input type="button" value="<?php echo _CENTER_BUTTON; ?>" onclick="center()">
-	</div>
-	<div id="button-routing-wrapper">
-		<img src="./images/design/routing_icon.png" title="Hide/Show routing" alt="Hide/Show routing" onclick="hideRoutingContainer();" style="width: 28px;">
-	</div>
+
 
 	<script>
 	//****************************************************************
