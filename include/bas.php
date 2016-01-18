@@ -9,7 +9,11 @@
 
 				</tr>
 				<tr>
-					<td><?php echo _NO_PARTNERS_LOL; ?></td>
+					<td>
+						<a target="_blank" href="http://www.wikimedia.fr/"><img src="./images/design/wikimedia_france_logo.png" title="Wikimedia France" alt="Wikimedia France"/></a>
+						<a target="_blank" href="http://www.tourisme-nord.fr/"><img src="./images/design/nord_tourisme.png" title="Nord Tourisme" alt="Nord Tourisme"/></a>
+						
+					</td>
 					<td>
 						<a target="_blank" href="https://www.facebook.com/WikiJourney"><img src="./images/design/fb.png" alt="Facebook" title="Facebook" /></a>
 						<a target="_blank" href="https://twitter.com/WikiJourney"><img src="./images/design/twitter.png" alt="Twitter" title="Twitter" /></a>
