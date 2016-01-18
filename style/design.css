@@ -63,7 +63,7 @@ margin: auto;
 
 #banniere {
 background-color:white;
-
+max-width: 1502px;
 margin: 0 auto;
 background-image: url("../images/design/lille.jpg");
 height: 300px;
