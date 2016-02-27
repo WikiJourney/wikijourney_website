@@ -40,7 +40,10 @@ if(isset($_GET['lg'])) //Language modification
 ?>
 <script type="text/javascript">
 <!--
-	// document.location.href = "index.php";
-	document.location.href = document.referrer;
+	if (document.referrer.indexOf('action.php') === -1) {
+		document.location.href = document.referrer;
+	} else {
+		document.location.href = 'index.php';
+	}
 -->
 </script>

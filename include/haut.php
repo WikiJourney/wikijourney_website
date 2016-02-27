@@ -123,7 +123,7 @@ else
 					document.getElementById("lien_" + "<?php echo $nomPage; ?>").style.cssText = "background-color: rgb(137,160,173);";
 			</script>
 		
-		</div>
+	</div>
 		<?php
 		if($nomPage == 'index.php')
 		{

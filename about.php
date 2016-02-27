@@ -32,6 +32,10 @@ limitations under the License.
 <h2><?php echo _TEAM_TITLE; ?></h2>
 <p><a href="team.php"><?php echo _TEAM_WHO_R_WE; ?></a></p>
 
+<h2>Copyrights</h2>
+
+<p>Photo by <a href="https://www.flickr.com/photos/hailemichaelfiseha/6956440746">Fiseha Hailemichael</a><br/>
+All trademarks and logos are the property of their respective owners.</p>
 <?php
 	include("./include/bas.php");
 ?>

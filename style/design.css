@@ -63,10 +63,10 @@ margin: auto;
 
 #banniere {
 background-color:white;
-max-width: 1651px;
+max-width: 1502px;
 margin: 0 auto;
-background-image: url("../images/design/new_york.jpg");
-height: 238px;
+background-image: url("../images/design/lille.jpg");
+height: 300px;
 border-bottom: 1px solid black;
 font-size: 32px;
 color: black;
@@ -103,8 +103,10 @@ text-align: center;
 }
 
 #logoban{
+margin: 20px;
 margin-left: 100px;
 height: 180px;
+margin-bottom: 42px;
 }
 
 /* ===> Menu <===*/
@@ -119,6 +121,7 @@ text-align: center;
 opacity: 0.9;
 height: 40px;
 width: 1002px;
+
 }
 
 /* => Cells */
