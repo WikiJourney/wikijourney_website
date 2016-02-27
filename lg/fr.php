@@ -106,6 +106,7 @@ define("_SAVE_CART",				"Sauvegarder !");
 define("_CART_IS_EMPTY_POPUP",		"Votre parcours est vide, remplissez le avant de l\'exporter ! ;)");
 define("_YOU_ARE_HERE",				"Vous êtes ici !");
 define("_CENTER_BUTTON",			"Centrer la carte");
+define("_ERROR_API",				"Erreur : l'API n'a pas répondu à temps. Peut-être que vous avez demandé un trop grand nombre de points d'intérêt. <a href=\"index.php\">Rééssayez !</a>");
 
 //===> paths.php
 define("_CONNECT_NECESS",			"<p>Enregistrez-vous pour utiliser votre compte :");

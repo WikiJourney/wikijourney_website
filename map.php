@@ -128,6 +128,10 @@ limitations under the License.
 
 		//==> If no error, we put the POI array in a json to use it with JavaScript
 		$poi_array_json_encoded = json_encode($api_answer_array['poi']);
+		
+		if($poi_array_json_encoded == 'null')
+			die("<p><br/>"._ERROR_API."</p><br/>");
+		
 		$thePathWasSaved = false;
 	}
 	//****************************************************************

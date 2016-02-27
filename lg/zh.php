@@ -101,6 +101,7 @@ define("_SAVE_CART",				"保存地图 !");
 define("_CART_IS_EMPTY_POPUP",		"您的地图为空，请在导出前加入景点和路线;)");
 define("_YOU_ARE_HERE",				"您在这里 !");
 define("_CENTER_BUTTON",			"以我的位置为中央显示");
+define("_ERROR_API",				"An error occured while contacting the API. You may have asked for too many POI. <a href=\"index.php\">Go back to homepage and retry!</a>");
 
 //===> paths.php
 define("_CONNECT_NECESS",			"<p>您需要登录以便使用此项功能");
