@@ -8,7 +8,7 @@
 
 //===> General
 
-define("_TITLE",			"Wiki Journey - Revisitez le tourisme.");
+define("_TITLE",			"WikiJourney - Revisitez le tourisme.");
 define("_SRC_IMAGE_LOGO",	"./images/design/logo_and_catchphrase/fr.png");
 //===> Top
 define("_INDEX",			"Accueil");
@@ -47,7 +47,7 @@ define("_TEAM_TITLE",		"Notre Équipe");
 define("_TEAM_WHO_R_WE",	"Qui sommes nous ?");
 define("_TEAM_QUICKDESC",	"Nous sommes une équipe de sept étudiants de l'École Centrale de Lille, école d'ingénieur généraliste située à Lille,
 							dans le Nord de la France. Durant nos deux premières années d'études, nous devons développer un projet
-							multidisciplinaire, dans lequel nous mettons nos connaissances en commun. Nous nous sommes donc retrouvés à sept 
+							multidisciplinaire, dans lequel nous mettons nos connaissances en commun. Nous nous sommes donc retrouvés à sept
 							sur ce projet." );
 define("_S_ARNOUTS_DESC",	"J'ai rejoint le projet WikiJourney car je suis vraiment intéressé par la programmation et le développement informatique. Ce projet est pour moi l'occasion de mettre mes compétences de programmation au profit d'un réel projet, qui de plus se place dans le cadre du logiciel libre." );
 define("_S_ARNOUTS_POSTE", 	"Chef de Projet<br/>Développement Web") ;
@@ -66,7 +66,7 @@ define("_Y_WANG_POSTE", 	"Développement Java");
 
 //===> about.php
 define("_ABOUT_TITLE", 		"Qu’est-ce que Wikijourney ?");
-define("_ABOUT_TEXT","		
+define("_ABOUT_TEXT","
 							<p>Wikijourney est un projet étudiant visant à mettre en lien un utilisateur et le contenu informatif de Wikipedia, via sa position dans une ville.
 							<br> Concrètement, nous souhaitons coder une application qui proposerait au touriste des points d’intérêts à visiter. Rentrez vos préférences, choisissez un itinéraire et c’est parti !
 							</p>
@@ -79,7 +79,7 @@ define("_ABOUT_TEXT","
 
 							<h2>WanderWiki revient ! </h2>
 							<p>
-							Si vous utilisiez déjà l’application <a href=\"http://wiki-geolocalisation.wix.com/wanderwiki\">WanderWiki</a>, vous ne serez pas désorientés : WikiJourney reprend le projet. Wanderwiki revient, avec une nouvelle charte graphique et de nouvelles fonctionnalités !
+							Si vous utilisiez déjà l’application <a href=\"http://wiki-geolocalisation.wix.com/wanderwiki\">WanderWiki</a>, vous ne serez pas désorientés : WikiJourney reprend le projet. WanderWiki revient, avec une nouvelle charte graphique et de nouvelles fonctionnalités !
 							</p>
 
 							<h2>Des questions, des propositions ? </h2>
@@ -87,8 +87,8 @@ define("_ABOUT_TEXT","
 							Nous sommes ouverts à toute piste d’amélioration ! Contribuez au projet <a href=\"mailto:wikijourneydev@gmail.com\">en nous contactant par mail</a> ou en codant directement vos propositions sur notre Git !<br/>
 							Ou devenez <a target=\"_blank\" href=\"https://play.google.com/store/apps/details?id=eu.wikijourney.wikijourney\">testeur de l'application</a> !
 							</p>");
-							
-							
+
+
 //===> technical.php
 define("_TECHNICAL_TITLE",	"Informations Techniques");
 define("_TECHNICAL_TEXT",	"Ce site web est encore en construction, merci de revenir plus tard ! ;)");

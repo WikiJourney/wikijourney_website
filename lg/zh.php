@@ -8,7 +8,7 @@
 
 //===> General
 
-define("_TITLE",			"Wiki Journey - Rediscover Tourism.");
+define("_TITLE",			"WikiJourney - Rediscover Tourism.");
 define("_SRC_IMAGE_LOGO",	"./images/design/logo_and_catchphrase/fr.png");
 //===> Top
 define("_INDEX",			"首页");
@@ -32,7 +32,7 @@ define("_ADRESS_FAILURE",	"此地址不存在 !");
 define("_GEOLOC_FAILURE",	"Sorry but we can't find your position.");
 define("_AROUND_LOCATION", 	"在一个特定地点周围寻找!");
 define("_AROUND_ME",		"在附近寻找有意思的地点!");
-define("_NOTE_GEOLOC",		
+define("_NOTE_GEOLOC",
 	                        "注意：此功能需要用到定位。只有在您的定位器工作正常和网络连接的情况下才可以确定您的位置。");
 define("_OPTIONS",			"选项 :");
 define("_RANGE",			"范围 (km) : ");
@@ -44,7 +44,7 @@ define("_PATH_CREATED",		"Your path has been created!");
 //===> team.php
 define("_TEAM_TITLE",		"团队");
 define("_TEAM_WHO_R_WE",	"成员简介");
-define("_TEAM_QUICKDESC",	 
+define("_TEAM_QUICKDESC",
 	                        "我们是法国里尔中央理工学院一个七个学生组成的项目开发团队，学校在法国北方省首府里尔市。在我们前两年的学习中，我们需要组成一个团队共同开发一个实际项目。我们会做到最好来实现这个项目");
 
 define("_S_ARNOUTS_DESC",	"我对于编程和信息技术很感兴趣，所以我选择了加入这个项目。这个项目属于开源开发程序，对于我来说是一个将我的能力应用到一个实际项目中的很好的机会。");
@@ -64,7 +64,7 @@ define("_Y_WANG_POSTE", 	"Java开发");
 
 //===> about.php
 define("_ABOUT_TITLE", 		"Wikijourney 项目简介");
-define("_ABOUT_TEXT","		
+define("_ABOUT_TEXT","
 							<p>Wikijourney是一个学生开发项目，通过获取用户在城市中的位置，可以将用户所处地点和维基百科的相关内容相联系。
 							<br> 具体来说，我们希望开发一个App，根据您的偏好，找到景点并为您规划最佳旅行路线。
 							</p>
@@ -82,8 +82,8 @@ define("_ABOUT_TEXT","
 
 							<h2>问题和建议 </h2>
 							<p>我们期待您的建议和意见! 通过Git参与我们的项目, 或者通过电子邮件 <a href=\"mailto:wikijourneydev@gmail.com\">联系我们</a>!</p>");
-						
-							
+
+
 //===> technical.php
 define("_TECHNICAL_TITLE",	"技术支持");
 define("_TECHNICAL_TEXT",	"此网页还在建设当中，敬请期待! ;)");

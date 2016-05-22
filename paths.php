@@ -40,15 +40,15 @@ else if(isset($_GET['action']))
 else
 {
 	include('./include/connectdb.php');
-	
+
 	$username = mysqli_real_escape_string($handler_db,$_SESSION['wj_username']);
 	$usermail = mysqli_real_escape_string($handler_db,$_SESSION['wj_email']);
 	echo '<p>'.$usermail.' - <a href="oauth/destroy.php">'._LOGOUT.'</a></p>';
 	$query = mysqli_query($handler_db,"SELECT * FROM savedpaths WHERE usermail='$usermail'") or die(mysqli_error($handler_db));
-	
+
 	echo '<h1>'._YOUR_PATHS.'</h1>';
-	
-	
+
+
 	echo '<p><table id="paths">';
 	$i = 0;
 	while($data = mysqli_fetch_array($query))
@@ -58,15 +58,15 @@ else
 		echo '<td><p class="paths_title">'.$data['title'].'</p><img class="thumbnail_paths" src="'.$data['image_url'].'" alt="Thumbnail" title="Thumbnail"/></td>';
 		echo '<td><p>Latitude<br/>'.$data['mean_lat'].'</p><br/><p>Longitude<br/>'.$data['mean_long'].'</p>';
 		echo '<td>'.$data['description'].'</td>';
-		echo '<td><a href="map.php?id='.$data['id'].'">'._LOAD.'</a></td>';
-		echo '<td><a href="paths.php?action=del&id='.$data['id'].'">'._REMOVE.'</a></td>';
+		echo '<td><a href="map.php?id='.$data['id'].'" class="btn btn-primary">'._LOAD.'</a></td>';
+		echo '<td><a href="paths.php?action=del&id='.$data['id'].'" class="btn btn-primary">'._REMOVE.'</a></td>';
 		echo '</tr>';
 	}
-	
+
 	echo '</table></p>';
-	
+
 	if($i == 0) echo "<p>"._NO_PATHS_SAVED."</p>";
-	
+
 	include('./include/bas.php');
 }
 ?>

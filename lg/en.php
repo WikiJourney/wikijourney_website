@@ -8,7 +8,7 @@
 
 //===> General
 
-define("_TITLE",			"Wiki Journey - Rediscover Tourism.");
+define("_TITLE",			"WikiJourney - Rediscover Tourism.");
 define("_SRC_IMAGE_LOGO",	"./images/design/logo_and_catchphrase/en.png");
 //===> Top
 define("_INDEX",			"Index");
@@ -82,8 +82,8 @@ define("_ABOUT_TEXT","		<p>WikiJourney is a student project, which goal is to co
 							<h2>Questions, Proposals...?</h2>
 							<p>We pay attention to every idea! Contribute on our Git, or <a href=\"mailto:wikijourneydev@gmail.com\">send us a mail</a>!<br/>
 							Or <a target=\"_blank\" href=\"https://play.google.com/store/apps/details?id=eu.wikijourney.wikijourney\">test the app</a> !</p>");
-														
-														
+
+
 //===> technical.php
 define("_TECHNICAL_TITLE",	"Technical Informations");
 define("_TECHNICAL_TEXT",	"This website is still under construction, please come back later ;)");
