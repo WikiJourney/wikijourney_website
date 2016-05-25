@@ -73,7 +73,7 @@ else
 		$nomPage = preg_replace($reg, '$2', $nomPage);
 	?>
 
-	<nav class="navbar navbar-custom navbar-fixed-top">
+	<nav class="navbar navbar-custom navbar-fixed-top shadowed">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -92,6 +92,7 @@ else
 				<ul class="nav navbar-nav">
 					<li <?php echo ($nomPage == 'paths.php' ? 'class="active"' : '') ?>><a href="paths.php"><?php echo _YOUR_PATHS;?></a></li>
 					<li <?php echo ($nomPage == 'about.php' ? 'class="active"' : '') ?>><a href="about.php"><?php echo _ABOUT ;?></a></li>
+					<li <?php echo ($nomPage == 'team.php' ? 'class="active"' : '') ?>><a href="team.php"><?php echo _TEAM ;?></a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li id="lien_contact.php"><a href="http://blog.wikijourney.eu/" target="_blank"><?php echo _BLOG ;?></a></li>
