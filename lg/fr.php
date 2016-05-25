@@ -110,7 +110,7 @@ define("_CENTER_BUTTON",			"Centrer la carte");
 define("_ERROR_API",				"Erreur : l'API n'a pas répondu à temps. Peut-être que vous avez demandé un trop grand nombre de points d'intérêt. <a href=\"index.php\">Rééssayez !</a>");
 
 //===> paths.php
-define("_CONNECT_NECESS",			"<p>Enregistrez-vous pour utiliser votre compte :");
+define("_CONNECT_NECESS",			"Pour récupérer vos parcours, vous devez vous connecter :");
 define("_REGISTRATION",				"Cliquez ici pour utiliser votre compte Wikimedia !");
 define("_YOUR_PATHS",				"Vos parcours");
 define("_LOAD",						"Charger");

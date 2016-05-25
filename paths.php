@@ -23,8 +23,8 @@ include('./include/haut.php');
 
 if(!isset($_SESSION['wj_username']))
 {
-	echo _CONNECT_NECESS;
-	echo ' <a href="./oauth/oauth_connexion.php?action=authorize">'._REGISTRATION.'</a></p>';
+	echo '<div class="container" style="margin-top: 40px;"><p>'._CONNECT_NECESS;
+	echo ' <a href="./oauth/oauth_connexion.php?actipx=authorize">'._REGISTRATION.'</a></p></div>';
 }
 else if(isset($_GET['action']))
 {
@@ -43,29 +43,39 @@ else
 
 	$username = mysqli_real_escape_string($handler_db,$_SESSION['wj_username']);
 	$usermail = mysqli_real_escape_string($handler_db,$_SESSION['wj_email']);
-	echo '<p>'.$usermail.' - <a href="oauth/destroy.php">'._LOGOUT.'</a></p>';
-	$query = mysqli_query($handler_db,"SELECT * FROM savedpaths WHERE usermail='$usermail'") or die(mysqli_error($handler_db));
+	$query = mysqli_query($handler_db,"SELECT * FROM savedpaths WHERE username='$username'") or die(mysqli_error($handler_db));
+	?>
 
-	echo '<h1>'._YOUR_PATHS.'</h1>';
-
-
-	echo '<p><table id="paths">';
+	<div class="container">
+		<h1><?php echo _YOUR_PATHS; ?></h1>
+		<p class="text-right"><?php echo $username; ?> - <a href="oauth/destroy.php"><?php echo _LOGOUT; ?></a></p>
+	
+	<?php
 	$i = 0;
 	while($data = mysqli_fetch_array($query))
 	{
 		$i ++;
-		echo '<tr>';
-		echo '<td><p class="paths_title">'.$data['title'].'</p><img class="thumbnail_paths" src="'.$data['image_url'].'" alt="Thumbnail" title="Thumbnail"/></td>';
-		echo '<td><p>Latitude<br/>'.$data['mean_lat'].'</p><br/><p>Longitude<br/>'.$data['mean_long'].'</p>';
-		echo '<td>'.$data['description'].'</td>';
-		echo '<td><a href="map.php?id='.$data['id'].'" class="btn btn-primary">'._LOAD.'</a></td>';
-		echo '<td><a href="paths.php?action=del&id='.$data['id'].'" class="btn btn-primary">'._REMOVE.'</a></td>';
-		echo '</tr>';
+		?>
+		<div class="well">
+			<div class="row">
+				<div class="col-sm-4">
+					<p class="paths_title"><?php echo $data['title']; ?></p>
+					<img class="thumbnail_paths" src="<?php echo $data['image_url']; ?>" alt="Thumbnail" title="Thumbnail"/>
+					<p class="text-center"><em><?php echo $data['mean_lat'].' - '.$data['mean_long']; ?></em></p>
+				</div>
+				<div class="col-sm-6"><p><?php echo $data['description']; ?></p></div>
+				<div class="col-sm-2">
+					<a href="map.php?id=<?php echo $data['id']; ?>" class="btn btn-primary btn-block"><?php echo _LOAD; ?></a>
+					<a href="paths.php?action=del&id=<?php echo $data['id']; ?>" class="btn btn-primary btn-block"><?php echo _REMOVE; ?></a>
+				</div>
+			</div>
+		</div>
+		<?php
 	}
 
-	echo '</table></p>';
-
 	if($i == 0) echo "<p>"._NO_PATHS_SAVED."</p>";
+
+	echo '</div>';
 
 	include('./include/bas.php');
 }

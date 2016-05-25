@@ -49,6 +49,12 @@ p {
 	border-color: #204D74;
 }
 
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
 
 /* ===> Top <=== */
 
@@ -136,6 +142,7 @@ p {
 	padding-bottom: 10px;
 	font-size: 14px;
 	background-color: rgba(137, 160, 173, 0.5);
+	
 	box-shadow: inset 0 8px 6px -6px #999;
 	-webkit-box-shadow: inset 0 8px 6px -6px #999;
 	-moz-box-shadow: inset 0 8px 6px -6px #999;

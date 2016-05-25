@@ -105,7 +105,7 @@ define("_CENTER_BUTTON",			"Center on my position");
 define("_ERROR_API",				"An error occured while contacting the API. You may have asked for too many POI. <a href=\"index.php\">Go back to homepage and retry!</a>");
 
 //===> paths.php
-define("_CONNECT_NECESS",			"<p>You need to log in to use to this function.");
+define("_CONNECT_NECESS",			"You need to log in to use to this function.");
 define("_REGISTRATION",				"Click here to log in with your Wikimedia account!");
 define("_YOUR_PATHS",				"Your paths");
 define("_LOAD",						"Load");

@@ -105,7 +105,7 @@ define("_CENTER_BUTTON",			"以我的位置为中央显示");
 define("_ERROR_API",				"An error occured while contacting the API. You may have asked for too many POI. <a href=\"index.php\">Go back to homepage and retry!</a>");
 
 //===> paths.php
-define("_CONNECT_NECESS",			"<p>您需要登录以便使用此项功能");
+define("_CONNECT_NECESS",			"您需要登录以便使用此项功能");
 define("_REGISTRATION",				"点击这里用您的维基账户登录！!");
 define("_YOUR_PATHS",				"您的路径");
 define("_LOAD",						"载入");
