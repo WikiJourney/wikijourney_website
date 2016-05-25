@@ -23,7 +23,7 @@ include('./include/haut.php');
 
 if(!isset($_SESSION['wj_username']))
 {
-	echo '<div class="container" style="margin-top: 40px;"><p>'._CONNECT_NECESS;
+	echo '<div class="container" id="first_content"><p>'._CONNECT_NECESS;
 	echo ' <a href="./oauth/oauth_connexion.php?actipx=authorize">'._REGISTRATION.'</a></p></div>';
 }
 else if(isset($_GET['action']))
