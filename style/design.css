@@ -30,7 +30,6 @@ body {
 h1, h2, h3, h4 {
 	color: #ff6e70;
 	text-decoration: italic;
-	text-align: justify;
 }
 
 p {
@@ -143,11 +142,15 @@ p {
 }
 
 
+#first_content{
+	padding-top: 100px;
+}
 
 @media screen and (max-width: 765px){
 	.navbar ul{
 		padding-left: 150px;
 	}
+
 }
 
 @media screen and (max-width: 480px) {
@@ -157,6 +160,9 @@ p {
 	.navbar ul{
 		padding-left: 100px;
 	}
+	#first_content{
+		padding-top: 30px;
+	}	
 }
 
 .navbar-collapse a{
@@ -169,6 +175,8 @@ p {
 
 
 /* ===> Body <=== */
+
+
 
 /* ===> Footer <=== */
 

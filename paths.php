@@ -46,7 +46,7 @@ else
 	$query = mysqli_query($handler_db,"SELECT * FROM savedpaths WHERE username='$username'") or die(mysqli_error($handler_db));
 	?>
 
-	<div class="container">
+	<div class="container" id="first_content">
 		<h1><?php echo _YOUR_PATHS; ?></h1>
 		<p class="text-right"><?php echo $username; ?> - <a href="oauth/destroy.php"><?php echo _LOGOUT; ?></a></p>
 	

@@ -18,7 +18,7 @@ limitations under the License.
 */
 	include("./include/haut.php");	
 ?>
-<div class="container" id="content">
+<div class="container" id="first_content">
 	<h1><?php echo _ABOUT_TITLE; ?></h1>
 
 	<?php echo _ABOUT_TEXT; ?>

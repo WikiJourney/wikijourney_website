@@ -46,7 +46,7 @@ include('./include/haut.php');
 	</div>
 </div>
 
-<div class="container" id="content">
+<div class="container">
 	<h2><?php echo _WELCOME_TITLE; ?></h2>
 
 	<p><?php if (defined('_WELCOME_MESSAGE')) {echo _WELCOME_MESSAGE;} ?></p>
