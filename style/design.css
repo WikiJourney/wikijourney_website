@@ -74,6 +74,7 @@ p {
 .bigtitle {
 	text-align: center;
 	vertical-align: middle;
+	margin-top: 80px;
 	margin-bottom: 30px;
 	font-style: italic;
 }
@@ -102,6 +103,8 @@ p {
 	-webkit-box-shadow: 0 8px 6px -6px #999;
 	-moz-box-shadow: 0 8px 6px -6px #999;
 	box-shadow: 0 8px 6px -6px #999;
+
+	border: none;
 }
 
 .navbar-custom {
@@ -130,8 +133,40 @@ p {
 
 .navbar-brand > img {
 	display: inline-block;
-	height: 25px;
+	height: 120px;
+	vertical-align: text-top;
+	margin-right: 30px;
+	-webkit-filter: drop-shadow(50px 0px 5px #999);
+	filter: drop-shadow(2px 5px 3px #999);
+
+	margin-bottom: 70px;
 }
+
+
+
+@media screen and (max-width: 765px){
+	.navbar ul{
+		padding-left: 150px;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.navbar-brand > img {
+		height: 60px;
+	}
+	.navbar ul{
+		padding-left: 100px;
+	}
+}
+
+.navbar-collapse a{
+	padding-left:20px;
+}
+
+.navbar.in ul li {
+	font-size: 100px;  
+}
+
 
 /* ===> Body <=== */
 
