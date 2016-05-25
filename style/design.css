@@ -23,16 +23,24 @@ limitations under the License.
 
 body {
 	background-color: #F7F7F7;
+	padding-top: 50px;
+	overflow-x: hidden;
 }
 
 h1, h2, h3, h4 {
 	color: #ff6e70;
+	text-decoration: italic;
+	text-align: justify;
+}
+
+p {
+	text-align: justify;
 }
 
 .btn-primary {
 	color: white;
 	background-color: #ff6e70;
-	border-color: #fff;
+	border-color: #fff);
 }
 
 .btn-primary:hover {
@@ -41,49 +49,51 @@ h1, h2, h3, h4 {
 	border-color: #204D74;
 }
 
-label {
-	display: block;
-	float: left;
-	width: 120px;
-}
 
 /* ===> Top <=== */
 
 #banniere {
 	background-image: url("../images/design/lille.jpg");
-	height: 300px;
-	border-bottom: 1px solid black;
-	font-size: 32px;
+	min-height: 200px;
 	background-size: cover;
-	padding-top: 70px;
+
+
+	-webkit-box-shadow: 0 8px 6px -6px #999;
+	-moz-box-shadow: 0 8px 6px -6px #999;
+	box-shadow: 0 8px 6px -6px #999;
+
 }
+
+
+.bigtitle {
+	text-align: center;
+	vertical-align: middle;
+	margin-bottom: 30px;
+	font-style: italic;
+}
+
 
 .text-center > .img-responsive {
 	margin: auto;
 }
 
-#languagesBox {
-	font-size: 14px;
-	width: 100px;
-	padding: 5px;
+.stores_logos_block {
 	text-align: center;
-	background-color: rgba(248, 99, 99, 0.8);
-	border-radius: 10px;
-	border: 1px solid black;
-	color: white;
-	display: block;
-	margin: auto;
 }
 
-#languagesBox a {
-	color: white;
+.stores_logos_block img {
+	height: 40px;
+	display: inline-block;
+	margin: 5px;
 }
 
-#languagesBox a:hover {
-	font-weight: bold;
-}
+/* ===> Navbar <===*/
 
-/* ===> Menu <===*/
+.navbar {
+	-webkit-box-shadow: 0 8px 6px -6px #999;
+	-moz-box-shadow: 0 8px 6px -6px #999;
+	box-shadow: 0 8px 6px -6px #999;
+}
 
 .navbar-custom {
 	background-color: #ff6e70;
@@ -116,22 +126,17 @@ label {
 
 /* ===> Body <=== */
 
-#content {
-	background-color: #fff;
-	border: 1px solid #000;
-	margin: 40px auto;
-}
-
 /* ===> Footer <=== */
 
 .footer {
-	border-top: 1px solid black;
-	padding: 20px;
+	
 	font-size: 14px;
+	background-color: rgba(137, 160, 173, 0.5);
+	box-shadow: inset 0 8px 6px -6px #999;
 }
 
 .footer img {
-	height: 35px;
+	height: 40px;
 	padding-left: 10px;
 	padding-right: 10px;
 }
@@ -146,24 +151,10 @@ label {
 /* ============================================= */
 
 /* ===> index.php <=== */
-
-#banniere_sup {
-	padding: 20px;
+#formPOI {
+	margin-top: 40px;
 }
 
-#banniere_sup h2 {
-	color: rgb(248,99,99);
-
-}
-
-#stores_logos_block {
-	text-align: center;
-}
-#stores_logos_block img {
-	height: 40px;
-	display: inline-block;
-	margin: 5px 0px;
-}
 
 /* ===> map.php <=== */
 

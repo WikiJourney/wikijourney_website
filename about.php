@@ -18,24 +18,25 @@ limitations under the License.
 */
 	include("./include/haut.php");	
 ?>
+<div class="container" id="content">
+	<h1><?php echo _ABOUT_TITLE; ?></h1>
 
-<h1><?php echo _ABOUT_TITLE; ?></h1>
+	<?php echo _ABOUT_TEXT; ?>
 
-<?php echo _ABOUT_TEXT; ?>
+	<h2><?php echo _TECHNICAL_TITLE; ?></h2>
 
-<h2><?php echo _TECHNICAL_TITLE; ?></h2>
+	<p><?php echo _TECHNICAL_TEXT; ?></p>
+	<p>Wiki : <a href="https://github.com/WikiJourney/wikijourney_website/wiki" title="Wiki">GitHub</a></p>
+	<p>Blog : <a href="http://blog.wikijourney.eu" title="Blog">Blog</a></p>
 
-<p><?php echo _TECHNICAL_TEXT; ?></p>
-<p>Wiki : <a href="https://github.com/WikiJourney/wikijourney_website/wiki" title="Wiki">GitHub</a></p>
-<p>Blog : <a href="http://blog.wikijourney.eu" title="Blog">Blog</a></p>
+	<h2><?php echo _TEAM_TITLE; ?></h2>
+	<p><a href="team.php"><?php echo _TEAM_WHO_R_WE; ?></a></p>
 
-<h2><?php echo _TEAM_TITLE; ?></h2>
-<p><a href="team.php"><?php echo _TEAM_WHO_R_WE; ?></a></p>
+	<h2>Copyrights</h2>
 
-<h2>Copyrights</h2>
-
-<p>Photo by <a href="https://www.flickr.com/photos/hailemichaelfiseha/6956440746">Fiseha Hailemichael</a><br/>
-All trademarks and logos are the property of their respective owners.</p>
+	<p>Photo by <a href="https://www.flickr.com/photos/hailemichaelfiseha/6956440746">Fiseha Hailemichael</a><br/>
+	All trademarks and logos are the property of their respective owners.</p>
+</div>
 <?php
 	include("./include/bas.php");
 ?>

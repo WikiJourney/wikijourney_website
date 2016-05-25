@@ -9,6 +9,7 @@
 //===> General
 
 define("_TITLE",			"WikiJourney - Revisitez le tourisme.");
+define("_CATCHPHRASE",		"Faites du tourisme avec Wikipédia !");
 define("_SRC_IMAGE_LOGO",	"./images/design/logo_and_catchphrase/fr.png");
 //===> Top
 define("_INDEX",			"Accueil");
@@ -91,7 +92,7 @@ define("_ABOUT_TEXT","
 
 //===> technical.php
 define("_TECHNICAL_TITLE",	"Informations Techniques");
-define("_TECHNICAL_TEXT",	"Ce site web est encore en construction, merci de revenir plus tard ! ;)");
+define("_TECHNICAL_TEXT",	"Vous trouverez toutes les informations techniques relatives au projets en suivant ces liens : ");
 
 
 //===> map.php

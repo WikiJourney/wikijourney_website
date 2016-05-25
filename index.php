@@ -10,7 +10,7 @@ Copyright 2015 WikiJourney
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
-    http://www.apache.org/licenses/LICENSE-2.0
+		http://www.apache.org/licenses/LICENSE-2.0
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -28,78 +28,92 @@ include('./include/haut.php');
 
 ?>
 
-	<div id="banniere_sup">
-		<div class="row">
-			<div class="col-xs-12">
-				<h2><?php
-				if($language == 'fr')
-					echo 'Téléchargez notre application mobile !';
-				else
-					echo 'Download our mobile app!';
-				?></h2>
-			</div>
+<div class="jumbotron" id="banniere">
+	<div class="row"><h1 class="bigtitle"><?php echo _CATCHPHRASE; ?></h1></div>
+	<div class="row stores_logos_block">
+		<div class="col-sm-6 col-md-3">
+			<a target="_blank" href="https://play.google.com/store/apps/details?id=eu.wikijourney.wikijourney"><img src="./images/design/google_play.png" alt="Google Play" title="Google Play" /></a>
+		</div> 
+		<div class="col-sm-6 col-md-3">
+			<a target="_blank" href="https://f-droid.org/repository/browse/?fdid=com.wikijourney.wikijourney"><img src="./images/design/fdroid.png" alt="F-Droid" title="F-Droid" /></a>
 		</div>
-		<div class="row" id="stores_logos_block">
-			<div class="col-sm-3">
-				<a target="_blank" href="https://play.google.com/store/apps/details?id=eu.wikijourney.wikijourney"><img src="./images/design/google_play.png" alt="Google Play" title="Google Play" /></a>
-			</div>
-			<div class="col-sm-3">
-				<a target="_blank" href="https://f-droid.org/repository/browse/?fdid=com.wikijourney.wikijourney"><img src="./images/design/fdroid.png" alt="F-Droid" title="F-Droid" /></a>
-			</div>
-			<div class="col-sm-3">
-				<a target="_blank" href="http://www.amazon.com/WikiJourney/dp/B0191WMI52/"><img src="./images/design/amazon.png" alt="Amazon" title="Amazon" /></a>
-			</div>
-			<div class="col-sm-3">
-				<a target="_blank" href="http://wikijourney.store.aptoide.com/"><img src="./images/design/aptoide.png" alt="Aptoide" title="Aptoide" /></a>
-			</div>
+		<div class="col-sm-6 col-md-3">
+			<a target="_blank" href="http://www.amazon.com/WikiJourney/dp/B0191WMI52/"><img src="./images/design/amazon.png" alt="Amazon" title="Amazon" /></a>
+		</div>
+		<div class="col-sm-6 col-md-3">
+			<a target="_blank" href="http://wikijourney.store.aptoide.com/"><img src="./images/design/aptoide.png" alt="Aptoide" title="Aptoide" /></a>
 		</div>
 	</div>
+</div>
 
-	<h1><?php echo _WELCOME_TITLE; ?></h1>
+<div class="container" id="content">
+	<h2><?php echo _WELCOME_TITLE; ?></h2>
 
 	<p><?php if (defined('_WELCOME_MESSAGE')) {echo _WELCOME_MESSAGE;} ?></p>
+	
+	<form method="post" action="map.php" id="formPOI">
+		<div class="row">
+			<div class="col-sm-8 col-sm-offset-2">
+				<!-- Around a place -->
+				<div class="row">
+					<div class="col-sm-6"><label for="input-location"><?php echo _AROUND_LOCATION; ?></label></div>
+					<div class="col-sm-6">
+						<div class="row">
+							<div class="col-xs-8">
+								<input type="text" id="input-location" placeholder="<?php echo _PLACEHOLDER; ?>" name="adressValue" id="adressValue" class="form-control" >
+							</div>
+							<div class="col-xs-4">
+								<button class="btn btn-primary btn-block" type="button">Go!</button>
+							</div>
+						</div>
+					</div>
+				</div><br/>
+				<!-- Around my position -->
+				<div class="row">
+					<div class="col-sm-6"><label><?php echo _AROUND_ME; ?></label></div>
+					<div class="col-sm-6">
+							<button class="btn btn-primary btn-block" type="button">Go!</button>
+							<p class="help-block"><?php echo _NOTE_GEOLOC; ?></p>
+					</div>
 
-	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
-			<form method="post" action="map.php" id="formPOI">
-				<input type="radio" name="choice" value="adress" checked="checked" />
-				<?php echo _AROUND_LOCATION; ?>
-				<input type="text" placeholder="<?php echo _PLACEHOLDER; ?>" name="adressValue" id="adressValue" />
-				<br/>
-				<input type="radio" name="choice" value="around" onclick="getGeolocation();" /> <?php echo _AROUND_ME; ?>
-				<br/>
-				<p class="small"><?php echo _NOTE_GEOLOC; ?></p>
-				<br/>
-				<br/>
+				</div><br/>
+				<!-- Option Range -->
+				<div class="row">
+					<div class="col-sm-6"><label for="range"><?php echo _RANGE; ?></label></div>
+					<div class="col-sm-6">
+						<input type="number" name="range" id="range" class="form-control" min="0" value="1" />
+					</div>
+				</div><br/>
 
-				<p><?php echo _OPTIONS; ?></p>
-				<label for="range"><?php echo _RANGE; ?></label><input class="miniInput" type="text" name="range" id="range" value="1" /><br/>
-				<label for="maxPOI"><?php echo _MAX_POI; ?></label><input class="miniInput" type="text" name="maxPOI" id="maxPOI" value="25" /><br/><br/>
+				<!-- Option Max -->			
+				<div class="row">
+					<div class="col-sm-6"><label for="maxPOI"><?php echo _MAX_POI; ?></label></div>
+					<div class="col-sm-6">
+						<input type="number" name="maxPOI" id="maxPOI" class="form-control" min="0" value="25" />
+					</div>
+				</div><br/>
 
-				<input type="hidden" name="longitude" id="longitude" value="null" />
-				<input type="hidden" name="latitude" id="latitude" value="null" />
-
-				<input type="submit" value="Go !" onclick="this.value='<?php echo _LOADING; ?>';" class="btn btn-primary" />
-			</form>
+			</div>
 		</div>
-	</div>
+	</form>
+</div>
 
- 	<script type="text/javascript">
-	function showPosition(position) {
-		document.getElementById('latitude').value = position.coords.latitude;
-		document.getElementById('longitude').value  = position.coords.longitude;
+<script type="text/javascript">
+function showPosition(position) {
+	document.getElementById('latitude').value = position.coords.latitude;
+	document.getElementById('longitude').value  = position.coords.longitude;
 
+}
+
+function getGeolocation() {
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(showPosition);
+	} else {
+		alert("Sorry, but geolocation is not supported by this browser.");
 	}
+}
 
-	function getGeolocation() {
-		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(showPosition);
-		} else {
-			alert("Sorry, but geolocation is not supported by this browser.");
-		}
-	}
-
-	</script>
+</script>
 
 
 <?php

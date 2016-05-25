@@ -9,6 +9,7 @@
 //===> General
 
 define("_TITLE",			"ويكي جورني ــ أعيدوا النظر إلى السياحة");
+define("_CATCHPHRASE",		"أعيدوا النظر إلى السياحة");
 define("_SRC_IMAGE_LOGO",	"./images/design/logo_and_catchphrase/fr.png");
 //===> Top
 define("_INDEX",			"استقبال");

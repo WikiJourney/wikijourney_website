@@ -9,6 +9,7 @@
 //===> General
 
 define("_TITLE",			"WikiJourney - Rediscover Tourism.");
+define("_CATCHPHRASE",		"Visit a city with Wikipedia!");
 define("_SRC_IMAGE_LOGO",	"./images/design/logo_and_catchphrase/en.png");
 //===> Top
 define("_INDEX",			"Index");

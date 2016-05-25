@@ -94,26 +94,19 @@ else
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li id="lien_contact.php"><a href="http://blog.wikijourney.eu/" target="_blank"><?php echo _BLOG ;?></a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-globe"></span> Languages <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="action.php?lg=en">English</a></li>
+							<li><a href="action.php?lg=fr">Français</a></li>
+							<li><a href="action.php?lg=zh">中文</a></li>
+							<li><a href="action.php?lg=ar">عربية</a></li>
+						</ul>
+					</li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 
-	<div class="jumbotron" id="banniere">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-8 text-center">
-					<img class="img-responsive" id="logoban" src="<?php echo _SRC_IMAGE_LOGO; ?>" alt="Logo" />
-				</div>
-				<div class="col-sm-4 text-center">
-					<p id="languagesBox">
-						<a href="action.php?lg=en">English</a><br/>
-						<a href="action.php?lg=fr">Français</a><br/>
-						<a href="action.php?lg=zh">中文</a><br/>
-						<a href="action.php?lg=ar">عربية</a>
-					</p>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="container" id="content">
+
+	
