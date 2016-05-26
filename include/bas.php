@@ -51,22 +51,32 @@
 		if(isset($INCLUDE_MAP_PROPERTIES)) //Properties dedicated to the map
 		{ 
 			?>
+			// Seriously, this implementation is awful. A refactoring is coming soon.
+
 			$(".logoNavbar").removeClass("notshrink").addClass("shrink");
 			
 			var mq = window.matchMedia( "(max-width: 765px)" );
 
-			if(mq.matches)
-			{
-				easyButtonShow = L.easyButton('glyphicon-map-marker', function(btn, map){
-					$("#POI_CART_BLOCK").css('left',0);
-				}).addTo(map);
-				$("#cartHideButton").show();
+			easyButtonShow = L.easyButton('glyphicon-map-marker', function(btn, map){
+				$("#POI_CART_BLOCK").css('left',0);
+			}).addTo(map);
 
-				$("#cartHideButton").click(function(){
-					$("#POI_CART_BLOCK").css('left','-100%');
-				});
 
-			}
+			$("#cartHideButton").click(function(){
+				$("#POI_CART_BLOCK").css('left','-100%');
+			});	
+
+			$( window ).resize(function() {
+				$("#POI_CART_BLOCK").css('left','0');
+				if(mq.matches)
+				{
+					$("#cartHideButton").show();
+				}
+				else
+				{
+					$("#cartHideButton").hide();
+				}
+			});
 
 			<?php
 		}
