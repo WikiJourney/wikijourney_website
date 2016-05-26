@@ -49,20 +49,16 @@ else
 	<meta name=viewport content="width=device-width,initial-scale=1">
 	<link rel="shortcut icon" href="./images/design/logo_small.png" />
 	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" media="screen" type="text/css" href="./style/fontello.css" />
+	<link rel="stylesheet" href="lib/leaflet/leaflet.css">
 	<link rel="stylesheet" media="screen" type="text/css" href="./style/design.css" />
 
 	<?php
 	if(isset($INCLUDE_MAP_PROPERTIES)) //Properties dedicated to the map
 	{
 	?>
-		<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-		<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js'></script>
-		<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css' rel='stylesheet' />
-		<link rel="stylesheet" href="lib/easy-button/easy-button.css" />
-		<link rel="stylesheet" href="./style/leaflet-routing-machine.css" />
-		<link rel="stylesheet" href="./style/map.css" />
-		<script src="scripts/leaflet-routing-machine.js"></script>
+	<link rel="stylesheet" href="lib/easy-button/easy-button.css" />
+	<link rel="stylesheet" href="lib/leafletawesomemarkers/leaflet.awesome-markers.css">
+	<link rel="stylesheet" href="./style/map.css" />
 	<?php
 	}
 	?>

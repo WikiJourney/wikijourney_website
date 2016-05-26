@@ -1,5 +1,5 @@
 ﻿	<?php
-	if(!isset($INCLUDE_MAP_PROPERTIES)) //Properties dedicated to the map
+	if(!isset($INCLUDE_MAP_PROPERTIES)) //No footer for map.php
 	{ 
 		?>
 
@@ -24,9 +24,21 @@
 	<!-- SCRIPTS -->
 	<script src="lib/jquery/jquery-2.2.0.min.js"></script>
 	<script src="lib/bootstrap/js/bootstrap.min.js"></script>
-	<script src="lib/easy-button/easy-button.js"></script>
-	<script type="text/javascript">
+	<script src="lib/leaflet/leaflet.js"></script>
 
+	<?php
+	if(isset($INCLUDE_MAP_PROPERTIES)) //Special scripts for the map
+	{ 
+	?>
+	<script src="lib/easy-button/easy-button.js"></script>
+	<script src="lib/leafletawesomemarkers/leaflet.awesome-markers.min.js"></script>
+	<script src="scripts/map-scripts-functions.js"></script>
+	<script src="scripts/map-scripts.js"></script>
+	<?php
+	}
+	?>
+
+	<script type="text/javascript">
 		//PIWIK TRACKER
 		var _paq = _paq || [];
 		_paq.push(['trackPageView']);
@@ -47,49 +59,6 @@
 				$('.logoNavbar').removeClass('shrink').addClass('notshrink');
 			}
 		});
-		<?php
-		if(isset($INCLUDE_MAP_PROPERTIES)) //Properties dedicated to the map
-		{ 
-			?>
-			// Seriously, this implementation is awful. A refactoring is coming soon.
-
-			$(".logoNavbar").removeClass("notshrink").addClass("shrink");
-			
-			var mq = window.matchMedia( "(max-width: 765px)" );
-
-			easyButtonShow = L.easyButton('glyphicon-map-marker', function(btn, map){
-				$("#POI_CART_BLOCK").css('left',0);
-			}).addTo(map);
-
-
-			$("#cartHideButton").click(function(){
-				$("#POI_CART_BLOCK").css('left','-100%');
-			});	
-
-			if(mq.matches)
-			{
-				$("#cartHideButton").show();
-			}
-			else
-			{
-				$("#cartHideButton").hide();
-			}
-
-			$( window ).resize(function() {
-				$("#POI_CART_BLOCK").css('left','0');
-				if(mq.matches)
-				{
-					$("#cartHideButton").show();
-				}
-				else
-				{
-					$("#cartHideButton").hide();
-				}
-			});
-
-			<?php
-		}
-		?>
 	</script>
 	<noscript><p><img src="//piwik.wikijourney.eu/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
 </body>

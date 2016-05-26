@@ -28,10 +28,10 @@ limitations under the License.
 	$CONFIG_USE_SSL = 0; //Set this to 1 to use SSL
 	$CONFIG_LINK_PEM = '/srv/fullchain.pem'; //Link to the pem file you want to use
 	$CONFIG_API_URL = "http://api.wikijourney.eu/"; //Link to the API
+	$CONFIG_API_URL = "http://localhost/wikijourney_website/fakeapi.php"; //Link to the API
 
 	//==> First, include the top, with special properties.
 	session_start();
-	$_SESSION['wj_username'] = 'SylvainAr'; //TEST ONLY
 	$INCLUDE_MAP_PROPERTIES = 1;
 	include("./include/haut.php");
 	//This include also loads translation for all the text in this page.
@@ -177,10 +177,30 @@ limitations under the License.
 
 ?>
 
+<script>
+//==> We put here the variables for the translation
+var _CART_IS_EMPTY_POPUP = 		'<?php echo _CART_IS_EMPTY_POPUP; ?>';
+var _YOU_ARE_HERE = 			'<?php echo _YOU_ARE_HERE; ?>';
+var _MAP_CART_LINK = 			'<?php echo _MAP_CART_LINK; ?>';
+var _MAP_POI_LINK = 			'<?php echo _MAP_POI_LINK; ?>';
+var thePathWasSaved = 			<?php echo ($thePathWasSaved) ? "true" : "false"; ?>;
 
-<!-- Loading the scripts for the cart management and stuff -->
-<input type="hidden" id="mapPoiLink" value="<?php echo _MAP_POI_LINK; ?>" /><!-- As we can't put php in the js file, we got to put "defines" for translation somewhere.. -->
-<script type="text/javascript" src="./scripts/map-scripts.js"></script>
+//==> Giving variables from script
+var range = 					<?php echo (isset($range)) ? $range : 0; ?>;
+var user_location = 			new Array();
+var poi_array = 				new Array();
+var poi_array_decode = 			new Array();
+var pagicon = 					<?php echo $pagicon_json_array; ?>; //For the icon/ID/label association
+
+poi_array_decode = 				<?php echo $poi_array_json_encoded; ?>;
+poi_array = 					poi_array_decode['poi_info'];
+
+user_location['latitude'] = 	<?php echo $user_latitude; ?>;
+user_location['longitude'] = 	<?php echo $user_longitude; ?>;
+
+</script>
+
+
 
 <?php
 	//****************************************************************
@@ -231,161 +251,8 @@ if(isset($api_answer_array) && array_key_exists("guides",$api_answer_array) && $
 		</div>
 	</div>
 
-	<div id="mapContainer"><div id="map" class="map"><!-- THIS IS GOING TO BE FILLED BY THE MAP THANKS TO MAPBOX --></div></div>
+	<div id="mapContainer"><div id="map" class="map"><!-- THIS IS GOING TO BE FILLED BY THE MAP THANKS TO LEAFLET --></div></div>
 </div>		
-
-	<!-- Temporarly hidden 
-	<p class="text-center"><br /><input type="button" value="<?php echo _CENTER_BUTTON; ?>" onclick="center()" class="btn btn-primary" /> <img src="./images/design/routing_icon.png" title="Hide/Show routing" alt="Hide/Show routing" onclick="hideRoutingContainer();" style="width: 28px;"></p>
-	-->
-
-
-	<script>
-	//****************************************************************
-	//***************** Get data from PHP script *********************
-	//****************************************************************
-	var poi_array = new Array();
-	var poi_array_decode = new Array();
-
-	poi_array_decode = 	<?php echo $poi_array_json_encoded; ?>;
-	poi_array = 		poi_array_decode['poi_info'];
-
-	user_latitude = 	<?php echo $user_latitude; ?>;
-	user_longitude = 	<?php echo $user_longitude; ?>;
-
-	var pagicon = 		<?php echo $pagicon_json_array; ?> //For the icon/ID/label association
-	var _CART_IS_EMPTY_POPUP = '<?php echo _CART_IS_EMPTY_POPUP; ?>';
-
-	//****************************************************************
-	//***************** Variables declaration ************************
-	//****************************************************************
-
-	var cartList = new Array();
-	var j;
-	var ismerged = false;
-
-	L.mapbox.accessToken = 'pk.eyJ1IjoicG9sb2Nob24tc3RyZWV0IiwiYSI6Ikh5LVJqS0UifQ.J0NayavxaAYK1SxMnVcxKg';
-
-	/* Overlay (icons) management */
-	var overlayMaps = new Array();
-	var map = L.mapbox.map('map', 'polochon-street.kpogic18');
-	var routing_poi_list = new Array();
-
-	var routing = L.Routing.control({
-			waypoints: routing_poi_list
-		}).addTo(map);
-
-
-	for(j = 0; j < pagicon.length; ++j) {
-		overlayMaps[pagicon[j][2]] = L.layerGroup([]);
-	}
-
-	L.control.layers(null, overlayMaps).addTo(map);
-
-	//****************************************************************
-	//***************** Place POI on the map *************************
-	//****************************************************************
-
-	for(i = 0; i < poi_array_decode.nb_poi; ++i)
-	{
-		var popup_content = new Array();
-		var j = 0;
-
-		for(j = 0; ((j < pagicon.length) && ((pagicon[j][0]).search(String(poi_array[i].type_id)))); j++)
-			;
-
-		if (distance(i) < 0.07 && !ismerged){
-			/* merge pop-ups if they are too close */
-			popup_content = "<?php echo _YOU_ARE_HERE; ?><br>" ;
-			ismerged = true ;
-			poi_array[i]['marker'] = L.marker([user_latitude, user_longitude], {    icon: L.mapbox.marker.icon({
-				'marker-size': 'large',
-				'marker-symbol': 'pitch',
-				'marker-color': '#fa0'
-			})}).addTo(map); 		//Complete list of symbols https://www.mapbox.com/maki/
-		}
-		else if(j < pagicon.length){
-			/* if we have an icon for the type of POI, display it */
-			poi_array[i]["marker"] = L.marker([poi_array[i].latitude, poi_array[i].longitude], {    icon: L.mapbox.marker.icon({
-				'marker-size': 'large',
-				'marker-symbol': pagicon[j][1],
-			})}).addTo(map);
-
-			overlayMaps[pagicon[j][2]].addLayer(poi_array[i]['marker']);
-		}
-		else{
-			poi_array[i]["marker"] = L.marker([poi_array[i].latitude, poi_array[i].longitude]).addTo(map);
-		}
-
-		//Putting name in the box
-		popup_content += '<p class="POPUP_title">' + poi_array[i].name.charAt(0).toUpperCase() + poi_array[i].name.substring(1).toLowerCase() + " <a title=\"<?php echo _MAP_CART_LINK; ?>\" alt=\"<?php echo _MAP_CART_LINK; ?>\" class=\"icon-plus\" href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\"></a></p>";
-		//Thumbnail if available
-		if(poi_array[i].image_url != null)
-		{
-			popup_content += "<img class=\"POPUP_img\" src=\"" + poi_array[i].image_url + "\" title=\"image\" alt=\"image\" /><br/>";
-		}
-
-		popup_content += '<p class="POPUP_links">';
-
-
-		//Button to put it in the cart
-		popup_content += "<a title=\"<?php echo _MAP_CART_LINK; ?>\" href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\"><?php echo _MAP_CART_LINK; ?></a>";
-
-		//Link to Wikipedia if available
-		if(poi_array[i].sitelink != null)
-		{
-			popup_content += "<br/><a target=\"_blank\" href=\"" + poi_array[i].sitelink + "\">" + '<?php echo _MAP_POI_LINK; ?>' + "</a>";
-		}
-
-
-
-		popup_content += "</p>";
-
-
-		poi_array[i]['marker'].bindPopup(popup_content).openPopup();
-
-
-		<?php
-		if($thePathWasSaved == true)
-			echo "addToCart(i,cartList);";//If the path was saved, we put all POI directly in the cart
-		?>
-	}
-
-	//****************************************************************
-	//*********** Add a marker on user's position ********************
-	//****************************************************************
-	if(!ismerged){
-		var marker = L.marker([user_latitude, user_longitude], {    icon: L.mapbox.marker.icon({
-			'marker-size': 'large',
-			'marker-symbol': 'pitch',
-			'marker-color': '#fa0'
-		})}).addTo(map);
-		marker.bindPopup("<?php echo _YOU_ARE_HERE; ?>").openPopup();
-	}
-
-	for(j = 0; j < pagicon.length; ++j)
-		map.addLayer(overlayMaps[pagicon[j][2]]);
-
-	//****************************************************************
-	//*************** Drawing a circle on the map ********************
-	//****************************************************************
-	var circle_options = {
-		  color: ' rgb(248,99,99)',      // Stroke color
-		  opacity: 0.8,         // Stroke opacity
-		  weight: 3,         // Stroke weight
-		  fillColor: 'rgb(248,99,99)',  // Fill color
-		  fillOpacity: 0.05,    // Fill opacity
-		  dashArray: "5,10"
-	 };
-
-	var circle_range = L.circle([<?php echo $user_latitude; ?>, <?php echo $user_longitude; ?>], <?php if(isset($range)) echo $range*1000; else echo 0; ?>, circle_options).addTo(map);
-
-	//****************************************************************
-	//*********** Set the view on the user's position ****************
-	//****************************************************************
-	map.setView([user_latitude, user_longitude], 15);
-
-	</script>
-	</div>
 
 <?php
 	include("./include/bas.php");

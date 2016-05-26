@@ -16,183 +16,104 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-//hideRoutingContainer() : Hide or show the routing container when the button is clicked
-function hideRoutingContainer() {
-	if(document.getElementsByClassName('leaflet-routing-container')[0].style.display == "none")
-	{
-		document.getElementsByClassName('leaflet-routing-container')[0].style.display = "block";
-	}
-	else
-	{
-		document.getElementsByClassName('leaflet-routing-container')[0].style.display = "none";
-	}
+// ===> DOM manipulation, for responsive design
 
+// Shrink the logo on loading
+$(".logoNavbar").removeClass("notshrink").addClass("shrink");
+
+//Add a button to close the drawer
+$("#cartHideButton").click(function(){
+	$("#POI_CART_BLOCK").css('left','-100%');
+});			
+
+//Media queries (check map-script-functions.js for details)
+var mq = window.matchMedia( "(max-width: 765px)" );
+applyMediaQueries();
+
+$( window ).resize(function() {
+	applyMediaQueries();
+});
+
+
+// ===> Variables declaration
+
+var cartList = new Array();
+var j;
+var ismerged = false;
+var overlayMaps = new Array();
+var map;
+var routing_poi_list = new Array();
+
+// ===> Creating marker objects
+
+var markerUserIcon = L.AwesomeMarkers.icon({
+	icon: 'user',
+	markerColor: 'red',
+	prefix: 'glyphicon'
+}); //Marker for user's position
+
+var defaultPOIIcon = L.icon({
+	iconUrl: 'lib/leaflet/images/marker-icon.png',
+	shadowUrl: 'lib/leaflet/images/marker-shadow.png',
+	iconSize: [25, 41],
+	iconAnchor: [12, 41],
+	popupAnchor: [1, -34],
+	shadowSize: [41, 41]
+}); //Default Marker
+
+// ===> Map initialisation
+
+initMap(user_location);
+
+//Add a button to show the drawer
+L.easyButton('glyphicon-map-marker', function(btn, map){
+	$("#POI_CART_BLOCK").css('left',0);
+}).addTo(map);
+
+// ===> Setting overlays
+
+for(j = 0; j < pagicon.length; ++j) {
+	overlayMaps[pagicon[j][2]] = L.layerGroup([]);
 }
 
-//showTheCart() : On the adding of the first POI in the cart, display the cart
-function showTheCart() {
-	document.getElementById('POI_CART_BLOCK').style.display = 'block';
-}
+L.control.layers(null, overlayMaps).addTo(map);
 
-//razCart() : Clear the cart
-function razCart() {
-	cartList.length = 0;
-	reloadCart();
-}
+// ===> Place markers on the map!
 
-//submitCart() : When button is clicked, create a JSON which contain the track, put it in an hidden
-//form, and submit the form.
-function submitCart() {
-
-	if(cartList.length == 0) //The cart is empty
-	{
-		alert(_CART_IS_EMPTY_POPUP);
-	}
-	else
-	{
-		//Because of markers objects are stocked in cartList, we're obliged to recompose a clean table
-		var i;
-		var exportList = new Array();
-
-		//This is the structure
-		function composeCartList(Nid, Nlatitude, Nlongitude, Nsite, Nname, Ntype_name, Nimage_url)
-		{
-			this.id = Nid;
-			this.latitude = Nlatitude;
-			this.longitude = Nlongitude;
-			this.sitelink = Nsite;
-			this.name = Nname;
-			this.type_name = Ntype_name;
-			this.image_url = Nimage_url;
-		}
-
-		for(i = 0; i < cartList.length; i++)
-		{
-			//Filling the new list
-			exportList[i] = new composeCartList(cartList[i].id, cartList[i].latitude, cartList[i].longitude, cartList[i].sitelink, cartList[i].name, cartList[i].type_name, cartList[i].image_url);
-		}
-
-		//Putting the json list in an invisible form
-		document.getElementById('cartJsonExport').value = JSON.stringify(exportList);
-		//And submit this form
-		document.getElementById('hiddenForm').submit();
-	}
-}
-
-//addToCart() : add a marker to the cart when it's clicked
-function addToCart(i) {
-
+for(i = 0; i < poi_array_decode.nb_poi; ++i)
+{
+	var popup_content = new Array();
 	var j = 0;
-	var flag = 0;
 
-	for(j = 0; j < cartList.length; j++)
-	{
-		if( poi_array[i].id == cartList[j].id )//We test if this POI is already in the list
-			flag = 1;
+	for(j = 0; ((j < pagicon.length) && ((pagicon[j][0]).search(String(poi_array[i].type_id)))); j++)
+		;
+
+	if (distance(i) < 0.07 && !ismerged){
+
+		popup_content = _YOU_ARE_HERE;
+		ismerged = true ;
+		poi_array[i]['marker'] = L.marker([user_location.latitude, user_location.longitude],{icon: defaultPOIIcon}).addTo(map);
+	}
+	else if(j < pagicon.length){
+
+		poi_array[i]["marker"] = L.marker([poi_array[i].latitude, poi_array[i].longitude],{icon: defaultPOIIcon}).addTo(map);
+
+		overlayMaps[pagicon[j][2]].addLayer(poi_array[i]['marker']);
+	}
+	else{
+		poi_array[i]["marker"] = L.marker([poi_array[i].latitude, poi_array[i].longitude],{icon: defaultPOIIcon}).addTo(map);
 	}
 
-	if(flag == 0) //If not, add it
-		cartList[cartList.length] = poi_array[i];
+	popup_content = parsePopupContent(poi_array[i]);
 
-	reloadCart(cartList);
 
-	if(document.getElementById('POI_CART_BLOCK').style.display == "none")
-	{
-		showTheCart();
-	}
+	poi_array[i]['marker'].bindPopup(popup_content);
+
+
+	if(thePathWasSaved == true)
+		addToCart(i,cartList);//If the path was saved, we put all POI directly in the cart
 }
 
-//center() : Center the map on the user's position when button is clicked
-function center(){
-	map.setView([user_latitude, user_longitude], 15);
-}
 
-//deletePOI() : Delete a POI from the cart
-function deletePOI(i) {
-		cartList.splice(i,1);//Splice the cart at the position wanted
-		reloadCart(); //And reload
-}
-
-//invertPOI() : Push up or down a POI when an arrow is clicked
-function invertPOI( i, dir) {
-	var temp;
-
-	if( ! ( (i == 0 && dir == 'up') || (i == cartList.length - 1 && dir == 'down') ) ) //If not already at the bottom or at the top
-	{
-		if(dir == 'down')//Permutation
-		{
-			temp = cartList[i + 1];
-			cartList[i + 1] = cartList[i];
-			cartList[i] = temp;
-		}
-		else if(dir == 'up')//Permutation
-		{
-			temp = cartList[i - 1];
-			cartList[i - 1] = cartList[i];
-			cartList[i] = temp;
-		}
-	reloadCart();
-	}
-}
-
-//reloadCart() : called at every modification of the cart. It reloads the display.
-function reloadCart() {
-
-	var i = 0;
-	var _MAP_POI_LINK = document.getElementById('mapPoiLink').value; //Yep, it's ugly.
-
-	var htmlElement;
-
-	document.getElementById("POI_CART").innerHTML = ''; //Reset the cart
-
-	//Setting the cart with the POI in cartlist
-	for(i = 0; i <= cartList.length - 1; i++)//Display
-	{
-		htmlElement =
-		"<div class=\"eltCart\"><div class=\"eltCartNumber\">" + (i+1) +"</div>"
-		+cartList[i].name.charAt(0).toUpperCase() + cartList[i].name.substring(1).toLowerCase() + "<br/>";
-
-		if(cartList[i].type_name != null)
-		{
-			htmlElement += "<i>" + cartList[i].type_name.charAt(0).toUpperCase() + cartList[i].type_name.substring(1).toLowerCase() + "</i><br/>";
-		}
-		else
-			htmlElement += "<br/>";
-
-		if(cartList[i].sitelink != null)
-		{
-			htmlElement  += "<a href=" + cartList[i].sitelink + ">" + _MAP_POI_LINK + "</a><br/>";
-		}
-
-		htmlElement  += "<span class=\"POI_CART_icons\"><a class=\"icon-up-dir\" onclick=\" invertPOI("+ i +",'up'); \"></a>   <a class=\"icon-down-dir\" onclick=\" invertPOI("+ i +",'down'); \"></a>  <a class=\"icon-trash-empty\" onclick=\" deletePOI( " + i + "); \"></a></span></div>";
-
-		document.getElementById("POI_CART").innerHTML = document.getElementById("POI_CART").innerHTML + htmlElement;
-	}
-
-	//Refreshing the routing
-	var routing_poi_list = new Array();
-
-	routing_poi_list[0] = L.latLng(user_latitude, user_longitude);
-	for(j = 0; j < cartList.length; ++j)
-		routing_poi_list[j+1] = L.latLng(cartList[j].latitude, cartList[j].longitude);
-	routing.setWaypoints(routing_poi_list);
-}
-
-//distance(i) : get the distance between a user and the POI i
-function distance(i){
-	Math.radians = function(degrees) {
-	  return degrees * Math.PI / 180;
-	};
-
-	var userlat = Math.radians(user_latitude);
-	var userlong = Math.radians(user_longitude);
-	var poilat = Math.radians(poi_array[i].latitude);
-	var poilong = Math.radians(poi_array[i].longitude);
-	var r = 6633 ; //Earth's radius
-	//Precise distance
-	var dp = 2*Math.asin(Math.sqrt(Math.pow(Math.sin((userlat-poilat)/2),2)+Math.cos(userlat)*Math.cos(poilat)*Math.pow(Math.sin((userlong-poilong)/2),2)));
-	//Conversion to kilometers
-	var d = dp*r ;
-
-	return d;
-}
+for(j = 0; j < pagicon.length; ++j)
+	map.addLayer(overlayMaps[pagicon[j][2]]);

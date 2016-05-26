@@ -15,7 +15,6 @@ body{
 #mapContainer{
 	position: absolute;
 	top:0;
-	background-color: blue;
 	height:100%; 
 	margin: 0;
 	padding: 0;
@@ -54,8 +53,7 @@ body{
 	#mapContainer{
 		left:30%;
 		width: 70%;
-		color:blue;
-	}
+		}
 	#POI_CART_BLOCK {
 		width: 30%;
 	}
@@ -123,8 +121,12 @@ body{
 	margin-top: 5px;
 }
 
-.POI_CART_icons {
+.POI_CART_icons .glyphicon {
 	cursor: pointer;
+	display: inline-block;
+	margin: 5px 10px 0 10px;
+	font-size: 1.3em;
+	color: #555;
 }
 
 .eltCart {
