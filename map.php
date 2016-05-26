@@ -22,12 +22,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 */
-
+print_r($_REQUEST);
 	//==> Configuration
 
 	$CONFIG_USE_SSL = 0; //Set this to 1 to use SSL
 	$CONFIG_LINK_PEM = '/srv/fullchain.pem'; //Link to the pem file you want to use
-	$CONFIG_API_URL = "http://api.wikijourney.eu/";
+	$CONFIG_API_URL = "http://api.wikijourney.eu/"; //Link to the API
 
 	//==> First, include the top, with special properties.
 	session_start();
@@ -36,50 +36,44 @@ limitations under the License.
 	//This include also loads translation for all the text in this page.
 
 	//==> In case the user arrived directly on the page, he's redirected to the index
-	if(!(isset($_POST['choice']) OR isset($_GET['id'])))
-		die('
-		<script type="text/javascript">
-			document.location.href = "index.php";
-		</script>
-		');
+	if(!(isset($_POST['from']) OR isset($_GET['id'])))
+		header("Location: index.php");
 
 	//****************************************************************
 	//************* The user is looking for POI around ***************
 	//****************************************************************
-	if(isset($_POST['choice']))
+	if($_POST['from'] == 'form')
 	{
 		//****************************************************************
 		//***************** Getting user's coordinates *******************
 		//****************************************************************
 
 		//==> If the user typed an adress, we get location with OSM Nominatim
-		if($_POST['choice'] == 'adress') {
+		if(isset($_POST['go']) && $_POST['go'] == 'adress') {
 			$name = $_POST['adressValue'];
 			$osm_array_json = file_get_contents("http://nominatim.openstreetmap.org/search?format=json&q=\"" . urlencode($name)."\"");
 			$osm_array = json_decode($osm_array_json, true);
 
 			if (!isset($osm_array[0]["lat"]))
-				die('
-				<script type="text/javascript">
-					document.location.href = "index.php?message=adress";
-				</script>
-				');
+			{
+				header("Location: index.php?message=adress");
+				die();
+			}
 
 			$user_latitude = $osm_array[0]["lat"];
 			$user_longitude = $osm_array[0]["lon"];
 		}
 
-		//==> Else, we look for POI around his geolocation
-		if($_POST['choice'] == 'around') {
-			if(isset($_POST['latitude']) && $_POST['latitude'] == 0 && $_POST['longitude'] == 0) //In case geolocation has crashed (it can't be 0,0 exactly)
-				die('
-				<script type="text/javascript">
-					document.location.href = "index.php?message=geoloc";
-				</script>
-				'); //Redirect to homepage with a failure message
+		//==> We look for POI around his geolocation
+		else if($_POST['latitude'] != NULL && $_POST['longitude'] != NULL) {
 			$user_latitude= $_POST['latitude'];
 			$user_longitude= $_POST['longitude'];
 		}
+		//==> If none of those worked, that means that a problem occured with geolocation
+		else
+			header("Location : index.php?message=geoloc");	//Redirect to homepage with a failure message
+
+
 
 		//==> Get range and maxPOI from POST data
 		if(is_numeric($_POST['range']))

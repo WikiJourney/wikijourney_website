@@ -53,6 +53,9 @@ include('./include/haut.php');
 	
 	<form method="post" action="map.php" id="formPOI">
 		<div class="row">
+			<input type="hidden" id="latitude" name="latitude" value="" />
+			<input type="hidden" id="longitude" name="longitude" value="" />
+			<input type="hidden" id="from" name="from" value="form" />
 			<div class="col-sm-8 col-sm-offset-2">
 				<!-- Around a place -->
 				<div class="row">
@@ -60,10 +63,10 @@ include('./include/haut.php');
 					<div class="col-sm-6">
 						<div class="row">
 							<div class="col-xs-8">
-								<input type="text" id="input-location" placeholder="<?php echo _PLACEHOLDER; ?>" name="adressValue" id="adressValue" class="form-control" >
+								<input type="text" id="input-location" placeholder="<?php echo _PLACEHOLDER; ?>" name="adressValue" id="adressValue" class="form-control" required >
 							</div>
 							<div class="col-xs-4">
-								<button class="btn btn-primary btn-block" type="button">Go!</button>
+								<button type="submit" class="btn btn-primary btn-block" type="button" name="go" value="adress">Go!</button>
 							</div>
 						</div>
 					</div>
@@ -72,7 +75,7 @@ include('./include/haut.php');
 				<div class="row">
 					<div class="col-sm-6"><label><?php echo _AROUND_ME; ?></label></div>
 					<div class="col-sm-6">
-							<button class="btn btn-primary btn-block" type="button">Go!</button>
+							<button class="btn btn-primary btn-block" type="button" onclick="getGeolocation();">Go!</button>
 							<p class="help-block"><?php echo _NOTE_GEOLOC; ?></p>
 					</div>
 
@@ -100,8 +103,14 @@ include('./include/haut.php');
 
 <script type="text/javascript">
 function showPosition(position) {
-	document.getElementById('latitude').value = position.coords.latitude;
-	document.getElementById('longitude').value  = position.coords.longitude;
+	if(position.coords.latitude == null)
+		alert("Sorry, but geolocation is not supported by this browser.");
+	else
+	{
+		document.getElementById('latitude').value = position.coords.latitude;
+		document.getElementById('longitude').value  = position.coords.longitude;
+		$('#formPOI').submit();
+	}
 
 }
 
