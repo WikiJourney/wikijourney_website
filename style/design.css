@@ -129,13 +129,25 @@ p {
 	display: inline-block;
 	height: 120px;
 	vertical-align: text-top;
-	margin-right: 30px;
-	-webkit-filter: drop-shadow(50px 0px 5px #999);
-	filter: drop-shadow(2px 5px 3px #999);
-
-	margin-bottom: 70px;
+	
 }
 
+.shrink{
+	height:25px !important;
+	margin-right: 10px;
+}
+
+.notshrink{
+	-webkit-filter: drop-shadow(2px 5px 3px #999);
+	filter: drop-shadow(2px 5px 3px #999);
+	margin-right: 30px;
+	
+}
+
+.logoNavbar{
+	-webkit-transition: 0.4s ease;
+   transition: 0.4s ease;
+}
 
 #first_content{
 	padding-top: 100px;
