@@ -22,7 +22,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 */
-
+	
 	//==> Configuration
 
 	$CONFIG_USE_SSL = 0; //Set this to 1 to use SSL
@@ -31,6 +31,7 @@ limitations under the License.
 
 	//==> First, include the top, with special properties.
 	session_start();
+	$_SESSION['wj_username'] = 'SylvainAr'; //TEST ONLY
 	$INCLUDE_MAP_PROPERTIES = 1;
 	include("./include/haut.php");
 	//This include also loads translation for all the text in this page.
@@ -42,7 +43,7 @@ limitations under the License.
 	//****************************************************************
 	//************* The user is looking for POI around ***************
 	//****************************************************************
-	if($_POST['from'] == 'form')
+	if(isset($_POST['from']) && $_POST['from'] == 'form')
 	{
 		//****************************************************************
 		//***************** Getting user's coordinates *******************
@@ -136,8 +137,8 @@ limitations under the License.
 		//==> Looking in the database and fetch the path
 		include("./include/connectdb.php");
 		$id = mysqli_real_escape_string($handler_db,$_GET['id']);
-		$usermail = mysqli_real_escape_string($handler_db,$_SESSION['wj_email']);
-		$query = mysqli_query($handler_db,"SELECT path FROM savedpaths WHERE usermail='$usermail' AND id='$id'");
+		$username = mysqli_real_escape_string($handler_db,$_SESSION['wj_username']);
+		$query = mysqli_query($handler_db,"SELECT path FROM savedpaths WHERE username='$username' AND id='$id'");
 		$poi_array_json_encoded = mysqli_fetch_array($query)['path'];
 
 		//==> Setting user's position on first point
@@ -186,7 +187,7 @@ limitations under the License.
 	//************** Display Guides from WikiVoyage ******************
 	//****************************************************************
 
-if(array_key_exists("guides",$api_answer_array) && $api_answer_array['guides']['nb_guides'] != 0) //If we got guides from WikiVoyage, display it
+if(isset($api_answer_array) && array_key_exists("guides",$api_answer_array) && $api_answer_array['guides']['nb_guides'] != 0) //If we got guides from WikiVoyage, display it
 {
 	$guides_array = $api_answer_array['guides']['guides_info'];
 ?>
@@ -283,7 +284,7 @@ if(array_key_exists("guides",$api_answer_array) && $api_answer_array['guides']['
 	//***************** Place POI on the map *************************
 	//****************************************************************
 
-	for(i = 0; i < Math.min(poi_array_decode.nb_poi, <?php echo $maxPOI ?>); ++i)
+	for(i = 0; i < poi_array_decode.nb_poi; ++i)
 	{
 		var popup_content = new Array();
 		var j = 0;
@@ -375,7 +376,7 @@ if(array_key_exists("guides",$api_answer_array) && $api_answer_array['guides']['
 		  dashArray: "5,10"
 	 };
 
-	var circle_range = L.circle([<?php echo $user_latitude; ?>, <?php echo $user_longitude; ?>], <?php echo $range*1000; ?>, circle_options).addTo(map);
+	var circle_range = L.circle([<?php echo $user_latitude; ?>, <?php echo $user_longitude; ?>], <?php if(isset($range)) echo $range*1000; else echo 0; ?>, circle_options).addTo(map);
 
 	//****************************************************************
 	//*********** Set the view on the user's position ****************

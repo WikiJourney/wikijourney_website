@@ -1,4 +1,9 @@
-﻿	<div class="footer">
+﻿	<?php
+	if(!isset($INCLUDE_MAP_PROPERTIES)) //Properties dedicated to the map
+	{ 
+		?>
+
+	<div class="footer">
 		<div class="row">
 			<div class="col-sm-6 text-center">
 				<h6><?php echo _OUR_PARTNERS; ?></h6>
@@ -13,7 +18,9 @@
 			</div>
 		</div>
 	</div>
-
+		<?php 
+	}
+	?>
 
 	<!-- SCRIPTS -->
 	<script src="lib/jquery/jquery-2.2.0.min.js"></script>
