@@ -60,9 +60,9 @@ p {
 }
 
 .shadowed{
-	-webkit-box-shadow: 0 8px 6px -6px #999;
-	-moz-box-shadow: 0 8px 6px -6px #999;
-	box-shadow: 0 8px 6px -6px #999;
+	-webkit-box-shadow: 0 3px 6px 0 #999;
+	-moz-box-shadow: 0 3px 6px 0 #999;
+	box-shadow: 0 3px 6px 0 #999;
 }
 
 /* ===> Top <=== */
@@ -104,6 +104,7 @@ p {
 
 .navbar {
 	border: none;
+	z-index: 10000;
 }
 
 .navbar-custom {

@@ -73,15 +73,21 @@ function addToCart(i) {
 			flag = 1;
 	}
 
+	if(j == 0)
+		setTimeout(function(){
+			$("#POI_CART_BLOCK").css('left',0);
+		}, 300);
+
 	if(flag == 0) //If not, add it
 		cartList[cartList.length] = poi_array[i];
 
+	map.closePopup();
 	reloadCart(cartList);
 }
 
 //center() : Center the map on the user's position when button is clicked
 function center(){
-	map.setView([user_latitude, user_longitude], 15);
+	map.setView([user_location.latitude, user_location.longitude], 15);
 }
 
 //deletePOI() : Delete a POI from the cart
@@ -195,7 +201,6 @@ function initMap(user_location) {
 	};
 
 	L.circle([user_location.latitude, user_location.longitude], range*1000, circle_options).addTo(map);
-	console.log(range);
 }
 
 //parsePopupContent(element) : given an element of the cart, it returns a string for the popup content
@@ -223,12 +228,20 @@ function parsePopupContent(element){
 
 //applyMediaQueries() : Set a series of medias queries for responsive design
 function applyMediaQueries(){
+	//Short screen, with drawer
 	if(mq.matches)
 	{
 		$("#cartHideButton").show();
+		buttonDrawerMap.enable();
 	}
+
+	//Large screen, drawer always open
 	else
 	{
 		$("#cartHideButton").hide();
+		buttonDrawerMap.disable();
 	}
+
+	//All cases
+	$("#POI_CART").height($("#POI_CART_BLOCK").height() - $("#POI_CART_TITLE").height() - $("#POI_CART_FOOTER").height() - 50);
 }

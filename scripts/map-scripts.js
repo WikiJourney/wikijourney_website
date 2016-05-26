@@ -28,11 +28,13 @@ $("#cartHideButton").click(function(){
 
 //Media queries (check map-script-functions.js for details)
 var mq = window.matchMedia( "(max-width: 765px)" );
-applyMediaQueries();
+
 
 $( window ).resize(function() {
 	applyMediaQueries();
+	$("#POI_CART_BLOCK").css('left','0');
 });
+
 
 
 // ===> Variables declaration
@@ -66,10 +68,16 @@ var defaultPOIIcon = L.icon({
 initMap(user_location);
 
 //Add a button to show the drawer
-L.easyButton('glyphicon-map-marker', function(btn, map){
+var buttonDrawerMap = L.easyButton( 'glyphicon-map-marker', function(){
 	$("#POI_CART_BLOCK").css('left',0);
-}).addTo(map);
+}, _YOUR_PATH).addTo(map);
 
+//And another one to center the map 
+L.easyButton( 'glyphicon-screenshot', function(){
+	center();
+}, _CENTER_BUTTON).addTo(map);
+
+applyMediaQueries();
 // ===> Setting overlays
 
 for(j = 0; j < pagicon.length; ++j) {

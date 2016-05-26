@@ -23,11 +23,13 @@ body{
 
 #POI_CART_BLOCK {
 	position: absolute;
-	z-index: 10000;
-	border: 1px solid black;
-	border-radius: 8px;
+	z-index: 5000;
 	background-color: white;
 	height: 100%;
+
+	-webkit-box-shadow: 20px 12px 6px -6px #999;
+	-moz-box-shadow: 20px 12px 6px -6px #999;
+	box-shadow: 3px 0 8px 0 #999;
 
 	-webkit-transition: 0.4s ease;
 	transition: 0.4s ease;
@@ -86,6 +88,10 @@ body{
 	text-align: center;
 }
 
+.easy-button-button.disabled {
+  display: none;
+}
+
 /* => Cart block and children (cart elements, buttons...) */
 
 #POI_CART_TITLE {
@@ -93,17 +99,15 @@ body{
 	font-size: 22px;
 	text-decoration: none;
 	text-align:center;
-	margin: auto;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	margin-top: 5px;
-	width: 90%;
-	border-bottom: 2px solid rgb(248,99,99);
+	padding: 15px;
+	width: 100%;
+	background-color: rgba(137, 160, 195, 0.8);
+	color: white;
 }
 
 #POI_CART {
 	overflow-y: auto;
-	height: 400px;
+	height: 80%;
 }
 #POI_CART::-webkit-scrollbar {
 	border-radius: 4px;
@@ -119,6 +123,8 @@ body{
 	text-align: center;
 	margin: auto;
 	margin-top: 5px;
+	background-color: rgba(137, 160, 195, 0.8);
+	padding: 10px;
 }
 
 .POI_CART_icons .glyphicon {
