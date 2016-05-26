@@ -49,12 +49,12 @@ define("_TEAM_QUICKDESC",	"We're a team of seven students from the Ecole Central
 							have to create a multidisciplinary project in two years, that's how we started to work together on WikiJourney. This project
 							is really important for us, that's why we will make everything we could to achieve it.");
 define("_S_ARNOUTS_POSTE", 	"<strong>Project Manager<br/>Lead Developer Web</strong>") ;
-define("_P_ARZELIER_POSTE", "Web Development<br/><br/>");
+define("_P_ARZELIER_POSTE", "Web Developer<br/><br/>");
 define("_T_GAUDIN_POSTE", 	"<strong>Lead Developer Android</strong><br/>Sysadmin");
 define("_N_HATIM_POSTE", 	"<strong>Treasurer</strong><br/>Partnerships");
 define("_B_HUBER_POSTE", 	"Partnerships<br/><br/>");
-define("_J_MAES_POSTE", 	"<strong>Secretary</strong><br/>Web Development");
-define("_Y_WANG_POSTE", 	"Mobile Development<br/><br/>");
+define("_J_MAES_POSTE", 	"<strong>Secretary</strong><br/>Web Developer");
+define("_Y_WANG_POSTE", 	"Android Developer<br/><br/>");
 
 
 

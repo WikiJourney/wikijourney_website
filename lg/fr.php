@@ -51,7 +51,7 @@ define("_TEAM_QUICKDESC",	"Nous sommes une équipe de sept étudiants de l'Écol
 							multidisciplinaire, dans lequel nous mettons nos connaissances en commun. Même si ce projet est officiellement terminé dans le cadre de 
 							l'école, une partie de l'équipe continue aujourd'hui à le maintenir." );
 define("_S_ARNOUTS_POSTE", 	"<strong>Chef de Projet<br/>Lead Développeur Web</strong>") ;
-define("_P_ARZELIER_POSTE", "Développement Web<br/><br/>");
+define("_P_ARZELIER_POSTE", "Développeur Web<br/><br/>");
 define("_T_GAUDIN_POSTE", 	"<strong>Lead Développeur Androïd</strong><br/>Administrateur Serveur");
 define("_N_HATIM_POSTE", 	"<strong>Trésorier</strong><br/>Partenariats");
 define("_B_HUBER_POSTE", 	"Partenariats<br/><br/>");
