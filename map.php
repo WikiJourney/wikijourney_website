@@ -216,27 +216,27 @@ if(isset($api_answer_array) && array_key_exists("guides",$api_answer_array) && $
 }//End displaying guides from Wikivoyage
 ?>
 
-<div id="map_cart_container">
-	<div class="row">
-		<div class="col-xs-3">
-			<div id="POI_CART_BLOCK">
-				<div id="POI_CART_TITLE"><?php echo _YOUR_PATH; ?></div>
-				<div id="POI_CART"><!-- THIS IS GOING TO BE FILLED BY CART ELEMENTS IN JAVASCRIPT --></div>
-				<div id="POI_CART_FOOTER">
-					<input type="submit" id="razCart" value="<?php echo _CLEAR_CART; ?>" onclick="razCart();" class="btn btn-primary" />
-					<input type="submit" title="This function is unavailable for the moment. Stay tuned for the next version ! ;)" id="exportCart" value="<?php echo _SAVE_CART; ?>" onclick="submitCart();" class="btn btn-primary" />
-					<!-- Let's put the hidden form here.. Random. -->
-					<form action="map_export.php" method="post" id="hiddenForm">
-						<input type="hidden" id="cartJsonExport" name="cartJsonExport" value="" />
-					</form>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-9">
-			<div id="map" class="map" style="width: 100%;"><!-- THIS IS GOING TO BE FILLED BY THE MAP THANKS TO MAPBOX --></div>
+<div id="mapAndCartContainer">
+	<div id="POI_CART_BLOCK">
+		<div id="POI_CART_TITLE"><?php echo _YOUR_PATH; ?></div>
+		<div id="POI_CART"><!-- THIS IS GOING TO BE FILLED BY CART ELEMENTS IN JAVASCRIPT --></div>
+		<div id="POI_CART_FOOTER">
+			<input type="submit" id="razCart" value="<?php echo _CLEAR_CART; ?>" onclick="razCart();" class="btn btn-primary" />
+			<input type="submit" title="This function is unavailable for the moment. Stay tuned for the next version ! ;)" id="exportCart" value="<?php echo _SAVE_CART; ?>" onclick="submitCart();" class="btn btn-primary" />
+			<!-- Let's put the hidden form here.. Random. -->
+			<form action="map_export.php" method="post" id="hiddenForm">
+				<input type="hidden" id="cartJsonExport" name="cartJsonExport" value="" />
+			</form>
 		</div>
 	</div>
+	
+	<div id="mapContainer"><div id="map" class="map"><!-- THIS IS GOING TO BE FILLED BY THE MAP THANKS TO MAPBOX --></div></div>
+</div>		
+
+	<!-- Temporarly hidden 
 	<p class="text-center"><br /><input type="button" value="<?php echo _CENTER_BUTTON; ?>" onclick="center()" class="btn btn-primary" /> <img src="./images/design/routing_icon.png" title="Hide/Show routing" alt="Hide/Show routing" onclick="hideRoutingContainer();" style="width: 28px;"></p>
+	-->
+
 
 	<script>
 	//****************************************************************

@@ -21,7 +21,6 @@
 		<?php 
 	}
 	?>
-
 	<!-- SCRIPTS -->
 	<script src="lib/jquery/jquery-2.2.0.min.js"></script>
 	<script src="lib/bootstrap/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
@@ -43,14 +42,19 @@
 		//Navbar Logo animation
 		$(window).scroll(function() {
 			if ($(document).scrollTop() > 10) {
-				$('.logoNavbar').addClass('shrink');
-				$('.logoNavbar').removeClass('notshrink');
+				$('.logoNavbar').addClass('shrink').removeClass('notshrink');
 			} else {
-				$('.logoNavbar').removeClass('shrink');
-				$('.logoNavbar').addClass('notshrink');
+				$('.logoNavbar').removeClass('shrink').addClass('notshrink');
 			}
 		});
-
+		<?php
+		if(isset($INCLUDE_MAP_PROPERTIES)) //Properties dedicated to the map
+		{ 
+			?>
+			$(".logoNavbar").removeClass("notshrink").addClass("shrink");
+			<?php
+		}
+		?>
 	</script>
 	<noscript><p><img src="//piwik.wikijourney.eu/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
 </body>

@@ -60,6 +60,7 @@ else
 		<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js'></script>
 		<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css' rel='stylesheet' />
 		<link rel="stylesheet" href="./style/leaflet-routing-machine.css" />
+		<link rel="stylesheet" href="./style/map.css" />
 		<script src="scripts/leaflet-routing-machine.js"></script>
 	<?php
 	}
