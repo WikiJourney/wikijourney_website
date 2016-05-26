@@ -70,6 +70,19 @@ L.easyButton('glyphicon-map-marker', function(btn, map){
 	$("#POI_CART_BLOCK").css('left',0);
 }).addTo(map);
 
+// ===> Routing Initialisation
+var routing = L.Routing.control({
+		router: L.Routing.mapzen('valhalla-TC63npX', {costing:'pedestrian'}),
+		formatter: new L.Routing.mapzenFormatter(),
+		waypoints: routing_poi_list,
+		routeWhileDragging: false,
+		collapsible: true,
+		draggableWaypoints: false,
+		addWaypoints: false
+	}).addTo(map);
+
+var routing_poi_list = new Array();
+	
 // ===> Setting overlays
 
 for(j = 0; j < pagicon.length; ++j) {

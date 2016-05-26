@@ -143,6 +143,11 @@ function reloadCart() {
 		htmlElement += "</div>";
 		document.getElementById("POI_CART").innerHTML = document.getElementById("POI_CART").innerHTML + htmlElement;
 	}
+
+	routing_poi_list[0] = L.latLng(user_location.latitude, user_location.longitude);
+	for(j = 0; j < cartList.length; ++j)
+		routing_poi_list[j+1] = L.latLng(cartList[j].latitude, cartList[j].longitude);
+	routing.setWaypoints(routing_poi_list);
 }
 
 //distance(i) : get the distance between a user and the POI i
