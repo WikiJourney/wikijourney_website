@@ -230,7 +230,7 @@ if(isset($api_answer_array) && array_key_exists("guides",$api_answer_array) && $
 			</form>
 		</div>
 	</div>
-	
+
 	<div id="mapContainer"><div id="map" class="map"><!-- THIS IS GOING TO BE FILLED BY THE MAP THANKS TO MAPBOX --></div></div>
 </div>		
 

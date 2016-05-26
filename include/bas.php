@@ -66,6 +66,15 @@
 				$("#POI_CART_BLOCK").css('left','-100%');
 			});	
 
+			if(mq.matches)
+			{
+				$("#cartHideButton").show();
+			}
+			else
+			{
+				$("#cartHideButton").hide();
+			}
+
 			$( window ).resize(function() {
 				$("#POI_CART_BLOCK").css('left','0');
 				if(mq.matches)
