@@ -1,0 +1,213 @@
+/* ===> map.php <=== */
+
+body{
+	overflow: hidden;
+}
+
+/* => Blocks Positionning */
+
+
+#map{ 
+	height: 100%;
+	width: 100%;
+}
+
+#mapContainer{
+	position: absolute;
+	top:0;
+	background-color: blue;
+	height:100%; 
+	margin: 0;
+	padding: 0;
+	
+}
+
+#POI_CART_BLOCK {
+	position: absolute;
+	z-index: 10000;
+	border: 1px solid black;
+	border-radius: 8px;
+	background-color: white;
+	height: 100%;
+
+	-webkit-transition: 0.4s ease;
+	transition: 0.4s ease;
+	
+}
+
+#mapAndCartContainer{
+	position: relative;
+	width: 100%;
+	height:100%; 
+}
+
+@media screen and (max-width: 765px){
+	#mapContainer{
+		width:100%;
+	}
+	#POI_CART_BLOCK {
+		width:100%;
+		left: -100%;
+	}
+}
+@media screen and (min-width: 765px){
+	#mapContainer{
+		left:30%;
+		width: 70%;
+		color:blue;
+	}
+	#POI_CART_BLOCK {
+		width: 30%;
+	}
+}
+
+
+
+/* => Map Stuff */
+
+.POPUP_title {
+	font-weight: bold;
+	margin: auto;
+	text-align: center;
+}
+
+.POPUP_img {
+	max-height: 100px;
+	width: 100px;
+	margin: auto;
+	display: block;
+}
+
+.POPUP_links {
+	text-align: center;
+}
+
+/* => Cart block and children (cart elements, buttons...) */
+
+#POI_CART_TITLE {
+	font-family: "Helvetica","Trebuchet MS",sans;
+	font-size: 22px;
+	text-decoration: none;
+	text-align:center;
+	margin: auto;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-top: 5px;
+	width: 90%;
+	border-bottom: 2px solid rgb(248,99,99);
+}
+
+#POI_CART {
+	overflow-y: auto;
+	height: 400px;
+}
+#POI_CART::-webkit-scrollbar {
+	border-radius: 4px;
+	width:8px;
+	background-color:#eeeeee;
+}
+#POI_CART::-webkit-scrollbar-thumb {
+	background-color:rgb(174,203,219);
+	border-radius:4px;
+}
+
+#POI_CART_FOOTER {
+	text-align: center;
+	margin: auto;
+	margin-top: 5px;
+}
+
+.POI_CART_icons {
+	cursor: pointer;
+}
+
+.eltCart {
+	font-family: "Calibri",Sans;
+	width: 90%;
+	border-bottom: 2px solid rgb(248,99,99);
+	min-height: 74px;
+	margin: auto;
+	text-align: center;
+	padding: 5px;
+}
+
+.eltCartNumber {
+	font-family: "Helvetica","Trebuchet MS";
+	border-radius: 3px;
+	float: left;
+	margin: 5px;
+	margin-top: 30px;
+	width: 20px;
+	border: 1px solid black;
+	text-align:center;
+	height:100%;
+	background-color: rgb(174,203,219);
+}
+
+/* => WikiVoyage section */
+
+#WikiVoyageTitle {
+color: rgb(255,99,99);
+font-size: 1.2em;
+margin-bottom: 10px;
+display: block;
+font-weight: bold;
+}
+
+#WikiVoyageBox {
+width: 95%;
+padding-top: 20px;
+height:200px;
+margin: auto;
+}
+
+#WikiVoyageThumbnailContainer {
+overflow-x: scroll;
+overflow-y: hidden;
+margin: auto;
+height: 160px;
+width: 100%;
+}
+
+#WikiVoyageThumbnailContainerScroll {
+width: auto;
+white-space: nowrap;
+}
+
+#WikiVoyageThumbnailContainer::-webkit-scrollbar {
+border-radius: 4px;
+height:8px;
+background-color:#eeeeee;
+}
+
+#WikiVoyageThumbnailContainer::-webkit-scrollbar-thumb {
+background-color:rgb(174,203,219);
+border-radius:4px;
+}
+
+.WikiVoyageElement {
+height: 130px;
+display: inline-block;
+text-align: center;
+vertical-align: top;
+margin-left: 5px;
+padding: 8px;
+background-color: rgb(174,203,219);
+min-width: 100px;
+font-family: "Calibri",Sans;
+font-size: 0.9em;
+border-radius: 3px;
+}
+
+.WikiVoyageElement a {
+color:black;
+}
+
+.WikiVoyageElement a:hover {
+color: rgb(255,50,50);
+}
+
+.WikiVoyageImg {
+margin-top: 8px;
+height: 100px;
+}
