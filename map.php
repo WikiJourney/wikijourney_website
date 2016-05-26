@@ -218,6 +218,7 @@ if(isset($api_answer_array) && array_key_exists("guides",$api_answer_array) && $
 
 <div id="mapAndCartContainer">
 	<div id="POI_CART_BLOCK">
+		<button id="cartHideButton" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span></button>
 		<div id="POI_CART_TITLE"><?php echo _YOUR_PATH; ?></div>
 		<div id="POI_CART"><!-- THIS IS GOING TO BE FILLED BY CART ELEMENTS IN JAVASCRIPT --></div>
 		<div id="POI_CART_FOOTER">

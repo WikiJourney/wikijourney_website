@@ -64,6 +64,12 @@ body{
 
 
 /* => Map Stuff */
+#cartHideButton {
+	display:none;
+	position: absolute;
+	top: 10px;
+	left: 30px;
+}
 
 .POPUP_title {
 	font-weight: bold;

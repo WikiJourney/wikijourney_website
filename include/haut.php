@@ -59,6 +59,7 @@ else
 		<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 		<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js'></script>
 		<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css' rel='stylesheet' />
+		<link rel="stylesheet" href="lib/easy-button/easy-button.css" />
 		<link rel="stylesheet" href="./style/leaflet-routing-machine.css" />
 		<link rel="stylesheet" href="./style/map.css" />
 		<script src="scripts/leaflet-routing-machine.js"></script>

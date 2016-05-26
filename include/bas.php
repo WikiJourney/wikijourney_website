@@ -23,8 +23,8 @@
 	?>
 	<!-- SCRIPTS -->
 	<script src="lib/jquery/jquery-2.2.0.min.js"></script>
-	<script src="lib/bootstrap/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-	
+	<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+	<script src="lib/easy-button/easy-button.js"></script>
 	<script type="text/javascript">
 
 		//PIWIK TRACKER
@@ -52,6 +52,22 @@
 		{ 
 			?>
 			$(".logoNavbar").removeClass("notshrink").addClass("shrink");
+			
+			var mq = window.matchMedia( "(max-width: 765px)" );
+
+			if(mq.matches)
+			{
+				easyButtonShow = L.easyButton('glyphicon-map-marker', function(btn, map){
+					$("#POI_CART_BLOCK").css('left',0);
+				}).addTo(map);
+				$("#cartHideButton").show();
+
+				$("#cartHideButton").click(function(){
+					$("#POI_CART_BLOCK").css('left','-100%');
+				});
+
+			}
+
 			<?php
 		}
 		?>
