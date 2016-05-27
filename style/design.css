@@ -65,6 +65,10 @@ p {
 	box-shadow: 0 3px 6px 0 #999;
 }
 
+form {
+	padding-bottom: 20px;
+}
+
 /* ===> Top <=== */
 
 #banniere {
@@ -231,7 +235,6 @@ p {
 }
 
 .thumbnail_export {
-	height: 140px;
 	display: inline-block;
 	text-align: center;
 	vertical-align: top;
@@ -245,12 +248,18 @@ p {
 	border-radius: 3px;
 }
 
+.ratio_wrapper{
+	margin-top: 5px;
+	display: block;
+}
+
 /* ===> paths.php <=== */
 
 .thumbnail_paths {
 	max-height: 140px;
 	margin: auto;
 	display: block;
+	margin-bottom: 5px;
 }
 
 #paths {

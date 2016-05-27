@@ -32,8 +32,8 @@ else if(isset($_GET['action']))
 	{
 		include('./include/connectdb.php');
 		$id = mysqli_real_escape_string($handler_db,$_GET['id']);
-		$usermail = mysqli_real_escape_string($handler_db,$_SESSION['wj_email']);
-		mysqli_query($handler_db,"DELETE FROM savedpaths WHERE usermail='$usermail' AND id='$id'");
+		$username = mysqli_real_escape_string($handler_db,$_SESSION['wj_username']);
+		mysqli_query($handler_db,"DELETE FROM savedpaths WHERE username='$username' AND id='$id'");
 		header('Location:paths.php');
 	}
 }
@@ -42,7 +42,6 @@ else
 	include('./include/connectdb.php');
 
 	$username = mysqli_real_escape_string($handler_db,$_SESSION['wj_username']);
-	$usermail = mysqli_real_escape_string($handler_db,$_SESSION['wj_email']);
 	$query = mysqli_query($handler_db,"SELECT * FROM savedpaths WHERE username='$username'") or die(mysqli_error($handler_db));
 	?>
 
@@ -60,7 +59,7 @@ else
 			<div class="row">
 				<div class="col-sm-4">
 					<p class="paths_title"><?php echo $data['title']; ?></p>
-					<img class="thumbnail_paths" src="<?php echo $data['image_url']; ?>" alt="Thumbnail" title="Thumbnail"/>
+					<img class="thumbnail_paths shadowed" src="<?php echo $data['image_url']; ?>" alt="Thumbnail" title="Thumbnail"/>
 					<p class="text-center"><em><?php echo $data['mean_lat'].' - '.$data['mean_long']; ?></em></p>
 				</div>
 				<div class="col-sm-6"><p><?php echo $data['description']; ?></p></div>

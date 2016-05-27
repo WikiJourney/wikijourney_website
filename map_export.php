@@ -10,7 +10,7 @@ Copyright 2015 WikiJourney
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
-    http://www.apache.org/licenses/LICENSE-2.0
+		http://www.apache.org/licenses/LICENSE-2.0
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -19,7 +19,6 @@ limitations under the License.
 */
 
 session_start();
-
 
 include('./include/connectdb.php');
 include('./include/haut.php');
@@ -86,41 +85,62 @@ if(isset($_POST['cartJsonExport']) OR isset($_COOKIE['temp_path']))
 		
 		
 		?>
-		<h2><?php echo _PATH_HEADER ?></h2>
+		<div class="container" id="first_content">
+			<h2><?php echo _PATH_HEADER ?></h2>
+			<h3><?php echo _PATH_TITLE ?></h3>
 
-		<form action="" method="POST">
-		<h3><?php echo _PATH_TITLE ?></h3>
-		<p>
-			<label for="title"><?php echo _PATH_NAME ?></label><input type="text" id="title" name="title" required /><br/>
-			<label for="desc"><?php echo _PATH_DESC ?></label><input type="text" id="desc" name="desc" required /><br/>
-			<input type="hidden" name="mean_lat" value="<?php echo $mean_lat; ?>" /><br/>
-			<input type="hidden" name="mean_long" value="<?php echo $mean_long; ?>" /><br/>
-			<br/>
-		</p>	
-		
-		<?php
-		if($j != 0) echo "<h3>". _PATH_IMG ."</h3>";
-		
-		for($i = 0; $i<$j; $i++)
-		{
-			echo '<div class="thumbnail_export"><img src="'.$imgArray[$i].'" title="Thumbnail" alt="Thumbnail" /><br/><input type="radio" name="image" value="'.$imgArray[$i].'" checked /></div>';
+			<form class="form-horizontal" action="" method="POST">
+
+			<!-- Name-->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="title"><?php echo _PATH_NAME ?></label>  
+				<div class="col-md-4">
+				<input id="title" name="title" class="form-control input-md" type="text" required>
+				</div>
+			</div>
+
+			<!-- Description -->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="desc"><?php echo _PATH_DESC ?></label>
+				<div class="col-md-4">                     
+					<textarea class="form-control" id="desc" name="desc"></textarea>
+				</div>
+			</div>
+
+			<input type="hidden" name="mean_lat" value="<?php echo $mean_lat; ?>" />
+			<input type="hidden" name="mean_long" value="<?php echo $mean_long; ?>" />
+
+
+			<div>
+			<?php
+			if($j != 0) echo "<h3>". _PATH_IMG ."</h3>";
 			
-		}
-		?>
-		<br/><input type="submit" value="Go!" /><br/><br/>
-		</form>
-		
+			for($i = 0; $i<$j; $i++)
+			{
+				echo '<div class="thumbnail_export">
+					<img src="'.$imgArray[$i].'" title="Thumbnail" alt="Thumbnail" />
+					<span class="ratio_wrapper">
+						<input type="radio" name="image" value="'.$imgArray[$i].'" checked />
+					</span>
+					</div>';
+			}
+			?>
+			</div>
+			<button type="submit" class="btn btn-primary btn-primary"><span class="glyphicon glyphicon-ok"></span> Go !</button>
+			</form>
+		</div>
 		<?php
 	}
 	
 	//==> If not, we send him to Wikimedia to register
 	else
 	{
-		?>
-		<p><a href="./oauth/oauth_connexion.php?action=authorize"><?php echo _PATH_LOGIN ?></a></p>
-		<?php
+		header("Location: ./oauth/oauth_connexion.php?action=authorize");
 	}
 
 }
+
+include("./include/bas.php");
+
 ?>
 
