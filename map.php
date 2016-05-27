@@ -24,10 +24,7 @@ limitations under the License.
 */
 	
 	//==> Configuration
-
-	$CONFIG_USE_SSL = 0; //Set this to 1 to use SSL
-	$CONFIG_LINK_PEM = '/srv/fullchain.pem'; //Link to the pem file you want to use
-	$CONFIG_API_URL = "http://api.wikijourney.eu/"; //Link to the API
+	$CONFIG_API_URL = "proxy.php"; //Link to the API
 
 	//==> First, include the top, with special properties.
 	session_start();
@@ -93,39 +90,6 @@ limitations under the License.
 
 		echo "<!-- ".$api_url."-->"; //For debugging purpose.
 
-		//==> Make the request
-
-		//NOTE !
-		//It looks like we're experiencing trouble with this. Actually, it's hard to loopback on our own server with filegetcontents, curl or whatever.
-		//Like this, it works. Please don't touch.
-
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $api_url);
-		curl_setopt($ch, CURLOPT_FRESH_CONNECT, true);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_VERBOSE, true);
-
-		if($CONFIG_USE_SSL == 1)
-		{
-			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
-			curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-			curl_setopt($ch, CURLOPT_CAINFO, $CONFIG_LINK_PEM);
-		}
-
-		$api_answer_json = curl_exec($ch);
-		curl_close($ch);
-		//==> Decoding the json into an array
-		$api_answer_array = json_decode($api_answer_json,true);
-
-		if($api_answer_array['err_check']['value'] == "true") //Error check
-			die("Error found when contacting the API : ".$api_answer_array['err_check']['err_msg']);
-
-		//==> If no error, we put the POI array in a json to use it with JavaScript
-		$poi_array_json_encoded = json_encode($api_answer_array['poi']);
-
-		if($poi_array_json_encoded == 'null')
-			die("<p><br/>"._ERROR_API."</p><br/>");
-
 		$thePathWasSaved = false;
 	}
 	//****************************************************************
@@ -183,7 +147,7 @@ var _YOU_ARE_HERE = 			'<?php echo _YOU_ARE_HERE; ?>';
 var _MAP_CART_LINK = 			'<?php echo _MAP_CART_LINK; ?>';
 var _MAP_POI_LINK = 			'<?php echo _MAP_POI_LINK; ?>';
 var _YOUR_PATH = 				'<?php echo _YOUR_PATH; ?>';
-var _CENTER_BUTTON = 				'<?php echo _CENTER_BUTTON; ?>';
+var _CENTER_BUTTON = 			'<?php echo _CENTER_BUTTON; ?>';
 
 var thePathWasSaved = 			<?php echo ($thePathWasSaved) ? "true" : "false"; ?>;
 
@@ -193,9 +157,9 @@ var user_location = 			new Array();
 var poi_array = 				new Array();
 var poi_array_decode = 			new Array();
 var pagicon = 					<?php echo $pagicon_json_array; ?>; //For the icon/ID/label association
+var api_link = 					'<?php echo (isset($api_url))? $api_url : ''; ?>';
 
-poi_array_decode = 				<?php echo $poi_array_json_encoded; ?>;
-poi_array = 					poi_array_decode['poi_info'];
+poi_array_decode = 				<?php if($thePathWasSaved) echo $poi_array_json_encoded; else echo '[]'; ?>;
 
 user_location['latitude'] = 	<?php echo $user_latitude; ?>;
 user_location['longitude'] = 	<?php echo $user_longitude; ?>;

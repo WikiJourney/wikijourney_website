@@ -78,6 +78,7 @@ L.easyButton( 'glyphicon-screenshot', function(){
 }, _CENTER_BUTTON).addTo(map);
 
 applyMediaQueries();
+
 // ===> Setting overlays
 
 for(j = 0; j < pagicon.length; ++j) {
@@ -86,42 +87,36 @@ for(j = 0; j < pagicon.length; ++j) {
 
 L.control.layers(null, overlayMaps).addTo(map);
 
+for(j = 0; j < pagicon.length; ++j)
+	map.addLayer(overlayMaps[pagicon[j][2]]);
+
+
 // ===> Place markers on the map!
-
-for(i = 0; i < poi_array_decode.nb_poi; ++i)
+if(!thePathWasSaved)
 {
-	var popup_content = new Array();
-	var j = 0;
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (xhttp.readyState == 4 && xhttp.status == 200) {
+			// ===> Parse result
+			var api_return = JSON.parse(xhttp.response);
 
-	for(j = 0; ((j < pagicon.length) && ((pagicon[j][0]).search(String(poi_array[i].type_id)))); j++)
-		;
+			// ===> Check errors
+			if(api_return.err_check.value == true)
+			{
+				alert(api_return.err_check.msg);
+			}
+			else
+			{
+				poi_array_decode = api_return.poi;
+				poi_array = poi_array_decode.poi_info;
+			}
 
-	if (distance(i) < 0.07 && !ismerged){
-
-		popup_content = _YOU_ARE_HERE;
-		ismerged = true ;
-		poi_array[i]['marker'] = L.marker([user_location.latitude, user_location.longitude],{icon: defaultPOIIcon}).addTo(map);
-	}
-	else if(j < pagicon.length){
-
-		poi_array[i]["marker"] = L.marker([poi_array[i].latitude, poi_array[i].longitude],{icon: defaultPOIIcon}).addTo(map);
-
-		overlayMaps[pagicon[j][2]].addLayer(poi_array[i]['marker']);
-	}
-	else{
-		poi_array[i]["marker"] = L.marker([poi_array[i].latitude, poi_array[i].longitude],{icon: defaultPOIIcon}).addTo(map);
-	}
-
-	popup_content = parsePopupContent(poi_array[i]);
-
-
-	poi_array[i]['marker'].bindPopup(popup_content);
-
-
-	if(thePathWasSaved == true)
-		addToCart(i,cartList);//If the path was saved, we put all POI directly in the cart
+			// ===> Place on map !
+			placePOI();
+		}
+	};
+	xhttp.open("GET", api_link, true);
+	xhttp.send();
 }
 
 
-for(j = 0; j < pagicon.length; ++j)
-	map.addLayer(overlayMaps[pagicon[j][2]]);

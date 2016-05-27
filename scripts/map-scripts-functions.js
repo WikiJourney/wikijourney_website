@@ -206,7 +206,7 @@ function initMap(user_location) {
 //parsePopupContent(element) : given an element of the cart, it returns a string for the popup content
 function parsePopupContent(element){
 	//Title
-	popup_content += '<p class="POPUP_title">' + element.name.charAt(0).toUpperCase() + element.name.substring(1).toLowerCase() + " <a title=\" "+ _MAP_CART_LINK + "\" alt=\" "+ _MAP_CART_LINK +"\" class=\"icon-plus\" href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\"></a></p>";
+	var popup_content = '<p class="POPUP_title">' + element.name.charAt(0).toUpperCase() + element.name.substring(1).toLowerCase() + " <a title=\" "+ _MAP_CART_LINK + "\" alt=\" "+ _MAP_CART_LINK +"\" class=\"icon-plus\" href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\"></a></p>";
 	//Image if available
 	if(element.image_url != null)
 	{
@@ -224,6 +224,42 @@ function parsePopupContent(element){
 	popup_content += "</p>";
 
 	return popup_content;
+}
+
+function placePOI(){
+	for(i = 0; i < poi_array_decode.nb_poi; ++i)
+	{
+		var j = 0;
+		var popup_content;
+
+		for(j = 0; ((j < pagicon.length) && ((pagicon[j][0]).search(String(poi_array[i].type_id)))); j++)
+			;
+
+		if (distance(i) < 0.07 && !ismerged){
+
+			popup_content = _YOU_ARE_HERE;
+			ismerged = true ;
+			poi_array[i]['marker'] = L.marker([user_location.latitude, user_location.longitude],{icon: defaultPOIIcon}).addTo(map);
+		}
+		else if(j < pagicon.length){
+
+			poi_array[i]["marker"] = L.marker([poi_array[i].latitude, poi_array[i].longitude],{icon: defaultPOIIcon}).addTo(map);
+
+			overlayMaps[pagicon[j][2]].addLayer(poi_array[i]['marker']);
+		}
+		else{
+			poi_array[i]["marker"] = L.marker([poi_array[i].latitude, poi_array[i].longitude],{icon: defaultPOIIcon}).addTo(map);
+		}
+
+		popup_content = parsePopupContent(poi_array[i]);
+
+
+		poi_array[i]['marker'].bindPopup(popup_content);
+
+
+		if(thePathWasSaved == true)
+			addToCart(i,cartList);//If the path was saved, we put all POI directly in the cart
+	}
 }
 
 //applyMediaQueries() : Set a series of medias queries for responsive design
