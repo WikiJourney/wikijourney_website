@@ -118,5 +118,10 @@ if(!thePathWasSaved)
 	xhttp.open("GET", api_link, true);
 	xhttp.send();
 }
+else
+{
+	poi_array = poi_array_decode.poi_info;
+	placePOI();
+}
 
 
