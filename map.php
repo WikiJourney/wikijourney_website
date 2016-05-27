@@ -217,8 +217,12 @@ if(isset($api_answer_array) && array_key_exists("guides",$api_answer_array) && $
 		</div>
 	</div>
 
-	<div id="mapContainer"><div id="map" class="map"><!-- THIS IS GOING TO BE FILLED BY THE MAP THANKS TO LEAFLET --></div></div>
+	<div id="mapContainer"><div id="map" class="map"><div class="modal"><!-- Loading --></div><!-- THIS IS GOING TO BE FILLED BY THE MAP THANKS TO LEAFLET --></div></div>
+
+	
 </div>		
+
+
 
 <?php
 	include("./include/bas.php");

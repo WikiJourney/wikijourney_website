@@ -16,6 +16,16 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+// ===> Variables declaration
+
+var cartList = new Array();
+var j;
+var ismerged = false;
+var overlayMaps = new Array();
+var map;
+var routing_poi_list = new Array();
+var xhttp = new XMLHttpRequest();
+
 // ===> DOM manipulation, for responsive design
 
 // Shrink the logo on loading
@@ -29,22 +39,12 @@ $("#cartHideButton").click(function(){
 //Media queries (check map-script-functions.js for details)
 var mq = window.matchMedia( "(max-width: 765px)" );
 
-
 $( window ).resize(function() {
 	applyMediaQueries();
 	$("#POI_CART_BLOCK").css('left','0');
 });
 
-
-
-// ===> Variables declaration
-
-var cartList = new Array();
-var j;
-var ismerged = false;
-var overlayMaps = new Array();
-var map;
-var routing_poi_list = new Array();
+$body = $("body");
 
 // ===> Creating marker objects
 
@@ -94,12 +94,17 @@ for(j = 0; j < pagicon.length; ++j)
 // ===> Place markers on the map!
 if(!thePathWasSaved)
 {
-	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
+		if(xhttp.readyState == 1)
+		{
+			console.log("Request in progress");
+			$body.addClass("loading");
+		}
 		if (xhttp.readyState == 4 && xhttp.status == 200) {
+			$body.removeClass("loading");
 			// ===> Parse result
 			var api_return = JSON.parse(xhttp.response);
-
+			console.log(api_return);
 			// ===> Check errors
 			if(api_return.err_check.value == true)
 			{
