@@ -201,6 +201,10 @@ function initMap(user_location) {
 	};
 
 	L.circle([user_location.latitude, user_location.longitude], range*1000, circle_options).addTo(map);
+
+	map.on('move',function(){
+		map.closePopup();
+	});
 }
 
 //parsePopupContent(element) : given an element of the cart, it returns a string for the popup content
