@@ -4,6 +4,29 @@ body{
 	overflow: hidden;
 }
 
+/* => Some special properties for the loading screen */
+.modal {
+    display:    none;
+    position:   relative;
+    z-index:    3000;
+    
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 ) 
+                url('../images/design/ajax-loader.gif') 
+                50% 50% 
+                no-repeat;
+}
+
+body.loading {
+    overflow: hidden;   
+}
+
+body.loading .modal {
+    display: block;
+}
+
+
 /* => Blocks Positionning */
 
 

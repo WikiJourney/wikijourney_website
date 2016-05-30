@@ -16,6 +16,16 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+// ===> Variables declaration
+
+var cartList = new Array();
+var j;
+var ismerged = false;
+var overlayMaps = new Array();
+var map;
+var routing_poi_list = new Array();
+var xhttp = new XMLHttpRequest();
+
 // ===> DOM manipulation, for responsive design
 
 // Shrink the logo on loading
@@ -29,22 +39,12 @@ $("#cartHideButton").click(function(){
 //Media queries (check map-script-functions.js for details)
 var mq = window.matchMedia( "(max-width: 765px)" );
 
-
 $( window ).resize(function() {
 	applyMediaQueries();
 	$("#POI_CART_BLOCK").css('left','0');
 });
 
-
-
-// ===> Variables declaration
-
-var cartList = new Array();
-var j;
-var ismerged = false;
-var overlayMaps = new Array();
-var map;
-var routing_poi_list = new Array();
+$body = $("body");
 
 // ===> Creating marker objects
 
@@ -78,6 +78,7 @@ L.easyButton( 'glyphicon-screenshot', function(){
 }, _CENTER_BUTTON).addTo(map);
 
 applyMediaQueries();
+
 // ===> Setting overlays
 
 for(j = 0; j < pagicon.length; ++j) {
@@ -86,42 +87,46 @@ for(j = 0; j < pagicon.length; ++j) {
 
 L.control.layers(null, overlayMaps).addTo(map);
 
+for(j = 0; j < pagicon.length; ++j)
+	map.addLayer(overlayMaps[pagicon[j][2]]);
+
+
 // ===> Place markers on the map!
-
-for(i = 0; i < poi_array_decode.nb_poi; ++i)
+if(!thePathWasSaved)
 {
-	var popup_content = new Array();
-	var j = 0;
+	xhttp.onreadystatechange = function() {
+		if(xhttp.readyState == 1)
+		{
+			console.log("Request in progress");
+			$body.addClass("loading");
+		}
+		if (xhttp.readyState == 4 && xhttp.status == 200) {
+			$body.removeClass("loading");
+			// ===> Parse result
+			var api_return = JSON.parse(xhttp.response);
+			console.log(api_return);
+			// ===> Check errors
+			if(api_return.err_check.value == true)
+			{
+				alert(api_return.err_check.msg);
+			}
+			else
+			{
+				poi_array_decode = api_return.poi;
+				poi_array = poi_array_decode.poi_info;
+			}
 
-	for(j = 0; ((j < pagicon.length) && ((pagicon[j][0]).search(String(poi_array[i].type_id)))); j++)
-		;
-
-	if (distance(i) < 0.07 && !ismerged){
-
-		popup_content = _YOU_ARE_HERE;
-		ismerged = true ;
-		poi_array[i]['marker'] = L.marker([user_location.latitude, user_location.longitude],{icon: defaultPOIIcon}).addTo(map);
-	}
-	else if(j < pagicon.length){
-
-		poi_array[i]["marker"] = L.marker([poi_array[i].latitude, poi_array[i].longitude],{icon: defaultPOIIcon}).addTo(map);
-
-		overlayMaps[pagicon[j][2]].addLayer(poi_array[i]['marker']);
-	}
-	else{
-		poi_array[i]["marker"] = L.marker([poi_array[i].latitude, poi_array[i].longitude],{icon: defaultPOIIcon}).addTo(map);
-	}
-
-	popup_content = parsePopupContent(poi_array[i]);
-
-
-	poi_array[i]['marker'].bindPopup(popup_content);
-
-
-	if(thePathWasSaved == true)
-		addToCart(i,cartList);//If the path was saved, we put all POI directly in the cart
+			// ===> Place on map !
+			placePOI();
+		}
+	};
+	xhttp.open("GET", api_link, true);
+	xhttp.send();
+}
+else
+{
+	poi_array = poi_array_decode.poi_info;
+	placePOI();
 }
 
 
-for(j = 0; j < pagicon.length; ++j)
-	map.addLayer(overlayMaps[pagicon[j][2]]);
