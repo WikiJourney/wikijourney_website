@@ -82,7 +82,7 @@ else
 				</button>
 				<div class="navbar-header">
 					<a class="navbar-brand" href="index.php">
-						<img alt="Logo WikiJourney" class="logoNavbar notshrink" src="./images/design/logo_small.png"> WikiJourney
+						<img alt="Logo WikiJourney" class="logoNavbar <?php if(isset($INCLUDE_MAP_PROPERTIES)) echo "shrink"; else echo "notshrink"; ?>" src="./images/design/logo_small.png"> WikiJourney
 					</a>
 				</div>
 			</div>

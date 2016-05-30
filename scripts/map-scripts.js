@@ -28,9 +28,6 @@ var xhttp = new XMLHttpRequest();
 
 // ===> DOM manipulation, for responsive design
 
-// Shrink the logo on loading
-$(".logoNavbar").removeClass("notshrink").addClass("shrink");
-
 //Add a button to close the drawer
 $("#cartHideButton").click(function(){
 	$("#POI_CART_BLOCK").css('left','-100%');
