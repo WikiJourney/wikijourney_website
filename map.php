@@ -142,12 +142,12 @@ limitations under the License.
 
 <script>
 //==> We put here the variables for the translation
-var _CART_IS_EMPTY_POPUP = 		'<?php echo _CART_IS_EMPTY_POPUP; ?>';
-var _YOU_ARE_HERE = 			'<?php echo _YOU_ARE_HERE; ?>';
-var _MAP_CART_LINK = 			'<?php echo _MAP_CART_LINK; ?>';
-var _MAP_POI_LINK = 			'<?php echo _MAP_POI_LINK; ?>';
-var _YOUR_PATH = 				'<?php echo _YOUR_PATH; ?>';
-var _CENTER_BUTTON = 			'<?php echo _CENTER_BUTTON; ?>';
+var _CART_IS_EMPTY_POPUP = 		"<?php echo _CART_IS_EMPTY_POPUP; ?>";
+var _YOU_ARE_HERE = 			"<?php echo _YOU_ARE_HERE; ?>";
+var _MAP_CART_LINK = 			"<?php echo _MAP_CART_LINK; ?>";
+var _MAP_POI_LINK = 			"<?php echo _MAP_POI_LINK; ?>";
+var _YOUR_PATH = 				"<?php echo _YOUR_PATH; ?>";
+var _CENTER_BUTTON = 			"<?php echo _CENTER_BUTTON; ?>";
 
 var thePathWasSaved = 			<?php echo ($thePathWasSaved) ? "true" : "false"; ?>;
 
