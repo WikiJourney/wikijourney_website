@@ -9,11 +9,11 @@
 //===> General
 
 define("_TITLE",			"WikiJourney - Revisitez le tourisme.");
-define("_CATCHPHRASE",		"Faites du tourisme avec Wikipédia !");
+define("_CATCHPHRASE",		"Faites du tourisme avec Wikipédia&#8239;!");
 define("_SRC_IMAGE_LOGO",	"./images/design/logo_and_catchphrase/fr.png");
 //===> Top
 define("_INDEX",			"Accueil");
-define("_TEAM",				"L'Équipe");
+define("_TEAM",				"Équipe");
 define("_ABOUT",			"À propos");
 define("_BLOG",				"Blog");
 
@@ -106,7 +106,7 @@ define("_LOAD_SIMPLIFIED",			"La carte ne s'affiche pas ? Essayez la version sim
 //===> paths.php
 define("_CONNECT_NECESS",			"Pour récupérer vos parcours, vous devez vous connecter :");
 define("_REGISTRATION",				"Cliquez ici pour utiliser votre compte Wikimedia !");
-define("_YOUR_PATHS",				"Vos parcours");
+define("_YOUR_PATHS",				"Parcours");
 define("_LOAD",						"Charger");
 define("_REMOVE",					"Supprimer");
 define("_NO_PATHS_SAVED",			"Pas de parcours sauvegardés.");

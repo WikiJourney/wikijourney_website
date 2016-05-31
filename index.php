@@ -29,19 +29,21 @@ include('./include/haut.php');
 ?>
 
 <div class="jumbotron shadowed" id="banniere">
-	<div class="row"><h1 class="bigtitle"><?php echo _CATCHPHRASE; ?></h1></div>
-	<div class="row stores_logos_block">
-		<div class="col-xs-6 col-md-3">
-			<a target="_blank" href="https://play.google.com/store/apps/details?id=eu.wikijourney.wikijourney"><img src="./images/design/google_play.png" alt="Google Play" title="Google Play" /></a>
-		</div> 
-		<div class="col-xs-6 col-md-3">
-			<a target="_blank" href="https://f-droid.org/repository/browse/?fdid=com.wikijourney.wikijourney"><img src="./images/design/fdroid.png" alt="F-Droid" title="F-Droid" /></a>
-		</div>
-		<div class="col-xs-6 col-md-3">
-			<a target="_blank" href="http://www.amazon.com/WikiJourney/dp/B0191WMI52/"><img src="./images/design/amazon.png" alt="Amazon" title="Amazon" /></a>
-		</div>
-		<div class="col-xs-6 col-md-3">
-			<a target="_blank" href="http://wikijourney.store.aptoide.com/"><img src="./images/design/aptoide.png" alt="Aptoide" title="Aptoide" /></a>
+	<div class="container">
+		<div class="row"><h1 class="bigtitle"><?php echo _CATCHPHRASE; ?></h1></div>
+		<div class="row stores_logos_block">
+			<div class="col-xs-6 col-md-3">
+				<a target="_blank" href="https://play.google.com/store/apps/details?id=eu.wikijourney.wikijourney"><img src="./images/design/google_play.png" alt="Google Play" title="Google Play" /></a>
+			</div> 
+			<div class="col-xs-6 col-md-3">
+				<a target="_blank" href="https://f-droid.org/repository/browse/?fdid=com.wikijourney.wikijourney"><img src="./images/design/fdroid.png" alt="F-Droid" title="F-Droid" /></a>
+			</div>
+			<div class="col-xs-6 col-md-3">
+				<a target="_blank" href="http://www.amazon.com/WikiJourney/dp/B0191WMI52/"><img src="./images/design/amazon.png" alt="Amazon" title="Amazon" /></a>
+			</div>
+			<div class="col-xs-6 col-md-3">
+				<a target="_blank" href="http://wikijourney.store.aptoide.com/"><img src="./images/design/aptoide.png" alt="Aptoide" title="Aptoide" /></a>
+			</div>
 		</div>
 	</div>
 </div>
