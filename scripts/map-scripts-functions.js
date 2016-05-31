@@ -214,7 +214,7 @@ function parsePopupContent(element){
 	//Image if available
 	if(element.image_url != null)
 	{
-		popup_content += "<img class=\"POPUP_img\" src=\"" + element.image_url + "\" title=\"image\" alt=\"image\" /><br/>";
+		popup_content += "<img class=\"POPUP_img\" src=\"" + element.image_url + "\" title=\"image\" alt=\"image\" />";
 	}
 
 	popup_content += '<p class="POPUP_links">';

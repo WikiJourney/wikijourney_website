@@ -98,21 +98,27 @@ body.loading .modal {
 	font-weight: bold;
 	margin: auto;
 	text-align: center;
+	margin: 5px !important;
 }
 
 .POPUP_img {
 	max-height: 100px;
-	width: 100px;
+	width: 100px !important;
 	margin: auto;
 	display: block;
 }
 
 .POPUP_links {
 	text-align: center;
+	margin: 5px !important;
 }
 
 .easy-button-button.disabled {
   display: none;
+}
+
+.leaflet-popup-content{
+	margin: 10px;
 }
 
 /* => Cart block and children (cart elements, buttons...) */
