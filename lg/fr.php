@@ -101,6 +101,7 @@ define("_CART_IS_EMPTY_POPUP",		"Votre parcours est vide, remplissez le avant de
 define("_YOU_ARE_HERE",				"Vous êtes ici !");
 define("_CENTER_BUTTON",			"Centrer la carte");
 define("_ERROR_API",				"Erreur : l'API n'a pas répondu à temps. Peut-être que vous avez demandé un trop grand nombre de points d'intérêt. <a href=\"index.php\">Rééssayez !</a>");
+define("_LOAD_SIMPLIFIED",			"La carte ne s'affiche pas ? Essayez la version simplifiée !");
 
 //===> paths.php
 define("_CONNECT_NECESS",			"Pour récupérer vos parcours, vous devez vous connecter :");

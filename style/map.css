@@ -84,7 +84,11 @@ body.loading .modal {
 	}
 }
 
-
+#simplifiedLink {
+	display: block;
+	width: 200px;
+	margin: 30px auto;
+}
 
 /* => Map Stuff */
 #cartHideButton {
@@ -102,8 +106,8 @@ body.loading .modal {
 }
 
 .POPUP_img {
-	max-height: 100px;
-	width: 100px !important;
+	height: 100px !important;
+	max-width: 100px;
 	margin: auto;
 	display: block;
 }

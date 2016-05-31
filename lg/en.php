@@ -96,6 +96,7 @@ define("_CART_IS_EMPTY_POPUP",		"Your cart is empty, please fill it before expor
 define("_YOU_ARE_HERE",				"You're here!");
 define("_CENTER_BUTTON",			"Center on my position");
 define("_ERROR_API",				"An error occured while contacting the API. You may have asked for too many POI. <a href=\"index.php\">Go back to homepage and retry!</a>");
+define("_LOAD_SIMPLIFIED",			"Experimenting troubles with the map ? Load the simplified version !");
 
 //===> paths.php
 define("_CONNECT_NECESS",			"You need to log in to use to this function.");

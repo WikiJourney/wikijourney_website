@@ -22,7 +22,14 @@
 	}
 	?>
 	<!-- SCRIPTS -->
+	<?php
+	if(!(isset($_GET['simplified']) && $_GET['simplified'] == 1))
+	{
+		?>
 	<script src="lib/jquery/jquery-2.2.0.min.js"></script>
+		<?php
+	}
+	?>
 	<script src="lib/bootstrap/js/bootstrap.min.js"></script>
 	<script src="lib/leaflet/leaflet.js"></script>
 
@@ -34,6 +41,7 @@
 	<script src="lib/leafletawesomemarkers/leaflet.awesome-markers.min.js"></script>
 	<script src="scripts/map-scripts-functions.js"></script>
 	<script src="scripts/map-scripts.js"></script>
+	<script src="scripts/jsonparse.js"></script>
 	<?php
 	}
 	?>
@@ -52,13 +60,18 @@
 		})();
 		
 		//Navbar Logo animation
-		$(window).scroll(function() {
-			if ($(document).scrollTop() > 10) {
-				$('.logoNavbar').addClass('shrink').removeClass('notshrink');
-			} else {
-				$('.logoNavbar').removeClass('shrink').addClass('notshrink');
-			}
-		});
+		if(window.jQuery)
+		{
+			$(window).scroll(function() {
+				if ($(document).scrollTop() > 10) {
+					$('.logoNavbar').addClass('shrink').removeClass('notshrink');
+				} else {
+					$('.logoNavbar').removeClass('shrink').addClass('notshrink');
+				}
+			});
+		}
+		else
+			document.getElementsByClassName('logoNavbar')[0].className += " shrink";
 	</script>
 	<noscript><p><img src="//piwik.wikijourney.eu/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
 </body>

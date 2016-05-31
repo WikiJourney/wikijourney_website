@@ -28,19 +28,22 @@ var xhttp = new XMLHttpRequest();
 
 // ===> DOM manipulation, for responsive design
 
-//Add a button to close the drawer
-$("#cartHideButton").click(function(){
-	$("#POI_CART_BLOCK").css('left','-100%');
-});			
+if(window.jQuery)
+{
+	//Add a button to close the drawer
+	$("#cartHideButton").click(function(){
+		$("#POI_CART_BLOCK").css('left','-100%');
+	});			
 
-//Media queries (check map-script-functions.js for details)
-var mq = window.matchMedia( "(max-width: 765px)" );
+	//Media queries (check map-script-functions.js for details)
+	var mq = window.matchMedia( "(max-width: 765px)" );
 
-$( window ).resize(function() {
-	applyMediaQueries();
-});
+	$( window ).resize(function() {
+		applyMediaQueries();
+	});
 
-$body = $("body");
+	$body = $("body");
+}
 
 // ===> Creating marker objects
 
@@ -63,23 +66,26 @@ var defaultPOIIcon = L.icon({
 
 initMap(user_location);
 
-//Add a button to center the map 
-L.easyButton( 'glyphicon-screenshot', function(){
-	center();
-}, _CENTER_BUTTON).addTo(map);
+if(window.jQuery)
+{
+	//Add a button to center the map 
+	L.easyButton( 'glyphicon-screenshot', function(){
+		center();
+	}, _CENTER_BUTTON).addTo(map);
 
-//And a button to show the drawer
-var buttonDrawerMap = L.easyButton({
-  id: 'buttonDrawerMap',
-  states: [{
-    stateName: 'default-open',
-    icon: 'glyphicon-chevron-right',
-    title: _YOUR_PATH,
-    onClick: function(control) {
-      $("#POI_CART_BLOCK").css('left',0);
-    }
-  }]
-}).addTo(map);
+	//And a button to show the drawer
+	var buttonDrawerMap = L.easyButton({
+	  id: 'buttonDrawerMap',
+	  states: [{
+	    stateName: 'default-open',
+	    icon: 'glyphicon-chevron-right',
+	    title: _YOUR_PATH,
+	    onClick: function(control) {
+	      $("#POI_CART_BLOCK").css('left',0);
+	    }
+	  }]
+	}).addTo(map);
+}
 
 // ===> Setting overlays
 
@@ -92,7 +98,6 @@ L.control.layers(null, overlayMaps).addTo(map);
 for(j = 0; j < pagicon.length; ++j)
 	map.addLayer(overlayMaps[pagicon[j][2]]);
 
-
 // ===> Place markers on the map!
 if(!thePathWasSaved)
 {
@@ -100,13 +105,16 @@ if(!thePathWasSaved)
 		if(xhttp.readyState == 1)
 		{
 			console.log("Request in progress");
-			$body.addClass("loading");
+			if(window.jQuery) 
+				$body.addClass("loading");
 		}
 		if (xhttp.readyState == 4 && xhttp.status == 200) {
-			$body.removeClass("loading");
-			// ===> Parse result
-			var api_return = JSON.parse(xhttp.response);
+			if(window.jQuery) $body.removeClass("loading");
+
+			// ===> Parse return
+			var api_return = JSON.parse(xhttp.responseText);
 			console.log(api_return);
+
 			// ===> Check errors
 			if(api_return.err_check.value == true)
 			{

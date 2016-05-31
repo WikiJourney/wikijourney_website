@@ -97,6 +97,7 @@ define("_YOU_ARE_HERE",				"! انتم هنا");
 define("_CENTER_BUTTON",			"وسط الخريطة");
 define("_WELCOME_MESSAGE", "! مرحبا");
 define("_ERROR_API",				"An error occured while contacting the API. You may have asked for too many POI. <a href=\"index.php\">Go back to homepage and retry!</a>");
+define("_LOAD_SIMPLIFIED",			"Experimenting troubles with the map ? Load the simplified version !");
 
 //===> paths.php
 define("_CONNECT_NECESS",			"You need to log in to use to this function.");

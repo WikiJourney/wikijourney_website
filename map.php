@@ -33,8 +33,23 @@ limitations under the License.
 	//This include also loads translation for all the text in this page.
 
 	//==> In case the user arrived directly on the page, he's redirected to the index
-	if(!(isset($_POST['from']) OR isset($_GET['id'])))
+	if(!(isset($_POST['from']) OR isset($_GET['id']) OR isset($_GET['simplified'])))
 		header("Location: index.php");
+
+	//****************************************************************
+	//*********************** Simplified version *********************
+	//****************************************************************
+	if(isset($_GET['simplified']) && $_GET['simplified'] == 1)	
+	{
+		$user_longitude = htmlspecialchars($_GET['user_longitude']);
+		$user_latitude = htmlspecialchars($_GET['user_latitude']);
+		$maxPOI = htmlspecialchars($_GET['range']);
+		$range = htmlspecialchars($_GET['range']);
+
+		$api_url = $CONFIG_API_URL."?displayImg=1&wikivoyage=1&long=".$user_longitude."&lat=".$user_latitude."&lg=".$language."&maxPOI=".$maxPOI."&range=".$range;
+		echo "<!-- ".$api_url."-->"; //For debugging purpose.
+		$thePathWasSaved = false;
+	}
 
 	//****************************************************************
 	//************* The user is looking for POI around ***************
@@ -203,6 +218,10 @@ if(isset($api_answer_array) && array_key_exists("guides",$api_answer_array) && $
 ?>
 
 <div id="mapAndCartContainer">
+	<?php
+	if(!(isset($_GET['simplified']) && $_GET['simplified'] == 1))
+	{
+	?>
 	<div id="POI_CART_BLOCK">
 		<button id="cartHideButton" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span></button>
 		<div id="POI_CART_TITLE"><?php echo _YOUR_PATH; ?></div>
@@ -216,8 +235,16 @@ if(isset($api_answer_array) && array_key_exists("guides",$api_answer_array) && $
 			</form>
 		</div>
 	</div>
+	<?php
+	}
+	?>
 
-	<div id="mapContainer"><div id="map" class="map"><div class="modal"><!-- Loading --></div><!-- THIS IS GOING TO BE FILLED BY THE MAP THANKS TO LEAFLET --></div></div>
+	<div id="mapContainer"><div id="map" class="map">
+		<div class="modal"><!-- Loading --></div>
+		<!-- THIS IS GOING TO BE FILLED BY THE MAP THANKS TO LEAFLET -->
+		<a id="simplifiedLink" href="<?php echo "map.php?simplified=1&user_latitude=".$user_latitude."&user_longitude=".$user_longitude."&maxPOI=".$maxPOI."&range=".$range; ?>"><?php echo _LOAD_SIMPLIFIED; ?></a>
+		</div>
+	</div>
 
 	
 </div>		

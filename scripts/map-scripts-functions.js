@@ -219,7 +219,8 @@ function parsePopupContent(element){
 
 	popup_content += '<p class="POPUP_links">';
 	//Button to put it in the cart
-	popup_content += "<a title=\" "+  _MAP_CART_LINK +"\" href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\">"+ _MAP_CART_LINK +"</a>";
+	if(window.jQuery)
+		popup_content += "<a title=\" "+  _MAP_CART_LINK +"\" href=\"#\" onclick=\"addToCart(" + i + ",'" + cartList +"'); return false;\">"+ _MAP_CART_LINK +"</a>";
 	//Link to Wikipedia if available
 	if(element.sitelink != null)
 	{
