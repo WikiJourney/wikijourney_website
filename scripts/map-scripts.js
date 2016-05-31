@@ -87,6 +87,8 @@ if(window.jQuery)
 	}).addTo(map);
 }
 
+applyMediaQueries();
+
 // ===> Setting overlays
 
 for(j = 0; j < pagicon.length; ++j) {
