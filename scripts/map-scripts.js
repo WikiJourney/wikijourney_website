@@ -38,7 +38,6 @@ var mq = window.matchMedia( "(max-width: 765px)" );
 
 $( window ).resize(function() {
 	applyMediaQueries();
-	$("#POI_CART_BLOCK").css('left','0');
 });
 
 $body = $("body");
@@ -81,9 +80,6 @@ var buttonDrawerMap = L.easyButton({
     }
   }]
 }).addTo(map);
-
-applyMediaQueries();
-
 
 // ===> Setting overlays
 

@@ -272,6 +272,7 @@ function applyMediaQueries(){
 	if(mq.matches)
 	{
 		$("#cartHideButton").show();
+		$("#POI_CART_BLOCK").css('left','-100%');
 		buttonDrawerMap.enable();
 	}
 
@@ -280,6 +281,7 @@ function applyMediaQueries(){
 	{
 		$("#cartHideButton").hide();
 		buttonDrawerMap.disable();
+		$("#POI_CART_BLOCK").css('left','0');
 	}
 
 	//All cases
