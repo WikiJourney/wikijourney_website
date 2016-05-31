@@ -73,16 +73,16 @@ function addToCart(i) {
 			flag = 1;
 	}
 
-	if(j == 0)
-		setTimeout(function(){
-			$("#POI_CART_BLOCK").css('left',0);
-		}, 300);
-
 	if(flag == 0) //If not, add it
 		cartList[cartList.length] = poi_array[i];
 
 	map.closePopup();
 	reloadCart(cartList);
+
+	//Play an animation to show that a POI was added
+	var p = $("#buttonDrawerMap");
+	p.addClass("buttonDrawerActive");
+	setTimeout(function(){p.removeClass("buttonDrawerActive");}, 1000);
 }
 
 //center() : Center the map on the user's position when button is clicked
@@ -202,7 +202,7 @@ function initMap(user_location) {
 
 	L.circle([user_location.latitude, user_location.longitude], range*1000, circle_options).addTo(map);
 
-	map.on('move',function(){
+	map.on('dragstart',function(){
 		map.closePopup();
 	});
 }

@@ -121,6 +121,17 @@ body.loading .modal {
 	margin: 10px;
 }
 
+#buttonDrawerMap {
+	-webkit-transition: 0.5s ease;
+	transition: 0.5s ease;
+}
+
+.buttonDrawerActive {
+	background-color: #ff6e70 !important;
+	font-size: 2em;
+	padding: 10px;
+}
+
 /* => Cart block and children (cart elements, buttons...) */
 
 #POI_CART_TITLE {

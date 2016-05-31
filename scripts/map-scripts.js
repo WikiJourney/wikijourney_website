@@ -64,17 +64,26 @@ var defaultPOIIcon = L.icon({
 
 initMap(user_location);
 
-//Add a button to show the drawer
-var buttonDrawerMap = L.easyButton( 'glyphicon-map-marker', function(){
-	$("#POI_CART_BLOCK").css('left',0);
-}, _YOUR_PATH).addTo(map);
-
-//And another one to center the map 
+//Add a button to center the map 
 L.easyButton( 'glyphicon-screenshot', function(){
 	center();
 }, _CENTER_BUTTON).addTo(map);
 
+//And a button to show the drawer
+var buttonDrawerMap = L.easyButton({
+  id: 'buttonDrawerMap',
+  states: [{
+    stateName: 'default-open',
+    icon: 'glyphicon-chevron-right',
+    title: _YOUR_PATH,
+    onClick: function(control) {
+      $("#POI_CART_BLOCK").css('left',0);
+    }
+  }]
+}).addTo(map);
+
 applyMediaQueries();
+
 
 // ===> Setting overlays
 
