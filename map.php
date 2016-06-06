@@ -211,19 +211,7 @@ user_location['longitude'] = 	<?php echo $user_longitude; ?>;
 			<div onclick="wikiVoyageToggleDrawer();" class="WikiVoyageTitle"><span id="wikiVoyageToggleButton" class="glyphicon glyphicon-chevron-down"></span><?php echo _SEE_WIKIVOYAGE_GUIDES; ?></div>
 			<div id="WikiVoyageThumbnailContainer">
 				<div id="WikiVoyageThumbnailContainerScroll">
-					<?php
-					/*
-						for($i = 0; $i < $api_answer_array['guides']['nb_guides']; $i++)
-						{
-								echo '<span class="WikiVoyageElement">';
-								echo '<a target="_blank" href="'. $guides_array[$i]['sitelink'] .'">';
-								echo $guides_array[$i]['title'];
-								if(isset($guides_array[$i]['thumbnail']))
-									echo '<br/><img class="WikiVoyageImg" src="'.$guides_array[$i]['thumbnail'].'" />';
-							echo '</a></span>';
-						}
-				*/
-					?>
+				<!-- PLACE WHERE WIKIVOYAGE GUIDES ARE DEPLOYED -->
 				</div>
 			</div>
 		</div>

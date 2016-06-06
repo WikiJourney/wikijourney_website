@@ -283,13 +283,13 @@ min-width: 100px;
 border-radius: 3px;
 }
 
-.WikiVoyageElement a {
-color: black;
+.WikiVoyageElement {
+color: white;
 font-size: 0.9em;
 }
 
-.WikiVoyageElement a:hover {
-color: rgb(255,50,50);
+.WikiVoyageElement:hover {
+background-color: rgba(137, 160, 195, 0.8);
 }
 
 .WikiVoyageImg {

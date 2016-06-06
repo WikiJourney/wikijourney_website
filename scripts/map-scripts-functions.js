@@ -233,14 +233,14 @@ function parsePopupContent(element){
 
 //parseWikiVoyageElement(element) : given a wikivoyage element, it returns the string for integration
 function parseWikiVoyageElement(element) {
-	var html = '<div class="WikiVoyageElement">';
-		html += '<a target="_blank" href="'+element.sitelink+'">';
+	var html = '<a target="_blank" href="'+element.sitelink+'">';
+		html += '<div class="WikiVoyageElement">';
 		html += element.title;
 		
 		if(element.thumbnail != null)
 			html += '<img class="WikiVoyageImg" src="' + element.thumbnail + '" />';
 		
-		html += '</a></div>';
+		html += '</div></a>';
 
 	return html;
 }
