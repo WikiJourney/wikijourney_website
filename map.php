@@ -101,7 +101,7 @@ limitations under the License.
 		//****************************************************************
 
 		//==> Make the url
-		$api_url = $CONFIG_API_URL."?displayImg=1&wikivoyage=1&long=".$user_longitude."&lat=".$user_latitude."&lg=".$language."&maxPOI=".$maxPOI."&range=".$range;
+		$api_url = $CONFIG_API_URL."?wikivoyage=1&long=".$user_longitude."&lat=".$user_latitude."&lg=".$language."&maxPOI=".$maxPOI."&range=".$range;
 
 		echo "<!-- ".$api_url."-->"; //For debugging purpose.
 
@@ -163,6 +163,8 @@ var _MAP_CART_LINK = 			"<?php echo _MAP_CART_LINK; ?>";
 var _MAP_POI_LINK = 			"<?php echo _MAP_POI_LINK; ?>";
 var _YOUR_PATH = 				"<?php echo _YOUR_PATH; ?>";
 var _CENTER_BUTTON = 			"<?php echo _CENTER_BUTTON; ?>";
+var _SEE_WIKIVOYAGE_GUIDES =	"<?php echo _SEE_WIKIVOYAGE_GUIDES; ?>";
+
 
 var thePathWasSaved = 			<?php echo ($thePathWasSaved) ? "true" : "false"; ?>;
 
@@ -182,49 +184,14 @@ user_location['longitude'] = 	<?php echo $user_longitude; ?>;
 </script>
 
 
-
-<?php
-	//****************************************************************
-	//************** Display Guides from WikiVoyage ******************
-	//****************************************************************
-
-if(isset($api_answer_array) && array_key_exists("guides",$api_answer_array) && $api_answer_array['guides']['nb_guides'] != 0) //If we got guides from WikiVoyage, display it
-{
-	$guides_array = $api_answer_array['guides']['guides_info'];
-?>
-	<div id="WikiVoyageBox">
-		<p>
-			<span id="WikiVoyageTitle"><?php echo _SEE_WIKIVOYAGE_GUIDES; ?></span>
-			<div id="WikiVoyageThumbnailContainer">
-				<div id="WikiVoyageThumbnailContainerScroll">
-				<?php
-					for($i = 0; $i < $api_answer_array['guides']['nb_guides']; $i++)
-					{
-						echo '<span class="WikiVoyageElement">';
-						echo '<a target="_blank" href="'. $guides_array[$i]['sitelink'] .'">';
-						echo $guides_array[$i]['title'];
-						if(isset($guides_array[$i]['thumbnail']))
-							echo '<br/><img class="WikiVoyageImg" src="'.$guides_array[$i]['thumbnail'].'" />';
-						echo '</a></span>';
-					}
-
-				?>
-				</div>
-			</div>
-		</p>
-	</div>
-<?php
-}//End displaying guides from Wikivoyage
-?>
-
 <div id="mapAndCartContainer">
 	<?php
 	if(!(isset($_GET['simplified']) && $_GET['simplified'] == 1))
 	{
 	?>
-	<div id="POI_CART_BLOCK">
-		<button id="cartHideButton" class="btn btn-default"><span class="glyphicon glyphicon-chevron-left"></span></button>
-		<div id="POI_CART_TITLE"><?php echo _YOUR_PATH; ?></div>
+	<div id="POI_CART_BLOCK" class="drawer drawer-left">
+		<button id="cartHideButton" class="btn btn-default drawer-button"><span class="glyphicon glyphicon-chevron-left"></span></button>
+		<div id="POI_CART_TITLE" class="drawer-title"><?php echo _YOUR_PATH; ?></div>
 		<div id="POI_CART"><!-- THIS IS GOING TO BE FILLED BY CART ELEMENTS IN JAVASCRIPT --></div>
 		<div id="POI_CART_FOOTER">
 			<input type="submit" id="razCart" value="<?php echo _CLEAR_CART; ?>" onclick="razCart();" class="btn btn-primary" />
@@ -239,10 +206,31 @@ if(isset($api_answer_array) && array_key_exists("guides",$api_answer_array) && $
 	}
 	?>
 
-	<div id="mapContainer"><div id="map" class="map">
-		<div class="modal"><!-- Loading --></div>
-		<!-- THIS IS GOING TO BE FILLED BY THE MAP THANKS TO LEAFLET -->
-		<a id="simplifiedLink" href="<?php echo "map.php?simplified=1&user_latitude=".$user_latitude."&user_longitude=".$user_longitude."&maxPOI=".$maxPOI."&range=".$range; ?>"><?php echo _LOAD_SIMPLIFIED; ?></a>
+	<div id="mapContainer">
+		<div id="WikiVoyageBox" class="drawer drawer-bottom">
+			<div onclick="wikiVoyageToggleDrawer();" class="WikiVoyageTitle"><span id="wikiVoyageToggleButton" class="glyphicon glyphicon-chevron-down"></span><?php echo _SEE_WIKIVOYAGE_GUIDES; ?></div>
+			<div id="WikiVoyageThumbnailContainer">
+				<div id="WikiVoyageThumbnailContainerScroll">
+					<?php
+					/*
+						for($i = 0; $i < $api_answer_array['guides']['nb_guides']; $i++)
+						{
+								echo '<span class="WikiVoyageElement">';
+								echo '<a target="_blank" href="'. $guides_array[$i]['sitelink'] .'">';
+								echo $guides_array[$i]['title'];
+								if(isset($guides_array[$i]['thumbnail']))
+									echo '<br/><img class="WikiVoyageImg" src="'.$guides_array[$i]['thumbnail'].'" />';
+							echo '</a></span>';
+						}
+				*/
+					?>
+				</div>
+			</div>
+		</div>
+		<div id="map" class="map">
+			<div class="modal"><!-- Loading --></div>
+			<!-- THIS IS GOING TO BE FILLED BY THE MAP THANKS TO LEAFLET -->
+			<a id="simplifiedLink" href="<?php echo "map.php?simplified=1&user_latitude=".$user_latitude."&user_longitude=".$user_longitude."&maxPOI=".$maxPOI."&range=".$range; ?>"><?php echo _LOAD_SIMPLIFIED; ?></a>
 		</div>
 	</div>
 

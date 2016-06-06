@@ -93,7 +93,7 @@ define("_MAP_POI_LINK",				"Voir sur Wikipédia");
 define("_MAP_CART_LINK",			"Ajouter au parcours !");
 define("_MAP_POI_TYPE_FILE",		"lg/fr.txt");
 define("_LOOKING_FOR",				"Recherche des points d'intérêt à proximité : ");
-define("_SEE_WIKIVOYAGE_GUIDES",	"Consultez les guides WikiVoyage autour de vous !");
+define("_SEE_WIKIVOYAGE_GUIDES",	"Guides WikiVoyage");
 define("_YOUR_PATH",				"Votre Parcours");
 define("_CLEAR_CART",				"Vider");
 define("_SAVE_CART",				"Sauvegarder !");

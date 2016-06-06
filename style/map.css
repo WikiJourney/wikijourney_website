@@ -29,10 +29,10 @@ body.loading .modal {
 
 /* => Blocks Positionning */
 
-
-#map{ 
-	height: 100%;
+#mapAndCartContainer{
+	position: relative;
 	width: 100%;
+	height:100%; 
 }
 
 #mapContainer{
@@ -44,11 +44,21 @@ body.loading .modal {
 	
 }
 
-#POI_CART_BLOCK {
-	position: absolute;
-	z-index: 5000;
-	background-color: white;
+#map{ 
 	height: 100%;
+	width: 100%;
+}
+
+#simplifiedLink {
+	display: block;
+	width: 200px;
+	margin: 30px auto;
+}
+
+.drawer {
+	position: absolute;
+	background-color: white;
+	
 
 	-webkit-box-shadow: 20px 12px 6px -6px #999;
 	-moz-box-shadow: 20px 12px 6px -6px #999;
@@ -59,17 +69,30 @@ body.loading .modal {
 	
 }
 
-#mapAndCartContainer{
-	position: relative;
+.drawer-left{
+	height: 100%;
+}
+
+.drawer-bottom{
 	width: 100%;
-	height:100%; 
+	bottom: -50px; /* Hidden in the beginning, JS will show it */
+}
+
+#POI_CART_BLOCK{
+	z-index: 6000;
+}
+
+#WikiVoyageBox{
+	z-index: 5000;
+	background-color: rgba(255,255,255,0.8); 
+	padding: 0 20px 0 20px;
 }
 
 @media screen and (max-width: 765px){
 	#mapContainer{
 		width:100%;
 	}
-	#POI_CART_BLOCK {
+	.drawer-left {
 		width:100%;
 		left: -100%;
 	}
@@ -79,24 +102,55 @@ body.loading .modal {
 		left:30%;
 		width: 70%;
 		}
-	#POI_CART_BLOCK {
+	.drawer-left {
 		width: 30%;
 	}
 }
 
-#simplifiedLink {
-	display: block;
-	width: 200px;
-	margin: 30px auto;
-}
-
-/* => Map Stuff */
-#cartHideButton {
+/* => Drawer style and properties */
+.drawer-button {
 	display:none;
 	position: absolute;
 	top: 10px;
 	left: 30px;
 }
+
+.drawer-title{
+	font-family: "Helvetica","Trebuchet MS",sans;
+	font-size: 22px;
+	text-decoration: none;
+	text-align:center;
+	padding: 15px;
+	width: 100%;
+	background-color: rgba(137, 160, 195, 0.8);
+	color: white;
+}
+
+.WikiVoyageTitle{
+	border-radius: 10px 10px 0 0;
+	position: absolute;
+	z-index: 5000;
+	top: calc(-1.5em - 8px);
+	left: 20px;
+	font-size: 1.2em;
+	text-align: center;
+	font-weight: bold;
+	padding: 5px 20px 5px 20px;
+	background-color: rgba(255,255,255,0.8); 
+	color : rgb(120, 120, 195);
+	cursor: pointer;
+}
+
+#wikiVoyageToggleButton{
+	cursor: pointer;
+}
+
+.WikiVoyageTitle .glyphicon{
+	vertical-align: text-bottom;
+	margin-right: 20px;
+}
+
+/* => Map Stuff */
 
 .POPUP_title {
 	font-weight: bold;
@@ -136,18 +190,8 @@ body.loading .modal {
 	padding: 10px;
 }
 
-/* => Cart block and children (cart elements, buttons...) */
 
-#POI_CART_TITLE {
-	font-family: "Helvetica","Trebuchet MS",sans;
-	font-size: 22px;
-	text-decoration: none;
-	text-align:center;
-	padding: 15px;
-	width: 100%;
-	background-color: rgba(137, 160, 195, 0.8);
-	color: white;
-}
+/* => Cart block and children (cart elements, buttons...) */
 
 #POI_CART {
 	overflow-y: auto;
@@ -204,31 +248,15 @@ body.loading .modal {
 
 /* => WikiVoyage section */
 
-#WikiVoyageTitle {
-color: rgb(255,99,99);
-font-size: 1.2em;
-margin-bottom: 10px;
-display: block;
-font-weight: bold;
-}
-
-#WikiVoyageBox {
-width: 95%;
-padding-top: 20px;
-height:200px;
-margin: auto;
-}
-
 #WikiVoyageThumbnailContainer {
-overflow-x: scroll;
 overflow-y: hidden;
-margin: auto;
-height: 160px;
+overflow-x: auto;
+padding: 7px 0 5px 0;
 width: 100%;
+margin-bottom: 4px;
 }
 
 #WikiVoyageThumbnailContainerScroll {
-width: auto;
 white-space: nowrap;
 }
 
@@ -239,26 +267,25 @@ background-color:#eeeeee;
 }
 
 #WikiVoyageThumbnailContainer::-webkit-scrollbar-thumb {
-background-color:rgb(174,203,219);
+background-color:rgb(137, 160, 195);
 border-radius:4px;
 }
 
 .WikiVoyageElement {
-height: 130px;
+height: calc(100px + 0.9em + 22px);
 display: inline-block;
 text-align: center;
-vertical-align: top;
 margin-left: 5px;
+margin-right: 5px;
 padding: 8px;
-background-color: rgb(174,203,219);
+background-color: rgb(137, 160, 195);
 min-width: 100px;
-font-family: "Calibri",Sans;
-font-size: 0.9em;
 border-radius: 3px;
 }
 
 .WikiVoyageElement a {
-color:black;
+color: black;
+font-size: 0.9em;
 }
 
 .WikiVoyageElement a:hover {
@@ -266,6 +293,7 @@ color: rgb(255,50,50);
 }
 
 .WikiVoyageImg {
-margin-top: 8px;
+display: block;
 height: 100px;
+margin: auto;
 }

@@ -231,6 +231,20 @@ function parsePopupContent(element){
 	return popup_content;
 }
 
+//parseWikiVoyageElement(element) : given a wikivoyage element, it returns the string for integration
+function parseWikiVoyageElement(element) {
+	var html = '<div class="WikiVoyageElement">';
+		html += '<a target="_blank" href="'+element.sitelink+'">';
+		html += element.title;
+		
+		if(element.thumbnail != null)
+			html += '<img class="WikiVoyageImg" src="' + element.thumbnail + '" />';
+		
+		html += '</a></div>';
+
+	return html;
+}
+
 function placePOI(){
 	for(i = 0; i < poi_array_decode.nb_poi; ++i)
 	{
@@ -267,6 +281,17 @@ function placePOI(){
 	}
 }
 
+function placeWikiVoyage(guides){
+	var i;
+	var container = document.getElementById('WikiVoyageThumbnailContainerScroll');
+	container.innerHTML = "";
+
+	for(i = 0; i < guides.length; i ++)
+	{
+		container.innerHTML += parseWikiVoyageElement(guides[i]);
+	}
+}
+
 //applyMediaQueries() : Set a series of medias queries for responsive design
 function applyMediaQueries(){
 	//Short screen, with drawer
@@ -287,4 +312,23 @@ function applyMediaQueries(){
 
 	//All cases
 	$("#POI_CART").height($("#POI_CART_BLOCK").height() - $("#POI_CART_TITLE").height() - $("#POI_CART_FOOTER").height() - 50);
+}
+
+function wikiVoyageToggleDrawer(){
+	if(isWikiVoyageOpen)
+	{
+		document.getElementById("WikiVoyageBox").style.bottom = "-165px";
+		isWikiVoyageOpen = false;
+	}
+	else
+	{
+		document.getElementById("WikiVoyageBox").style.bottom = 0;
+		isWikiVoyageOpen = true;
+	}
+	
+	if(window.jQuery)
+	{
+		$("#wikiVoyageToggleButton").toggleClass("glyphicon-chevron-down");
+		$("#wikiVoyageToggleButton").toggleClass("glyphicon-chevron-up");
+	}
 }

@@ -17,7 +17,6 @@ limitations under the License.
 */
 
 // ===> Variables declaration
-
 var cartList = new Array();
 var j;
 var ismerged = false;
@@ -25,15 +24,19 @@ var overlayMaps = new Array();
 var map;
 var routing_poi_list = new Array();
 var xhttp = new XMLHttpRequest();
+var isWikiVoyageOpen = true;
 
 // ===> DOM manipulation, for responsive design
 
 if(window.jQuery)
 {
-	//Add a button to close the drawer
+	//Add buttons to close drawers
 	$("#cartHideButton").click(function(){
 		$("#POI_CART_BLOCK").css('left','-100%');
-	});			
+	});	
+	$("#wikivoyageHideButton").click(function(){
+		$("#WikiVoyageBox").css('left','-100%');
+	}).show();			
 
 	//Media queries (check map-script-functions.js for details)
 	var mq = window.matchMedia( "(max-width: 765px)" );
@@ -73,7 +76,7 @@ if(window.jQuery)
 		center();
 	}, _CENTER_BUTTON).addTo(map);
 
-	//And a button to show the drawer
+	//A button to show the POI drawer
 	var buttonDrawerMap = L.easyButton({
 	  id: 'buttonDrawerMap',
 	  states: [{
@@ -101,6 +104,7 @@ for(j = 0; j < pagicon.length; ++j)
 	map.addLayer(overlayMaps[pagicon[j][2]]);
 
 // ===> Place markers on the map!
+
 if(!thePathWasSaved)
 {
 	xhttp.onreadystatechange = function() {
@@ -130,8 +134,14 @@ if(!thePathWasSaved)
 
 			// ===> Place on map !
 			placePOI();
+
+			// ===> And now get WikiVoyage guides
+			if (api_return.guides.nb_guides != 0) {
+				placeWikiVoyage(api_return.guides.guides_info);  
+				document.getElementById('WikiVoyageBox').style.bottom = 0;
+			}
 		}
-	};
+	}
 	xhttp.open("GET", api_link, true);
 	xhttp.send();
 }

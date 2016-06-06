@@ -88,7 +88,7 @@ define("_MAP_POI_LINK",				"الرابط ويكيبيديا");
 define("_MAP_CART_LINK",			"Add to your path!");
 define("_MAP_POI_TYPE_FILE",		"lg/ar.txt");
 define("_LOOKING_FOR",				" : البحث عن المواقع القريبة");
-define("_SEE_WIKIVOYAGE_GUIDES",	"! استشيروا ادلة ويكيفواياج حولكم");
+define("_SEE_WIKIVOYAGE_GUIDES",	"WikiVoyage guides!");
 define("_YOUR_PATH",				"مساركم");
 define("_CLEAR_CART",				"افراغ");
 define("_SAVE_CART",				"! احفظ");

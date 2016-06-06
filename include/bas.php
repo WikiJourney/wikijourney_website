@@ -41,7 +41,6 @@
 	<script src="lib/leafletawesomemarkers/leaflet.awesome-markers.min.js"></script>
 	<script src="scripts/map-scripts-functions.js"></script>
 	<script src="scripts/map-scripts.js"></script>
-	<script src="scripts/jsonparse.js"></script>
 	<?php
 	}
 	?>

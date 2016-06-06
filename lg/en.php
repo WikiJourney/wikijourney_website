@@ -88,7 +88,7 @@ define("_MAP_POI_LINK",				"See on Wikipedia");
 define("_MAP_CART_LINK",			"Add to your path!");
 define("_MAP_POI_TYPE_FILE",		"lg/en.txt");
 define("_LOOKING_FOR",				"Looking for POI around the given address: ");
-define("_SEE_WIKIVOYAGE_GUIDES",	"There are WikiVoyage guides around you.");
+define("_SEE_WIKIVOYAGE_GUIDES",	"WikiVoyage guides!");
 define("_YOUR_PATH",				"Your Path");
 define("_CLEAR_CART",				"Clear Cart");
 define("_SAVE_CART",				"Save Cart!");
