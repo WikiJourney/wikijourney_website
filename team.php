@@ -23,7 +23,6 @@ limitations under the License.
 
 	<h2><?php echo _TEAM_WHO_R_WE; ?></h2>
 	<p>
-	<img src="./images/design/centrale_logo.jpg" alt="Centrale Lille" style="float: right; width: 60px; padding-left: 30px;"/>
 	<?php echo _TEAM_QUICKDESC; ?>
 	</p>
 

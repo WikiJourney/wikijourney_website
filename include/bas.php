@@ -7,14 +7,14 @@
 		<div class="row">
 			<div class="col-sm-6 text-center">
 				<h6><?php echo _OUR_PARTNERS; ?></h6>
-				<p  class="text-center"><a target="_blank" href="http://www.wikimedia.fr/"><img src="./images/design/wikimedia_france_logo.png" title="Wikimedia France" alt="Wikimedia France"/></a></p>
+				<p  class="text-center"><a target="_blank" href="http://www.wikimedia.fr/"><img src="./images/design/external_logos/wikimedia_france_logo.png" title="Wikimedia France" alt="Wikimedia France" height="40" width="40" /></a></p>
 			</div>
 			<div class="col-sm-6 text-center">
 				<h6><?php echo _FOLLOW_US; ?></h6>
-				<p class="text-center"><a target="_blank" href="https://www.facebook.com/WikiJourney"><img src="./images/design/fb.png" alt="Facebook" title="Facebook" /></a>
-				<a target="_blank" href="https://twitter.com/WikiJourney"><img src="./images/design/twitter.png" alt="Twitter" title="Twitter" /></a>
-				<a target="_blank" href="https://github.com/WikiJourney/"><img src="./images/design/github.png" alt="GitHub" title="GitHub" /></a>
-				<a target="_blank" href="http://blog.wikijourney.eu"><img src="./images/design/pluxml.png" alt="Our Blog!" title="Our Blog!" /></a></p>
+				<p class="text-center"><a target="_blank" href="https://www.facebook.com/WikiJourney"><img src="./images/design/external_logos/fb.png" alt="Facebook" title="Facebook" height="40" width="40" /></a>
+				<a target="_blank" href="https://twitter.com/WikiJourney"><img src="./images/design/external_logos/twitter.png" alt="Twitter" title="Twitter" height="40" width="49" /></a>
+				<a target="_blank" href="https://github.com/WikiJourney/"><img src="./images/design/external_logos/github.png" alt="GitHub" title="GitHub" height="40" width="40" /></a>
+				<a target="_blank" href="http://blog.wikijourney.eu"><img src="./images/design/external_logos/pluxml.png" alt="Our Blog!" title="Our Blog!" height="40" width="40" /></a></p>
 			</div>
 		</div>
 	</div>
@@ -51,7 +51,7 @@
 		_paq.push(['trackPageView']);
 		_paq.push(['enableLinkTracking']);
 		(function() {
-			var u="//piwik.wikijourney.eu/";
+			var u="https://piwik.wikijourney.eu/";
 			_paq.push(['setTrackerUrl', u+'piwik.php']);
 			_paq.push(['setSiteId', 1]);
 			var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
@@ -72,6 +72,6 @@
 		else
 			document.getElementsByClassName('logoNavbar')[0].className += " shrink";
 	</script>
-	<noscript><p><img src="//piwik.wikijourney.eu/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+	<noscript><p><img src="https://piwik.wikijourney.eu/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
 </body>
 </html>

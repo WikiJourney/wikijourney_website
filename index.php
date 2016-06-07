@@ -33,16 +33,16 @@ include('./include/haut.php');
 		<div class="row"><h1 class="bigtitle"><?php echo _CATCHPHRASE; ?></h1></div>
 		<div class="row stores_logos_block">
 			<div class="col-xs-6 col-md-3">
-				<a target="_blank" href="https://play.google.com/store/apps/details?id=eu.wikijourney.wikijourney"><img src="./images/design/google_play.png" alt="Google Play" title="Google Play" /></a>
+				<a target="_blank" href="https://play.google.com/store/apps/details?id=eu.wikijourney.wikijourney"><img src="./images/design/stores/google_play.png" alt="Google Play" title="Google Play" height="40px" width="135px" /></a>
 			</div> 
 			<div class="col-xs-6 col-md-3">
-				<a target="_blank" href="https://f-droid.org/repository/browse/?fdid=com.wikijourney.wikijourney"><img src="./images/design/fdroid.png" alt="F-Droid" title="F-Droid" /></a>
+				<a target="_blank" href="https://f-droid.org/repository/browse/?fdid=com.wikijourney.wikijourney"><img src="./images/design/stores/fdroid.png" alt="F-Droid" title="F-Droid" height="40px" width="114px" /></a>
 			</div>
 			<div class="col-xs-6 col-md-3">
-				<a target="_blank" href="http://www.amazon.com/WikiJourney/dp/B0191WMI52/"><img src="./images/design/amazon.png" alt="Amazon" title="Amazon" /></a>
+				<a target="_blank" href="http://www.amazon.com/WikiJourney/dp/B0191WMI52/"><img src="./images/design/stores/amazon.png" alt="Amazon" title="Amazon" height="40px" width="116px" /></a>
 			</div>
 			<div class="col-xs-6 col-md-3">
-				<a target="_blank" href="http://wikijourney.store.aptoide.com/"><img src="./images/design/aptoide.png" alt="Aptoide" title="Aptoide" /></a>
+				<a target="_blank" href="http://wikijourney.store.aptoide.com/"><img src="./images/design/stores/aptoide.png" alt="Aptoide" title="Aptoide" height="40px" width="132px" /></a>
 			</div>
 		</div>
 	</div>
