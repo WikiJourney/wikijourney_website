@@ -51,7 +51,7 @@
 		_paq.push(['trackPageView']);
 		_paq.push(['enableLinkTracking']);
 		(function() {
-			var u="//piwik.wikijourney.eu/";
+			var u="https://piwik.wikijourney.eu/";
 			_paq.push(['setTrackerUrl', u+'piwik.php']);
 			_paq.push(['setSiteId', 1]);
 			var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
@@ -72,6 +72,6 @@
 		else
 			document.getElementsByClassName('logoNavbar')[0].className += " shrink";
 	</script>
-	<noscript><p><img src="//piwik.wikijourney.eu/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+	<noscript><p><img src="https://piwik.wikijourney.eu/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
 </body>
 </html>
