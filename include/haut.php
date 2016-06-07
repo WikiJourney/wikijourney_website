@@ -47,7 +47,7 @@ else
 	<title><?php echo _TITLE; ?></title>
 	<meta charset="utf-8">
 	<meta name=viewport content="width=device-width,initial-scale=1">
-	<link rel="shortcut icon" href="./images/design/logo_small.png" />
+	<link rel="shortcut icon" href="./images/design/wj_logos/logo_small.png" />
 	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="lib/leaflet/leaflet.css">
 	<link rel="stylesheet" media="screen" type="text/css" href="./style/design.css" />
@@ -82,7 +82,7 @@ else
 				</button>
 				<div class="navbar-header">
 					<a class="navbar-brand" href="index.php">
-						<img alt="Logo WikiJourney" class="logoNavbar <?php if(isset($INCLUDE_MAP_PROPERTIES)) echo "shrink"; else echo "notshrink"; ?>" src="./images/design/logo_small.png"> WikiJourney
+						<img alt="Logo WikiJourney" class="logoNavbar <?php if(isset($INCLUDE_MAP_PROPERTIES)) echo "shrink"; else echo "notshrink"; ?>" src="./images/design/wj_logos/logo_small.png"> WikiJourney
 					</a>
 				</div>
 			</div>
