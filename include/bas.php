@@ -31,12 +31,12 @@
 	}
 	?>
 	<script src="lib/bootstrap/js/bootstrap.min.js"></script>
-	<script src="lib/leaflet/leaflet.js"></script>
 
 	<?php
 	if(isset($INCLUDE_MAP_PROPERTIES)) //Special scripts for the map
 	{ 
 	?>
+	<script src="lib/leaflet/leaflet.js"></script>
 	<script src="lib/easy-button/easy-button.js"></script>
 	<script src="lib/leafletawesomemarkers/leaflet.awesome-markers.min.js"></script>
 	<script src="scripts/map-scripts-functions.js"></script>
