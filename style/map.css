@@ -225,12 +225,17 @@ body.loading .modal {
 
 .eltCart {
 	font-family: "Calibri",Sans;
-	width: 90%;
+	width: 100%;
 	border-bottom: 2px solid rgb(248,99,99);
 	min-height: 74px;
 	margin: auto;
 	text-align: center;
-	padding: 5px;
+	background-size: cover;
+
+}
+
+.eltCartContent{
+    background-color: rgba(255,255,255,0.85);
 }
 
 .eltCartNumber {

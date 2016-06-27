@@ -129,24 +129,7 @@ function reloadCart() {
 	//Setting the cart with the POI in cartlist
 	for(i = 0; i <= cartList.length - 1; i++)//Display
 	{
-		htmlElement =
-		"<div class=\"eltCart\"><div class=\"eltCartNumber\">" + (i+1) +"</div><div>"
-		+cartList[i].name.charAt(0).toUpperCase() + cartList[i].name.substring(1).toLowerCase() + "<br/>";
-
-		if(cartList[i].type_name != null)
-		{
-			htmlElement += "<i>" + cartList[i].type_name.charAt(0).toUpperCase() + cartList[i].type_name.substring(1).toLowerCase() + "</i><br/>";
-		}
-		else
-			htmlElement += "<br/>";
-
-		if(cartList[i].sitelink != null)
-		{
-			htmlElement  += "<a href=" + cartList[i].sitelink + ">" + _MAP_POI_LINK + "</a>";
-		}
-
-		htmlElement += "<br/><span class=\"POI_CART_icons\"><span class=\"glyphicon glyphicon-chevron-up\" onclick=\" invertPOI("+ i +",'up'); \"></span>   <span class=\"glyphicon glyphicon-chevron-down\" onclick=\" invertPOI("+ i +",'down'); \"></span>  <span class=\"glyphicon glyphicon-remove\" onclick=\" deletePOI( " + i + "); \"></a></span></div>";
-		htmlElement += "</div>";
+		htmlElement = parseCartContent(cartList[i], i);
 		document.getElementById("POI_CART").innerHTML = document.getElementById("POI_CART").innerHTML + htmlElement;
 	}
 }
@@ -207,6 +190,29 @@ function initMap(user_location) {
 	});
 }
 
+function parseCartContent(element, i) {
+	var htmlElement = "";
+
+	htmlElement += "<div class=\"eltCart\" style=\"background-image: url('"+element.image_url+"');\"><div class=\"eltCartContent\">";
+	htmlElement += "<div class=\"eltCartNumber\">" + (i+1) +"</div>";
+	htmlElement += "<div>"+element.name.charAt(0).toUpperCase() + element.name.substring(1).toLowerCase() + "<br/>";
+
+	if(element.type_name != null)
+	{
+		htmlElement += "<i>" + element.type_name.charAt(0).toUpperCase() + element.type_name.substring(1).toLowerCase() + "</i><br/>";
+	}
+	else
+		htmlElement += "<br/>";
+
+	if(element.sitelink != null)
+	{
+		htmlElement  += "<a href=" + element.sitelink + ">" + _MAP_POI_LINK + "</a>";
+	}
+
+	htmlElement += "<br/><span class=\"POI_CART_icons\"><span class=\"glyphicon glyphicon-chevron-up\" onclick=\" invertPOI("+ i +",'up'); \"></span>   <span class=\"glyphicon glyphicon-chevron-down\" onclick=\" invertPOI("+ i +",'down'); \"></span>  <span class=\"glyphicon glyphicon-remove\" onclick=\" deletePOI( " + i + "); \"></span></div>";
+	htmlElement += "</div></div>";
+	return htmlElement;
+}
 //parsePopupContent(element) : given an element of the cart, it returns a string for the popup content
 function parsePopupContent(element){
 	//Title
