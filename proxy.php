@@ -1,6 +1,6 @@
 <?php
 
-$api_url = "http://api.wikijourney.eu/?";
+$api_url = "http://api.wikijourney.eu/?fakeError=true&";
 
 foreach ($_REQUEST as $key => $value) {
 	$api_url .= $key."=".$value."&";

@@ -78,15 +78,15 @@ if(window.jQuery)
 
 	//A button to show the POI drawer
 	var buttonDrawerMap = L.easyButton({
-	  id: 'buttonDrawerMap',
-	  states: [{
-	    stateName: 'default-open',
-	    icon: 'glyphicon-chevron-right',
-	    title: _YOUR_PATH,
-	    onClick: function(control) {
-	      $("#POI_CART_BLOCK").css('left',0);
-	    }
-	  }]
+		id: 'buttonDrawerMap',
+		states: [{
+			stateName: 'default-open',
+			icon: 'glyphicon-chevron-right',
+			title: _YOUR_PATH,
+			onClick: function(control) {
+				$("#POI_CART_BLOCK").css('left',0);
+			}
+		}]
 	}).addTo(map);
 }
 
@@ -115,35 +115,45 @@ if(!thePathWasSaved)
 				$body.addClass("loading");
 		}
 		if (xhttp.readyState == 4 && xhttp.status == 200) {
+			
 			if(window.jQuery) $body.removeClass("loading");
-
+			
 			// ===> Parse return
-			var api_return = JSON.parse(xhttp.responseText);
-			console.log(api_return);
-
-			// ===> Check errors
-			if(api_return.err_check.value == true)
+			if(xhttp.responseText != null && xhttp.responseText != "")
 			{
-				alert(api_return.err_check.msg);
+				var api_return = JSON.parse(xhttp.responseText);
+				console.log(api_return);
+
+				// ===> Check errors
+				if(api_return.err_check.value == true)
+				{
+					alert(api_return.err_check.err_msg);
+					window.location.href = "index.php";
+				}
+				else
+				{
+					poi_array_decode = api_return.poi;
+					poi_array = poi_array_decode.poi_info;
+
+					// ===> Place on map !
+					placePOI();
+
+					// ===> And now get WikiVoyage guides
+					if (api_return.guides.nb_guides != 0) {
+						placeWikiVoyage(api_return.guides.guides_info);  
+						document.getElementById('WikiVoyageBox').style.bottom = 0;
+					}
+				}
 			}
 			else
 			{
-				poi_array_decode = api_return.poi;
-				poi_array = poi_array_decode.poi_info;
+				alert("Error : API is unreachable");
+				window.location.href = "index.php";
 			}
-
-			// ===> Place on map !
-			placePOI();
-
-			// ===> And now get WikiVoyage guides
-			if (api_return.guides.nb_guides != 0) {
-				placeWikiVoyage(api_return.guides.guides_info);  
-				document.getElementById('WikiVoyageBox').style.bottom = 0;
-			}
-		}
 	}
-	xhttp.open("GET", api_link, true);
-	xhttp.send();
+}
+xhttp.open("GET", api_link, true);
+xhttp.send();
 }
 else
 {
