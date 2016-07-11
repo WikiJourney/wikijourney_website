@@ -190,10 +190,12 @@ function initMap(user_location) {
 	});
 }
 
+//parseCartContent(element) : given an element of the cart, it returns a string for the cart element content
 function parseCartContent(element, i) {
 	var htmlElement = "";
 
-	htmlElement += "<div class=\"eltCart\" style=\"background-image: url('"+element.image_url+"');\"><div class=\"eltCartContent\">";
+	htmlElement += "<div class=\"eltCart\"><div class=\"eltCartBlur\" style=\"background-image: url('"+element.image_url+"');\"></div>";
+	htmlElement += "<div class=\"eltCartContent\">";
 	htmlElement += "<div class=\"eltCartNumber\">" + (i+1) +"</div>";
 	htmlElement += "<div>"+element.name.charAt(0).toUpperCase() + element.name.substring(1).toLowerCase() + "<br/>";
 
@@ -213,6 +215,7 @@ function parseCartContent(element, i) {
 	htmlElement += "</div></div>";
 	return htmlElement;
 }
+
 //parsePopupContent(element) : given an element of the cart, it returns a string for the popup content
 function parsePopupContent(element){
 	//Title
