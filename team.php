@@ -32,10 +32,18 @@ limitations under the License.
 		<div class="col-sm-3 col-sm-offset-2 trombiElement shadowed">
 			<img src="./images/trombi/Arn.jpg" alt="Photo" class="img-circle shadowed" />
 			<p class="text-center"><span class="trombiNom">Sylvain Arnouts</span><br/><span class="trombiFonc"><?php echo _S_ARNOUTS_POSTE; ?></span></p>
+			<p class="trombiSocial">
+				<a title="GitHub" href="https://github.com/sylvainar/"><img src="images/design/external_logos/github-mini.png"/></a>
+				<a title="Twitter" href="https://twitter.com/SylvainNouts"><img src="images/design/external_logos/twitter-mini.png"/></a>
+			</p>
 		</div>
 		<div class="col-sm-3 col-sm-offset-2 trombiElement shadowed">
 			<img src="./images/trombi/Gau.jpg" alt="Photo" class="img-circle shadowed" />
 			<p class="text-center"><span class="trombiNom">Thomas Gaudin</span><br/><span class="trombiFonc"><?php echo _T_GAUDIN_POSTE; ?></span></p>
+			<p class="trombiSocial">
+				<a title="GitHub" href="https://github.com/tikiki"><img src="images/design/external_logos/github-mini.png"/></a>
+				<a title="Twitter" href="https://twitter.com/TGoudine"><img src="images/design/external_logos/twitter-mini.png"/></a>
+			</p>
 		</div>
 	</div>
 

@@ -102,7 +102,7 @@ include('./include/haut.php');
 								<a class="btn btn-default" onclick="$('#infoMaxPOIcollapse').collapse('toggle');"><span class="glyphicon glyphicon-info-sign"></span></a>
       						</span>
 						</div>
-						<div id="infoMaxPOIcollapse" class="collapse in"><p class="help-block"><?php echo _NOTE_MAXPOI; ?></p></div>
+						<div id="infoMaxPOIcollapse" class="collapse"><p class="help-block"><?php echo _NOTE_MAXPOI; ?></p></div>
 					</div>
 
 				</div><br/>
@@ -114,7 +114,7 @@ include('./include/haut.php');
 
 <script type="text/javascript">
 	window.onload = function(e) {
-		$('#infoMaxPOIcollapse').collapse();
+
 
 		$('#maxPOI').change(function(){
 			if(parseInt($('#maxPOI').val()) > 50)
