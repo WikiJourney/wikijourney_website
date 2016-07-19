@@ -156,11 +156,12 @@ body.loading .modal {
 	font-weight: bold;
 	text-align: center;
 	margin: 5px !important;
+	min-width: 150px;
 }
 
 .POPUP_img {
-	height: 100px !important;
 	max-width: 100px;
+	max-height: 100px;
 	margin: auto;
 	display: block;
 }
@@ -232,7 +233,7 @@ body.loading .modal {
 	position: absolute;
 
 	width: 100%;
-	height: 400px; /* "big" value to fullfill the element */
+	height: 200px; /* "big" value to fullfill the element */
 
 	/* The background url is given inline in JS */
 	background-size: cover;

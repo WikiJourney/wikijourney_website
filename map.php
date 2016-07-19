@@ -101,7 +101,7 @@ limitations under the License.
 		//****************************************************************
 
 		//==> Make the url
-		$api_url = $CONFIG_API_URL."?wikivoyage=1&long=".$user_longitude."&lat=".$user_latitude."&lg=".$language."&maxPOI=".$maxPOI."&range=".$range;
+		$api_url = $CONFIG_API_URL."?wikivoyage=1&thumbnailWidth=300&long=".$user_longitude."&lat=".$user_latitude."&lg=".$language."&maxPOI=".$maxPOI."&range=".$range;
 
 		echo "<!-- ".$api_url."-->"; //For debugging purpose.
 
