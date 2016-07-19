@@ -99,9 +99,10 @@ include('./include/haut.php');
 						<div class="input-group">
 							<input type="number" name="maxPOI" id="maxPOI" class="form-control" min="0" value="50" />
 							<span class="input-group-btn">
-								<button id="infoMaxPOI" class="btn btn-default" type="button" data-toggle="popover" data-container="body" data-content="<?php echo _NOTE_MAXPOI; ?>"><span class="glyphicon glyphicon-info-sign"></span></button>
+								<a class="btn btn-default" onclick="$('#infoMaxPOIcollapse').collapse('toggle');"><span class="glyphicon glyphicon-info-sign"></span></a>
       						</span>
 						</div>
+						<div id="infoMaxPOIcollapse" class="collapse in"><p class="help-block"><?php echo _NOTE_MAXPOI; ?></p></div>
 					</div>
 
 				</div><br/>
@@ -113,19 +114,15 @@ include('./include/haut.php');
 
 <script type="text/javascript">
 	window.onload = function(e) {
-		$('#infoMaxPOI').popover({
-			placement: 'bottom',
-			
-			trigger: "focus"
-		});
+		$('#infoMaxPOIcollapse').collapse();
 
 		$('#maxPOI').change(function(){
 			if(parseInt($('#maxPOI').val()) > 50)
 			{
-				$('#infoMaxPOI').popover('show');
+				$('#infoMaxPOIcollapse').collapse('show');
 			}
 			else
-				$('#infoMaxPOI').popover('hide');
+				$('#infoMaxPOIcollapse').collapse('hide');
 
 		});
 	}
