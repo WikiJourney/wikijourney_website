@@ -140,7 +140,8 @@ if(!thePathWasSaved)
 
 					// ===> And now get WikiVoyage guides
 					if (api_return.guides.nb_guides != 0) {
-						placeWikiVoyage(api_return.guides.guides_info);  
+						placeWikiVoyage(api_return.guides.guides_info);
+                        document.getElementById('WikiVoyageBox').style.display = "block";
 						document.getElementById('WikiVoyageBox').style.bottom = 0;
 					}
 				}

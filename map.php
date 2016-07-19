@@ -207,7 +207,8 @@ user_location['longitude'] = 	<?php echo $user_longitude; ?>;
 	?>
 
 	<div id="mapContainer">
-		<div id="WikiVoyageBox" class="drawer drawer-bottom">
+
+		<div id="WikiVoyageBox" class="drawer drawer-bottom" style="display: none;">
 			<div onclick="wikiVoyageToggleDrawer();" class="WikiVoyageTitle"><span id="wikiVoyageToggleButton" class="glyphicon glyphicon-chevron-down"></span><?php echo _SEE_WIKIVOYAGE_GUIDES; ?></div>
 			<div id="WikiVoyageThumbnailContainer">
 				<div id="WikiVoyageThumbnailContainerScroll">
@@ -215,6 +216,7 @@ user_location['longitude'] = 	<?php echo $user_longitude; ?>;
 				</div>
 			</div>
 		</div>
+
 		<div id="map" class="map">
 			<div class="modal"><!-- Loading --></div>
 			<!-- THIS IS GOING TO BE FILLED BY THE MAP THANKS TO LEAFLET -->

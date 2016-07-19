@@ -27,14 +27,13 @@ html {
 
 body {
 	background-color: #F7F7F7;
-	padding-top: 50px;
+	padding-top: 50px; /* Due to navbar */
 	overflow-x: hidden;
 	height: 100%;
 }
 
 h1, h2, h3, h4 {
 	color: #ff6e70;
-	text-decoration: italic;
 }
 
 p {
@@ -44,7 +43,7 @@ p {
 .btn-primary {
 	color: white;
 	background-color: #ff6e70;
-	border-color: #fff);
+	border-color: #fff;
 }
 
 .btn-primary:hover {
@@ -60,8 +59,6 @@ p {
 }
 
 .shadowed{
-	-webkit-box-shadow: 0 3px 6px 0 #999;
-	-moz-box-shadow: 0 3px 6px 0 #999;
 	box-shadow: 0 3px 6px 0 #999;
 }
 
@@ -99,8 +96,6 @@ form {
 	height: 40px;
 	display: inline-block;
 	margin: 5px;
-	-webkit-box-shadow: 0 12px 6px -6px #999;
-	-moz-box-shadow: 0 12px 6px -6px #999;
 	box-shadow: 0 12px 6px -6px #999;
 }
 
@@ -148,14 +143,12 @@ form {
 }
 
 .notshrink{
-	-webkit-filter: drop-shadow(2px 5px 3px #999);
 	filter: drop-shadow(2px 5px 3px #999);
 	margin-right: 30px;
 	
 }
 
 .logoNavbar{
-	-webkit-transition: 0.4s ease;
    transition: 0.4s ease;
 }
 
@@ -204,8 +197,6 @@ form {
 	background-color: rgba(137, 160, 173, 0.5);
 	
 	box-shadow: inset 0 8px 6px -6px #999;
-	-webkit-box-shadow: inset 0 8px 6px -6px #999;
-	-moz-box-shadow: inset 0 8px 6px -6px #999;
 }
 
 .footer img {
