@@ -33,6 +33,7 @@ define("_GEOLOC_FAILURE",	"لا نستطيع ايجاد موقعكم");
 define("_AROUND_LOCATION", 	"حول موقع معين");
 define("_AROUND_ME",		"! حول موقعي");
 define("_NOTE_GEOLOC",		"ملاحظة : تستخدم هذه الميزة تحديد الموقع الجغرافي. من الممكن عدم استطاعتنا الحصول على موقعكم حسب المتصفح الذي تستعملونه.");
+define("_NOTE_MAXPOI",      "");
 define("_OPTIONS",			": خيارات");
 define("_RANGE",			": (الشعاع (كم");
 define("_MAX_POI",			": الحد الاقصى");

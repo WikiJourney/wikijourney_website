@@ -36,6 +36,9 @@ define("_AROUND_ME",		"Autour de ma position !");
 define("_NOTE_GEOLOC",		"Note : cette fonctionnalité utilise la géolocalisation. Il n'est pas toujours
 							possible de récupérer votre position, cela dépend de votre navigateur et de
 							votre connexion internet.");
+define("_NOTE_MAXPOI",      "Note : au dessus de 50 points d'intérêts, vous ne pourrez pas afficher les
+                            images et les informations des points les plus éloignés. Ceci est dû à une
+                            restriction des serveurs Wikimédia.");
 define("_OPTIONS",			"Options :");
 define("_RANGE",			"Rayon (km) : ");
 define("_MAX_POI",			"Maximum :");

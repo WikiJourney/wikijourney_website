@@ -35,6 +35,7 @@ define("_AROUND_LOCATION", 	"Close to a location!");
 define("_AROUND_ME",		"Around Me!");
 define("_NOTE_GEOLOC",		"Note: This fonctionnality involves geolocation;
 							depending on the device you're using and the way you're connected to the internet, it may not be working.");
+define("_NOTE_MAXPOI",      "Note: due to restrictions from Wikipedia, you won't be able to load all information (e.g. image or description) when looking for more than 50 POI.");
 define("_OPTIONS",			"Options:");
 define("_RANGE",			"Range (km): ");
 define("_MAX_POI",			"Max POI: ");

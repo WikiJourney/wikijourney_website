@@ -33,8 +33,8 @@ define("_ADRESS_FAILURE",	"此地址不存在 !");
 define("_GEOLOC_FAILURE",	"Sorry but we can't find your position.");
 define("_AROUND_LOCATION", 	"在一个特定地点周围寻找!");
 define("_AROUND_ME",		"在附近寻找有意思的地点!");
-define("_NOTE_GEOLOC",
-	                        "注意：此功能需要用到定位。只有在您的定位器工作正常和网络连接的情况下才可以确定您的位置。");
+define("_NOTE_GEOLOC",      "注意：此功能需要用到定位。只有在您的定位器工作正常和网络连接的情况下才可以确定您的位置。");
+define("_NOTE_MAXPOI",      "");
 define("_OPTIONS",			"选项 :");
 define("_RANGE",			"范围 (km) : ");
 define("_MAX_POI",			"最大值 :");
