@@ -50,6 +50,7 @@ else
 	<link rel="shortcut icon" href="./images/design/wj_logos/logo_small.png" />
 	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="lib/leaflet/leaflet.css">
+	<link rel="stylesheet" href="lib/chosen/bootstrap-chosen.css">
 	<link rel="stylesheet" media="screen" type="text/css" href="./style/design.css" />
 
 	<?php

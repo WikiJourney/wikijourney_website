@@ -44,6 +44,7 @@ define("_MAX_POI",			"Maximum :");
 define("_PLACEHOLDER",		"Entrez un lieu ici.");
 define("_LOADING",			"Chargement...");
 define("_RETRY",            "Réessayer !");
+define("_LANGUAGE",         "Langue ");
 define("_PATH_CREATED",		"Votre parcours a bien été créé !");
 
 //===> team.php

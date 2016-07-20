@@ -26,11 +26,12 @@
 	if(!(isset($_GET['simplified']) && $_GET['simplified'] == 1))
 	{
 		?>
-	<script src="lib/jquery/jquery-2.2.0.min.js"></script>
+	<script src="lib/jquery/jquery-3.1.0.min.js"></script>
 		<?php
 	}
 	?>
 	<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+	<script src="lib/chosen/chosen.jquery.min.js"></script>
 
 	<?php
 	if(isset($INCLUDE_MAP_PROPERTIES)) //Special scripts for the map
