@@ -60,19 +60,17 @@ $wp_languages_raw = file("config/wikipedia_languages.txt");
 			<input type="hidden" id="latitude" name="latitude" value="" />
 			<input type="hidden" id="longitude" name="longitude" value="" />
 			<input type="hidden" id="from" name="from" value="form" />
-			<div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+			<div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
 				<!-- Around a place -->
 				<div class="row">
 					<div class="col-sm-6"><label for="input-location"><?php echo _AROUND_LOCATION; ?></label></div>
 					<div class="col-sm-6">
-						<div class="row">
-							<div class="col-xs-8">
-								<input type="text" id="input-location" placeholder="<?php echo _PLACEHOLDER; ?>" name="adressValue" id="adressValue" class="form-control" required >
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="<?php echo _PLACEHOLDER; ?>" name="adressValue" id="adressValue" required >
+								<span class="input-group-btn">
+									<button type="submit" class="input-prepend btn btn-primary btn-block" type="button" name="go" value="adress">Go!</button>
+								</span>
 							</div>
-							<div class="col-xs-4">
-								<button type="submit" class="btn btn-primary btn-block" type="button" name="go" value="adress">Go!</button>
-							</div>
-						</div>
 					</div>
 				</div><br/>
 
@@ -84,8 +82,8 @@ $wp_languages_raw = file("config/wikipedia_languages.txt");
 						<div id="infoGeolocCollapse" class="collapse"><p class="help-block"><?php echo _NOTE_GEOLOC; ?></p></div>
 					</div>
 
-				</div><br/>
-
+				</div>
+				<hr/>
 				<!-- Option Language -->
 				<div class="row">
 					<div class="col-sm-6"><label for="selectLanguage"><?php echo _LANGUAGE; ?>:</label></div>

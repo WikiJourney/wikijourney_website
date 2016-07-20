@@ -46,13 +46,13 @@ p {
 .btn-primary {
 	color: white;
 	background-color: #ff6e70;
-	border-color: #fff;
+	border-color: #204D74;
 }
 
 .btn-primary:hover {
 	color: #FFF;
 	background-color: #89A0AD;
-	border-color: #204D74;
+
 }
 
 .vcenter {
