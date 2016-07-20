@@ -98,10 +98,7 @@ $wp_languages_raw = file("config/wikipedia_languages.txt");
 
 								if(isset($wp_language[1])) {
 									?>
-									<option
-										value="<?php echo $wp_language[0]; ?>"
-										<?php echo ($wp_language[0] == $language) ? " selected" : ""; ?>
-									><?php echo $wp_language[1]; ?></option>
+									<option value="<?php echo $wp_language[0]; ?>"<?php echo ($wp_language[0] == $language) ? " selected" : ""; ?>><?php echo substr($wp_language[1],0,-1); ?></option>
 									<?php
 								}
 							}
