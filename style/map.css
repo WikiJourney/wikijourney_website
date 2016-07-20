@@ -2,6 +2,7 @@
 
 body{
 	overflow: hidden;
+	height: 100%; /* To overwrite the min-height in map.css */
 }
 
 /* => Some special properties for the loading screen */

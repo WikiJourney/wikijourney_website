@@ -19,7 +19,6 @@ define("_BLOG",				"博客");
 
 //===> Bottom
 define("_OUR_PARTNERS",		"合作伙伴");
-define("_NO_PARTNERS_LOL",	"目前暂缺. 对我们的项目感兴趣吗 ? 来联系我们吧!");
 define("_FOLLOW_US",		"关注我们 !");
 
 //========================> Pages <========================//

@@ -2,19 +2,19 @@
 	if(!isset($INCLUDE_MAP_PROPERTIES)) //No footer for map.php
 	{ 
 		?>
-
+    <div class="footer-space"></div>
 	<div class="footer">
 		<div class="row">
 			<div class="col-sm-6 text-center">
 				<h6><?php echo _OUR_PARTNERS; ?></h6>
-				<p  class="text-center"><a target="_blank" href="http://www.wikimedia.fr/"><img src="./images/design/external_logos/wikimedia_france_logo.png" title="Wikimedia France" alt="Wikimedia France" height="40" width="40" /></a></p>
+				<p  class="text-center"><a target="_blank" href="http://www.wikimedia.fr/"><img src="./images/design/external_logos/wikimedia_france_logo.png" title="Wikimedia France" alt="Wikimedia France" /></a></p>
 			</div>
 			<div class="col-sm-6 text-center">
 				<h6><?php echo _FOLLOW_US; ?></h6>
-				<p class="text-center"><a target="_blank" href="https://www.facebook.com/WikiJourney"><img src="./images/design/external_logos/fb.png" alt="Facebook" title="Facebook" height="40" width="40" /></a>
-				<a target="_blank" href="https://twitter.com/WikiJourney"><img src="./images/design/external_logos/twitter.png" alt="Twitter" title="Twitter" height="40" width="49" /></a>
-				<a target="_blank" href="https://github.com/WikiJourney/"><img src="./images/design/external_logos/github.png" alt="GitHub" title="GitHub" height="40" width="40" /></a>
-				<a target="_blank" href="http://blog.wikijourney.eu"><img src="./images/design/external_logos/pluxml.png" alt="Our Blog!" title="Our Blog!" height="40" width="40" /></a></p>
+				<p class="text-center"><a target="_blank" href="https://www.facebook.com/WikiJourney"><img src="./images/design/external_logos/fb.png" alt="Facebook" title="Facebook"  /></a>
+				<a target="_blank" href="https://twitter.com/WikiJourney"><img src="./images/design/external_logos/twitter.png" alt="Twitter" title="Twitter" /></a>
+				<a target="_blank" href="https://github.com/WikiJourney/"><img src="./images/design/external_logos/github.png" alt="GitHub" title="GitHub" /></a>
+				<a target="_blank" href="http://blog.wikijourney.eu"><img src="./images/design/external_logos/pluxml.png" alt="Our Blog!" title="Our Blog!" /></a></p>
 			</div>
 		</div>
 	</div>

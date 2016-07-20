@@ -19,7 +19,6 @@ define("_BLOG",				"بلوڭ");
 
 //===> Bottom
 define("_OUR_PARTNERS",		"شركائنا");
-define("_NO_PARTNERS_LOL",	".بدون شراكة حاليا. اتصلوا بنا");
 define("_FOLLOW_US",		"! إتبعنا");
 
 //========================> Pages <========================//

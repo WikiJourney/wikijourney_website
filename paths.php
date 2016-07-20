@@ -76,6 +76,7 @@ else
 
 	echo '</div>';
 
-	include('./include/bas.php');
 }
+
+include('./include/bas.php');
 ?>

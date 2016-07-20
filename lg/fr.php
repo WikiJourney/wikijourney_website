@@ -19,7 +19,6 @@ define("_BLOG",				"Blog");
 
 //===> Bottom
 define("_OUR_PARTNERS",		"En collaboration avec :");
-define("_NO_PARTNERS_LOL",	"Pas de partenaires pour l'instant. Un partenariat vous intéresse ? Contactez nous !");
 define("_FOLLOW_US",		"Suivez le projet !");
 
 //========================> Pages <========================//
