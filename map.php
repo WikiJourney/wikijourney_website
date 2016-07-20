@@ -45,8 +45,9 @@ limitations under the License.
 		$user_latitude = htmlspecialchars($_GET['user_latitude']);
 		$maxPOI = htmlspecialchars($_GET['range']);
 		$range = htmlspecialchars($_GET['range']);
+		$API_language = htmlspecialchars($_GET['API_language']);
 
-		$api_url = $CONFIG_API_URL."?displayImg=1&wikivoyage=1&long=".$user_longitude."&lat=".$user_latitude."&lg=".$language."&maxPOI=".$maxPOI."&range=".$range;
+		$api_url = $CONFIG_API_URL."?displayImg=1&wikivoyage=1&long=".$user_longitude."&lat=".$user_latitude."&lg=".$API_language."&maxPOI=".$maxPOI."&range=".$range;
 		echo "<!-- ".$api_url."-->"; //For debugging purpose.
 		$thePathWasSaved = false;
 	}
@@ -81,7 +82,7 @@ limitations under the License.
 			$user_latitude= $_POST['latitude'];
 			$user_longitude= $_POST['longitude'];
 		}
-		//==> If none of those worked, that means that a problem occured with geolocation
+		//==> If none of those worked, that means that a problem occurred with geolocation
 		else
 			header("Location : index.php?message=geoloc");	//Redirect to homepage with a failure message
 
@@ -94,14 +95,14 @@ limitations under the License.
 			$range = 1;
 
 		$maxPOI = intval($_POST['maxPOI']);
-
+		$API_language = htmlspecialchars($_POST['selectedLanguage']);
 
 		//****************************************************************
 		//*********************** Contact the API ************************
 		//****************************************************************
 
 		//==> Make the url
-		$api_url = $CONFIG_API_URL."?wikivoyage=1&thumbnailWidth=300&long=".$user_longitude."&lat=".$user_latitude."&lg=".$language."&maxPOI=".$maxPOI."&range=".$range;
+		$api_url = $CONFIG_API_URL."?wikivoyage=1&thumbnailWidth=300&long=".$user_longitude."&lat=".$user_latitude."&lg=".$API_language."&maxPOI=".$maxPOI."&range=".$range;
 
 		echo "<!-- ".$api_url."-->"; //For debugging purpose.
 
@@ -220,7 +221,7 @@ user_location['longitude'] = 	<?php echo $user_longitude; ?>;
 		<div id="map" class="map">
 			<div class="modal"><!-- Loading --></div>
 			<!-- THIS IS GOING TO BE FILLED BY THE MAP THANKS TO LEAFLET -->
-			<a id="simplifiedLink" href="<?php echo "map.php?simplified=1&user_latitude=".$user_latitude."&user_longitude=".$user_longitude."&maxPOI=".$maxPOI."&range=".$range; ?>"><?php echo _LOAD_SIMPLIFIED; ?></a>
+			<a id="simplifiedLink" href="<?php echo "map.php?simplified=1&API_language=".$API_language."&user_latitude=".$user_latitude."&user_longitude=".$user_longitude."&maxPOI=".$maxPOI."&range=".$range; ?>"><?php echo _LOAD_SIMPLIFIED; ?></a>
 		</div>
 	</div>
 
