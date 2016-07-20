@@ -32,13 +32,15 @@ define("_ADRESS_FAILURE",	"! لا نجد هذا العنوان");
 define("_GEOLOC_FAILURE",	"لا نستطيع ايجاد موقعكم");
 define("_AROUND_LOCATION", 	"حول موقع معين");
 define("_AROUND_ME",		"! حول موقعي");
-define("_NOTE_GEOLOC",		"ملاحظة : تستخدم هذه الميزة تحديد الموقع الجغرافي. من الممكن عدم استطاعتنا الحصول على موقعكم حسب المتصفح الذي تستعملونه.");
-define("_NOTE_MAXPOI",      "");
+define("_NOTE_GEOLOC",		"<strong>Geolocation failed</strong><br/>
+							Depending on the device you are using and the way you are connected to the Internet, we are not always able to retrieve your location. You also have to allow WikiJourney to access your location.");
+define("_NOTE_MAXPOI",      "Note: due to restrictions from Wikipedia, you will not be able to load all information (e.g. image or description) when looking for more than 50 POI.");
 define("_OPTIONS",			": خيارات");
 define("_RANGE",			": (الشعاع (كم");
 define("_MAX_POI",			": الحد الاقصى");
 define("_PLACEHOLDER",		".أدخل مكان هنا");
 define("_LOADING",			"Loading...");
+define("_RETRY",            "Retry !");
 define("_PATH_CREATED",		"Your path has been created!");
 
 //===> team.php

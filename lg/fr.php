@@ -33,9 +33,9 @@ define("_ADRESS_FAILURE",	"Cette adresse n'existe pas !");
 define("_GEOLOC_FAILURE",	"Désolé, mais il est impossible de vous géolocaliser.");
 define("_AROUND_LOCATION", 	"Autour d'une adresse particulière");
 define("_AROUND_ME",		"Autour de ma position !");
-define("_NOTE_GEOLOC",		"Note : cette fonctionnalité utilise la géolocalisation. Il n'est pas toujours
+define("_NOTE_GEOLOC",		"<strong>Géolocalisation impossible</strong><br/>Il n'est pas toujours
 							possible de récupérer votre position, cela dépend de votre navigateur et de
-							votre connexion internet.");
+							votre connexion internet. Vous devez également autoriser WikiJourney à accéder à votre position.");
 define("_NOTE_MAXPOI",      "Note : au dessus de 50 points d'intérêts, vous ne pourrez pas afficher les
                             images et les informations des points les plus éloignés. Ceci est dû à une
                             restriction des serveurs Wikimédia.");
@@ -44,6 +44,7 @@ define("_RANGE",			"Rayon (km) : ");
 define("_MAX_POI",			"Maximum :");
 define("_PLACEHOLDER",		"Entrez un lieu ici.");
 define("_LOADING",			"Chargement...");
+define("_RETRY",            "Réessayer !");
 define("_PATH_CREATED",		"Votre parcours a bien été créé !");
 
 //===> team.php

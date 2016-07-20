@@ -58,7 +58,7 @@ include('./include/haut.php');
 			<input type="hidden" id="latitude" name="latitude" value="" />
 			<input type="hidden" id="longitude" name="longitude" value="" />
 			<input type="hidden" id="from" name="from" value="form" />
-			<div class="col-sm-8 col-sm-offset-2">
+			<div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
 				<!-- Around a place -->
 				<div class="row">
 					<div class="col-sm-6"><label for="input-location"><?php echo _AROUND_LOCATION; ?></label></div>
@@ -77,8 +77,8 @@ include('./include/haut.php');
 				<div class="row">
 					<div class="col-sm-6"><label><?php echo _AROUND_ME; ?></label></div>
 					<div class="col-sm-6">
-						<button class="btn btn-primary btn-block" type="button" onclick="getGeolocation();">Go!</button>
-						<p class="help-block"><?php echo _NOTE_GEOLOC; ?></p>
+						<button id="buttonGoGeoloc" class="btn btn-primary btn-block" type="button" onclick="getGeolocation();">Go!</button>
+                        <div id="infoGeolocCollapse" class="collapse"><p class="help-block"><?php echo _NOTE_GEOLOC; ?></p></div>
 					</div>
 
 				</div><br/>
@@ -113,9 +113,8 @@ include('./include/haut.php');
 </div>
 
 <script type="text/javascript">
+    // When the page is load, we set the listener for the maxPOI collapse
 	window.onload = function(e) {
-
-
 		$('#maxPOI').change(function(){
 			if(parseInt($('#maxPOI').val()) > 50)
 			{
@@ -127,9 +126,11 @@ include('./include/haut.php');
 		});
 	}
 
-	function showPosition(position) {
-		if(position.coords.latitude == null)
-			alert("Sorry, but geolocation is not supported by this browser.");
+    // Callback when geoloc is successful
+	function successPosition(position) {
+		console.log(position);
+		if(position.coords.latitude == null || position.coords.latitude == 0 || position.coords.longitude == 0)
+			geolocationFailed();
 		else
 		{
 			document.getElementById('latitude').value = position.coords.latitude;
@@ -139,13 +140,22 @@ include('./include/haut.php');
 
 	}
 
+    // This function is triggered when geolocation fails, it opens the note block
+    function geolocationFailed(){
+        $("#buttonGoGeoloc").html("<?php echo _RETRY; ?>");
+        $('#infoGeolocCollapse').collapse('show');
+    }
+
+    //Geolocation call
 	function getGeolocation() {
 		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(showPosition);
+			navigator.geolocation.getCurrentPosition(successPosition, geolocationFailed);
 		} else {
-			alert("Sorry, but geolocation is not supported by this browser.");
+			geolocationFailed();
 		}
 	}
+
+
 
 </script>
 
