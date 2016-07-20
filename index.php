@@ -86,7 +86,7 @@ $wp_languages_raw = file("config/wikipedia_languages.txt");
 				<hr/>
 				<!-- Option Language -->
 				<div class="row">
-					<div class="col-sm-6"><label for="selectLanguage"><?php echo _LANGUAGE; ?>:</label></div>
+					<div class="col-sm-6"><label for="selectLanguage"><?php echo _LANGUAGE; ?></label></div>
 					<div class="col-sm-6">
 						<select class="form-control chosen-select" id="selectLanguage" name="selectedLanguage">
 							<?php

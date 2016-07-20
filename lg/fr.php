@@ -39,28 +39,28 @@ define("_NOTE_MAXPOI",      "Note : au dessus de 50 points d'intérêts, vous ne
                             images et les informations des points les plus éloignés. Ceci est dû à une
                             restriction des serveurs Wikimédia.");
 define("_OPTIONS",			"Options :");
+define("_LANGUAGE",         "Langue de la recherche :");
 define("_RANGE",			"Rayon (km) : ");
-define("_MAX_POI",			"Maximum :");
-define("_PLACEHOLDER",		"Entrez un lieu ici.");
+define("_MAX_POI",			"Maximum de Points d'Intérêt :");
+define("_PLACEHOLDER",		"Entrez un lieu ici");
 define("_LOADING",			"Chargement...");
 define("_RETRY",            "Réessayer !");
-define("_LANGUAGE",         "Langue ");
 define("_PATH_CREATED",		"Votre parcours a bien été créé !");
 
 //===> team.php
-define("_TEAM_TITLE",		"Notre Équipe");
+define("_TEAM_TITLE",		"Notre équipe");
 define("_TEAM_WHO_R_WE",	"Qui sommes nous ?");
 define("_TEAM_QUICKDESC",	"Nous sommes une équipe de sept étudiants de l'École Centrale de Lille, école d'ingénieur généraliste située à Lille,
-							dans le Nord de la France. Durant nos deux premières années d'études, nous devons développer un projet
+							dans le Nord de la France. Durant nos deux premières années d'études, nous avons dû développer un projet
 							multidisciplinaire, dans lequel nous mettons nos connaissances en commun. Même si ce projet est officiellement terminé dans le cadre de 
 							l'école, une partie de l'équipe continue aujourd'hui à le maintenir." );
 define("_S_ARNOUTS_POSTE", 	"<strong>Chef de Projet<br/>Lead Développeur Web</strong>") ;
 define("_P_ARZELIER_POSTE", "Développeur Web<br/><br/>");
-define("_T_GAUDIN_POSTE", 	"<strong>Lead Développeur Androïd</strong><br/>Administrateur Serveur");
+define("_T_GAUDIN_POSTE", 	"<strong>Lead Développeur Android</strong><br/>Administrateur Serveur");
 define("_N_HATIM_POSTE", 	"<strong>Trésorier</strong><br/>Partenariats");
 define("_B_HUBER_POSTE", 	"Partenariats<br/><br/>");
 define("_J_MAES_POSTE", 	"<strong>Gestion de Projet</strong><br/>Développeur Web");
-define("_Y_WANG_POSTE", 	"Développeur Androïd<br/><br/>");
+define("_Y_WANG_POSTE", 	"Développeur Android<br/><br/>");
 
 //===> about.php
 define("_ABOUT_TITLE", 		"Qu’est-ce que Wikijourney ?");
@@ -75,20 +75,17 @@ define("_ABOUT_TEXT","
 							<br>Nous proposerons également de préparer son parcours à l’avance, via un module web ainsi qu’un mode hors-ligne.
 							</p>
 
-							<h2>WanderWiki revient ! </h2>
-							<p>
-							Si vous utilisiez déjà l’application <a href=\"http://wiki-geolocalisation.wix.com/wanderwiki\">WanderWiki</a>, vous ne serez pas désorientés : WikiJourney reprend le projet. WanderWiki revient, avec une nouvelle charte graphique et de nouvelles fonctionnalités !
-							</p>
-
 							<h2>Des questions, des propositions ? </h2>
 							<p>
 							Nous sommes ouverts à toute piste d’amélioration ! Contribuez au projet <a href=\"mailto:wikijourneydev@gmail.com\">en nous contactant par mail</a> ou en codant directement vos propositions sur notre Git !<br/>
 							Ou devenez <a target=\"_blank\" href=\"https://play.google.com/store/apps/details?id=eu.wikijourney.wikijourney\">testeur de l'application</a> !
 							</p>");
 
+define("_COPYRIGHT",        "Droits d'auteur");
+define("_COPYRIGHT_INFO",   "L’ensemble des marques et logos appartiennent à leurs propriétaires respectifs.");
 
 //===> technical.php
-define("_TECHNICAL_TITLE",	"Informations Techniques");
+define("_TECHNICAL_TITLE",	"Informations techniques");
 define("_TECHNICAL_TEXT",	"Vous trouverez toutes les informations techniques relatives au projets en suivant ces liens : ");
 
 
@@ -108,7 +105,7 @@ define("_ERROR_API",				"Erreur : l'API n'a pas répondu à temps. Peut-être qu
 define("_LOAD_SIMPLIFIED",			"La carte ne s'affiche pas ? Essayez la version simplifiée !");
 
 //===> paths.php
-define("_CONNECT_NECESS",			"Pour récupérer vos parcours, vous devez vous connecter :");
+define("_CONNECT_NECESS",			"Pour récupérer vos parcours, vous devez vous connecter.");
 define("_REGISTRATION",				"Cliquez ici pour utiliser votre compte Wikimedia !");
 define("_YOUR_PATHS",				"Parcours");
 define("_LOAD",						"Charger");

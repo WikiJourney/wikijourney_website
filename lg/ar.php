@@ -35,20 +35,20 @@ define("_NOTE_GEOLOC",		"<strong>Geolocation failed</strong><br/>
 							Depending on the device you are using and the way you are connected to the Internet, we are not always able to retrieve your location. You also have to allow WikiJourney to access your location.");
 define("_NOTE_MAXPOI",      "Note: due to restrictions from Wikipedia, you will not be able to load all information (e.g. image or description) when looking for more than 50 POI.");
 define("_OPTIONS",			": خيارات");
+define("_LANGUAGE",         "Search language:");
 define("_RANGE",			": (الشعاع (كم");
 define("_MAX_POI",			": الحد الاقصى");
 define("_PLACEHOLDER",		".أدخل مكان هنا");
 define("_LOADING",			"Loading...");
 define("_RETRY",            "Retry !");
-define("_LANGUAGE",         "Language");
 define("_PATH_CREATED",		"Your path has been created!");
 
 //===> team.php
 define("_TEAM_TITLE",		"! الفرقة");
 define("_TEAM_WHO_R_WE",	"من نحن؟");
 define("_TEAM_QUICKDESC",	"We're a team of seven students from the Ecole Centrale de Lille, a graduate school in Lille in the north of France. We
-							have to create a multidisciplinary project in two years, that's how we started to work together on WikiJourney. This project
-							is really important for us, that's why we will make everything we could to achieve it.");
+							had to create a multidisciplinary project in two years, that's how we started to work together on WikiJourney.
+							Even though the school project is officially over, a small team is still dedicated to support and improve it.");
 define("_S_ARNOUTS_POSTE", 	"<strong>Project Manager<br/>Lead Developer Web</strong>") ;
 define("_P_ARZELIER_POSTE", "Web Developer<br/><br/>");
 define("_T_GAUDIN_POSTE", 	"<strong>Lead Developer Android</strong><br/>Sysadmin");
@@ -79,7 +79,9 @@ define("_ABOUT_TEXT","
 							<p>
 							! او عبر جيت <a href=\"mailto:wikijourneydev@gmail.com\"> بالاتصال بنا عبر البريد الالكتروني</a> ساهموا في المشروع
 							</p>");
-							
+
+define("_COPYRIGHT",        "Copyright");
+define("_COPYRIGHT_INFO",   "All trademarks and logos are the property of their respective owners.");
 							
 //===> technical.php
 define("_TECHNICAL_TITLE",	"المعلومات التقنية");
