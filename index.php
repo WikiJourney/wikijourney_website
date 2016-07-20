@@ -26,6 +26,7 @@ if(isset($_GET['oauth_verifier']) OR isset($_GET['oauth_token']))
 
 include('./include/haut.php');
 
+// Store the language file in an array, we're gonna parse it in a loop.
 $wp_languages_raw = file("config/wikipedia_languages.txt");
 ?>
 
@@ -91,11 +92,12 @@ $wp_languages_raw = file("config/wikipedia_languages.txt");
 					<div class="col-sm-6">
 						<select class="chosen-select" id="selectLanguage" name="selectedLanguage">
 							<?php
-
 							foreach($wp_languages_raw as $key => $value)
 							{
+								// On the left, the language code, useful for the API.
+								// On the right, the name of the language, to put in the option.
 								$wp_language = explode(':', $value);
-
+								// Next "if" is to avoid blank lines.
 								if(isset($wp_language[1])) {
 									?>
 									<option value="<?php echo $wp_language[0]; ?>"<?php echo ($wp_language[0] == $language) ? " selected" : ""; ?>><?php echo substr($wp_language[1],0,-1); ?></option>
