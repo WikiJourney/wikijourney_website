@@ -26,6 +26,7 @@ if(isset($_GET['oauth_verifier']) OR isset($_GET['oauth_token']))
 
 include('./include/haut.php');
 
+$wp_languages_raw = file("config/wikipedia_languages.txt");
 ?>
 
 <div class="jumbotron shadowed" id="banniere">
@@ -73,23 +74,38 @@ include('./include/haut.php');
 						</div>
 					</div>
 				</div><br/>
+
 				<!-- Around my position -->
 				<div class="row">
 					<div class="col-sm-6"><label><?php echo _AROUND_ME; ?></label></div>
 					<div class="col-sm-6">
 						<button id="buttonGoGeoloc" class="btn btn-primary btn-block" type="button" onclick="getGeolocation();">Go!</button>
-                        <div id="infoGeolocCollapse" class="collapse"><p class="help-block"><?php echo _NOTE_GEOLOC; ?></p></div>
+						<div id="infoGeolocCollapse" class="collapse"><p class="help-block"><?php echo _NOTE_GEOLOC; ?></p></div>
 					</div>
 
 				</div><br/>
+
 				<!-- Option Language -->
 				<div class="row">
-					<div class="col-sm-6"><label for="range"><?php echo _RANGE; ?></label></div>
+					<div class="col-sm-6"><label for="selectLanguage"><?php echo _LANGUAGE; ?>:</label></div>
 					<div class="col-sm-6">
-						<select data-placeholder="Choose a country..." class="chosen-select">
-							<option>test</option>
-							<option>Pouet</option>
-							<option>Bplo</option>
+						<select class="chosen-select" id="selectLanguage">
+							<?php
+
+							foreach($wp_languages_raw as $key => $value)
+							{
+								$wp_language = explode(':', $value);
+
+								if(isset($wp_language[1])) {
+									?>
+									<option
+										value="<?php echo $wp_language[0]; ?>"
+										<?php echo ($wp_language[0] == $language) ? " selected" : ""; ?>
+									><?php echo $wp_language[1]; ?></option>
+									<?php
+								}
+							}
+							?>
 						</select>
 					</div>
 				</div><br/>
@@ -126,7 +142,7 @@ include('./include/haut.php');
 </div>
 
 <script type="text/javascript">
-    // When the page is load, we set the listener for the maxPOI collapse
+	// When the page is load, we set the listener for the maxPOI collapse
 	window.onload = function(e) {
 		$('#maxPOI').change(function(){
 			if(parseInt($('#maxPOI').val()) > 50)
@@ -141,7 +157,7 @@ include('./include/haut.php');
 		$(".chosen-select").chosen();
 	};
 
-    // Callback when geoloc is successful
+	// Callback when geoloc is successful
 	function successPosition(position) {
 		console.log(position);
 		if(position.coords.latitude == null || position.coords.latitude == 0 || position.coords.longitude == 0)
@@ -155,13 +171,13 @@ include('./include/haut.php');
 
 	}
 
-    // This function is triggered when geolocation fails, it opens the note block
-    function geolocationFailed(){
-        $("#buttonGoGeoloc").html("<?php echo _RETRY; ?>");
-        $('#infoGeolocCollapse').collapse('show');
-    }
+	// This function is triggered when geolocation fails, it opens the note block
+	function geolocationFailed(){
+		$("#buttonGoGeoloc").html("<?php echo _RETRY; ?>");
+		$('#infoGeolocCollapse').collapse('show');
+	}
 
-    //Geolocation call
+	//Geolocation call
 	function getGeolocation() {
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(successPosition, geolocationFailed);

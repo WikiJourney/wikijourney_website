@@ -41,6 +41,7 @@ define("_MAX_POI",			"Max POI: ");
 define("_PLACEHOLDER",		"Type a location here.");
 define("_LOADING",			"Loading...");
 define("_RETRY",            "Retry !");
+define("_LANGUAGE",         "Language");
 define("_PATH_CREATED",		"Your path has been created!");
 
 //===> team.php

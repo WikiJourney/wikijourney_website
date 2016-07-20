@@ -40,6 +40,7 @@ define("_MAX_POI",			": الحد الاقصى");
 define("_PLACEHOLDER",		".أدخل مكان هنا");
 define("_LOADING",			"Loading...");
 define("_RETRY",            "Retry !");
+define("_LANGUAGE",         "Language");
 define("_PATH_CREATED",		"Your path has been created!");
 
 //===> team.php
