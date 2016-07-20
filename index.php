@@ -82,6 +82,19 @@ include('./include/haut.php');
 					</div>
 
 				</div><br/>
+				<!-- Option Language -->
+				<div class="row">
+					<div class="col-sm-6"><label for="range"><?php echo _RANGE; ?></label></div>
+					<div class="col-sm-6">
+						<select data-placeholder="Choose a country..." class="chosen-select">
+							<option>test</option>
+							<option>Pouet</option>
+							<option>Bplo</option>
+						</select>
+					</div>
+				</div><br/>
+
+
 				<!-- Option Range -->
 				<div class="row">
 					<div class="col-sm-6"><label for="range"><?php echo _RANGE; ?></label></div>
@@ -124,7 +137,9 @@ include('./include/haut.php');
 				$('#infoMaxPOIcollapse').collapse('hide');
 
 		});
-	}
+
+		$(".chosen-select").chosen();
+	};
 
     // Callback when geoloc is successful
 	function successPosition(position) {

@@ -31,6 +31,7 @@
 	}
 	?>
 	<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+	<script src="lib/chosen/chosen.jquery.min.js"></script>
 
 	<?php
 	if(isset($INCLUDE_MAP_PROPERTIES)) //Special scripts for the map
