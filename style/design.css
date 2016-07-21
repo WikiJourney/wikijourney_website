@@ -242,8 +242,19 @@ form {
 /* ============================================= */
 
 /* ===> index.php <=== */
-#formPOI {
-	margin-top: 40px;
+#formPOI .input-group-addon{
+	/* Sometimes we got 2 figures, sometimes 3... */
+	/* This fixes the width of the addon */
+	min-width:50px;
+	text-align:center;
+}
+.label-top{
+	font-size: 1.4em;
+    width: 100%;
+    text-align: center !important; /* Overrides a bootstrap property */
+	padding-top: 20px !important; /* Same here */
+	padding-bottom: 5px;
+
 }
 
 /* ===> map_export.php <=== */

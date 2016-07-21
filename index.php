@@ -64,29 +64,28 @@ $wp_languages_raw = file("config/wikipedia_languages.txt");
 				<input type="hidden" id="longitude" name="longitude" value="" />
 				<input type="hidden" id="from" name="from" value="form" />
 
-				<!-- Around a place -->
-				<div class="form-group">
-					<label class="col-sm-6 control-label" for="adressValue"><?php echo _AROUND_LOCATION; ?></label>
-					<div class="col-sm-6">
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="<?php echo _PLACEHOLDER; ?>" name="adressValue" id="adressValue" required >
-								<span class="input-group-btn">
-									<button type="submit" class="input-prepend btn btn-primary btn-block" type="button" name="go" value="adress">Go!</button>
-								</span>
-						</div>
-					</div>
-				</div><br/>
-
-				<!-- Around my position -->
-				<div class="form-group">
-					<label class="col-sm-6 control-label" for="adressValue"><?php echo _AROUND_ME; ?></label>
-					<div class="col-sm-6">
-						<button id="buttonGoGeoloc" class="btn btn-primary btn-block" type="button" onclick="getGeolocation();">Go!</button>
-						<div id="infoGeolocCollapse" class="collapse"><p class="help-block"><?php echo _NOTE_GEOLOC; ?></p></div>
+				<div class="row">
+					<!-- Around a place -->
+					<div class="col-md-6">
+							<label class="control-label label-top" for="adressValue"><?php echo _AROUND_LOCATION; ?></label>
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="<?php echo _PLACEHOLDER; ?>" name="adressValue" id="adressValue" required >
+							<span class="input-group-btn">
+								<button type="submit" class="input-prepend btn btn-primary btn-block" type="button" name="go" value="adress">Go!</button>
+							</span>
+							</div>
 					</div>
 
+					<!-- Around my position -->
+					<div class="col-md-6">
+							<label class="control-label label-top" for="adressValue"><?php echo _AROUND_ME; ?></label>
+							<button id="buttonGoGeoloc" class="btn btn-primary btn-block" type="button" onclick="getGeolocation();">Go!</button>
+							<div id="infoGeolocCollapse" class="collapse"><p class="help-block"><?php echo _NOTE_GEOLOC; ?></p></div>
+					</div>
 				</div>
 				<hr/>
+				<h4><?php echo _OPTIONS; ?></h4>
+
 				<!-- Option Language -->
 				<div class="row">
 					<label class="col-sm-6 control-label" for="adressValue"><?php echo _LANGUAGE; ?></label>
@@ -110,12 +109,14 @@ $wp_languages_raw = file("config/wikipedia_languages.txt");
 					</div>
 				</div><br/>
 
-
 				<!-- Option Range -->
 				<div class="row">
 					<label class="col-sm-6 control-label" for="adressValue"><?php echo _RANGE; ?></label>
 					<div class="col-sm-6">
-						<input type="number" name="range" id="range" class="form-control" min="0" value="1" />
+						<div class="input-group">
+							<input type="range" name="range" id="range" class="form-control" min="1" value="1" max="10"/>
+							<span class="input-group-addon" id="rangeValue"></span>
+						</div>
 					</div>
 				</div><br/>
 
@@ -123,19 +124,13 @@ $wp_languages_raw = file("config/wikipedia_languages.txt");
 				<div class="row">
 					<label class="col-sm-6 control-label" for="adressValue"><?php echo _MAX_POI; ?></label>
 					<div class="col-sm-6">
-
-
 						<div class="input-group">
-							<input type="number" name="maxPOI" id="maxPOI" class="form-control" min="0" value="50" />
-							<span class="input-group-btn">
-								<a class="btn btn-default" onclick="$('#infoMaxPOIcollapse').collapse('toggle');"><span class="glyphicon glyphicon-info-sign"></span></a>
-      						</span>
+							<input type="range" name="maxPOI" id="maxPOI" class="form-control" min="0" value="50" max="200" step="10" />
+							<span class="input-group-addon" id="maxPOIvalue"></span>
 						</div>
 						<div id="infoMaxPOIcollapse" class="collapse"><p class="help-block"><?php echo _NOTE_MAXPOI; ?></p></div>
 					</div>
-
 				</div><br/>
-
 			</form>
 		</div>
 	</div>
@@ -156,6 +151,14 @@ $wp_languages_raw = file("config/wikipedia_languages.txt");
 		});
 
 		$(".chosen-select").chosen();
+
+		// Sliders init
+		$("#maxPOIvalue").html($("#maxPOI").val());
+		$("#rangeValue").html($("#range").val());
+		// Sliders set event
+		$("#maxPOI").on("input", function(){ $("#maxPOIvalue").html($("#maxPOI").val()) });
+		$("#range").on("input", function(){ $("#rangeValue").html($("#range").val()) });
+
 	};
 
 	// Callback when geoloc is successful
