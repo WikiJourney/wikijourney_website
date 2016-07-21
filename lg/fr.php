@@ -41,7 +41,7 @@ define("_NOTE_MAXPOI",      "Note : au dessus de 50 points d'intérêts, vous ne
 define("_OPTIONS",			"Options");
 define("_LANGUAGE",         "Langue de la recherche");
 define("_RANGE",			"Rayon (km)");
-define("_MAX_POI",			"Maximum de Points d'Intérêt");
+define("_MAX_POI",			"Nombre max de Points d'Intérêt");
 define("_PLACEHOLDER",		"Entrez un lieu ici");
 define("_LOADING",			"Chargement...");
 define("_RETRY",            "Réessayer !");

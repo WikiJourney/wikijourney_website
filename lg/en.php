@@ -30,7 +30,7 @@ define("_BUTTON_POI_AROUND","Find Points Of Interest around me!");
 define("_ADRESS_LOOK_UP",	"Or enter an adress to look up!");
 define("_ADRESS_FAILURE",	"Such a place doesn't exist!");
 define("_GEOLOC_FAILURE",	"Sorry, we can't find your location.");
-define("_AROUND_LOCATION", 	"Close to a location");
+define("_AROUND_LOCATION", 	"Close to a location!");
 define("_AROUND_ME",		"Around me!");
 define("_NOTE_GEOLOC",		"<strong>Geolocation failed</strong><br/>
 							Depending on the device you are using and the way you are connected to the Internet, we are not always able to retrieve your location. You also have to allow WikiJourney to access your location.");
