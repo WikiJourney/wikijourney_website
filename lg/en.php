@@ -35,10 +35,10 @@ define("_AROUND_ME",		"Around me!");
 define("_NOTE_GEOLOC",		"<strong>Geolocation failed</strong><br/>
 							Depending on the device you are using and the way you are connected to the Internet, we are not always able to retrieve your location. You also have to allow WikiJourney to access your location.");
 define("_NOTE_MAXPOI",      "Note: due to restrictions from Wikipedia, you will not be able to load all information (e.g. image or description) when looking for more than 50 POI.");
-define("_OPTIONS",			"Options:");
-define("_LANGUAGE",         "Search language:");
-define("_RANGE",			"Range (km): ");
-define("_MAX_POI",			"Max # of POI: ");
+define("_OPTIONS",			"Options");
+define("_LANGUAGE",         "Search language");
+define("_RANGE",			"Range (km)");
+define("_MAX_POI",			"Max # of POI");
 define("_PLACEHOLDER",		"Type a location here.");
 define("_LOADING",			"Loading...");
 define("_RETRY",            "Retry !");

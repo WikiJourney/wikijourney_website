@@ -55,28 +55,31 @@ $wp_languages_raw = file("config/wikipedia_languages.txt");
 
 	<p><?php if (defined('_WELCOME_MESSAGE')) {echo _WELCOME_MESSAGE;} ?></p>
 
-	<form method="post" action="map.php" id="formPOI">
-		<div class="row">
-			<input type="hidden" id="latitude" name="latitude" value="" />
-			<input type="hidden" id="longitude" name="longitude" value="" />
-			<input type="hidden" id="from" name="from" value="form" />
-			<div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+			<form method="post" action="map.php" id="formPOI" class="form-horizontal" role="form">
+				<!-- Some hidden form, the first two are gonna be filled by the geoloc callback -->
+				<!-- The last one gives to map.php the origin of the user -->
+				<input type="hidden" id="latitude" name="latitude" value="" />
+				<input type="hidden" id="longitude" name="longitude" value="" />
+				<input type="hidden" id="from" name="from" value="form" />
+
 				<!-- Around a place -->
-				<div class="row">
-					<div class="col-sm-6"><label for="input-location"><?php echo _AROUND_LOCATION; ?></label></div>
+				<div class="form-group">
+					<label class="col-sm-6 control-label" for="adressValue"><?php echo _AROUND_LOCATION; ?></label>
 					<div class="col-sm-6">
-							<div class="input-group">
-								<input type="text" class="form-control" placeholder="<?php echo _PLACEHOLDER; ?>" name="adressValue" id="adressValue" required >
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="<?php echo _PLACEHOLDER; ?>" name="adressValue" id="adressValue" required >
 								<span class="input-group-btn">
 									<button type="submit" class="input-prepend btn btn-primary btn-block" type="button" name="go" value="adress">Go!</button>
 								</span>
-							</div>
+						</div>
 					</div>
 				</div><br/>
 
 				<!-- Around my position -->
-				<div class="row">
-					<div class="col-sm-6"><label><?php echo _AROUND_ME; ?></label></div>
+				<div class="form-group">
+					<label class="col-sm-6 control-label" for="adressValue"><?php echo _AROUND_ME; ?></label>
 					<div class="col-sm-6">
 						<button id="buttonGoGeoloc" class="btn btn-primary btn-block" type="button" onclick="getGeolocation();">Go!</button>
 						<div id="infoGeolocCollapse" class="collapse"><p class="help-block"><?php echo _NOTE_GEOLOC; ?></p></div>
@@ -86,7 +89,7 @@ $wp_languages_raw = file("config/wikipedia_languages.txt");
 				<hr/>
 				<!-- Option Language -->
 				<div class="row">
-					<div class="col-sm-6"><label for="selectLanguage"><?php echo _LANGUAGE; ?></label></div>
+					<label class="col-sm-6 control-label" for="adressValue"><?php echo _LANGUAGE; ?></label>
 					<div class="col-sm-6">
 						<select class="form-control chosen-select" id="selectLanguage" name="selectedLanguage">
 							<?php
@@ -110,7 +113,7 @@ $wp_languages_raw = file("config/wikipedia_languages.txt");
 
 				<!-- Option Range -->
 				<div class="row">
-					<div class="col-sm-6"><label for="range"><?php echo _RANGE; ?></label></div>
+					<label class="col-sm-6 control-label" for="adressValue"><?php echo _RANGE; ?></label>
 					<div class="col-sm-6">
 						<input type="number" name="range" id="range" class="form-control" min="0" value="1" />
 					</div>
@@ -118,7 +121,7 @@ $wp_languages_raw = file("config/wikipedia_languages.txt");
 
 				<!-- Option Max -->
 				<div class="row">
-					<div class="col-sm-6"><label for="maxPOI"><?php echo _MAX_POI; ?></label></div>
+					<label class="col-sm-6 control-label" for="adressValue"><?php echo _MAX_POI; ?></label>
 					<div class="col-sm-6">
 
 
@@ -133,9 +136,10 @@ $wp_languages_raw = file("config/wikipedia_languages.txt");
 
 				</div><br/>
 
-			</div>
+			</form>
 		</div>
-	</form>
+	</div>
+
 </div>
 
 <script type="text/javascript">

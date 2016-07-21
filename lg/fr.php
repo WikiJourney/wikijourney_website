@@ -38,10 +38,10 @@ define("_NOTE_GEOLOC",		"<strong>Géolocalisation impossible</strong><br/>Il n'e
 define("_NOTE_MAXPOI",      "Note : au dessus de 50 points d'intérêts, vous ne pourrez pas afficher les
                             images et les informations des points les plus éloignés. Ceci est dû à une
                             restriction des serveurs Wikimédia.");
-define("_OPTIONS",			"Options :");
-define("_LANGUAGE",         "Langue de la recherche :");
-define("_RANGE",			"Rayon (km) : ");
-define("_MAX_POI",			"Maximum de Points d'Intérêt :");
+define("_OPTIONS",			"Options");
+define("_LANGUAGE",         "Langue de la recherche");
+define("_RANGE",			"Rayon (km)");
+define("_MAX_POI",			"Maximum de Points d'Intérêt");
 define("_PLACEHOLDER",		"Entrez un lieu ici");
 define("_LOADING",			"Chargement...");
 define("_RETRY",            "Réessayer !");

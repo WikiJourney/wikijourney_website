@@ -35,11 +35,11 @@ define("_AROUND_ME",		"在附近寻找有意思的地点!");
 define("_NOTE_GEOLOC",		"<strong>Geolocation failed</strong><br/>
 							Depending on the device you are using and the way you are connected to the Internet, we are not always able to retrieve your location. You also have to allow WikiJourney to access your location.");
 define("_NOTE_MAXPOI",      "Note: due to restrictions from Wikipedia, you will not be able to load all information (e.g. image or description) when looking for more than 50 POI.");
-define("_OPTIONS",			"选项 :");
-define("_LANGUAGE",         "Search language:");
-define("_RANGE",			"范围 (km) : ");
-define("_MAX_POI",			"最大值 :");
-define("_PLACEHOLDER",		"在此输入地点名称.");
+define("_OPTIONS",			"选项");
+define("_LANGUAGE",         "Search language");
+define("_RANGE",			"范围 (km)");
+define("_MAX_POI",			"最大值");
+define("_PLACEHOLDER",		"在此输入地点名称");
 define("_LOADING",			"Loading...");
 define("_RETRY",            "Retry !");
 define("_PATH_CREATED",		"Your path has been created!");
