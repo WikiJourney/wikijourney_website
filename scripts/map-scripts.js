@@ -88,9 +88,11 @@ if(window.jQuery)
 			}
 		}]
 	}).addTo(map);
+
+	applyMediaQueries();
 }
 
-applyMediaQueries();
+
 
 // ===> Setting overlays
 

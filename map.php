@@ -43,7 +43,7 @@ limitations under the License.
 	{
 		$user_longitude = htmlspecialchars($_GET['user_longitude']);
 		$user_latitude = htmlspecialchars($_GET['user_latitude']);
-		$maxPOI = htmlspecialchars($_GET['range']);
+		$maxPOI = htmlspecialchars($_GET['maxPOI']);
 		$range = htmlspecialchars($_GET['range']);
 		$API_language = htmlspecialchars($_GET['API_language']);
 
