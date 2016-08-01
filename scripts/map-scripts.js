@@ -94,6 +94,22 @@ if(window.jQuery)
 
 
 
+// ===> Routing Initialisation
+var routing = L.Routing.control({
+		router: L.Routing.mapzen('valhalla-TC63npX', {costing:'auto'}),
+		formatter: new L.Routing.mapzenFormatter(),
+		waypoints: routing_poi_list,
+		routeWhileDragging: false,
+		collapsible: true,
+		draggableWaypoints: false,
+		addWaypoints: false
+	}).addTo(map);
+
+routing.hide(); // Instructions hidden by default
+document.getElementsByClassName("leaflet-routing-container-hide")[0].style.display = "none";
+
+var routing_poi_list = new Array();
+	
 // ===> Setting overlays
 
 for(j = 0; j < pagicon.length; ++j) {

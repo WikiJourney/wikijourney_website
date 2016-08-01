@@ -18,7 +18,9 @@ limitations under the License.
 
 //razCart() : Clear the cart
 function razCart() {
-	cartList.length = 0;
+	cartList.length = 0; // Clear cart
+	routing_poi_list.length = 0; // Clear routing array
+	routing.hide(); // Close instructions
 	reloadCart();
 }
 
@@ -131,6 +133,19 @@ function reloadCart() {
 	{
 		htmlElement = parseCartContent(cartList[i], i);
 		document.getElementById("POI_CART").innerHTML = document.getElementById("POI_CART").innerHTML + htmlElement;
+	}
+
+	routing_poi_list[0] = L.latLng(user_location.latitude, user_location.longitude);
+	for(j = 0; j < cartList.length; ++j)
+		routing_poi_list[j+1] = L.latLng(cartList[j].latitude, cartList[j].longitude);
+	routing.setWaypoints(routing_poi_list);
+
+	// Hide the button or not
+	if(document.getElementsByClassName("leaflet-routing-container-hide")[0] != undefined) {
+		if (j == 0)
+			document.getElementsByClassName("leaflet-routing-container-hide")[0].style.display = "none";
+		else
+			document.getElementsByClassName("leaflet-routing-container-hide")[0].style.display = "block";
 	}
 }
 
