@@ -19,6 +19,7 @@ limitations under the License.
 //razCart() : Clear the cart
 function razCart() {
 	cartList.length = 0;
+	routing_poi_list.length = 0;
 	reloadCart();
 }
 
@@ -148,6 +149,12 @@ function reloadCart() {
 	for(j = 0; j < cartList.length; ++j)
 		routing_poi_list[j+1] = L.latLng(cartList[j].latitude, cartList[j].longitude);
 	routing.setWaypoints(routing_poi_list);
+
+	// Hide the button or not
+	if(j == 0)
+		document.getElementsByClassName("leaflet-routing-container-hide")[0].style.display = "none";
+	else
+		document.getElementsByClassName("leaflet-routing-container-hide")[0].style.display = "block";
 }
 
 //distance(i) : get the distance between a user and the POI i
