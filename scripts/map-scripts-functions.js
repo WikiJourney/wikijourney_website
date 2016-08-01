@@ -18,8 +18,9 @@ limitations under the License.
 
 //razCart() : Clear the cart
 function razCart() {
-	cartList.length = 0;
-	routing_poi_list.length = 0;
+	cartList.length = 0; // Clear cart
+	routing_poi_list.length = 0; // Clear routing array
+	routing.hide(); // Close instructions
 	reloadCart();
 }
 
@@ -151,10 +152,12 @@ function reloadCart() {
 	routing.setWaypoints(routing_poi_list);
 
 	// Hide the button or not
-	if(j == 0)
-		document.getElementsByClassName("leaflet-routing-container-hide")[0].style.display = "none";
-	else
-		document.getElementsByClassName("leaflet-routing-container-hide")[0].style.display = "block";
+	if(document.getElementsByClassName("leaflet-routing-container-hide")[0] != undefined) {
+		if (j == 0)
+			document.getElementsByClassName("leaflet-routing-container-hide")[0].style.display = "none";
+		else
+			document.getElementsByClassName("leaflet-routing-container-hide")[0].style.display = "block";
+	}
 }
 
 //distance(i) : get the distance between a user and the POI i
