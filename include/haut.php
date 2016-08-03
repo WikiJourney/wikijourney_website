@@ -59,7 +59,7 @@ else
 	?>
 	<link rel="stylesheet" href="lib/easy-button/easy-button.css" />
 	<link rel="stylesheet" href="lib/leafletawesomemarkers/leaflet.awesome-markers.css">
-	<link rel="stylesheet" href="lib/lrm/leaflet-routing-machine.css">
+	<link rel="stylesheet" href="lib/lrm/leaflet-routing-machine-3.0.3.css">
 	<link rel="stylesheet" href="lib/lrm-valhalla/leaflet.routing.mapzen.css">
 	<link rel="stylesheet" href="./style/map.css" />
 	<?php
