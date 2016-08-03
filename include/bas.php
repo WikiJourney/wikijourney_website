@@ -40,8 +40,8 @@
 	<script src="lib/leaflet/leaflet.js"></script>
 	<script src="lib/easy-button/easy-button.js"></script>
 	<script src="lib/leafletawesomemarkers/leaflet.awesome-markers.min.js"></script>
-	<script src="lib/lrm/leaflet-routing-machine.min.js"></script>
-	<script src="lib/lrm-valhalla/lrm-mapzen.min.js"></script>
+	<!-- <script src="lib/lrm/leaflet-routing-machine.min.js"></script> -->
+	<!-- <script src="lib/lrm-valhalla/lrm-mapzen.min.js"></script> -->
 	<script src="scripts/map-scripts-functions.js"></script>
 	<script src="scripts/map-scripts.js"></script>
 	<?php
