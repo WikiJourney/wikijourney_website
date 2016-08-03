@@ -24,7 +24,7 @@ limitations under the License.
 */
 	
 	//==> Configuration
-	$CONFIG_API_URL = "proxy.php"; //Link to the API
+	$CONFIG_API_URL = "https://api.wikijourney.eu/"; //Link to the API
 
 	//==> First, include the top, with special properties.
 	session_start();

@@ -1,6 +1,8 @@
 <?php
 
-$api_url = "http://api.wikijourney.eu/?";
+// This file could be needed in development in order to avoid CORS issues
+
+$api_url = "https://api.wikijourney.eu/?";
 
 foreach ($_REQUEST as $key => $value) {
 	$api_url .= $key."=".$value."&";
