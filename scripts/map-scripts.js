@@ -97,7 +97,7 @@ if(window.jQuery)
 // ===> Routing Initialisation
 var routing = L.Routing.control({
 		//router: L.Routing.mapzen('valhalla-TC63npX', {costing:'auto'}),
-		formatter: new L.Routing.mapzenFormatter(),
+		//formatter: new L.Routing.mapzenFormatter(),
 		waypoints: routing_poi_list,
 		routeWhileDragging: false,
 		collapsible: true,

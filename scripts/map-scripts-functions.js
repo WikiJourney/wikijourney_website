@@ -171,7 +171,7 @@ function distance(i){
 //initMap(user_location) : init the map on user's location
 function initMap(user_location) {
 	//===> Variables
-	var tilesURL = 'https://{s}.tile.osm.org/{z}/{x}/{y}.png';
+	var tilesURL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 	var attrib = 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors';
 	var markerUserPosition;
 
