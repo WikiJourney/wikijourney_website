@@ -1,0 +1,292 @@
+aa:Afar
+af:Afrikaans
+ak:Akana
+als:Alemannisch
+an:Aragonés
+roa-rup:Armãneashce
+frp:Arpitan
+ast:Asturianu
+gn:Avañe'ẽ
+ay:Aymar
+az:Azərbaycanca
+bjn:Bahasa Banjar
+id:Bahasa Indonesia
+ms:Bahasa Melayu
+ace:Bahsa Acèh
+bm:Bamanankan
+map-bms:Basa Banyumasan
+jv:Basa Jawa
+su:Basa Sunda
+bug:Basa Ugi
+min:Baso Minangkabau
+bcl:Bikol
+bi:Bislama
+bar:Boarisch
+bs:Bosanski
+br:Brezhoneg
+zh-min-nan:Bân-lâm-gú
+ca:Català
+ch:Chamoru
+cbk-zam:Chavacano de Zamboanga
+ny:Chi-Chewa
+sn:chiShona
+tum:chiTumbuka
+cho:Choctaw
+co:Corsu
+za:Cuengh
+cy:Cymraeg
+da:Dansk
+pdc:Deitsch
+de:Deutsch
+nv:Diné bizaad
+dsb:Dolnoserbski
+na:dorerin Naoero
+lad:Dzhudezmo
+mh:Ebon
+et:Eesti
+eml:Emiliàn e rumagnòl
+ang:Englisc
+en:English
+es:Español
+eo:Esperanto
+ext:Estremeñu
+eu:Euskara
+ee:Eʋegbe
+to:faka Tonga
+hif:Fiji Hindi
+fr:Français
+fy:Frysk
+ff:Fulfulde
+fur:Furlan
+fo:Føroyskt
+ga:Gaeilge
+gv:Gaelg
+sm:Gagana Samoa
+gag:Gagauz
+gl:Galego
+gd:Gàidhlig
+ki:Gĩkũyũ
+hak:Hak-kâ-fa / 客家話
+haw:Hawai`i
+ho:Hiri Motu
+hsb:Hornjoserbsce
+hr:Hrvatski
+io:Ido
+ig:Igbo
+rw:Ikinyarwanda
+ilo:Ilokano
+ia:Interlingua
+ie:Interlingue
+xh:isiXhosa
+zu:isiZulu
+it:Italiano
+ik:Iñupiak
+kl:Kalaallisut
+kr:Kanuri
+pam:Kapampangan
+csb:Kaszëbsczi
+kw:Kernewek/Karnuack
+kg:KiKongo
+rn:Kirundi
+sw:Kiswahili
+ht:Krèyol ayisyen
+kj:Kuanyama
+ku:Kurdî / كوردی
+ltg:Latgaļu
+la:Latina
+lv:Latviešu
+lt:Lietuvių
+li:Limburgs
+ln:Lingala
+jbo:Lojban
+lg:Luganda
+lmo:Lumbaart
+lb:Lëtzebuergesch
+lij:Líguru
+hu:Magyar
+mg:Malagasy
+mt:Malti
+mwl:Mirandés
+mus:Muskogee
+cdo:Mìng-dĕ̤ng-ngṳ̄
+mi:Māori
+fj:Na Vosa Vakaviti
+nl:Nederlands
+nds-nl:Nedersaksisch
+cr:Nehiyaw
+nap:Nnapulitano
+frr:Nordfriisk
+pih:Norfuk
+no:Norsk (Bokmål)
+nrm:Nouormand/Normaund
+nov:Novial
+nn:Nynorsk
+nah:Nāhuatl
+oc:Occitan
+om:Oromoo
+ng:Oshiwambo
+hz:Otsiherero
+uz:O‘zbek
+pag:Pangasinan
+pap:Papiamentu
+pfl:Pfälzisch
+pcd:Picard
+pms:Piemontèis
+nds:Plattdüütsch
+pl:Polski
+pt:Português
+kaa:Qaraqalpaqsha
+crh:Qırımtatarca
+ty:Reo Mā`ohi
+ksh:Ripoarisch
+rmy:romani - रोमानी
+ro:Română
+rm:Rumantsch
+qu:Runa Simi
+sc:Sardu
+sco:Scots
+stq:Seeltersk
+nso:Sesotho sa Leboa
+st:Sesotho
+tn:Setswana
+sq:Shqip
+scn:Sicilianu
+simple:Simple English
+ceb:Sinugboanong Binisaya
+ss:SiSwati
+sk:Slovenčina
+sl:Slovenščina
+so:Soomaaliga
+ckb:Soranî / کوردی
+srn:Sranantongo
+sh:Srpskohrvatski / Српскохрватски
+fi:Suomi
+sv:Svenska
+se:Sámegiella
+sg:Sängö
+tl:Tagalog
+kab:Taqbaylit
+roa-tara:Tarandíne
+tt:Tatarça / Татарча
+tet:Tetun
+vi:Tiếng Việt
+tpi:Tok Pisin
+chy:Tsetsêhestâhese
+ve:Tshivenda
+tw:Twi
+tr:Türkçe
+vep:Vepsän
+vo:Volapük
+vec:Vèneto
+fiu-vro:Võro
+wa:Walon
+vls:West-Vlams
+war:Winaray
+wo:Wolof
+ts:Xitsonga
+yo:Yorùbá
+diq:Zazaki
+zea:Zeêuws
+is:Íslenska
+cs:Čeština
+szl:Ślůnski
+bat-smg:Žemaitėška
+el:Ελληνικά
+pnt:Ποντιακά
+av:Авар
+ady:адыгабзэ
+kbd:Адыгэбзэ (Adighabze)
+ab:Аҧсуа
+ba:Башҡорт
+be-tarask:Беларуская (тарашкевіца)
+be:Беларуская
+bxr:Буряад
+bg:Български
+os:Иронау
+kv:Коми
+krc:Къарачай-Малкъар (Qarachay-Malqar)
+ky:Кыргызча
+mrj:Кырык Мары (Kyryk Mary) 
+lbe:Лакку
+lez:Лезги чІал
+mk:Македонски
+mdf:Мокшень (Mokshanj Kälj)
+mo:Молдовеняскэ
+mn:Монгол
+ce:Нохчийн
+mhr:Олык Марий (Olyk Marij)
+koi:Перем Коми (Perem Komi)
+rue:русиньскый язык
+ru:Русский
+sah:Саха тыла (Saxa Tyla)
+cu:Словѣньскъ
+sr:Српски / Srpski
+tg:Тоҷикӣ
+tyv:тыва дыл
+udm:Удмурт кыл
+uk:Українська
+xal:Хальмг
+cv:Чăваш
+myv:Эрзянь (Erzjanj Kelj)
+kk:Қазақша
+hy:Հայերեն
+yi:ייִדיש
+he:עברית
+ug:ئۇيغۇر تىلى
+ur:اردو
+ar:العربية
+tk:تركمن / Туркмен
+azb:تۆرکجه
+sd:سنڌي، سندھی ، सिन्ध
+pnb:شاہ مکھی پنجابی (Shāhmukhī Pañjābī)
+fa:فارسی
+lrc:لۊری شومالی
+arz:مصرى (Maṣrī)
+mzn:مَزِروني
+ha:هَوُسَ
+ps:پښتو
+glk:گیلکی
+arc:ܐܪܡܝܐ
+dv:ދިވެހިބަސް
+ks:कश्मीरी / كشميري
+gom:गोवा कोंकणी
+new:नेपाल भाषा
+ne:नेपाली
+pi:पाऴि
+bh:भोजपुरी
+mr:मराठी
+mai:मैथिली
+sa:संस्कृतम्
+hi:हिन्दी
+as:অসমীয়া
+bpy:ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী
+bn:বাংলা
+pa:ਪੰਜਾਬੀ
+gu:ગુજરાતી
+or:ଓଡ଼ିଆ
+ta:தமிழ்
+te:తెలుగు
+kn:ಕನ್ನಡ
+ml:മലയാളം
+si:සිංහල
+th:ไทย
+lo:ລາວ
+dz:ཇོང་ཁ
+bo:བོད་སྐད
+my:မြန်မာဘာသာ
+xmf:მარგალური (Margaluri)
+ka:ქართული
+ti:ትግርኛ
+am:አማርኛ
+chr:ᏣᎳᎩ
+iu:ᐃᓄᒃᑎᑐᑦ
+km:ភាសាខ្មែរ
+zh:中文
+zh-classical:古文 / 文言文
+wuu:吴语
+ja:日本語
+zh-yue:粵語
+gan:贛語
+ii:ꆇꉙ
+ko:한국어
+got:𐌲𐌿𐍄𐌹𐍃𐌺

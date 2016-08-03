@@ -9,6 +9,7 @@
 //===> General
 
 define("_TITLE",			"ويكي جورني ــ أعيدوا النظر إلى السياحة");
+define("_CATCHPHRASE",		"أعيدوا النظر إلى السياحة");
 define("_SRC_IMAGE_LOGO",	"./images/design/logo_and_catchphrase/fr.png");
 //===> Top
 define("_INDEX",			"استقبال");
@@ -18,7 +19,6 @@ define("_BLOG",				"بلوڭ");
 
 //===> Bottom
 define("_OUR_PARTNERS",		"شركائنا");
-define("_NO_PARTNERS_LOL",	".بدون شراكة حاليا. اتصلوا بنا");
 define("_FOLLOW_US",		"! إتبعنا");
 
 //========================> Pages <========================//
@@ -31,34 +31,31 @@ define("_ADRESS_FAILURE",	"! لا نجد هذا العنوان");
 define("_GEOLOC_FAILURE",	"لا نستطيع ايجاد موقعكم");
 define("_AROUND_LOCATION", 	"حول موقع معين");
 define("_AROUND_ME",		"! حول موقعي");
-define("_NOTE_GEOLOC",		"ملاحظة : تستخدم هذه الميزة تحديد الموقع الجغرافي. من الممكن عدم استطاعتنا الحصول على موقعكم حسب المتصفح الذي تستعملونه.");
+define("_NOTE_GEOLOC",		"<strong>Geolocation failed</strong><br/>
+							Depending on the device you are using and the way you are connected to the Internet, we are not always able to retrieve your location. You also have to allow WikiJourney to access your location.");
+define("_NOTE_MAXPOI",      "Note: due to restrictions from Wikipedia, you will not be able to load all information (e.g. image or description) when looking for more than 50 POI.");
 define("_OPTIONS",			": خيارات");
-define("_RANGE",			": (الشعاع (كم");
-define("_MAX_POI",			": الحد الاقصى");
-define("_PLACEHOLDER",		".أدخل مكان هنا");
+define("_LANGUAGE",         "Search language");
+define("_RANGE",			"(الشعاع (كم");
+define("_MAX_POI",			"الحد الاقصى");
+define("_PLACEHOLDER",		"أدخل مكان هنا");
 define("_LOADING",			"Loading...");
+define("_RETRY",            "Retry !");
 define("_PATH_CREATED",		"Your path has been created!");
 
 //===> team.php
 define("_TEAM_TITLE",		"! الفرقة");
 define("_TEAM_WHO_R_WE",	"من نحن؟");
 define("_TEAM_QUICKDESC",	"We're a team of seven students from the Ecole Centrale de Lille, a graduate school in Lille in the north of France. We
-							have to create a multidisciplinary project in two years, that's how we started to work together on WikiJourney. This project
-							is really important for us, that's why we will make everything we could to achieve it.");
-define("_S_ARNOUTS_DESC",	"I'm really interested in programing and web development, that's why I took the lead of this project. For me, it's the occasion to use my skills in a real, complex project. Moreover, I'm glad to help the Open Source project, and to contribute to Wikimedia.");
-define("_S_ARNOUTS_POSTE", 	"Project Manager<br/>Web Development") ;
-define("_P_ARZELIER_DESC",	"I am part of this project due to my passion for informatic technologies; I'm mostly interested in server administration and app development in C, though I can develop with web languages. Furthermore, development of tourism in emerging countries, as well as new technologies boom, is favorable to innovation in these areas - overlooked until now." );
-define("_P_ARZELIER_POSTE", "Server<br/>Web Development");
-define("_T_GAUDIN_DESC",	"I was attracted to WikiJourney both for its informatics component (Android and Web development) and its community complexion. I am indeed, and have been for a long time, fond of opensource softwares. I'd like to contribute to that world too, by taking part in an innovative project binding tourism et computing, two rarely combined fields." );
-define("_T_GAUDIN_POSTE", 	"Mobile Development<br/>Server Development");
-define("_N_HATIM_DESC",		"I'm interested in informatics and decision helping. I joined the WikiJourney project to learn about those themes and participate in an opensource project. I believe it will be a unique and beneficial experience." );
-define("_N_HATIM_POSTE", 	"Treasurer - Partnerships<br/>Mobile Development");
-define("_B_HUBER_DESC",		"After years of generic studies, I wanted to contribute to an actual project, focusing on ICT. WikiJourney appeared to me as the project I should join to develop my skills. It also aims to deal with a problem that strikes me as a student : giving fast access to quality information to people who want to explore the world, guiding them throughout their journey." );
-define("_B_HUBER_POSTE", 	"Partnerships<br/>Web Development");
-define("_J_MAES_DESC",		"I joined WikiJourney to improve my skills but mostly because I thought the topic was a significant one. I've always been interested in technologies and I'd found unfortunate that no project would bind technologies to touristic guides. When you travel frequently, you find that paper guides aren't that convenient ; information is online but not easy to access." );
-define("_J_MAES_POSTE", 	"Secretary<br/>Web Development");
-define("_Y_WANG_DESC",		"I know well C and C++ languages, and I learned all by myself CSS and HTML languages. I really like this project because I think it's a good idea to mix maps and Wikipedia informations. Moreover, this project fits with my skills.");
-define("_Y_WANG_POSTE", 	"Mobile Development");
+							had to create a multidisciplinary project in two years, that's how we started to work together on WikiJourney.
+							Even though the school project is officially over, a small team is still dedicated to support and improve it.");
+define("_S_ARNOUTS_POSTE", 	"<strong>Project Manager<br/>Lead Developer Web</strong>") ;
+define("_P_ARZELIER_POSTE", "Web Developer<br/><br/>");
+define("_T_GAUDIN_POSTE", 	"<strong>Lead Developer Android</strong><br/>Sysadmin");
+define("_N_HATIM_POSTE", 	"<strong>Treasurer</strong><br/>Partnerships");
+define("_B_HUBER_POSTE", 	"Partnerships<br/><br/>");
+define("_J_MAES_POSTE", 	"<strong>Secretary</strong><br/>Web Developer");
+define("_Y_WANG_POSTE", 	"Android Developer<br/><br/>");
 
 //===> about.php
 define("_ABOUT_TITLE", 		"ما هو المشروع ويكيجورني؟");
@@ -82,7 +79,9 @@ define("_ABOUT_TEXT","
 							<p>
 							! او عبر جيت <a href=\"mailto:wikijourneydev@gmail.com\"> بالاتصال بنا عبر البريد الالكتروني</a> ساهموا في المشروع
 							</p>");
-							
+
+define("_COPYRIGHT",        "Copyright");
+define("_COPYRIGHT_INFO",   "All trademarks and logos are the property of their respective owners.");
 							
 //===> technical.php
 define("_TECHNICAL_TITLE",	"المعلومات التقنية");
@@ -94,7 +93,7 @@ define("_MAP_POI_LINK",				"الرابط ويكيبيديا");
 define("_MAP_CART_LINK",			"Add to your path!");
 define("_MAP_POI_TYPE_FILE",		"lg/ar.txt");
 define("_LOOKING_FOR",				" : البحث عن المواقع القريبة");
-define("_SEE_WIKIVOYAGE_GUIDES",	"! استشيروا ادلة ويكيفواياج حولكم");
+define("_SEE_WIKIVOYAGE_GUIDES",	"WikiVoyage guides!");
 define("_YOUR_PATH",				"مساركم");
 define("_CLEAR_CART",				"افراغ");
 define("_SAVE_CART",				"! احفظ");
@@ -103,9 +102,10 @@ define("_YOU_ARE_HERE",				"! انتم هنا");
 define("_CENTER_BUTTON",			"وسط الخريطة");
 define("_WELCOME_MESSAGE", "! مرحبا");
 define("_ERROR_API",				"An error occured while contacting the API. You may have asked for too many POI. <a href=\"index.php\">Go back to homepage and retry!</a>");
+define("_LOAD_SIMPLIFIED",			"Experimenting troubles with the map ? Load the simplified version !");
 
 //===> paths.php
-define("_CONNECT_NECESS",			"<p>You need to log in to use to this function.");
+define("_CONNECT_NECESS",			"You need to log in to use to this function.");
 define("_REGISTRATION",				"Click here to log in with your Wikimedia account!");
 define("_YOUR_PATHS",				"Your paths");
 define("_LOAD",						"Load");

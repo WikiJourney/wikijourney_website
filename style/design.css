@@ -21,69 +21,93 @@ limitations under the License.
 
 /* ===> Global blocks and inline <=== */
 
+html {
+	height: 100%;
+	position: relative;
+}
+
 body {
+	position: relative;
 	background-color: #F7F7F7;
+	padding-top: 50px; /* Due to navbar */
+	overflow-x: hidden;
+	overflow-y: scroll;
+	min-height: 100%;
 }
 
 h1, h2, h3, h4 {
 	color: #ff6e70;
 }
 
+p {
+	text-align: justify;
+}
+
 .btn-primary {
 	color: white;
 	background-color: #ff6e70;
-	border-color: #fff;
+	border-color: #204D74;
 }
 
 .btn-primary:hover {
 	color: #FFF;
 	background-color: #89A0AD;
-	border-color: #204D74;
+
 }
 
-label {
-	display: block;
-	float: left;
-	width: 120px;
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.shadowed{
+	box-shadow: 0 3px 6px 0 #999;
+}
+
+form {
+	padding-bottom: 20px;
 }
 
 /* ===> Top <=== */
 
 #banniere {
-	background-image: url("../images/design/lille.jpg");
-	height: 300px;
-	border-bottom: 1px solid black;
-	font-size: 32px;
+	background-image: url("../images/design/pictures/lille.jpg");
+	min-height: 200px;
 	background-size: cover;
-	padding-top: 70px;
 }
+
+
+.bigtitle {
+	text-align: center;
+	vertical-align: middle;
+	margin-top: 80px;
+	margin-bottom: 30px;
+	font-style: italic;
+}
+
 
 .text-center > .img-responsive {
 	margin: auto;
 }
 
-#languagesBox {
-	font-size: 14px;
-	width: 100px;
-	padding: 5px;
+.stores_logos_block {
 	text-align: center;
-	background-color: rgba(248, 99, 99, 0.8);
-	border-radius: 10px;
-	border: 1px solid black;
-	color: white;
-	display: block;
-	margin: auto;
 }
 
-#languagesBox a {
-	color: white;
+.stores_logos_block img {
+	height: 40px;
+	display: inline-block;
+	margin: 5px;
+	box-shadow: 0 12px 6px -6px #999;
 }
 
-#languagesBox a:hover {
-	font-weight: bold;
-}
+/* ===> Navbar <===*/
 
-/* ===> Menu <===*/
+.navbar {
+	border: none;
+	z-index: 10000;
+}
 
 .navbar-custom {
 	background-color: #ff6e70;
@@ -111,34 +135,107 @@ label {
 
 .navbar-brand > img {
 	display: inline-block;
-	height: 25px;
+	height: 120px;
+	vertical-align: text-top;
+	
 }
+
+.shrink{
+	height:25px !important;
+	margin-right: 10px;
+}
+
+.notshrink{
+	filter: drop-shadow(2px 5px 3px #999);
+	-webkit-filter: drop-shadow(2px 5px 3px #999);
+	margin-right: 30px;
+	
+}
+
+.logoNavbar{
+   transition: 0.4s ease;
+}
+
+#first_content{
+	padding-top: 100px;
+}
+
+@media screen and (max-width: 765px){
+	.navbar ul{
+		padding-left: 150px;
+	}
+
+}
+
+@media screen and (max-width: 480px) {
+	.navbar-brand > img {
+		height: 60px;
+	}
+	.navbar ul{
+		padding-left: 100px;
+	}
+	#first_content{
+		padding-top: 30px;
+	}	
+}
+
+.navbar-collapse a{
+	padding-left:20px;
+}
+
+.navbar.in ul li {
+	font-size: 100px;  
+}
+
 
 /* ===> Body <=== */
 
-#content {
-	background-color: #fff;
-	border: 1px solid #000;
-	margin: 40px auto;
-}
+
 
 /* ===> Footer <=== */
 
-.footer {
-	border-top: 1px solid black;
-	padding: 20px;
-	font-size: 14px;
+.footer *{ /* Reset */
+	margin: 0;
+	padding: 0;
 }
 
+.footer-space{
+	/* The footer is set in absolute, we need a block at the end of the body
+	so the footer doesn't go over the bottom of it. */
+	height: 62px;
+}
+
+@media (max-width: 768px) {
+	/* The same when the screen is xs */
+	.footer-space{
+		height: 114px;
+	}
+}
+
+.footer {
+	background-color: rgba(137, 160, 173, 0.5);
+	box-shadow: inset 0 8px 6px -6px #999;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+}
+
+
+
 .footer img {
-	height: 35px;
-	padding-left: 10px;
-	padding-right: 10px;
+	margin: 6px 10px 5px;
+	height: 25px;
 }
 
 .footer h6 {
+	margin-top: 3px;
 	font-weight: bold;
+	font-size: 11px;
 }
+
+
 
 
 /* ============================================= */
@@ -146,194 +243,19 @@ label {
 /* ============================================= */
 
 /* ===> index.php <=== */
-
-#banniere_sup {
-	padding: 20px;
-}
-
-#banniere_sup h2 {
-	color: rgb(248,99,99);
-
-}
-
-#stores_logos_block {
-	text-align: center;
-}
-#stores_logos_block img {
-	height: 40px;
-	display: inline-block;
-	margin: 5px 0px;
-}
-
-/* ===> map.php <=== */
-
-/* => Map block and children (buttons, popup...) */
-
-#map {
-	padding: 0;
-	height: 500px;
-	border-collapse: collapse;
-	border: 1px solid black;
-}
-
-#map_cart_container {
-	width: 100%;
-	margin: 15px auto;
-	padding: 15px;
-}
-
-.POPUP_title {
-	font-weight: bold;
-	margin: auto;
-	text-align: center;
-}
-
-.POPUP_img {
-	max-height: 100px;
-	width: 100px;
-	margin: auto;
-	display: block;
-}
-
-.POPUP_links {
-	text-align: center;
-}
-
-/* => Cart block and children (cart elements, buttons...) */
-
-#POI_CART_BLOCK {
-	border: 1px solid black;
-	border-radius: 8px;
-	height: 500px;
-	background-color: white;
-}
-
-#POI_CART_TITLE {
-	font-family: "Helvetica","Trebuchet MS",sans;
-	font-size: 22px;
-	text-decoration: none;
+#formPOI .input-group-addon{
+	/* Sometimes we got 2 figures, sometimes 3... */
+	/* This fixes the width of the addon */
+	min-width:50px;
 	text-align:center;
-	margin: auto;
-	padding-top: 5px;
+}
+.label-top{
+	font-size: 1.4em;
+    width: 100%;
+    text-align: center !important; /* Overrides a bootstrap property */
+	padding-top: 20px !important; /* Same here */
 	padding-bottom: 5px;
-	margin-top: 5px;
-	width: 90%;
-	border-bottom: 2px solid rgb(248,99,99);
-}
 
-#POI_CART {
-	overflow-y: auto;
-	height: 400px;
-}
-#POI_CART::-webkit-scrollbar {
-	border-radius: 4px;
-	width:8px;
-	background-color:#eeeeee;
-}
-#POI_CART::-webkit-scrollbar-thumb {
-	background-color:rgb(174,203,219);
-	border-radius:4px;
-}
-
-#POI_CART_FOOTER {
-	text-align: center;
-	margin: auto;
-	margin-top: 5px;
-}
-
-.POI_CART_icons {
-	cursor: pointer;
-}
-
-.eltCart {
-	font-family: "Calibri",Sans;
-	width: 90%;
-	border-bottom: 2px solid rgb(248,99,99);
-	min-height: 74px;
-	margin: auto;
-	text-align: center;
-	padding: 5px;
-}
-
-.eltCartNumber {
-	font-family: "Helvetica","Trebuchet MS";
-	border-radius: 3px;
-	float: left;
-	margin: 5px;
-	margin-top: 30px;
-	width: 20px;
-	border: 1px solid black;
-	text-align:center;
-	height:100%;
-	background-color: rgb(174,203,219);
-}
-
-/* => WikiVoyage section */
-
-#WikiVoyageTitle {
-color: rgb(255,99,99);
-font-size: 1.2em;
-margin-bottom: 10px;
-display: block;
-font-weight: bold;
-}
-
-#WikiVoyageBox {
-width: 95%;
-padding-top: 20px;
-height:200px;
-margin: auto;
-}
-
-#WikiVoyageThumbnailContainer {
-overflow-x: scroll;
-overflow-y: hidden;
-margin: auto;
-height: 160px;
-width: 100%;
-}
-
-#WikiVoyageThumbnailContainerScroll {
-width: auto;
-white-space: nowrap;
-}
-
-#WikiVoyageThumbnailContainer::-webkit-scrollbar {
-border-radius: 4px;
-height:8px;
-background-color:#eeeeee;
-}
-
-#WikiVoyageThumbnailContainer::-webkit-scrollbar-thumb {
-background-color:rgb(174,203,219);
-border-radius:4px;
-}
-
-.WikiVoyageElement {
-height: 130px;
-display: inline-block;
-text-align: center;
-vertical-align: top;
-margin-left: 5px;
-padding: 8px;
-background-color: rgb(174,203,219);
-min-width: 100px;
-font-family: "Calibri",Sans;
-font-size: 0.9em;
-border-radius: 3px;
-}
-
-.WikiVoyageElement a {
-color:black;
-}
-
-.WikiVoyageElement a:hover {
-color: rgb(255,50,50);
-}
-
-.WikiVoyageImg {
-margin-top: 8px;
-height: 100px;
 }
 
 /* ===> map_export.php <=== */
@@ -343,7 +265,6 @@ height: 100px;
 }
 
 .thumbnail_export {
-	height: 140px;
 	display: inline-block;
 	text-align: center;
 	vertical-align: top;
@@ -357,12 +278,18 @@ height: 100px;
 	border-radius: 3px;
 }
 
+.ratio_wrapper{
+	margin-top: 5px;
+	display: block;
+}
+
 /* ===> paths.php <=== */
 
 .thumbnail_paths {
 	max-height: 140px;
 	margin: auto;
 	display: block;
+	margin-bottom: 5px;
 }
 
 #paths {
@@ -395,51 +322,53 @@ height: 100px;
 }
 
 /* ===> team.php <=== */
-#trombi {
-	width: 80%;
-	border-collapse: collapse;
-	border: 1px solid black;
-	margin: auto;
-	background-color: rgba(155,222,255,0.3);
-}
 
-.tcol3 {
-	text-indent: 20px;
-	text-align: justify;
-	font-family: calibri,Helvetica,sans;
-	border: 1px solid black;
-	padding: 10px;
-	font-size: 14px;
-}
-
-.tcol2 {
-	width: 22%;
-	text-align: center;
-	border: 1px solid black;
-	padding: 5px;
-}
 
 .trombiNom
  {
 	font-family: "Courier New",Times,sans;
 	color: rgb(255,99,99);
 	font-weight: bold;
+	font-size: 1.5em;
 }
 
 .trombiFonc
  {
 	font-family: calibri, Helvetica,sans;
 	color: grey;
-	font-size: 13px;
 }
 
-.tcol1 img {
-	width: 120px;
-	vertical-align: bottom;
+
+
+@media screen and (max-width: 765px){
+	.trombiElement{
+		margin: auto;
+	}
 }
 
-.tcol1 {
-	border: 1px solid black;
-	margin: 0;
-	padding : 0;
+.trombiElement{
+	text-align: center;
+	background-color: rgb(254,254,254);
+	border-radius: 15px;
+	
+	margin-top: 105px;
+	max-width: 280px;
+	padding-bottom: 10px;
+
+}
+
+.trombiElement .img-circle{
+	margin-top: -75px;
+	margin-bottom: 20px;
+	width: 150px;
+}
+
+.trombiElement > .trombiSocial {
+	text-align: center;
+}
+
+.trombiElement > .trombiSocial > a > img {
+	display: inline-block;
+	margin: 5px 15px 0 15px;
+	width: 25px;
 }

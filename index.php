@@ -1,5 +1,5 @@
 <?php
-	/*
+/*
 ================== WIKIJOURNEY - INDEX.PHP =======================
 Index page of the website
 
@@ -26,105 +26,198 @@ if(isset($_GET['oauth_verifier']) OR isset($_GET['oauth_token']))
 
 include('./include/haut.php');
 
+// Store the language file in an array, we're gonna parse it in a loop.
+$wp_languages_raw = file("config/wikipedia_languages.txt");
 ?>
 
-	<div id="banniere_sup">
-		<div class="row">
-			<div class="col-xs-12">
-				<h2><?php
-				if($language == 'fr')
-					echo 'Téléchargez notre application mobile !';
-				else
-					echo 'Download our mobile app!';
-				?></h2>
+<div class="jumbotron shadowed" id="banniere">
+	<div class="container">
+		<div class="row"><h1 class="bigtitle"><?php echo _CATCHPHRASE; ?></h1></div>
+		<div class="row stores_logos_block">
+			<div class="col-xs-6 col-md-3">
+				<a target="_blank" href="https://play.google.com/store/apps/details?id=eu.wikijourney.wikijourney"><img src="./images/design/stores/google_play.png" alt="Google Play" title="Google Play" height="40px" width="135px" /></a>
 			</div>
-		</div>
-		<div class="row" id="stores_logos_block">
-			<div class="col-sm-3">
-				<a target="_blank" href="https://play.google.com/store/apps/details?id=eu.wikijourney.wikijourney"><img src="./images/design/google_play.png" alt="Google Play" title="Google Play" /></a>
+			<div class="col-xs-6 col-md-3">
+				<a target="_blank" href="https://f-droid.org/repository/browse/?fdid=com.wikijourney.wikijourney"><img src="./images/design/stores/fdroid.png" alt="F-Droid" title="F-Droid" height="40px" width="114px" /></a>
 			</div>
-			<div class="col-sm-3">
-				<a target="_blank" href="https://f-droid.org/repository/browse/?fdid=com.wikijourney.wikijourney"><img src="./images/design/fdroid.png" alt="F-Droid" title="F-Droid" /></a>
+			<div class="col-xs-6 col-md-3">
+				<a target="_blank" href="http://www.amazon.com/WikiJourney/dp/B0191WMI52/"><img src="./images/design/stores/amazon.png" alt="Amazon" title="Amazon" height="40px" width="116px" /></a>
 			</div>
-			<div class="col-sm-3">
-				<a target="_blank" href="http://www.amazon.com/WikiJourney/dp/B0191WMI52/"><img src="./images/design/amazon.png" alt="Amazon" title="Amazon" /></a>
-			</div>
-			<div class="col-sm-3">
-				<a target="_blank" href="http://wikijourney.store.aptoide.com/"><img src="./images/design/aptoide.png" alt="Aptoide" title="Aptoide" /></a>
+			<div class="col-xs-6 col-md-3">
+				<a target="_blank" href="http://wikijourney.store.aptoide.com/"><img src="./images/design/stores/aptoide.png" alt="Aptoide" title="Aptoide" height="40px" width="132px" /></a>
 			</div>
 		</div>
 	</div>
+</div>
 
-	<h1><?php echo _WELCOME_TITLE; ?></h1>
+<div class="container">
+	<h2><?php echo _WELCOME_TITLE; ?></h2>
 
 	<p><?php if (defined('_WELCOME_MESSAGE')) {echo _WELCOME_MESSAGE;} ?></p>
 
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
-			<form method="post" action="map.php" id="formPOI">
-				<input type="radio" name="choice" value="adress" checked="checked" />
-				<?php echo _AROUND_LOCATION; ?>
-				<input type="text" placeholder="<?php echo _PLACEHOLDER; ?>" name="adressValue" id="adressValue" />
-				<br/>
-				<input type="radio" name="choice" value="around" onclick="getGeolocation();" /> <?php echo _AROUND_ME; ?>
-				<br/>
-				<p class="small"><?php echo _NOTE_GEOLOC; ?></p>
-				<br/>
-				<br/>
+		<div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+			<form method="post" action="map.php" id="formPOI" class="form-horizontal" role="form">
+				<!-- Some hidden form, the first two are gonna be filled by the geoloc callback -->
+				<!-- The last one gives to map.php the origin of the user -->
+				<input type="hidden" id="latitude" name="latitude" value="" />
+				<input type="hidden" id="longitude" name="longitude" value="" />
+				<input type="hidden" id="from" name="from" value="form" />
 
-				<p><?php echo _OPTIONS; ?></p>
-				<label for="range"><?php echo _RANGE; ?></label><input class="miniInput" type="text" name="range" id="range" value="1" /><br/>
-				<label for="maxPOI"><?php echo _MAX_POI; ?></label><input class="miniInput" type="text" name="maxPOI" id="maxPOI" value="25" /><br/><br/>
+				<div class="row">
+					<!-- Around a place -->
+					<div class="col-md-6">
+							<label class="control-label label-top" for="adressValue"><?php echo _AROUND_LOCATION; ?></label>
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="<?php echo _PLACEHOLDER; ?>" name="adressValue" id="adressValue" required >
+							<span class="input-group-btn">
+								<button type="submit" class="input-prepend btn btn-primary btn-block" type="button" name="go" value="adress">Go!</button>
+							</span>
+							</div>
+					</div>
 
-				<input type="hidden" name="longitude" id="longitude" value="null" />
-				<input type="hidden" name="latitude" id="latitude" value="null" />
+					<!-- Around my position -->
+					<div class="col-md-6">
+							<label class="control-label label-top" for="adressValue"><?php echo _AROUND_ME; ?></label>
+							<button id="buttonGoGeoloc" class="btn btn-primary btn-block" type="button" onclick="getGeolocation();">Go!</button>
+							<div id="infoGeolocCollapse" class="collapse"><p class="help-block"><?php echo _NOTE_GEOLOC; ?></p></div>
+					</div>
+				</div>
+				<hr/>
+				<h4><?php echo _OPTIONS; ?></h4>
 
-				<input type="submit" value="Go !" onclick="this.value='<?php echo _LOADING; ?>';" class="btn btn-primary" />
+				<!-- Option Language -->
+				<div class="row">
+					<label class="col-sm-6 control-label" for="adressValue"><?php echo _LANGUAGE; ?></label>
+					<div class="col-sm-6">
+						<select class="form-control chosen-select" id="selectLanguage" name="selectedLanguage">
+							<?php
+							foreach($wp_languages_raw as $key => $value)
+							{
+								// On the left, the language code, useful for the API.
+								// On the right, the name of the language, to put in the option.
+								$wp_language = explode(':', $value);
+								// Next "if" is to avoid blank lines.
+								if(isset($wp_language[1])) {
+									?>
+									<option value="<?php echo $wp_language[0]; ?>"<?php echo ($wp_language[0] == $language) ? " selected" : ""; ?>><?php echo substr($wp_language[1],0,-1); ?></option>
+									<?php
+								}
+							}
+							?>
+						</select>
+					</div>
+				</div><br/>
+
+				<!-- Option Range -->
+				<div class="row">
+					<label class="col-sm-6 control-label" for="adressValue"><?php echo _RANGE; ?></label>
+					<div class="col-sm-6">
+						<div class="input-group">
+							<input type="range" name="range" id="range" class="form-control" min="1" value="1" max="10"/>
+							<span class="input-group-addon" id="rangeValue"></span>
+						</div>
+					</div>
+				</div><br/>
+
+				<!-- Option Max -->
+				<div class="row">
+					<label class="col-sm-6 control-label" for="adressValue"><?php echo _MAX_POI; ?></label>
+					<div class="col-sm-6">
+						<div class="input-group">
+							<input type="range" name="maxPOI" id="maxPOI" class="form-control" min="0" value="50" max="200" step="10" />
+							<span class="input-group-addon" id="maxPOIvalue"></span>
+						</div>
+						<div id="infoMaxPOIcollapse" class="collapse"><p class="help-block"><?php echo _NOTE_MAXPOI; ?></p></div>
+					</div>
+				</div><br/>
 			</form>
 		</div>
 	</div>
 
- 	<script type="text/javascript">
-	function showPosition(position) {
-		document.getElementById('latitude').value = position.coords.latitude;
-		document.getElementById('longitude').value  = position.coords.longitude;
+</div>
+
+<script type="text/javascript">
+	// When the page is load, we set the listener for the maxPOI collapse
+	window.onload = function(e) {
+		$('#maxPOI').change(function(){
+			if(parseInt($('#maxPOI').val()) > 50)
+			{
+				$('#infoMaxPOIcollapse').collapse('show');
+			}
+			else
+				$('#infoMaxPOIcollapse').collapse('hide');
+
+		});
+
+		$(".chosen-select").chosen();
+
+		// Sliders init
+		$("#maxPOIvalue").html($("#maxPOI").val());
+		$("#rangeValue").html($("#range").val());
+		// Sliders set event
+		$("#maxPOI").on("input", function(){ $("#maxPOIvalue").html($("#maxPOI").val()) });
+		$("#range").on("input", function(){ $("#rangeValue").html($("#range").val()) });
+
+	};
+
+	// Callback when geoloc is successful
+	function successPosition(position) {
+		console.log(position);
+		if(position.coords.latitude == null || position.coords.latitude == 0 || position.coords.longitude == 0)
+			geolocationFailed();
+		else
+		{
+			document.getElementById('latitude').value = position.coords.latitude;
+			document.getElementById('longitude').value  = position.coords.longitude;
+			$('#formPOI').submit();
+		}
 
 	}
 
+	// This function is triggered when geolocation fails, it opens the note block
+	function geolocationFailed(){
+		$("#buttonGoGeoloc").html("<?php echo _RETRY; ?>");
+		$('#infoGeolocCollapse').collapse('show');
+	}
+
+	//Geolocation call
 	function getGeolocation() {
 		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(showPosition);
+			navigator.geolocation.getCurrentPosition(successPosition, geolocationFailed);
 		} else {
-			alert("Sorry, but geolocation is not supported by this browser.");
+			geolocationFailed();
 		}
 	}
 
-	</script>
+
+
+</script>
 
 
 <?php
-	include("./include/bas.php");
+include("./include/bas.php");
 
-	//At the end of the page, so it could load.
-	if(isset($_GET['message']))
+//At the end of the page, so it could load.
+if(isset($_GET['message']))
+{
+	if($_GET['message'] == 'adress')
 	{
-		if($_GET['message'] == 'adress')
-		{
-			echo '<script>alert("';
-			echo _ADRESS_FAILURE;
-			echo '"); </script>';
-		}
-		if($_GET['message'] == 'geoloc')
-		{
-			echo '<script>alert("';
-			echo _GEOLOC_FAILURE;
-			echo '"); </script>';
-		}
-		if($_GET['message'] == 'confirm')
-		{
-			echo '<script>alert("';
-			echo _PATH_CREATED;
-			echo '"); </script>';
-		}
+		echo '<script>alert("';
+		echo _ADRESS_FAILURE;
+		echo '"); </script>';
 	}
+	if($_GET['message'] == 'geoloc')
+	{
+		echo '<script>alert("';
+		echo _GEOLOC_FAILURE;
+		echo '"); </script>';
+	}
+	if($_GET['message'] == 'confirm')
+	{
+		echo '<script>alert("';
+		echo _PATH_CREATED;
+		echo '"); </script>';
+	}
+}
 ?>

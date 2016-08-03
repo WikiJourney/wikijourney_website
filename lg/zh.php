@@ -9,6 +9,7 @@
 //===> General
 
 define("_TITLE",			"WikiJourney - Rediscover Tourism.");
+define("_CATCHPHRASE",		"Visit a city with Wikipedia!");
 define("_SRC_IMAGE_LOGO",	"./images/design/logo_and_catchphrase/fr.png");
 //===> Top
 define("_INDEX",			"首页");
@@ -18,7 +19,6 @@ define("_BLOG",				"博客");
 
 //===> Bottom
 define("_OUR_PARTNERS",		"合作伙伴");
-define("_NO_PARTNERS_LOL",	"目前暂缺. 对我们的项目感兴趣吗 ? 来联系我们吧!");
 define("_FOLLOW_US",		"关注我们 !");
 
 //========================> Pages <========================//
@@ -32,13 +32,16 @@ define("_ADRESS_FAILURE",	"此地址不存在 !");
 define("_GEOLOC_FAILURE",	"Sorry but we can't find your position.");
 define("_AROUND_LOCATION", 	"在一个特定地点周围寻找!");
 define("_AROUND_ME",		"在附近寻找有意思的地点!");
-define("_NOTE_GEOLOC",
-	                        "注意：此功能需要用到定位。只有在您的定位器工作正常和网络连接的情况下才可以确定您的位置。");
-define("_OPTIONS",			"选项 :");
-define("_RANGE",			"范围 (km) : ");
-define("_MAX_POI",			"最大值 :");
-define("_PLACEHOLDER",		"在此输入地点名称.");
+define("_NOTE_GEOLOC",		"<strong>Geolocation failed</strong><br/>
+							Depending on the device you are using and the way you are connected to the Internet, we are not always able to retrieve your location. You also have to allow WikiJourney to access your location.");
+define("_NOTE_MAXPOI",      "Note: due to restrictions from Wikipedia, you will not be able to load all information (e.g. image or description) when looking for more than 50 POI.");
+define("_OPTIONS",			"选项");
+define("_LANGUAGE",         "Search language");
+define("_RANGE",			"范围 (km)");
+define("_MAX_POI",			"最大值");
+define("_PLACEHOLDER",		"在此输入地点名称");
 define("_LOADING",			"Loading...");
+define("_RETRY",            "Retry !");
 define("_PATH_CREATED",		"Your path has been created!");
 
 //===> team.php
@@ -47,20 +50,13 @@ define("_TEAM_WHO_R_WE",	"成员简介");
 define("_TEAM_QUICKDESC",
 	                        "我们是法国里尔中央理工学院一个七个学生组成的项目开发团队，学校在法国北方省首府里尔市。在我们前两年的学习中，我们需要组成一个团队共同开发一个实际项目。我们会做到最好来实现这个项目");
 
-define("_S_ARNOUTS_DESC",	"我对于编程和信息技术很感兴趣，所以我选择了加入这个项目。这个项目属于开源开发程序，对于我来说是一个将我的能力应用到一个实际项目中的很好的机会。");
 define("_S_ARNOUTS_POSTE", 	"项目主管<br/>Web开发") ;
-define("_P_ARZELIER_DESC",	  "			我选择这个项目因为我喜欢信息技术，我有Linux服务器和C语言开发的经验，也有能力进行Web开发。并且，日益发展的旅游业和新技术的发展相比于目前市场上已实  现的项目很少，使得在这个领域有很大的创新空间。");
 define("_P_ARZELIER_POSTE", "服务器开发<br/>Web开发");
-define("_T_GAUDIN_DESC",	"这个项目涉及到的领域、应用的技术（Web开发和Android开发）和合作团体吸引了我。我学习开源软件开发已经很长时间，我非常想在开源软件领域中做出一些成果。							所以我参加这个项目，希望作为一个项目创新者，将很少联系在一起的两个领域：旅游业和信息技术联系在一起。" );
 define("_T_GAUDIN_POSTE", 	"Java开发<br/>服务器开发");
-define("_N_HATIM_DESC",		"因为对计算机感兴趣，我加入Wikijourney这个项目，我相信参与开源软件开发的这个经历一定会为我带来有益的经验。" );
 define("_N_HATIM_POSTE", 	"财务 - 合作伙伴<br/>Java开发");
-define("_B_HUBER_DESC",		"在接受很多年的通识教育后，我希望可以加入一个具体的与新兴信息科技与交流相关的项目。Wikijourney对于我来说是个很好的项目来增强我的技术能力，并且它很						   好地解决了目前学生们所遇到的问题，即在旅行过程中能够快速地找到路线和景点信息，并实现导航。" );
 define("_B_HUBER_POSTE", 	"合作伙伴<br/>Web开发");
-define("_J_MAES_DESC",		"我一直以来对于信息技术很感兴趣，所以选择加入这个项目以更好地学习相关知识并初次尝试参与开发实际项目。我每年会有几次去新的城市旅行，但我发现旅游路标 导航并不总是方便使用的。尽管很多信息可以在网上找到，但旅游相关的信息却不容易找到。" );
 define("_J_MAES_POSTE", 	"秘书<br/>Web开发");
-define("_Y_WANG_DESC",		"我此前学过C语言和C++，并且自学了CSS和HTML。我认为这个项目很好地融合了电子地图和维基百科的信息，并且符合我的技术特点，所以对这个项目很感兴趣。" );
-define("_Y_WANG_POSTE", 	"Java开发");
+define("_Y_WANG_POSTE", 	"Java开发<br/><br/>");
 
 //===> about.php
 define("_ABOUT_TITLE", 		"Wikijourney 项目简介");
@@ -83,6 +79,8 @@ define("_ABOUT_TEXT","
 							<h2>问题和建议 </h2>
 							<p>我们期待您的建议和意见! 通过Git参与我们的项目, 或者通过电子邮件 <a href=\"mailto:wikijourneydev@gmail.com\">联系我们</a>!</p>");
 
+define("_COPYRIGHT",        "Copyright");
+define("_COPYRIGHT_INFO",   "All trademarks and logos are the property of their respective owners.");
 
 //===> technical.php
 define("_TECHNICAL_TITLE",	"技术支持");
@@ -102,9 +100,10 @@ define("_CART_IS_EMPTY_POPUP",		"您的地图为空，请在导出前加入景�
 define("_YOU_ARE_HERE",				"您在这里 !");
 define("_CENTER_BUTTON",			"以我的位置为中央显示");
 define("_ERROR_API",				"An error occured while contacting the API. You may have asked for too many POI. <a href=\"index.php\">Go back to homepage and retry!</a>");
+define("_LOAD_SIMPLIFIED",			"Experimenting troubles with the map ? Load the simplified version !");
 
 //===> paths.php
-define("_CONNECT_NECESS",			"<p>您需要登录以便使用此项功能");
+define("_CONNECT_NECESS",			"您需要登录以便使用此项功能");
 define("_REGISTRATION",				"点击这里用您的维基账户登录！!");
 define("_YOUR_PATHS",				"您的路径");
 define("_LOAD",						"载入");
