@@ -8,17 +8,17 @@
 
 //===> General
 
-define("_TITLE",			"Wiki Journey - Revisitez le tourisme.");
+define("_TITLE",			"WikiJourney - Revisitez le tourisme.");
+define("_CATCHPHRASE",		"Faites du tourisme avec Wikipédia&#8239;!");
 define("_SRC_IMAGE_LOGO",	"./images/design/logo_and_catchphrase/fr.png");
 //===> Top
 define("_INDEX",			"Accueil");
-define("_TEAM",				"L'Équipe");
+define("_TEAM",				"Équipe");
 define("_ABOUT",			"À propos");
 define("_BLOG",				"Blog");
 
 //===> Bottom
 define("_OUR_PARTNERS",		"En collaboration avec :");
-define("_NO_PARTNERS_LOL",	"Pas de partenaires pour l'instant. Un partenariat vous intéresse ? Contactez nous !");
 define("_FOLLOW_US",		"Suivez le projet !");
 
 //========================> Pages <========================//
@@ -30,43 +30,41 @@ define("_BUTTON_POI_AROUND","Trouver des points d'intérêts autour de moi !");
 define("_ADRESS_LOOK_UP",	"Ou à proximité d'une adresse !");
 define("_ADRESS_FAILURE",	"Cette adresse n'existe pas !");
 define("_GEOLOC_FAILURE",	"Désolé, mais il est impossible de vous géolocaliser.");
-define("_AROUND_LOCATION", 	"Autour d'une adresse particulière");
+define("_AROUND_LOCATION", 	"Autour d'un lieu !");
 define("_AROUND_ME",		"Autour de ma position !");
-define("_NOTE_GEOLOC",		"Note : cette fonctionnalité utilise la géolocalisation. Il n'est pas toujours
+define("_NOTE_GEOLOC",		"<strong>Géolocalisation impossible</strong><br/>Il n'est pas toujours
 							possible de récupérer votre position, cela dépend de votre navigateur et de
-							votre connexion internet.");
-define("_OPTIONS",			"Options :");
-define("_RANGE",			"Rayon (km) : ");
-define("_MAX_POI",			"Maximum :");
-define("_PLACEHOLDER",		"Entrez un lieu ici.");
+							votre connexion internet. Vous devez également autoriser WikiJourney à accéder à votre position.");
+define("_NOTE_MAXPOI",      "Note : au dessus de 50 points d'intérêts, vous ne pourrez pas afficher les
+                            images et les informations des points les plus éloignés. Ceci est dû à une
+                            restriction des serveurs Wikimédia.");
+define("_OPTIONS",			"Options");
+define("_LANGUAGE",         "Langue de la recherche");
+define("_RANGE",			"Rayon (km)");
+define("_MAX_POI",			"Nombre max de Points d'Intérêt");
+define("_PLACEHOLDER",		"Entrez un lieu ici");
 define("_LOADING",			"Chargement...");
+define("_RETRY",            "Réessayer !");
 define("_PATH_CREATED",		"Votre parcours a bien été créé !");
 
 //===> team.php
-define("_TEAM_TITLE",		"Notre Équipe");
+define("_TEAM_TITLE",		"Notre équipe");
 define("_TEAM_WHO_R_WE",	"Qui sommes nous ?");
 define("_TEAM_QUICKDESC",	"Nous sommes une équipe de sept étudiants de l'École Centrale de Lille, école d'ingénieur généraliste située à Lille,
-							dans le Nord de la France. Durant nos deux premières années d'études, nous devons développer un projet
-							multidisciplinaire, dans lequel nous mettons nos connaissances en commun. Nous nous sommes donc retrouvés à sept 
-							sur ce projet." );
-define("_S_ARNOUTS_DESC",	"J'ai rejoint le projet WikiJourney car je suis vraiment intéressé par la programmation et le développement informatique. Ce projet est pour moi l'occasion de mettre mes compétences de programmation au profit d'un réel projet, qui de plus se place dans le cadre du logiciel libre." );
-define("_S_ARNOUTS_POSTE", 	"Chef de Projet<br/>Développement Web") ;
-define("_P_ARZELIER_DESC",	"Je suis dans ce groupe projet de par ma passion pour l'informatique; mon domaine de prédilection est l'administration de serveurs sous Linux et le développement en C, mais néanmoins capable de coder en utilisant des technologies web. En outre, le développement du tourisme dans les pays émergents ainsi que l'explosion des nouvelles technologies est un terreau fertile pour l'innovation dans ce domaine, assez peu exploré jusqu'à maintenant." );
-define("_P_ARZELIER_POSTE", "Serveur<br/>Développement Web");
-define("_T_GAUDIN_DESC",	"Le projet Wikijourney m'a attiré à la fois par à sa dominante informatique (développement Web et Android), et par son côté communautaire. En effet, je suis depuis longtemps un adepte des logiciels libres, et j'aimerais contribuer à mon tour au monde du Libre en participant à un projet novateur, liant tourisme et informatique, deux domaines rarement combinés." );
-define("_T_GAUDIN_POSTE", 	"Développement Java<br/>Développement Serveur");
-define("_N_HATIM_DESC",		"Interessé par l'informatique et l'aide à la décision, j'ai rejoint le projet WikiJourney pour m'initier à ces sujets et participer à un projet libre qui m'offrira sans doute une expérience unique et fort profitable." );
-define("_N_HATIM_POSTE", 	"Trésorier - Partenariats<br/>Développement Java");
-define("_B_HUBER_DESC",		"Après des années d’une formation très généraliste, je souhaitais m’intégrer à un projet concret, avec une forte emphase sur les NTIC. WikiJourney apparaissait alors comme Le projet à rejoindre pour développer mes compétences, d’autant plus qu’il répond à une problématique me touchant vraiment en tant qu’étudiant : donner un accès rapide à une information de qualité à des personnes cherchant à explorer le monde, et les guider dans leurs découvertes." );
-define("_B_HUBER_POSTE", 	"Partenariats<br/>Développement Web");
-define("_J_MAES_DESC",		"Depuis toujours intéressée par l’informatique, j’ai rejoint WikiJourney pour développer mes connaissances et surtout participer à un projet au concept primordial. Visitant de nouvelles villes plusieurs fois par an, j’ai pu remarquer que les guides touristiques ne sont pas toujours pratiques. Les informations sont librement disponibles sur internet, mais pas facilement accessibles aux touristes." );
-define("_J_MAES_POSTE", 	"Secrétaire<br/>Développement Web");
-define("_Y_WANG_DESC",		"Je connais bien les langages C et C++, et j'ai appris les langages CSS et HTML en autodidacte. Je m'intéresse à ce projet parce que c'est une bonne idée de combiner les cartes numériques avec les informations fournies par Wikipédia. De plus, le projet correspond bien à mes compétences." );
-define("_Y_WANG_POSTE", 	"Développement Java");
+							dans le Nord de la France. Durant nos deux premières années d'études, nous avons dû développer un projet
+							multidisciplinaire, dans lequel nous mettons nos connaissances en commun. Même si ce projet est officiellement terminé dans le cadre de 
+							l'école, une partie de l'équipe continue aujourd'hui à le maintenir." );
+define("_S_ARNOUTS_POSTE", 	"<strong>Chef de Projet<br/>Lead Développeur Web</strong>") ;
+define("_P_ARZELIER_POSTE", "Développeur Web<br/><br/>");
+define("_T_GAUDIN_POSTE", 	"<strong>Lead Développeur Android</strong><br/>Administrateur Serveur");
+define("_N_HATIM_POSTE", 	"<strong>Trésorier</strong><br/>Partenariats");
+define("_B_HUBER_POSTE", 	"Partenariats<br/><br/>");
+define("_J_MAES_POSTE", 	"<strong>Gestion de Projet</strong><br/>Développeur Web");
+define("_Y_WANG_POSTE", 	"Développeur Android<br/><br/>");
 
 //===> about.php
 define("_ABOUT_TITLE", 		"Qu’est-ce que Wikijourney ?");
-define("_ABOUT_TEXT","		
+define("_ABOUT_TEXT","
 							<p>Wikijourney est un projet étudiant visant à mettre en lien un utilisateur et le contenu informatif de Wikipedia, via sa position dans une ville.
 							<br> Concrètement, nous souhaitons coder une application qui proposerait au touriste des points d’intérêts à visiter. Rentrez vos préférences, choisissez un itinéraire et c’est parti !
 							</p>
@@ -77,21 +75,18 @@ define("_ABOUT_TEXT","
 							<br>Nous proposerons également de préparer son parcours à l’avance, via un module web ainsi qu’un mode hors-ligne.
 							</p>
 
-							<h2>WanderWiki revient ! </h2>
-							<p>
-							Si vous utilisiez déjà l’application <a href=\"http://wiki-geolocalisation.wix.com/wanderwiki\">WanderWiki</a>, vous ne serez pas désorientés : WikiJourney reprend le projet. Wanderwiki revient, avec une nouvelle charte graphique et de nouvelles fonctionnalités !
-							</p>
-
 							<h2>Des questions, des propositions ? </h2>
 							<p>
 							Nous sommes ouverts à toute piste d’amélioration ! Contribuez au projet <a href=\"mailto:wikijourneydev@gmail.com\">en nous contactant par mail</a> ou en codant directement vos propositions sur notre Git !<br/>
 							Ou devenez <a target=\"_blank\" href=\"https://play.google.com/store/apps/details?id=eu.wikijourney.wikijourney\">testeur de l'application</a> !
 							</p>");
-							
-							
+
+define("_COPYRIGHT",        "Droits d'auteur");
+define("_COPYRIGHT_INFO",   "L’ensemble des marques et logos appartiennent à leurs propriétaires respectifs.");
+
 //===> technical.php
-define("_TECHNICAL_TITLE",	"Informations Techniques");
-define("_TECHNICAL_TEXT",	"Ce site web est encore en construction, merci de revenir plus tard ! ;)");
+define("_TECHNICAL_TITLE",	"Informations techniques");
+define("_TECHNICAL_TEXT",	"Vous trouverez toutes les informations techniques relatives au projets en suivant ces liens : ");
 
 
 //===> map.php
@@ -99,7 +94,7 @@ define("_MAP_POI_LINK",				"Voir sur Wikipédia");
 define("_MAP_CART_LINK",			"Ajouter au parcours !");
 define("_MAP_POI_TYPE_FILE",		"lg/fr.txt");
 define("_LOOKING_FOR",				"Recherche des points d'intérêt à proximité : ");
-define("_SEE_WIKIVOYAGE_GUIDES",	"Consultez les guides WikiVoyage autour de vous !");
+define("_SEE_WIKIVOYAGE_GUIDES",	"Guides WikiVoyage");
 define("_YOUR_PATH",				"Votre Parcours");
 define("_CLEAR_CART",				"Vider");
 define("_SAVE_CART",				"Sauvegarder !");
@@ -107,11 +102,12 @@ define("_CART_IS_EMPTY_POPUP",		"Votre parcours est vide, remplissez le avant de
 define("_YOU_ARE_HERE",				"Vous êtes ici !");
 define("_CENTER_BUTTON",			"Centrer la carte");
 define("_ERROR_API",				"Erreur : l'API n'a pas répondu à temps. Peut-être que vous avez demandé un trop grand nombre de points d'intérêt. <a href=\"index.php\">Rééssayez !</a>");
+define("_LOAD_SIMPLIFIED",			"La carte ne s'affiche pas ? Essayez la version simplifiée !");
 
 //===> paths.php
-define("_CONNECT_NECESS",			"<p>Enregistrez-vous pour utiliser votre compte :");
+define("_CONNECT_NECESS",			"Pour récupérer vos parcours, vous devez vous connecter.");
 define("_REGISTRATION",				"Cliquez ici pour utiliser votre compte Wikimedia !");
-define("_YOUR_PATHS",				"Vos parcours");
+define("_YOUR_PATHS",				"Parcours");
 define("_LOAD",						"Charger");
 define("_REMOVE",					"Supprimer");
 define("_NO_PATHS_SAVED",			"Pas de parcours sauvegardés.");

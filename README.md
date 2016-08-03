@@ -1,3 +1,5 @@
+![wikijourney.logo](images/design/wj_logos/logo_small.png)
+
 # WikiJourney (web)
 
 A website made for tourism, based on Wikipedia information.
@@ -14,8 +16,7 @@ A website made for tourism, based on Wikipedia information.
 
 ## Resources used
 
-The application uses [Leaflet](http://leafletjs.com/) to display [OSM](http://www.openstreetmap.org) tiles as well as [Leaflet Routing Machine](http://www.liedman.net/leaflet-routing-machine/) to guide users.
-Some icons from [Font Awesome](http://fontawesome.io/) were compiled using [Fontello](http://fontello.com/).
+The application uses [Leaflet](http://leafletjs.com/) to display [OSM](http://www.openstreetmap.org) tiles as well as [Leaflet Routing Machine](http://www.liedman.net/leaflet-routing-machine/) to guide users. 
 
 ## Contributing
 If you want to contribute, first: Thank you! Some advices though:
@@ -28,8 +29,6 @@ Links :
 - [Twitter account](https://twitter.com/WikiJourney)
 - [App Repository](https://github.com/WikiJourney/wikijourney_app/)
 - [API Repository](https://github.com/WikiJourney/wikijourney_api/)
-
-![wikijourney.logo](http://wikijourneydev.alwaysdata.net/images/design/logo.png)
 
 If you're interested in making cities easier to visit, you can contribute to our project by improving our website or our application!
 

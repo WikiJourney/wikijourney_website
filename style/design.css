@@ -21,499 +21,354 @@ limitations under the License.
 
 /* ===> Global blocks and inline <=== */
 
-body{
-margin:0px;	
-padding:0px;
-background-color: rgb(247,247,247);
-overflow: scroll;
+html {
+	height: 100%;
+	position: relative;
 }
 
-h1 {
-font-family: "Helvetica","Trebuchet MS",sans;
-margin-top: 30px;
-margin-left: 50px;
-font-size: 26px;
-color: rgb(248,99,99);
+body {
+	position: relative;
+	background-color: #F7F7F7;
+	padding-top: 50px; /* Due to navbar */
+	overflow-x: hidden;
+	overflow-y: scroll;
+	min-height: 100%;
 }
 
-h2 {
-font-family: "Helvetica", cambria,sans;
-margin-top: 15px;
-margin-left: 70px;
-font-size: 20px;
-color: rgb(137,160,173);
+h1, h2, h3, h4 {
+	color: #ff6e70;
 }
 
-a{
-text-decoration: none;
-color: grey;
+p {
+	text-align: justify;
 }
 
-label{
-display: block;
-float: left;
-width: 120px;
+.btn-primary {
+	color: white;
+	background-color: #ff6e70;
+	border-color: #204D74;
+}
+
+.btn-primary:hover {
+	color: #FFF;
+	background-color: #89A0AD;
+
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.shadowed{
+	box-shadow: 0 3px 6px 0 #999;
+}
+
+form {
+	padding-bottom: 20px;
 }
 
 /* ===> Top <=== */
 
-#logoLanguageBoxContainer {
-margin: auto;
-}
-
 #banniere {
-background-color:white;
-max-width: 1502px;
-margin: 0 auto;
-background-image: url("../images/design/lille.jpg");
-height: 300px;
-border-bottom: 1px solid black;
-font-size: 32px;
-color: black;
-font-family: "Trebuchet MS",Helvetica,sans;
+	background-image: url("../images/design/pictures/lille.jpg");
+	min-height: 200px;
+	background-size: cover;
 }
 
-#languagesBox {
-font-size: 14px;
-margin: 0 50px 0 100px;
-width: 100px;
-padding: 5px;
-text-align: center;
-background-color: rgba(248,99,99,0.5);
--webkit-border-radius: 10px;
-   -moz-border-radius: 10px;
-        border-radius: 10px;
-		
-border: 1px solid black;
-color: white;
-font-family: cambria,Helvetica,sans;
+
+.bigtitle {
+	text-align: center;
+	vertical-align: middle;
+	margin-top: 80px;
+	margin-bottom: 30px;
+	font-style: italic;
 }
 
-#languagesBox a{
-color: white;
+
+.text-center > .img-responsive {
+	margin: auto;
 }
 
-#languagesBox a:hover{
-font-weight: bold;
+.stores_logos_block {
+	text-align: center;
 }
 
-#bigtitre {
-padding-left: 50px;
-text-align: center;
+.stores_logos_block img {
+	height: 40px;
+	display: inline-block;
+	margin: 5px;
+	box-shadow: 0 12px 6px -6px #999;
 }
 
-#logoban{
-margin: 20px;
-margin-left: 100px;
-height: 180px;
-margin-bottom: 42px;
+/* ===> Navbar <===*/
+
+.navbar {
+	border: none;
+	z-index: 10000;
 }
 
-/* ===> Menu <===*/
+.navbar-custom {
+	background-color: #ff6e70;
+	color: white;
+}
 
-/* => Block Menu */
+.navbar-custom .navbar-nav > li > a {
+	color: white;
+}
+.navbar-custom .navbar-nav li > a:hover,
+.navbar-custom .navbar-nav li > a:focus,
+.navbar-custom .navbar-nav > .active > a,
+.navbar-custom .navbar-nav > .active > a:hover,
+.navbar-custom .navbar-nav > .active > a:focus {
+	color: white;
+	background-color: rgb(137, 160, 173);
+}
+.navbar-custom .navbar-brand {
+	color: #eee;
+}
 
-#menu {
+.navbar-toggle .icon-bar {
+	background-color: #eee;
+}
 
-margin-left: auto;
-margin-right: auto;
-text-align: center;
-opacity: 0.9;
-height: 40px;
-width: 1002px;
+.navbar-brand > img {
+	display: inline-block;
+	height: 120px;
+	vertical-align: text-top;
+	
+}
+
+.shrink{
+	height:25px !important;
+	margin-right: 10px;
+}
+
+.notshrink{
+	filter: drop-shadow(2px 5px 3px #999);
+	-webkit-filter: drop-shadow(2px 5px 3px #999);
+	margin-right: 30px;
+	
+}
+
+.logoNavbar{
+   transition: 0.4s ease;
+}
+
+#first_content{
+	padding-top: 100px;
+}
+
+@media screen and (max-width: 765px){
+	.navbar ul{
+		padding-left: 150px;
+	}
 
 }
 
-/* => Cells */
-
-#menu td {
--webkit-border-top-left-radius: 10px;
--webkit-border-top-right-radius: 10px;
--moz-border-radius-topleft: 10px;
--moz-border-radius-topright: 10px;
-border-top-left-radius: 10px;
-border-top-right-radius: 10px;
-background-color: rgb(248,99,99);
-border: 1px solid black;
-text-align: center;
-height : 40px;
-width : 250px;
+@media screen and (max-width: 480px) {
+	.navbar-brand > img {
+		height: 60px;
+	}
+	.navbar ul{
+		padding-left: 100px;
+	}
+	#first_content{
+		padding-top: 30px;
+	}	
 }
 
-/* => Text */
-
-#menu a {
-color: white;
-font-family: cambria,Helvetica,sans;
-padding: 8px;
-display: block;
-text-decoration: none;
-font-weight: bold;
-font-size: 18px;
+.navbar-collapse a{
+	padding-left:20px;
 }
 
-#menu td:hover {
-background-color: rgb(174,203,219);
+.navbar.in ul li {
+	font-size: 100px;  
 }
+
 
 /* ===> Body <=== */
-	
-#corps {
-margin-top : 25px;
-border: 1px solid black;
-margin-left: auto;
-margin-right: auto;
-width: 1000px;
-background-color: white;
-}
 
-#corps p, #corps form {
-margin: auto;
-width: 80%;
-text-align: justify;
-font-family: Calibri,Helvetica,sans;
-}
+
 
 /* ===> Footer <=== */
 
-#pied {
-margin-top: 20px;
-width: 100%;
-background-color: white;
-border: 1px solid black;
-border-left: none;
-border-right: none;
-padding-bottom: 10px;
-margin-bottom: 5px;
+.footer *{ /* Reset */
+	margin: 0;
+	padding: 0;
 }
 
-#pied table {
-margin-left: auto;
-margin-right: auto;
-width: 1000px;
-text-align: center;
+.footer-space{
+	/* The footer is set in absolute, we need a block at the end of the body
+	so the footer doesn't go over the bottom of it. */
+	height: 62px;
 }
 
-#pied img {
-height: 35px;
-padding-left: 10px;
-padding-right: 10px;
+@media (max-width: 768px) {
+	/* The same when the screen is xs */
+	.footer-space{
+		height: 114px;
+	}
 }
 
-#pied th {
-text-align: center;
-font-size: 14px;
-padding: 3px;
-font-family: "Trebuchet MS", Helvetica,sans;
+.footer {
+	background-color: rgba(137, 160, 173, 0.5);
+	box-shadow: inset 0 8px 6px -6px #999;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	position: absolute;
+	width: 100%;
+	bottom: 0;
 }
 
-#pied td {
-font-family: cambria,Helvetica,sans;
-text-align: center;
-font-size: 12px;
+
+
+.footer img {
+	margin: 6px 10px 5px;
+	height: 25px;
 }
+
+.footer h6 {
+	margin-top: 3px;
+	font-weight: bold;
+	font-size: 11px;
+}
+
+
+
 
 /* ============================================= */
 /* ========= Specific Pages Properties ========= */
 /* ============================================= */
 
-/* ===> map.php <=== */
-
-/* => Map block and children (buttons, popup...) */
-
-#map { 
-padding: 0;
-height: 500px; 
-width: 70%; 
-border-collapse: collapse;
-border: 1px solid black;
+/* ===> index.php <=== */
+#formPOI .input-group-addon{
+	/* Sometimes we got 2 figures, sometimes 3... */
+	/* This fixes the width of the addon */
+	min-width:50px;
+	text-align:center;
 }
+.label-top{
+	font-size: 1.4em;
+    width: 100%;
+    text-align: center !important; /* Overrides a bootstrap property */
+	padding-top: 20px !important; /* Same here */
+	padding-bottom: 5px;
 
-#map_cart_container {
-width: 1000px;
-margin: auto;
-margin-top: 15px;
-}
-
-#button-wrapper {
-position: relative;
-margin-left: 80%;/* MAGIC NUMBERS <3 */	
-margin-top: -50px;
-}
-
-#button-routing-wrapper {
-position: absolute;
-margin-left: 11px;/* MAGIC NUMBERS <3 */
-margin-top: -400px;
-}
-
-.POPUP_title{
-font-weight: bold;
-margin: auto;
-text-align: center;
-}
-
-.POPUP_img{
-max-height: 100px;
-width: 100px;
-margin: auto;
-display: block;
-}
-
-.POPUP_links{
-text-align: center;
-}
-
-/* => Cart block and children (cart elements, buttons...) */
-
-#POI_CART_BLOCK {
-margin-right: 46px;
-float: left;
-width: 25%;
-border: 1px solid black;
-border-radius: 8px;
-height: 500px;
-background-color: white;
-}
-
-#POI_CART_TITLE {
-font-family: "Helvetica","Trebuchet MS",sans;
-font-size: 22px;
-text-decoration: none;
-text-align:center;
-margin: auto;
-padding-top: 5px;
-padding-bottom: 5px;
-margin-top: 5px;
-width: 90%;
-border-bottom: 2px solid rgb(248,99,99);
-}
-
-#POI_CART {
-overflow-y: auto;
-height: 425px;
-}
-#POI_CART::-webkit-scrollbar{
-border-radius: 4px;
-width:8px;
-background-color:#eeeeee;
-} 
-#POI_CART::-webkit-scrollbar-thumb{
-background-color:rgb(174,203,219);
-border-radius:4px;
-}
-
-#POI_CART_FOOTER{
-text-align: center;
-margin: auto;
-margin-top: 5px;
-}
-
-.POI_CART_icons{
-cursor: pointer;
-}
-
-.eltCart {
-font-family: "Calibri",Sans;
-width: 90%;
-border-bottom: 2px solid rgb(248,99,99);
-min-height: 74px;
-margin: auto;
-text-align: center;
-padding: 5px;
-}
-
-.eltCartNumber {
-font-family: "Helvetica","Trebuchet MS";
-border-radius: 3px;
-float: left;
-margin: 5px;
-margin-top: 30px;
-width: 20px;
-border: 1px solid black;
-text-align:center;
-height:100%;
-background-color: rgb(174,203,219);
-}
-
-/* => WikiVoyage section */
-
-#WikiVoyageTitle {
-color: rgb(255,99,99);
-font-size: 1.2em;
-margin-bottom: 10px;
-display: block;
-font-weight: bold;
-}
-
-#WikiVoyageBox{
-width: 95%;
-padding-top: 20px;
-height:200px;
-margin: auto;
-}
-
-#WikiVoyageThumbnailContainer{
-overflow-x: scroll;
-overflow-y: hidden;
-margin: auto;
-height: 160px;
-width: 100%;
-}
-
-#WikiVoyageThumbnailContainerScroll{
-width: auto; 
-white-space: nowrap;
-}
-
-#WikiVoyageThumbnailContainer::-webkit-scrollbar{
-border-radius: 4px;
-height:8px;
-background-color:#eeeeee;
-}
-
-#WikiVoyageThumbnailContainer::-webkit-scrollbar-thumb{
-background-color:rgb(174,203,219);
-border-radius:4px;
-}
-
-.WikiVoyageElement{
-height: 130px;
-display: inline-block;
-text-align: center;
-vertical-align: top;
-margin-left: 5px;
-padding: 8px;
-background-color: rgb(174,203,219);
-min-width: 100px;
-font-family: "Calibri",Sans;
-font-size: 0.9em;
-border-radius: 3px;
-}
-
-.WikiVoyageElement a{
-color:black;
-}
-
-.WikiVoyageElement a:hover{
-color: rgb(255,50,50);
-}
-
-.WikiVoyageImg{
-margin-top: 8px;
-height: 100px;
 }
 
 /* ===> map_export.php <=== */
 
-.thumbnail_export img{
-height: 120px;
+.thumbnail_export img {
+	height: 120px;
 }
 
-.thumbnail_export{
-height: 140px;
-display: inline-block;
-text-align: center;
-vertical-align: top;
-margin: 20px;
-margin-left: 5px;
-padding: 8px;
-background-color: rgb(174,203,219);
-min-width: 100px;
-font-family: "Calibri",Sans;
-font-size: 0.9em;
-border-radius: 3px;
+.thumbnail_export {
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
+	margin: 20px;
+	margin-left: 5px;
+	padding: 8px;
+	background-color: rgb(174,203,219);
+	min-width: 100px;
+	font-family: "Calibri",Sans;
+	font-size: 0.9em;
+	border-radius: 3px;
+}
+
+.ratio_wrapper{
+	margin-top: 5px;
+	display: block;
 }
 
 /* ===> paths.php <=== */
 
-.thumbnail_paths{
-max-height: 140px;
-margin: auto;
-display: block;
+.thumbnail_paths {
+	max-height: 140px;
+	margin: auto;
+	display: block;
+	margin-bottom: 5px;
 }
 
-#paths{
-margin: auto;
-width: 90%;
-border-collapse: collapse;
+#paths {
+	margin: auto;
+	width: 90%;
+	border-collapse: collapse;
 }
 
-#paths td{
-border: 1px solid rgb(174,203,219);
-font-family: "Calibri",Sans;
-padding: 2px 20px 2px 20px;
-text-align: justify;
+#paths td {
+	border: 1px solid rgb(174,203,219);
+	font-family: "Calibri",Sans;
+	padding: 2px 20px 2px 20px;
+	text-align: justify;
 }
 
-.paths_title{
-padding: 5px;
-font-size: 20px;
-font-weight: bold;
-text-align: center !important;
-width: 100%;
+.paths_title {
+	padding: 5px;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center !important;
+	width: 100%;
 }
 
 /* ===> index.php <=== */
 
-#welcome{
-margin: 30px 50px 50px 50px;
-font-family: Calibri,Helvetica,sans;
-text-align:justify;
-}
-
 .miniInput {
-display: block;
-width: 50px;
-text-align: center;
+	display: block;
+	width: 50px;
+	text-align: center;
 }
 
 /* ===> team.php <=== */
-#trombi {
-width: 80%;
-border-collapse: collapse;
-border: 1px solid black;
-margin: auto;
-background-color: rgba(155,222,255,0.3);
-}
 
-.tcol3{
-text-indent: 20px;
-text-align: justify;
-font-family: calibri,Helvetica,sans;
-border: 1px solid black;
-padding: 10px;
-font-size: 14px;
-}
-
-.tcol2{
-width: 22%;
-text-align: center;
-border: 1px solid black;
-padding: 5px;
-}
 
 .trombiNom
-{
-font-family: "Courier New",Times,sans;
-color: rgb(255,99,99);
-font-weight: bold;
+ {
+	font-family: "Courier New",Times,sans;
+	color: rgb(255,99,99);
+	font-weight: bold;
+	font-size: 1.5em;
 }
 
 .trombiFonc
-{
-font-family: calibri, Helvetica,sans;
-color: grey;
-font-size: 13px;
+ {
+	font-family: calibri, Helvetica,sans;
+	color: grey;
 }
 
-.tcol1 img{
-width: 120px;
-vertical-align: bottom;
+
+
+@media screen and (max-width: 765px){
+	.trombiElement{
+		margin: auto;
+	}
 }
 
-.tcol1{
-border: 1px solid black;
-margin: 0;
-padding : 0;
+.trombiElement{
+	text-align: center;
+	background-color: rgb(254,254,254);
+	border-radius: 15px;
+	
+	margin-top: 105px;
+	max-width: 280px;
+	padding-bottom: 10px;
+
+}
+
+.trombiElement .img-circle{
+	margin-top: -75px;
+	margin-bottom: 20px;
+	width: 150px;
+}
+
+.trombiElement > .trombiSocial {
+	text-align: center;
+}
+
+.trombiElement > .trombiSocial > a > img {
+	display: inline-block;
+	margin: 5px 15px 0 15px;
+	width: 25px;
 }

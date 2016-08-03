@@ -1,0 +1,318 @@
+/* ===> map.php <=== */
+
+body{
+	overflow: hidden;
+	height: 100%; /* To overwrite the min-height in map.css */
+}
+
+/* => Some special properties for the loading screen */
+.modal {
+	display: none;
+	position: relative;
+	z-index: 3000;
+
+	height: 100%;
+	width: 100%;
+	background: rgba( 255, 255, 255, .8 )
+	url('../images/design/ajax-loader.gif')
+	50% 50%
+	no-repeat;
+}
+
+body.loading {
+	overflow: hidden;
+}
+
+body.loading .modal {
+	display: block;
+}
+
+
+/* => Blocks Positioning */
+
+#mapAndCartContainer{
+	position: relative;
+	width: 100%;
+	height:100%;
+	margin-bottom: -20px;
+}
+
+#mapContainer{
+	position: absolute;
+	top:0;
+	height:100%;
+	margin: 0;
+	padding: 0;
+
+}
+
+#map{
+	height: 100%;
+	width: 100%;
+}
+
+#simplifiedLink {
+	display: block;
+	width: 200px;
+	margin: 30px auto;
+}
+
+.drawer {
+	position: absolute;
+	background-color: white;
+
+	box-shadow: 3px 0 8px 0 #999;
+	transition: 0.4s ease;
+
+}
+
+.drawer-left{
+	height: 100%;
+}
+
+.drawer-bottom{
+	width: 100%;
+	bottom: -50px; /* Hidden in the beginning, JS will show it */
+}
+
+#POI_CART_BLOCK{
+	z-index: 6000;
+}
+
+#WikiVoyageBox{
+	z-index: 5000;
+	background-color: rgba(255,255,255,0.8);
+	padding: 0 20px 0 20px;
+}
+
+@media screen and (max-width: 765px){
+	#mapContainer{
+		width:100%;
+	}
+	.drawer-left {
+		width:100%;
+		left: -100%;
+	}
+}
+@media screen and (min-width: 765px){
+	#mapContainer{
+		left:30%;
+		width: 70%;
+	}
+	.drawer-left {
+		width: 30%;
+	}
+}
+
+/* => Drawer style and properties */
+.drawer-button {
+	display:none;
+	position: absolute;
+	top: 10px;
+	left: 30px;
+}
+
+.drawer-title{
+	font-family: "Helvetica", "Trebuchet MS", sans-serif;
+	font-size: 22px;
+	text-decoration: none;
+	text-align:center;
+	padding: 15px;
+	width: 100%;
+	background-color: rgba(137, 160, 195, 0.8);
+	color: white;
+}
+
+/* => Map Stuff */
+
+.POPUP_title {
+	font-weight: bold;
+	text-align: center;
+	margin: 5px !important;
+	min-width: 150px;
+}
+
+.POPUP_img {
+	max-width: 100px;
+	max-height: 100px;
+	margin: auto;
+	display: block;
+}
+
+.POPUP_links {
+	text-align: center;
+	margin: 5px !important;
+}
+
+.easy-button-button.disabled {
+	display: none;
+}
+
+.leaflet-popup-content{
+	margin: 10px;
+}
+
+#buttonDrawerMap {
+	-webkit-transition: 0.5s ease;
+	transition: 0.5s ease;
+}
+
+.buttonDrawerActive {
+	background-color: #ff6e70 !important;
+}
+
+
+/* => Cart block and children (cart elements, buttons...) */
+
+#POI_CART {
+	overflow-y: auto;
+	height: 80%;
+}
+#POI_CART::-webkit-scrollbar {
+	border-radius: 4px;
+	width:8px;
+	background-color:#eeeeee;
+}
+#POI_CART::-webkit-scrollbar-thumb {
+	background-color:rgb(174,203,219);
+	border-radius:4px;
+}
+
+#POI_CART_FOOTER {
+	text-align: center;
+
+	background-color: rgba(137, 160, 195, 0.8);
+	padding: 10px;
+}
+
+.POI_CART_icons .glyphicon {
+	cursor: pointer;
+	display: inline-block;
+	margin: 5px 10px 0 10px;
+	font-size: 1.3em;
+	color: #555;
+}
+
+.eltCart{
+	overflow-y: hidden;	/* To cut the background */
+	position: relative;
+}
+
+.eltCartBlur{
+	position: absolute;
+
+	width: 100%;
+	height: 200px; /* "big" value to fill the element */
+
+	/* The background url is given inline in JS */
+	background-size: cover;
+	background-position: center;
+
+	/* Fallback to SVG filters */
+	filter: url('../images/design/blur.svg#blur');
+	/* Normal filter */
+	-webkit-filter: blur(2px);
+	filter: blur(2px);
+}
+
+.eltCartContent {
+	position: relative;
+	width: 100%;
+	margin: auto;
+	text-align: center;
+	min-height: 74px;
+
+	font-family: "Calibri", sans-serif;
+	border-bottom: 2px solid rgb(248,99,99);
+
+	background-color: rgba(255,255,255,0.7); /* To lighten blurred background */
+}
+
+.eltCartNumber {
+	font-family: "Helvetica", "Trebuchet MS", sans-serif;
+	border-radius: 3px;
+	float: left;
+	margin: 30px 5px 5px;
+	width: 20px;
+	border: 1px solid black;
+	text-align:center;
+	height:100%;
+	background-color: rgb(174,203,219);
+}
+
+/* => WikiVoyage section */
+
+.WikiVoyageTitle{
+	border-radius: 10px 10px 0 0;
+	position: absolute;
+	z-index: 5000;
+	top: calc(-1.5em - 8px);
+	left: 20px;
+	font-size: 1.2em;
+	text-align: center;
+	font-weight: bold;
+	padding: 5px 20px 5px 20px;
+	background-color: rgba(255,255,255,0.8);
+	color : rgb(120, 120, 195);
+	cursor: pointer;
+}
+
+#wikiVoyageToggleButton{
+	cursor: pointer;
+}
+
+.WikiVoyageTitle .glyphicon{
+	vertical-align: text-bottom;
+	margin-right: 20px;
+}
+
+#WikiVoyageThumbnailContainer {
+	overflow-y: hidden;
+	overflow-x: auto;
+	padding: 7px 0 5px 0;
+	width: 100%;
+	margin-bottom: 4px;
+	height: 160px;
+}
+
+#WikiVoyageThumbnailContainerScroll {
+	white-space: nowrap;
+}
+
+#WikiVoyageThumbnailContainer::-webkit-scrollbar {
+	border-radius: 4px;
+	height:8px;
+	background-color:#eeeeee;
+}
+
+#WikiVoyageThumbnailContainer::-webkit-scrollbar-thumb {
+	background-color:rgb(137, 160, 195);
+	border-radius:4px;
+}
+
+.WikiVoyageElement {
+	height: 140px;
+	display: inline-block;
+	text-align: center;
+	margin-left: 5px;
+	margin-right: 5px;
+	padding: 8px;
+	background-color: rgb(137, 160, 195);
+	min-width: 100px;
+	border-radius: 3px;
+}
+
+.WikiVoyageElement {
+	color: white;
+	font-size: 0.9em;
+}
+
+.WikiVoyageElement:hover {
+	background-color: rgba(137, 160, 195, 0.8);
+}
+
+.WikiVoyageImg {
+	display: block;
+	height: 100px;
+	margin: 5px auto auto;
+}
