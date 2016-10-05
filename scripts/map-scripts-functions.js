@@ -223,7 +223,7 @@ function parseCartContent(element, i) {
 
 	if(element.sitelink != null)
 	{
-		htmlElement  += "<a href=" + element.sitelink + ">" + _MAP_POI_LINK + "</a>";
+		htmlElement  += "<a target=\"_blank\" href=" + element.sitelink + ">" + _MAP_POI_LINK + "</a>";
 	}
 
 	htmlElement += "<br/><span class=\"POI_CART_icons\"><span class=\"glyphicon glyphicon-chevron-up\" onclick=\" invertPOI("+ i +",'up'); \"></span>   <span class=\"glyphicon glyphicon-chevron-down\" onclick=\" invertPOI("+ i +",'down'); \"></span>  <span class=\"glyphicon glyphicon-remove\" onclick=\" deletePOI( " + i + "); \"></span></div>";
