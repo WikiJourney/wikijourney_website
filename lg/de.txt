@@ -1,0 +1,13 @@
+16970:place-of-worship:Kirchen
+2095:restaurant:Restaurants
+12518:monument:Denkmäler
+34627:religious-jewish:Synagogen
+10387575:town-hall:Museum
+916475:town-hall:Museum
+207694:art-gallery:Kunst Museum
+3914:college:Universität
+3918:college:Universität
+9826:college:Universität
+847027:college:Universität
+5503:rail-metro:U-Bahn
+928830:rail-metro:U-Bahn
