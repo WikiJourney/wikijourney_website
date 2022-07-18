@@ -30,45 +30,45 @@ limitations under the License.
 
 	<div class="row">
 		<div class="col-sm-3 col-sm-offset-2 trombiElement shadowed">
-			<img src="./images/trombi/Arn.jpg" alt="Photo" class="img-circle shadowed" />
-			<p class="text-center"><span class="trombiNom">Sylvain Arnouts</span><br/><span class="trombiFonc"><?php echo _S_ARNOUTS_POSTE; ?></span></p>
+			<img src="./images/trombi/Unk.jpg" alt="Photo" class="img-circle shadowed" />
+			<p class="text-center"><span class="trombiNom">Sylvain Arnouts</span></p>
 			<p class="trombiSocial">
 				<a target="_blank" title="GitHub" href="https://github.com/sylvainar/"><img src="images/design/external_logos/github-mini.png"/></a>
 				<a target="_blank" title="Twitter" href="https://twitter.com/SylvainNouts"><img src="images/design/external_logos/twitter-mini.png"/></a>
 			</p>
 		</div>
 		<div class="col-sm-3 col-sm-offset-2 trombiElement shadowed">
-			<img src="./images/trombi/Gau.jpg" alt="Photo" class="img-circle shadowed" />
-			<p class="text-center"><span class="trombiNom">Thomas Gaudin</span><br/><span class="trombiFonc"><?php echo _T_GAUDIN_POSTE; ?></span></p>
+			<img src="./images/trombi/Unk.jpg" alt="Photo" class="img-circle shadowed" />
+			<p class="text-center"><span class="trombiNom">Thomas Gaudin</span></p>
 			<p class="trombiSocial">
-				<a target="_blank" title="GitHub" href="https://github.com/tikiki"><img src="images/design/external_logos/github-mini.png"/></a>
-				<a target="_blank" title="Twitter" href="https://twitter.com/TGoudine"><img src="images/design/external_logos/twitter-mini.png"/></a>
+				<a target="_blank" title="GitHub" href="https://github.com/nymous"><img src="images/design/external_logos/github-mini.png"/></a>
+				<a target="_blank" title="Twitter" href="https://twitter.com/nymousIO"><img src="images/design/external_logos/twitter-mini.png"/></a>
 			</p>
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="col-sm-3 col-sm-offset-1 trombiElement shadowed">
-			<img src="./images/trombi/Arz.jpg" alt="Photo" class="img-circle shadowed" />
-			<p class="text-center"><span class="trombiNom">Paul Arzelier</span><br/><span class="trombiFonc"><?php echo _P_ARZELIER_POSTE; ?></span></p>
+			<img src="./images/trombi/Unk.jpg" alt="Photo" class="img-circle shadowed" />
+			<p class="text-center"><span class="trombiNom">Paul Arzelier</span></p>
 		</div>
 		<div class="col-sm-3 col-sm-offset-1 trombiElement shadowed">
-			<img src="./images/trombi/Mae.jpg" alt="Photo" class="img-circle shadowed" />
-			<p class="text-center"><span class="trombiNom">Juliette Maës</span><br/><span class="trombiFonc"><?php echo _J_MAES_POSTE; ?></span></p>
+			<img src="./images/trombi/Unk.jpg" alt="Photo" class="img-circle shadowed" />
+			<p class="text-center"><span class="trombiNom">Eliot Maës</span></p>
 		</div>
 		<div class="col-sm-3 col-sm-offset-1 trombiElement shadowed">
-			<img src="./images/trombi/Wan.jpg" alt="Photo" class="img-circle shadowed" />
-			<p class="text-center"><span class="trombiNom">Yuzhen Wang</span><br/><span class="trombiFonc"><?php echo _Y_WANG_POSTE; ?></span></p>
+			<img src="./images/trombi/Unk.jpg" alt="Photo" class="img-circle shadowed" />
+			<p class="text-center"><span class="trombiNom">Yuzhen Wang</span></p>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-sm-3 col-sm-offset-2 trombiElement shadowed">
-			<img src="./images/trombi/Hat.jpg" alt="Photo" class="img-circle shadowed" />
-			<p class="text-center"><span class="trombiNom">Naoufel Hatim</span><br/><span class="trombiFonc"><?php echo _N_HATIM_POSTE; ?></span></p>
+			<img src="./images/trombi/Unk.jpg" alt="Photo" class="img-circle shadowed" />
+			<p class="text-center"><span class="trombiNom">Naoufel Hatim</span></p>
 		</div>
 		<div class="col-sm-3 col-sm-offset-2 trombiElement shadowed">
-			<img src="./images/trombi/Hub.jpg" alt="Photo" class="img-circle shadowed" />
-			<p class="text-center"><span class="trombiNom">Bastien Huber</span><br/><span class="trombiFonc"><?php echo _B_HUBER_POSTE; ?></span></p>
+			<img src="./images/trombi/Unk.jpg" alt="Photo" class="img-circle shadowed" />
+			<p class="text-center"><span class="trombiNom">Bastien Huber</span></p>
 		</div>
 	</div>
 </div>
