@@ -47,6 +47,15 @@ else
 	<title><?php echo _TITLE; ?></title>
 	<meta charset="utf-8">
 	<meta name=viewport content="width=device-width,initial-scale=1">
+	<meta property="og:title" content="WikiJourney" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://wikijourney.eu" />
+	<meta property="og:image" content="https://wikijourney.eu/images/design/wj_logos/logo_small.png" />
+	<meta property="og:description" content="Revisitez le tourisme grâce à la connaissance de Wikipédia" />
+	<meta property="og:locale" content="fr_FR" />
+	<meta property="og:locale:alternate" content="en_US" />
+	<meta property="og:locale:alternate" content="ar_AR" />
+	<meta property="og:locale:alternate" content="zh_CN" />
 	<link rel="shortcut icon" href="./images/design/wj_logos/logo_small.png" />
 	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="lib/leaflet/leaflet.css">

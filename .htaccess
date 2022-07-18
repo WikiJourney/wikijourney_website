@@ -1,3 +1,8 @@
+RewriteEngine On
+RewriteBase /
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
 # compress with MOD_DEFLATE
 AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml text/javascript application/x-javascript application/javascript application/x-httpd-php
 
